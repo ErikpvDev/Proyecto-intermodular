@@ -25,7 +25,7 @@ func get_max_health() -> int:
 	return max_health
 	
 func set_health(value: int):
-	pass
+	health=value
 	
 func get_health() -> int:
 	return health

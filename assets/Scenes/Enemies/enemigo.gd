@@ -1,16 +1,11 @@
 extends CharacterBody2D
+class_name Enemy
 
 var speed = 80
 
-var player = null
+@onready var target = $"../Character"
 
-func _ready():
-	player = get_tree().get_nodes_in_group("character")[0]
-	
-func _process(delta: float) -> void:
-	follow()
-	
-func follow():
-	if player != null:
-		velocity = position.direction_to(player.position) * speed
-		move_and_slide()
+func _physics_process(_delta):
+	var direction = (target.position-position).normalized()
+	velocity = direction * speed
+	move_and_slide()

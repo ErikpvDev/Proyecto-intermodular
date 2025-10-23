@@ -35,3 +35,9 @@ func _physics_process(_delta):
 	velocity = input_direction * move_speed
 	
 	move_and_slide()
+
+
+func _on_area_2d_area_entered(area: Area2D) -> void:
+	take_damage()
+	
+	

@@ -64,13 +64,13 @@ position = Vector2(4.749998, 4.749998)
 scale = Vector2(0.17578128, 0.17578128)
 texture = ExtResource("1_cs5dr")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(4.5, 4.75)
-shape = SubResource("RectangleShape2D_cs5dr")
-
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(3, 3)
 position_smoothing_enabled = true
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(4.5, 4.75)
+shape = SubResource("RectangleShape2D_cs5dr")
 
 [node name="Health" type="Node" parent="."]
 script = ExtResource("3_l1dng")
@@ -125,3 +125,11 @@ scale = Vector2(2.5, 2.5)
 sprite_frames = SubResource("SpriteFrames_5s5n3")
 animation = &"beating"
 frame_progress = 0.98482126
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(4.5, 4.75)
+shape = SubResource("RectangleShape2D_cs5dr")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
