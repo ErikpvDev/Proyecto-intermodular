@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://p0hbqo51nej1"]
+
+[ext_resource type="Texture2D" uid="uid://8lxe5gkufg7p" path="res://icon.svg" id="1_cs5dr"]
+[ext_resource type="Script" uid="uid://dlb0vba8x21kc" path="res://assets/Scenes/Character/personaje.gd" id="1_hlutc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cs5dr"]
+size = Vector2(22.5, 23)
+
+[node name="Character" type="CharacterBody2D" groups=["character"]]
+script = ExtResource("1_hlutc")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(4.749998, 4.749998)
+scale = Vector2(0.17578128, 0.17578128)
+texture = ExtResource("1_cs5dr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(4.75, 4.5)
+shape = SubResource("RectangleShape2D_cs5dr")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(3, 3)
+position_smoothing_enabled = true
