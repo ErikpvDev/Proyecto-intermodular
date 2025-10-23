@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://p0hbqo51nej1"]
+[gd_scene load_steps=8 format=3 uid="uid://p0hbqo51nej1"]
 
 [ext_resource type="Texture2D" uid="uid://c1tp7pqe622b5" path="res://icon.svg" id="1_cs5dr"]
 [ext_resource type="Script" uid="uid://dlb0vba8x21kc" path="res://assets/Scenes/Character/personaje.gd" id="1_hlutc"]
@@ -8,22 +8,6 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cs5dr"]
 size = Vector2(23, 22.5)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_5s5n3"]
-atlas = ExtResource("4_jdptv")
-region = Rect2(0, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_r012d"]
-atlas = ExtResource("4_jdptv")
-region = Rect2(16, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_k3vyu"]
-atlas = ExtResource("4_jdptv")
-region = Rect2(32, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_7rjg1"]
-atlas = ExtResource("4_jdptv")
-region = Rect2(48, 0, 16, 16)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_jdptv"]
 atlas = ExtResource("4_jdptv")
 region = Rect2(0, 0, 16, 16)
@@ -32,27 +16,10 @@ region = Rect2(0, 0, 16, 16)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_5s5n3")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_r012d")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_k3vyu")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_7rjg1")
-}],
-"loop": true,
-"name": &"beating",
-"speed": 8.0
-}, {
-"frames": [{
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_jdptv")
 }],
 "loop": true,
-"name": &"idle",
+"name": &"default",
 "speed": 5.0
 }]
 
@@ -79,49 +46,37 @@ metadata/_custom_type_script = "uid://dafnad46gi5nb"
 [node name="health_bar" type="CanvasLayer" parent="."]
 
 [node name="HBoxContainer" type="HBoxContainer" parent="health_bar"]
-offset_right = 74.0
-offset_bottom = 48.0
+offset_right = 24.0
+offset_bottom = 40.0
 
 [node name="heart" type="TextureRect" parent="health_bar/HBoxContainer"]
-custom_minimum_size = Vector2(33.125, 0)
+custom_minimum_size = Vector2(12.755, 0)
 layout_mode = 2
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="health_bar/HBoxContainer/heart"]
-position = Vector2(20, 51)
-scale = Vector2(2.5, 2.5)
+position = Vector2(8, 39)
 sprite_frames = SubResource("SpriteFrames_5s5n3")
-animation = &"beating"
-frame_progress = 0.98482126
 
 [node name="heart2" type="TextureRect" parent="health_bar/HBoxContainer"]
-custom_minimum_size = Vector2(33.125, 0)
+custom_minimum_size = Vector2(12.755, 0)
 layout_mode = 2
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="health_bar/HBoxContainer/heart2"]
-position = Vector2(20, 51)
-scale = Vector2(2.5, 2.5)
+position = Vector2(8, 39)
 sprite_frames = SubResource("SpriteFrames_5s5n3")
-animation = &"beating"
-frame_progress = 0.98482126
 
 [node name="heart3" type="TextureRect" parent="health_bar/HBoxContainer"]
-custom_minimum_size = Vector2(33.125, 0)
+custom_minimum_size = Vector2(12.755, 0)
 layout_mode = 2
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="health_bar/HBoxContainer/heart3"]
-position = Vector2(20, 51)
-scale = Vector2(2.5, 2.5)
+position = Vector2(8, 39)
 sprite_frames = SubResource("SpriteFrames_5s5n3")
-animation = &"beating"
-frame_progress = 0.98482126
 
 [node name="heart4" type="TextureRect" parent="health_bar/HBoxContainer"]
-custom_minimum_size = Vector2(33.125, 0)
+custom_minimum_size = Vector2(12.755, 0)
 layout_mode = 2
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="health_bar/HBoxContainer/heart4"]
-position = Vector2(20, 51)
-scale = Vector2(2.5, 2.5)
+position = Vector2(8, 39)
 sprite_frames = SubResource("SpriteFrames_5s5n3")
-animation = &"beating"
-frame_progress = 0.98482126
