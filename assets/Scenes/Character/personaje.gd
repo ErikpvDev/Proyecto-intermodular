@@ -31,8 +31,12 @@ func _physics_process(_delta):
 		Input.get_action_strength("right") - Input.get_action_strength("left"),
 		Input.get_action_strength("down") - Input.get_action_strength("up"),
 	)
-
-	velocity = input_direction * move_speed
+	if input_direction.x!=0 && input_direction.y!=0:
+		velocity = input_direction.normalized() * move_speed
+	else:
+		velocity = input_direction * move_speed
+	
+	print(input_direction.x)
 	
 	move_and_slide()
 
