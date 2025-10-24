@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=4 uid="uid://dafx2m02alpy5"]
+[gd_scene load_steps=6 format=4 uid="uid://dafx2m02alpy5"]
 
 [ext_resource type="PackedScene" uid="uid://0gr62tvei2rq" path="res://assets/Scenes/Levels/Level01/Level01.tscn" id="1_ixfmw"]
 [ext_resource type="PackedScene" uid="uid://p0hbqo51nej1" path="res://assets/Scenes/Character/personaje.tscn" id="2_uhf17"]
 [ext_resource type="PackedScene" uid="uid://qffsk1wiwj24" path="res://assets/Scenes/Enemies/enemigo.tscn" id="3_fg2k8"]
+[ext_resource type="PackedScene" uid="uid://bqy0xbspvp3gc" path="res://assets/Scenes/Hearts/health_bar.tscn" id="4_0vwiw"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_ixfmw"]
 
@@ -17,12 +18,14 @@ tile_map_data = PackedByteArray("AAACAAIAAQABAAQAAAACAAMAAQABAAQAAAADAAMAAQABAAQ
 z_index = 1
 z_as_relative = false
 y_sort_enabled = true
-position = Vector2(215, 158)
+position = Vector2(-5, -5)
 
 [node name="Enemy" parent="." index="2" instance=ExtResource("3_fg2k8")]
 position = Vector2(-33, 104)
 
-[node name="Collisions" type="StaticBody2D" parent="." index="3"]
+[node name="health_bar" parent="." index="3" instance=ExtResource("4_0vwiw")]
+
+[node name="Collisions" type="StaticBody2D" parent="." index="4"]
 
 [node name="ColisionIzquierda" type="CollisionShape2D" parent="Collisions" index="0"]
 position = Vector2(-621, 109)

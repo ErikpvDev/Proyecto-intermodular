@@ -1,0 +1,60 @@
+[gd_scene load_steps=8 format=3 uid="uid://dmnp5kr6fmqqp"]
+
+[ext_resource type="Texture2D" uid="uid://dgbv31rjyyv55" path="res://assets/sprites/Objetcs/Heart Animation.png" id="1_kfeow"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5s5n3"]
+atlas = ExtResource("1_kfeow")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r012d"]
+atlas = ExtResource("1_kfeow")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k3vyu"]
+atlas = ExtResource("1_kfeow")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7rjg1"]
+atlas = ExtResource("1_kfeow")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jdptv"]
+atlas = ExtResource("1_kfeow")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2wgc1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5s5n3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r012d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k3vyu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7rjg1")
+}],
+"loop": true,
+"name": &"beating",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jdptv")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[node name="heart" type="TextureRect"]
+custom_minimum_size = Vector2(33.125, 0)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(20, 51)
+scale = Vector2(2.5, 2.5)
+sprite_frames = SubResource("SpriteFrames_2wgc1")
+animation = &"beating"
