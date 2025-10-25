@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://c1tp7pqe622b5" path="res://icon.svg" id="1_cs5dr"]
 [ext_resource type="Script" uid="uid://dlb0vba8x21kc" path="res://assets/Scenes/Character/personaje.gd" id="1_hlutc"]
-[ext_resource type="Script" uid="uid://dafnad46gi5nb" path="res://assets/components/health.gd" id="3_l1dng"]
+[ext_resource type="PackedScene" uid="uid://bam0ik66tfskr" path="res://assets/Scenes/UI/ui.tscn" id="2_l1dng"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cs5dr"]
 size = Vector2(23, 22.5)
@@ -10,6 +10,8 @@ size = Vector2(23, 22.5)
 [node name="Character" type="CharacterBody2D" groups=["character"]]
 z_index = 100
 script = ExtResource("1_hlutc")
+
+[node name="UI" parent="." instance=ExtResource("2_l1dng")]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(4.7683716e-07, 4.7683716e-07)
@@ -23,14 +25,14 @@ position_smoothing_enabled = true
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_cs5dr")
 
-[node name="Health" type="Node" parent="."]
-script = ExtResource("3_l1dng")
-metadata/_custom_type_script = "uid://dafnad46gi5nb"
-
 [node name="Area2D" type="Area2D" parent="."]
 collision_mask = 2
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_cs5dr")
 
+[node name="dash_timer" type="Timer" parent="."]
+wait_time = 0.2
+
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="timeout" from="dash_timer" to="." method="_on_dash_timer_timeout"]

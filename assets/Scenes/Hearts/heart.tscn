@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://dmnp5kr6fmqqp"]
+[gd_scene load_steps=10 format=3 uid="uid://dmnp5kr6fmqqp"]
 
-[ext_resource type="Texture2D" uid="uid://dgbv31rjyyv55" path="res://assets/sprites/Objetcs/Heart Animation.png" id="1_kfeow"]
+[ext_resource type="Texture2D" uid="uid://dgbv31rjyyv55" path="res://assets/sprites/Objetcs/Hearts/Heart Animation.png" id="1_kfeow"]
+[ext_resource type="Texture2D" uid="uid://cs7hox5ronsny" path="res://assets/sprites/Objetcs/Hearts/Hollow Heart.png" id="2_2wgc1"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5s5n3"]
 atlas = ExtResource("1_kfeow")
@@ -17,6 +18,10 @@ region = Rect2(32, 0, 16, 16)
 [sub_resource type="AtlasTexture" id="AtlasTexture_7rjg1"]
 atlas = ExtResource("1_kfeow")
 region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fghd1"]
+atlas = ExtResource("2_2wgc1")
+region = Rect2(0, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jdptv"]
 atlas = ExtResource("1_kfeow")
@@ -39,7 +44,15 @@ animations = [{
 }],
 "loop": true,
 "name": &"beating",
-"speed": 8.0
+"speed": 9.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fghd1")
+}],
+"loop": true,
+"name": &"damaged",
+"speed": 0.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -47,7 +60,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"idle",
-"speed": 5.0
+"speed": 0.0
 }]
 
 [node name="heart" type="TextureRect"]
@@ -57,4 +70,4 @@ custom_minimum_size = Vector2(33.125, 0)
 position = Vector2(20, 51)
 scale = Vector2(2.5, 2.5)
 sprite_frames = SubResource("SpriteFrames_2wgc1")
-animation = &"beating"
+animation = &"idle"

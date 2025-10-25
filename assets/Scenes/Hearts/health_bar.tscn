@@ -5,8 +5,7 @@
 [node name="health_bar" type="CanvasLayer"]
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
-offset_left = 1.0
-offset_right = 145.0
+offset_right = 144.0
 offset_bottom = 48.0
 size_flags_stretch_ratio = 4.3
 
