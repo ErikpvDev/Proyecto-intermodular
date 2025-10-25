@@ -1,8 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://p0hbqo51nej1"]
+[gd_scene load_steps=4 format=3 uid="uid://p0hbqo51nej1"]
 
 [ext_resource type="Texture2D" uid="uid://c1tp7pqe622b5" path="res://icon.svg" id="1_cs5dr"]
 [ext_resource type="Script" uid="uid://dlb0vba8x21kc" path="res://assets/Scenes/Character/personaje.gd" id="1_hlutc"]
-[ext_resource type="PackedScene" uid="uid://bam0ik66tfskr" path="res://assets/Scenes/UI/ui.tscn" id="2_l1dng"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cs5dr"]
 size = Vector2(23, 22.5)
@@ -10,8 +9,6 @@ size = Vector2(23, 22.5)
 [node name="Character" type="CharacterBody2D" groups=["character"]]
 z_index = 100
 script = ExtResource("1_hlutc")
-
-[node name="UI" parent="." instance=ExtResource("2_l1dng")]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(4.7683716e-07, 4.7683716e-07)
@@ -34,5 +31,8 @@ shape = SubResource("RectangleShape2D_cs5dr")
 [node name="dash_timer" type="Timer" parent="."]
 wait_time = 0.2
 
+[node name="dash_cooldown_timer" type="Timer" parent="."]
+
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="timeout" from="dash_timer" to="." method="_on_dash_timer_timeout"]
+[connection signal="timeout" from="dash_cooldown_timer" to="." method="_on_dash_cooldown_timer_timeout"]

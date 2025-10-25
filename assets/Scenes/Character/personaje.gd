@@ -3,16 +3,16 @@ extends CharacterBody2D
 @export var move_speed : float = 100
 
 @export var dash_speed : float = 300
-var dashing = false 
+@onready var dashing = false 
+var dash_available = true
 
 @export var gold_coins : int = 0
 
-@onready var health_bar: CanvasLayer = $UI/health_bar
+@onready var health_bar: CanvasLayer = $"../UI/health_bar"
 @onready var heart_object : PackedScene = preload("res://assets/Scenes/Hearts/heart.tscn")
 
 var hearts_list : Array[TextureRect]
 var health = 4
-
 
 func _ready() -> void:
 	# Gets the health bar initial hearts,appends them to the array and shows them on screen ss
@@ -22,7 +22,8 @@ func _ready() -> void:
 	print(hearts_list)
 	
 	# Sets Gold to it's initial value
-	$UI/Gold/HBoxContainer/Label.text=str(gold_coins)
+	var gold_coins_number=$"../UI/Gold/HBoxContainer/Label"
+	gold_coins_number.text=str(gold_coins)
 
 func take_damage(damage: int) -> void: 
 	# if health is over 0, subtract the damage value
@@ -40,10 +41,10 @@ func update_heart_display():
 		else:
 			hearts_list[i].get_child(0).play("damaged")
 	# Check if it's the last heart and if so play the "beating" animation if not play the "idle" animation  
-	if health == 1:
-		hearts_list[0].get_child(0).play("beating")
-	elif health > 1:
+	if health > 1:
 		hearts_list[0].get_child(0).play("idle")
+	else:
+		hearts_list[0].get_child(0).play("beating")
 
 func add_heart(cant: int)  -> void:
 	# Add the parameter cant to health
@@ -61,8 +62,12 @@ func _physics_process(_delta):
 	)
 	# If the dashing key is pressed activates the dashing status and starts a timer
 	if Input.is_action_just_pressed("dash"):
-		dashing=true
-		$dash_timer.start()
+		if dash_available:
+			dashing=true
+			dash_available=false
+			$dash_timer.start()
+			$dash_cooldown_timer.start()
+		
 	# Check if dashing and if so change the value to the dashing speed
 	var current_speed_mod = move_speed
 	if dashing:
@@ -73,6 +78,7 @@ func _physics_process(_delta):
 		velocity = input_direction.normalized() * current_speed_mod
 	else:
 		velocity = input_direction * current_speed_mod
+	
 	move_and_slide()
 
 func _on_area_2d_body_entered(_body: Node2D) -> void:
@@ -81,3 +87,8 @@ func _on_area_2d_body_entered(_body: Node2D) -> void:
 # Dashing status turning false after timer runs out
 func _on_dash_timer_timeout() -> void:
 	dashing=false
+
+
+func _on_dash_cooldown_timer_timeout() -> void:
+	dash_available=true
+	
