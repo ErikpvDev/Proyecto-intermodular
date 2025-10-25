@@ -10,9 +10,12 @@ var dash_available = true
 
 @onready var health_bar: CanvasLayer = $"../UI/health_bar"
 @onready var heart_object : PackedScene = preload("res://assets/Scenes/Hearts/heart.tscn")
-
 var hearts_list : Array[TextureRect]
 var health = 4
+
+@onready var exp_bar: CanvasLayer = $"../UI"
+@export var experience: float = 0
+@export var lvl: int = 0
 
 func _ready() -> void:
 	# Gets the health bar initial hearts,appends them to the array and shows them on screen ss
@@ -91,4 +94,3 @@ func _on_dash_timer_timeout() -> void:
 
 func _on_dash_cooldown_timer_timeout() -> void:
 	dash_available=true
-	
