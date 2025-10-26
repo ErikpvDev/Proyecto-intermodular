@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://lrk1ke364f01"
-path="res://.godot/imported/Progress.png-f7ee3c783aa4c1bec9f7693d8ee32e00.ctex"
+path="res://.godot/imported/Progress.png-3c10c96f7949791b8cb423d9f9caedf3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Scenes/UI/Exp/Progress.png"
-dest_files=["res://.godot/imported/Progress.png-f7ee3c783aa4c1bec9f7693d8ee32e00.ctex"]
+source_file="res://Scenes/UI/Exp/Progress.png"
+dest_files=["res://.godot/imported/Progress.png-3c10c96f7949791b8cb423d9f9caedf3.ctex"]
 
 [params]
 

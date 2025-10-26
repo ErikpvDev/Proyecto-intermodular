@@ -3,21 +3,30 @@ extends CharacterBody2D
 @export var move_speed : float = 100
 
 @export var dash_speed : float = 300
+
+@export var exp_needed_lvl : int = 200
+
 @onready var dashing = false 
 var dash_available = true
 
 @export var gold_coins : int = 0
 
+@onready var exp_bar: TextureProgressBar = $"../UI/Exp/TextureProgressBar"
+
+@onready var gold_coins_number=$"../UI/Gold/HBoxContainer/Label"
+
 @onready var health_bar: CanvasLayer = $"../UI/health_bar"
-@onready var heart_object : PackedScene = preload("res://assets/Scenes/Hearts/heart.tscn")
+@onready var heart_object : PackedScene = preload("res://Scenes/Hearts/heart.tscn")
+
 var hearts_list : Array[TextureRect]
 var health = 4
 
-@onready var exp_bar: CanvasLayer = $"../UI"
+
 @export var experience: float = 0
 @export var lvl: int = 0
 
 func _ready() -> void:
+	exp_bar.max_value=exp_needed_lvl
 	# Gets the health bar initial hearts,appends them to the array and shows them on screen ss
 	var hearts_parent = health_bar.get_child(0)
 	for child in hearts_parent.get_children():
@@ -25,8 +34,8 @@ func _ready() -> void:
 	print(hearts_list)
 	
 	# Sets Gold to it's initial value
-	var gold_coins_number=$"../UI/Gold/HBoxContainer/Label"
 	gold_coins_number.text=str(gold_coins)
+	
 
 func take_damage(damage: int) -> void: 
 	# if health is over 0, subtract the damage value
@@ -56,6 +65,13 @@ func add_heart(cant: int)  -> void:
 	for i in range(cant):
 		var heart_temp = heart_object.instantiate()
 		health_bar.get_child(0).add_child(heart_temp)
+		
+func add_exp(cant: int ) -> void:
+	exp_bar.value += cant
+	if exp_bar.value >=exp_bar.max_value:
+		exp_bar.value=0
+		exp_bar.max_value*=2
+	
 
 func _physics_process(_delta):
 	# Get the direction intented by the input of the player
@@ -85,7 +101,7 @@ func _physics_process(_delta):
 	move_and_slide()
 
 func _on_area_2d_body_entered(_body: Node2D) -> void:
-	take_damage(1)# Replace with function body.
+	add_exp(50) # Replace with function body.
 
 # Dashing status turning false after timer runs out
 func _on_dash_timer_timeout() -> void:

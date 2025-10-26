@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bqy0xbspvp3gc"]
 
-[ext_resource type="PackedScene" uid="uid://dmnp5kr6fmqqp" path="res://assets/Scenes/Hearts/heart.tscn" id="1_h1352"]
+[ext_resource type="PackedScene" uid="uid://dmnp5kr6fmqqp" path="res://Scenes/Hearts/heart.tscn" id="1_h1352"]
 
 [node name="health_bar" type="CanvasLayer"]
 

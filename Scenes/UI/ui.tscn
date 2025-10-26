@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://bam0ik66tfskr"]
+
+[ext_resource type="PackedScene" uid="uid://bk01ah10djpvn" path="res://Scenes/Gold/Gold.tscn" id="1_i5q6i"]
+[ext_resource type="PackedScene" uid="uid://bqy0xbspvp3gc" path="res://Scenes/Hearts/health_bar.tscn" id="2_hwbc8"]
+[ext_resource type="PackedScene" uid="uid://dv7lc10i5l7rj" path="res://Scenes/UI/Exp/exp.tscn" id="3_hwbc8"]
+
+[node name="UI" type="CanvasGroup"]
+
+[node name="Gold" parent="." instance=ExtResource("1_i5q6i")]
+
+[node name="health_bar" parent="." instance=ExtResource("2_hwbc8")]
+
+[node name="Exp" parent="." instance=ExtResource("3_hwbc8")]
