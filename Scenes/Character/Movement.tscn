@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://cy5sa4fsqcy0u"]
+
+[ext_resource type="Script" uid="uid://bhauaalwrw6ig" path="res://Scenes/Character/movement.gd" id="1_bu1ei"]
+
+[node name="Movement" type="Node"]
+script = ExtResource("1_bu1ei")
+
+[node name="dash_timer" type="Timer" parent="."]
+wait_time = 0.2
+
+[node name="dash_cooldown_timer" type="Timer" parent="."]
+
+[connection signal="timeout" from="dash_timer" to="." method="_on_dash_timer_timeout"]
+[connection signal="timeout" from="dash_cooldown_timer" to="." method="_on_dash_cooldown_timer_timeout"]

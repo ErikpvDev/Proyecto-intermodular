@@ -20,14 +20,6 @@ config/icon="res://icon.svg"
 window/size/viewport_width=1920
 window/size/viewport_height=1080
 
-[file_customization]
-
-folder_colors={
-"res://Scenes/Character/": "blue",
-"res://Scenes/Enemies/": "red",
-"res://Scenes/Gold/": "yellow"
-}
-
 [input]
 
 up={
