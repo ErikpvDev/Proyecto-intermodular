@@ -3,6 +3,12 @@ extends CharacterBody2D
 # EXPORT -------------------------------------------------------------------------------------------------
 #GOLD
 @export var gold_coins : int = 0
+
+@export var attack_cooldown: float = 1.0
+@export var damage: int = 10
+
+var enemies_hit_this_attack=[]
+
 #ONREADY -------------------------------------------------------------------------------------------------
 #MOVEMENT
 #EXP/LVL
@@ -17,6 +23,7 @@ extends CharacterBody2D
 @onready var movement: Node = $Movement
 @onready var health: Node = $Health
 @onready var experience: Node = $Experience
+
 #VARIABLES------------------------------------------------------------------------------------------------
 #HEALTH
 var hearts_list : Array[TextureRect]
@@ -30,6 +37,11 @@ func _ready() -> void:
 	
 	# Sets Gold to its initial value
 	gold_coins_number.text=str(gold_coins)
+	
+	$AttackArea/CollisionShape2D.disabled=true
+	$AttackArea/Sprite2D.visible=false
+	$attack_cooldown.start()
+
 
 func update_heart_display():
 	# Check the number of hearts to show based on the current health of the player as "idle"
@@ -52,14 +64,35 @@ func add_max_health(amount: int)->void:
 	health.add_max_health(amount)
 	update_heart_display()
 
-func take_damage(damage: int) -> void: 
-	health.take_damage(damage)
+func take_damage(amount: int) -> void: 
+	health.take_damage(amount)
 	update_heart_display()
 
 func add_exp(amount: int) -> void:
 	experience.add_exp(amount)
 
+func update_animation():
+	if movement.dashing:
+		$AnimatedSprite2D.play("Dash")
+	else:
+		
+		if velocity.x != 0:
+			if velocity.x > 0:
+				$AnimatedSprite2D.play("Walk_right")
+			else:
+				$AnimatedSprite2D.play("Walk_left")
+				
+		else:
+			if velocity.y != 0:
+				if velocity.y > 0:
+					$AnimatedSprite2D.play("Walk_down")
+				else:
+					$AnimatedSprite2D.play("Walk_up")
+			else:
+				$AnimatedSprite2D.play("Idle")
+
 func _physics_process(delta):
+	update_animation()
 	movement.movement(delta)
 
 func _on_health_health_changed(new_health: Variant) -> void:
@@ -79,4 +112,31 @@ func _on_experience_level_up(lvl: Variant) -> void:
 		experience.experience-=experience.exp_needed_lvl
 		exp_lvl_text.text="lvl: "+str(experience.lvl)
 		
-		
+	
+	
+func attack():
+	enemies_hit_this_attack.clear()
+	
+	$AttackArea/Sprite2D.visible=true
+	$AttackArea/CollisionShape2D.disabled=false
+	
+	$AttackTimer.start()
+	
+	
+func _on_attack_timer_timeout() -> void:
+	$AttackArea/Sprite2D.visible=false
+	$AttackArea/CollisionShape2D.disabled=true
+
+func _on_attack_cooldown_timeout() -> void:
+	attack()
+	$attack_cooldown.start()
+	
+func _on_attack_area_area_entered(area: Area2D) -> void:
+	if area in enemies_hit_this_attack:
+		return
+	enemies_hit_this_attack.append(area)
+	
+	var parent = area.get_parent()
+	
+	if parent.has_method("take_damage"):
+		parent.take_damage(damage)

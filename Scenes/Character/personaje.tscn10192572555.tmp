@@ -1,0 +1,83 @@
+[gd_scene load_steps=13 format=3 uid="uid://p0hbqo51nej1"]
+
+[ext_resource type="Script" uid="uid://dlb0vba8x21kc" path="res://Scenes/Character/personaje.gd" id="1_hlutc"]
+[ext_resource type="PackedScene" uid="uid://dpqhg6grx7xv1" path="res://Scenes/Character/Experience.tscn" id="2_aexvp"]
+[ext_resource type="PackedScene" uid="uid://cy5sa4fsqcy0u" path="res://Scenes/Character/Movement.tscn" id="2_b4m7e"]
+[ext_resource type="PackedScene" uid="uid://ceqqc8ti7diqk" path="res://Scenes/Character/Gold.tscn" id="2_h7pwf"]
+[ext_resource type="PackedScene" uid="uid://dysmu2ylvmkhx" path="res://Scenes/Character/Health.tscn" id="2_l3rkt"]
+[ext_resource type="Texture2D" uid="uid://bchlus3sg8ox7" path="res://assets/sprites/Characters/CharAni-Sheet4.png" id="6_h7pwf"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ykwvv"]
+atlas = ExtResource("6_h7pwf")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vc3aq"]
+atlas = ExtResource("6_h7pwf")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_52hlq"]
+atlas = ExtResource("6_h7pwf")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cjdmf"]
+atlas = ExtResource("6_h7pwf")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_aexvp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ykwvv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vc3aq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_52hlq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cjdmf")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cs5dr"]
+size = Vector2(23, 22.5)
+
+[node name="Character" type="CharacterBody2D" groups=["character"]]
+z_index = 100
+script = ExtResource("1_hlutc")
+
+[node name="Gold" parent="." instance=ExtResource("2_h7pwf")]
+
+[node name="Experience" parent="." instance=ExtResource("2_aexvp")]
+
+[node name="Health" parent="." instance=ExtResource("2_l3rkt")]
+
+[node name="Movement" parent="." instance=ExtResource("2_b4m7e")]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_aexvp")
+animation = &"Idle"
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(3, 3)
+position_smoothing_enabled = true
+
+[node name="Physical Collision" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_cs5dr")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_mask = 2
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_cs5dr")
+
+[node name="attack_cooldown" type="Timer" parent="."]
+
+[connection signal="health_changed" from="Health" to="." method="_on_health_health_changed"]
+[connection signal="max_health_changed" from="Health" to="." method="_on_health_max_health_changed"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="timeout" from="attack_cooldown" to="." method="_on_attack_cooldown_timeout"]

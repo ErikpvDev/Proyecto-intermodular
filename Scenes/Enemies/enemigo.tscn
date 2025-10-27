@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://qffsk1wiwj24"]
+[gd_scene load_steps=6 format=3 uid="uid://qffsk1wiwj24"]
 
 [ext_resource type="Script" uid="uid://bfxa6lm2jll3u" path="res://Scenes/Enemies/enemigo.gd" id="1_bscoh"]
 [ext_resource type="Texture2D" uid="uid://c1tp7pqe622b5" path="res://icon.svg" id="1_ovplc"]
+[ext_resource type="PackedScene" uid="uid://dysmu2ylvmkhx" path="res://Scenes/Character/Health.tscn" id="2_cepw7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ovplc"]
 
@@ -12,6 +13,8 @@ z_index = 100
 collision_layer = 2
 collision_mask = 2
 script = ExtResource("1_bscoh")
+
+[node name="Health" parent="." instance=ExtResource("2_cepw7")]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(1, 1)
@@ -27,3 +30,5 @@ shape = SubResource("RectangleShape2D_ovplc")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_bscoh")
+
+[connection signal="health_changed" from="Health" to="." method="_on_health_health_changed"]

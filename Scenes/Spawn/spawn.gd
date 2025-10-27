@@ -29,9 +29,9 @@ func spawn_enemies():
 		$"../Enemies".add_child(e)
 		#Delay entre spawn de enemigos
 		await get_tree().create_timer(1).timeout
-	
-func update_wave(current_wave:int):
-	match current_wave:
+		
+func update_wave(wave:int):
+	match wave:
 		1:
 			print("Level one")
 		2:
