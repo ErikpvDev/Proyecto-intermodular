@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://cbd8tuaj0c6nh"]
+
+[ext_resource type="Texture2D" uid="uid://c1tp7pqe622b5" path="res://icon.svg" id="1_vtts5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hfxxe"]
+
+[node name="Attack" type="Area2D"]
+monitorable = false
+
+[node name="AttackTimer" type="Timer" parent="."]
+wait_time = 0.3
+
+[node name="attack_cooldown" type="Timer" parent="."]
+wait_time = 2.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(28, -6)
+scale = Vector2(0.15234375, 0.15234375)
+texture = ExtResource("1_vtts5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(28, -6)
+shape = SubResource("RectangleShape2D_hfxxe")

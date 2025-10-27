@@ -8,13 +8,10 @@ var health_stat = 1
 
 func take_damage(amount:int):
 	health.take_damage(amount)
-	print(health_stat)
 	if health_stat<=0:
 		queue_free()
 
 func _physics_process(_delta):
-	if target==null:
-		print("Error")
 	var direction = (target.position-position).normalized()
 	velocity = direction * speed
 	move_and_slide()

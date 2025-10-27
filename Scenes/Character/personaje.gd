@@ -40,7 +40,7 @@ func _ready() -> void:
 	
 	$AttackArea/CollisionShape2D.disabled=true
 	$AttackArea/Sprite2D.visible=false
-	$attack_cooldown.start()
+	$AttackArea/attack_cooldown.start()
 
 
 func update_heart_display():
@@ -120,7 +120,7 @@ func attack():
 	$AttackArea/Sprite2D.visible=true
 	$AttackArea/CollisionShape2D.disabled=false
 	
-	$AttackTimer.start()
+	$AttackArea/AttackTimer.start()
 	
 	
 func _on_attack_timer_timeout() -> void:
@@ -129,7 +129,7 @@ func _on_attack_timer_timeout() -> void:
 
 func _on_attack_cooldown_timeout() -> void:
 	attack()
-	$attack_cooldown.start()
+	$AttackArea/attack_cooldown.start()
 	
 func _on_attack_area_area_entered(area: Area2D) -> void:
 	if area in enemies_hit_this_attack:
