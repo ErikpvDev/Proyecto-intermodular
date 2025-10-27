@@ -24,6 +24,10 @@ var enemies_hit_this_attack=[]
 @onready var health: Node = $Health
 @onready var experience: Node = $Experience
 
+@onready var enemies=[]
+var closest_enemy
+@onready var distance_to_closest_enemy = INF
+
 #VARIABLES------------------------------------------------------------------------------------------------
 #HEALTH
 var hearts_list : Array[TextureRect]
@@ -42,6 +46,10 @@ func _ready() -> void:
 	$AttackArea/Sprite2D.visible=false
 	$AttackArea/attack_cooldown.start()
 
+func _physics_process(delta):
+	update_animation()
+	movement.movement(delta)
+	enemies = $"../Enemies".get_children()
 
 func update_heart_display():
 	# Check the number of hearts to show based on the current health of the player as "idle"
@@ -91,10 +99,6 @@ func update_animation():
 			else:
 				$AnimatedSprite2D.play("Idle")
 
-func _physics_process(delta):
-	update_animation()
-	movement.movement(delta)
-
 func _on_health_health_changed(new_health: Variant) -> void:
 	health.health=new_health
 
@@ -107,21 +111,22 @@ func _on_health_max_health_changed(new_health: Variant, prev_max_health: Variant
 func _on_area_2d_body_entered(_body: Node2D) -> void:
 	add_exp(50)
 
-
 func _on_experience_level_up(lvl: Variant) -> void:
 		experience.experience-=experience.exp_needed_lvl
 		exp_lvl_text.text="lvl: "+str(experience.lvl)
 		
-	
-	
 func attack():
+	for i in enemies:
+		if position.distance_to(i.position)<distance_to_closest_enemy:
+			closest_enemy = i
+	#print(position.direction_to(closest_enemy.position))
+	#$AttackArea/Sprite2D.position=position.direction_to(closest_enemy.position)
+	#$AttackArea/CollisionShape2D.position=position.direction_to(closest_enemy.position)
 	enemies_hit_this_attack.clear()
-	
 	$AttackArea/Sprite2D.visible=true
 	$AttackArea/CollisionShape2D.disabled=false
 	
 	$AttackArea/AttackTimer.start()
-	
 	
 func _on_attack_timer_timeout() -> void:
 	$AttackArea/Sprite2D.visible=false
@@ -138,5 +143,5 @@ func _on_attack_area_area_entered(area: Area2D) -> void:
 	
 	var parent = area.get_parent()
 	
-	if parent.has_method("take_damage"):
+	if parent.has_method("take_damage") && parent!=self:
 		parent.take_damage(damage)
