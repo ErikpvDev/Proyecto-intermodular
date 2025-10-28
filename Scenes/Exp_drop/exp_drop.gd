@@ -1,0 +1,19 @@
+extends Area2D
+
+@export var exp_amount: int = 10
+@export var attraction_radius: float = 30
+@export var attraction_speed: float = 200
+var attracted = false
+@onready var player: CharacterBody2D = get_tree().get_nodes_in_group("character")[0]
+
+func _process(delta: float) -> void:
+	var dist = position.distance_to(player.position)
+	if dist < attraction_radius:
+		attracted=true
+	if attracted:
+		var direction = (player.position-position).normalized()
+		position+=direction * attraction_speed * delta
+
+func _on_body_entered(body: Node2D) -> void:
+	body.add_exp(exp_amount)
+	queue_free()

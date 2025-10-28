@@ -73,8 +73,10 @@ func add_max_health(amount: int)->void:
 	update_heart_display()
 
 func take_damage(amount: int) -> void: 
-	health.take_damage(amount)
-	update_heart_display()
+	if !movement.dashing:
+		health.take_damage(amount)
+		update_heart_display()
+		$AnimationPlayer.play("hit")
 
 func add_exp(amount: int) -> void:
 	experience.add_exp(amount)
@@ -109,7 +111,7 @@ func _on_health_max_health_changed(new_health: Variant, prev_max_health: Variant
 	update_heart_display()
 
 func _on_area_2d_body_entered(_body: Node2D) -> void:
-	add_exp(50)
+	take_damage(1)
 
 func _on_experience_level_up(lvl: Variant) -> void:
 		experience.experience-=experience.exp_needed_lvl
