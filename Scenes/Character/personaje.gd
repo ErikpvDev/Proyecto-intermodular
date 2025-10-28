@@ -18,7 +18,7 @@ var enemies_hit_this_attack=[]
 @onready var gold_coins_number=$"../UI/Gold/HBoxContainer/Label"
 #HEARTS
 @onready var health_bar: CanvasLayer = $"../UI/health_bar"
-@onready var heart_object : PackedScene = preload("res://Scenes/Hearts/heart.tscn")
+@onready var heart_object = preload("res://Scenes/Hearts/heart.tscn")
 
 @onready var movement: Node = $Movement
 @onready var health: Node = $Health
@@ -29,16 +29,16 @@ var closest_enemy
 @onready var distance_to_closest_enemy = INF
 
 #VARIABLES------------------------------------------------------------------------------------------------
-#HEALTH
-var hearts_list : Array[TextureRect]
+
 
 func _ready() -> void:
 	# Gets the health bar initial hearts,appends them to the array and shows them on screen
-	var hearts_parent = health_bar.get_child(0)
-	for child in hearts_parent.get_children():
-		hearts_list.append(child)
-	print(hearts_list)
-	
+	for i in range(health.max_health):
+		var heart_temp = heart_object.instantiate()
+		heart_temp.custom_minimum_size = Vector2(34,34)
+		health_bar.get_child(0).add_child(heart_temp)
+		
+	update_heart_display()
 	# Sets Gold to its initial value
 	gold_coins_number.text=str(gold_coins)
 	
@@ -54,16 +54,16 @@ func _process(delta):
 func update_heart_display():
 	# Check the number of hearts to show based on the current health of the player as "idle"
 	# and the rest "damaged"
-	for i in range(hearts_list.size()):
+	for i in range(health_bar.get_child(0).get_children().size()):
 		if i < health.health:
-			hearts_list[i].get_child(0).play("idle")
+			health_bar.get_child(0).get_children()[i].get_child(0).play("idle")
 		else:
-			hearts_list[i].get_child(0).play("damaged")
+			health_bar.get_child(0).get_children()[i].get_child(0).play("damaged")
 	# Check if it's the last heart and if so play the "beating" animation if not play the "idle" animation  
 	if health.health > 1:
-		hearts_list[0].get_child(0).play("idle")
+		health_bar.get_child(0).get_children()[0].get_child(0).play("idle")
 	else:
-		hearts_list[0].get_child(0).play("beating")
+		health_bar.get_child(0).get_children()[0].get_child(0).play("beating")
 
 func add_health(amount: int) -> void:
 	health.add_health(amount)

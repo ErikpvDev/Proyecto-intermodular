@@ -1,6 +1,4 @@
-[gd_scene load_steps=2 format=3 uid="uid://bqy0xbspvp3gc"]
-
-[ext_resource type="PackedScene" uid="uid://dmnp5kr6fmqqp" path="res://Scenes/Hearts/heart.tscn" id="1_h1352"]
+[gd_scene format=3 uid="uid://bqy0xbspvp3gc"]
 
 [node name="health_bar" type="CanvasLayer"]
 
@@ -8,15 +6,3 @@
 offset_right = 144.0
 offset_bottom = 48.0
 size_flags_stretch_ratio = 4.3
-
-[node name="heart" parent="HBoxContainer" instance=ExtResource("1_h1352")]
-layout_mode = 2
-
-[node name="heart2" parent="HBoxContainer" instance=ExtResource("1_h1352")]
-layout_mode = 2
-
-[node name="heart3" parent="HBoxContainer" instance=ExtResource("1_h1352")]
-layout_mode = 2
-
-[node name="heart4" parent="HBoxContainer" instance=ExtResource("1_h1352")]
-layout_mode = 2

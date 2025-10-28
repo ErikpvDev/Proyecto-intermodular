@@ -63,8 +63,9 @@ animations = [{
 "speed": 0.0
 }]
 
-[node name="heart" type="TextureRect"]
-custom_minimum_size = Vector2(33.125, 0)
+[node name="TextureRect" type="TextureRect"]
+offset_right = 40.0
+offset_bottom = 40.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(20, 51)
