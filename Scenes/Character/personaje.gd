@@ -46,7 +46,7 @@ func _ready() -> void:
 	$AttackArea/Sprite2D.visible=false
 	$AttackArea/attack_cooldown.start()
 
-func _physics_process(delta):
+func _process(delta):
 	update_animation()
 	movement.movement(delta)
 	enemies = $"../Enemies".get_children()

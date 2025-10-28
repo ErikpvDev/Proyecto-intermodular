@@ -34,7 +34,7 @@ func take_damage(amount:int):
 		die()
 	$AnimationPlayer.play("Hit")
 
-func _physics_process(_delta):
+func _process(_delta):
 	var direction = (target.position-position).normalized()
 	velocity = direction * speed
 	animation()
