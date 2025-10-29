@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bophuoi6hyd5"
-path="res://.godot/imported/creature-sheet (1).png-6d703c5fa95cf47632ec3f09d179b22f.ctex"
+path="res://.godot/imported/walking.png-c58dd2c5dc82cbccd3544a9ea1795701.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/Enemies/Ghost01/creature-sheet (1).png"
-dest_files=["res://.godot/imported/creature-sheet (1).png-6d703c5fa95cf47632ec3f09d179b22f.ctex"]
+source_file="res://assets/sprites/Enemies/Ghost01/walking.png"
+dest_files=["res://.godot/imported/walking.png-c58dd2c5dc82cbccd3544a9ea1795701.ctex"]
 
 [params]
 

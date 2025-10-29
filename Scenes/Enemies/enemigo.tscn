@@ -1,8 +1,25 @@
-[gd_scene load_steps=14 format=3 uid="uid://qffsk1wiwj24"]
+[gd_scene load_steps=19 format=3 uid="uid://qffsk1wiwj24"]
 
 [ext_resource type="Script" uid="uid://bfxa6lm2jll3u" path="res://Scenes/Enemies/enemigo.gd" id="1_bscoh"]
 [ext_resource type="PackedScene" uid="uid://dysmu2ylvmkhx" path="res://Scenes/Character/Health.tscn" id="2_cepw7"]
-[ext_resource type="Texture2D" uid="uid://bophuoi6hyd5" path="res://assets/sprites/Enemies/Ghost01/creature-sheet (1).png" id="3_cepw7"]
+[ext_resource type="Texture2D" uid="uid://bophuoi6hyd5" path="res://assets/sprites/Enemies/Ghost01/walking.png" id="3_cepw7"]
+[ext_resource type="Texture2D" uid="uid://cfwgnbydukk2u" path="res://assets/sprites/Enemies/Ghost01/elite_walking.png" id="3_sb7m0"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rh0mr"]
+atlas = ExtResource("3_sb7m0")
+region = Rect2(0, 0, 24, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_swrua"]
+atlas = ExtResource("3_sb7m0")
+region = Rect2(24, 0, 24, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p5pns"]
+atlas = ExtResource("3_sb7m0")
+region = Rect2(48, 0, 24, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g0673"]
+atlas = ExtResource("3_sb7m0")
+region = Rect2(72, 0, 24, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cepw7"]
 atlas = ExtResource("3_cepw7")
@@ -22,6 +39,23 @@ region = Rect2(72, 0, 24, 24)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_rh0mr"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rh0mr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_swrua")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p5pns")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g0673")
+}],
+"loop": true,
+"name": &"elite_walking",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_cepw7")
@@ -93,7 +127,7 @@ script = ExtResource("1_bscoh")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_rh0mr")
-animation = &"walking"
+animation = &"elite_walking"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false

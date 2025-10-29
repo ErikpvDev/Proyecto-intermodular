@@ -21,6 +21,7 @@ tile_map_data = PackedByteArray("AAACAAIAAQABAAQAAAACAAMAAQABAAQAAAADAAMAAQABAAQ
 
 [node name="Character" parent="." index="2" instance=ExtResource("2_uhf17")]
 z_index = 1
+position = Vector2(215, 131)
 
 [node name="Enemies" parent="." index="3" instance=ExtResource("4_rgqva")]
 
@@ -28,6 +29,7 @@ z_index = 1
 position = Vector2(-33, 104)
 
 [node name="Spawn" parent="." index="4" instance=ExtResource("5_lrq68")]
+time_between_waves = null
 
 [node name="Collisions" type="StaticBody2D" parent="." index="5"]
 
