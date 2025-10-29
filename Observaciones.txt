@@ -1,0 +1,1 @@
+- Funciones de ataque estan en personaje y hay que sacarlas, la idea es hacer un ataque con métodos abstractos y armas que hereden los métodos ya que funcionan diferente.

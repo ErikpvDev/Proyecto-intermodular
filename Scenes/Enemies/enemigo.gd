@@ -5,7 +5,7 @@ var speed = 80
 @onready var target = $"../../Character"
 @onready var health: Node = $Health
 @onready var exp_drop_scene = preload("res://Scenes/Exp_drop/Exp_drop.tscn")
-var exp_value = 10
+var exp_value = 100
 
 func animation():
 	if velocity.x>0:
@@ -21,14 +21,11 @@ func drop_exp():
 	exp_drop.exp_amount=exp_value
 	get_parent().call_deferred("add_child",exp_drop)
 	
-
-
 func die():
 	drop_exp()
 	queue_free()
 
 func take_damage(amount:int):
-	print(health.health)
 	health.take_damage(amount)
 	if health.health<=0:
 		die()
