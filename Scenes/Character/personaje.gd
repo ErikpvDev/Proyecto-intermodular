@@ -85,7 +85,14 @@ func take_damage(amount: int) -> void:
 	if !movement.dashing:
 		health.take_damage(amount)
 		update_heart_display()
-		$AnimationPlayer.play("hit")
+		#$AnimationPlayer.play("hit")
+		flash_red()
+		
+func flash_red() -> void:
+	var sprite = $AnimatedSprite2D
+	sprite.modulate = Color(1, 0, 0) # rojo
+	await get_tree().create_timer(0.2).timeout
+	sprite.modulate = Color(1, 1, 1) # blanco (color normal)
 
 func add_exp(amount: int) -> void:
 	experience.add_exp(amount)
