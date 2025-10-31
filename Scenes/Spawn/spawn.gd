@@ -5,7 +5,9 @@ var base_elite_chance = 0.02
 var elite_prob_percent
 @export var exp_growth=1.15
 @export var hp_growth=1.10
+@export var hp_elite_growth=5
 @export var base_hp=10
+@onready var between_waves=5
 
 @onready var enemy_dict = {
 	1: [6, 1.1],
@@ -74,11 +76,13 @@ func get_valid_spawnpoint(cam):
 func spawn_enemies():
 	#Spawn the enemies in the valid spawnpoints
 	for i in range(enemy_dict[current_wave][0]):
-		if randi_range(0,100)<base_elite_chance:
+		if randi_range(0,100)<100:
 			var e=enemy.instantiate()
 			e.scale = e.scale*1.3
 			e.position=get_valid_spawnpoint(camera)
 			e.elite=true
+			e.exp_value=60
+			e.get_children()[0].health=int(base_hp*pow(hp_elite_growth,current_wave-1))
 			$"../Enemies".add_child(e)
 			await get_tree().create_timer(1).timeout
 		else:
@@ -99,4 +103,5 @@ func update_wave():
 	for rondas in enemy_dict:
 		prob = base_elite_chance * enemy_dict[rondas][1]
 		elite_prob_percent = snapped(prob * 100, 2)
+	await get_tree().create_timer(between_waves).timeout
 	spawn_enemies()

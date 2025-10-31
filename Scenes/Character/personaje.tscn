@@ -1,12 +1,12 @@
-[gd_scene load_steps=51 format=3 uid="uid://p0hbqo51nej1"]
+[gd_scene load_steps=61 format=3 uid="uid://p0hbqo51nej1"]
 
-[ext_resource type="Texture2D" uid="uid://c1tp7pqe622b5" path="res://icon.svg" id="1_cs5dr"]
 [ext_resource type="Script" uid="uid://dlb0vba8x21kc" path="res://Scenes/Character/personaje.gd" id="1_hlutc"]
 [ext_resource type="PackedScene" uid="uid://dpqhg6grx7xv1" path="res://Scenes/Character/Experience.tscn" id="2_aexvp"]
 [ext_resource type="PackedScene" uid="uid://cy5sa4fsqcy0u" path="res://Scenes/Character/Movement.tscn" id="2_b4m7e"]
 [ext_resource type="PackedScene" uid="uid://ceqqc8ti7diqk" path="res://Scenes/Character/Gold.tscn" id="2_h7pwf"]
 [ext_resource type="PackedScene" uid="uid://dysmu2ylvmkhx" path="res://Scenes/Character/Health.tscn" id="2_l3rkt"]
 [ext_resource type="Texture2D" uid="uid://bchlus3sg8ox7" path="res://assets/sprites/Characters/CharAni-Sheet4.png" id="6_h7pwf"]
+[ext_resource type="Texture2D" uid="uid://d0ak6v0nxbtct" path="res://assets/sprites/Weapons/Sword/pixel_art_sword_slash_sprites.png" id="7_ykwvv"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_t2t2f"]
 atlas = ExtResource("6_h7pwf")
@@ -303,7 +303,79 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cs5dr"]
 size = Vector2(11.75, 11.71875)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_56asj"]
+atlas = ExtResource("7_ykwvv")
+region = Rect2(0, 0, 64, 47)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gqr1a"]
+atlas = ExtResource("7_ykwvv")
+region = Rect2(64, 0, 64, 47)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v7gx7"]
+atlas = ExtResource("7_ykwvv")
+region = Rect2(128, 0, 64, 47)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wetw2"]
+atlas = ExtResource("7_ykwvv")
+region = Rect2(0, 47, 64, 47)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lor3t"]
+atlas = ExtResource("7_ykwvv")
+region = Rect2(64, 47, 64, 47)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v5hd2"]
+atlas = ExtResource("7_ykwvv")
+region = Rect2(128, 47, 64, 47)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bf8ps"]
+atlas = ExtResource("7_ykwvv")
+region = Rect2(0, 94, 64, 47)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xwcwn"]
+atlas = ExtResource("7_ykwvv")
+region = Rect2(64, 94, 64, 47)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q2q1h"]
+atlas = ExtResource("7_ykwvv")
+region = Rect2(128, 94, 64, 47)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_malha"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_56asj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gqr1a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v7gx7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wetw2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lor3t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v5hd2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bf8ps")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xwcwn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q2q1h")
+}],
+"loop": true,
+"name": &"attacking",
+"speed": 14.0
+}]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vc3aq"]
+size = Vector2(58.5, 44)
 
 [sub_resource type="Animation" id="Animation_vc3aq"]
 length = 0.001
@@ -333,7 +405,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Color(1, 0, 0, 1), Color(0, 1, 1, 1)]
+"values": [Color(1, 0, 0, 1), Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_52hlq"]
@@ -383,15 +455,16 @@ monitorable = false
 wait_time = 0.3
 
 [node name="attack_cooldown" type="Timer" parent="AttackArea"]
-wait_time = 2.0
 
-[node name="Sprite2D" type="Sprite2D" parent="AttackArea"]
-position = Vector2(28, -6)
-scale = Vector2(0.15234375, 0.15234375)
-texture = ExtResource("1_cs5dr")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="AttackArea"]
+z_index = 4096
+position = Vector2(44.767967, 1.5625005)
+scale = Vector2(0.914624, 0.91223407)
+sprite_frames = SubResource("SpriteFrames_malha")
+animation = &"attacking"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
-position = Vector2(28, -6)
+position = Vector2(44.75, 2)
 shape = SubResource("RectangleShape2D_vc3aq")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

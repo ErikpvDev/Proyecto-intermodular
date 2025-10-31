@@ -1,10 +1,15 @@
 extends Area2D
 
-@export var exp_amount: int = 10
+@export var exp_amount: int = 60
 @export var attraction_radius: float = 50
 @export var attraction_speed: float = 200
 var attracted = false
 @onready var player: CharacterBody2D = get_tree().get_nodes_in_group("character")[0]
+func _ready() -> void:
+	if exp_amount<50:
+		$AnimatedSprite2D.play("blue_drop")
+	else:
+		$AnimatedSprite2D.play("green_drop")
 
 func _process(delta: float) -> void:
 	var dist = position.distance_to(player.position)

@@ -1,7 +1,35 @@
-[gd_scene load_steps=4 format=3 uid="uid://uey0jubsf4k8"]
+[gd_scene load_steps=8 format=3 uid="uid://uey0jubsf4k8"]
 
 [ext_resource type="Script" uid="uid://csp2dm844ouc4" path="res://Scenes/Exp_drop/exp_drop.gd" id="1_ivble"]
-[ext_resource type="Texture2D" uid="uid://84nkjouunqcy" path="res://assets/sprites/Objetcs/Exp/Experience_Drop.png" id="1_romn6"]
+[ext_resource type="Texture2D" uid="uid://bdiqbdth8rorc" path="res://assets/sprites/Objetcs/Exp/Experience_Drop_Blue.png" id="2_xlnyb"]
+[ext_resource type="Texture2D" uid="uid://dtq3xojtks2xn" path="res://assets/sprites/Objetcs/Exp/Experience_Drop_Green.png" id="3_7xa3b"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4nuet"]
+atlas = ExtResource("2_xlnyb")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f7xct"]
+atlas = ExtResource("3_7xa3b")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_65bq0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4nuet")
+}],
+"loop": true,
+"name": &"blue_drop",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f7xct")
+}],
+"loop": true,
+"name": &"green_drop",
+"speed": 5.0
+}]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ivble"]
 radius = 5.0
@@ -9,9 +37,11 @@ radius = 5.0
 [node name="ExpDrop" type="Area2D"]
 script = ExtResource("1_ivble")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.328125, 0.328125)
-texture = ExtResource("1_romn6")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-9.536743e-07, -9.536743e-07)
+scale = Vector2(0.34375, 0.34375)
+sprite_frames = SubResource("SpriteFrames_65bq0")
+animation = &"blue_drop"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_ivble")

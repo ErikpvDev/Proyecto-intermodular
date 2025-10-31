@@ -43,7 +43,7 @@ func _ready() -> void:
 	gold_coins_number.text=str(gold_coins)
 	
 	$AttackArea/CollisionShape2D.disabled=true
-	$AttackArea/Sprite2D.visible=false
+	$AttackArea/AnimatedSprite2D.visible=false
 	$AttackArea/attack_cooldown.start()
 
 func _process(delta):
@@ -85,14 +85,7 @@ func take_damage(amount: int) -> void:
 	if !movement.dashing:
 		health.take_damage(amount)
 		update_heart_display()
-		#$AnimationPlayer.play("hit")
-		flash_red()
-		
-func flash_red() -> void:
-	var sprite = $AnimatedSprite2D
-	sprite.modulate = Color(1, 0, 0) # rojo
-	await get_tree().create_timer(0.2).timeout
-	sprite.modulate = Color(1, 1, 1) # blanco (color normal)
+		$AnimationPlayer.play("hit")
 
 func add_exp(amount: int) -> void:
 	experience.add_exp(amount)
@@ -127,15 +120,20 @@ func attack():
 	if !enemies.is_empty():
 		closest_enemy_direction = Vector2(closest_enemy.position-position).normalized()
 		enemies_hit_this_attack.clear()
-		$AttackArea/Sprite2D.position = Vector2(16,16)*closest_enemy_direction
-		$AttackArea/CollisionShape2D.position = Vector2(16,16)*closest_enemy_direction
-	$AttackArea/Sprite2D.visible=true
+		$AttackArea/AnimatedSprite2D.position = Vector2(32,32)*closest_enemy_direction
+		$AttackArea/CollisionShape2D.position = Vector2(32,32)*closest_enemy_direction
+	
+		var angle = closest_enemy_direction.angle()
+		$AttackArea/AnimatedSprite2D.rotation = angle
+	
+		$AttackArea/AnimatedSprite2D.play("attacking")
+	$AttackArea/AnimatedSprite2D.visible=true
 	$AttackArea/CollisionShape2D.disabled=false
 	
 	$AttackArea/AttackTimer.start()
 	
 func _on_attack_timer_timeout() -> void:
-	$AttackArea/Sprite2D.visible=false
+	$AttackArea/AnimatedSprite2D.visible=false
 	$AttackArea/CollisionShape2D.disabled=true
 
 func _on_attack_cooldown_timeout() -> void:

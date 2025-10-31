@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://84nkjouunqcy"
-path="res://.godot/imported/Experience_Drop.png-6fff62ed19599d66863543cf9553f77d.ctex"
+uid="uid://dtq3xojtks2xn"
+path="res://.godot/imported/Experience_Drop_Green.png-ce8334e3ec903910735b83ee9e29d38d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/Objetcs/Exp/Experience_Drop.png"
-dest_files=["res://.godot/imported/Experience_Drop.png-6fff62ed19599d66863543cf9553f77d.ctex"]
+source_file="res://assets/sprites/Objetcs/Exp/Experience_Drop_Green.png"
+dest_files=["res://.godot/imported/Experience_Drop_Green.png-ce8334e3ec903910735b83ee9e29d38d.ctex"]
 
 [params]
 
