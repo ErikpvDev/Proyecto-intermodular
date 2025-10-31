@@ -1,8 +1,7 @@
 extends CharacterBody2D
 
 #ATTACK
-@export var attack_cooldown: float = 1.0
-@export var damage: int = 10
+@export var damage: int = 5
 
 #EXP/LVL
 @onready var exp_bar: TextureProgressBar = $"../UI/Exp/TextureProgressBar"
@@ -38,6 +37,7 @@ func _ready() -> void:
 		heart_temp.custom_minimum_size = Vector2(34,34)
 		health_bar.get_child(0).add_child(heart_temp)
 		
+	health.health=health.max_health
 	update_heart_display()
 	# Sets Gold to its initial value
 	gold_coins_number.text=str(gold_coins)

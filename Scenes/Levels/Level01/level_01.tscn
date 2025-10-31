@@ -29,7 +29,6 @@ position = Vector2(215, 131)
 position = Vector2(-33, 104)
 
 [node name="Spawn" parent="." index="4" instance=ExtResource("5_lrq68")]
-time_between_waves = null
 
 [node name="Collisions" type="StaticBody2D" parent="." index="5"]
 

@@ -1,14 +1,10 @@
 extends Node
 
 @export var max_health: int = 5
-var health: int
+@onready var health: int
 
 signal health_changed(new_health)
 signal max_health_changed(new_health,prev_max_health)
-
-func _ready() -> void:
-	health=max_health
-	
 
 func take_damage(damage:int) ->void:
 	if health>0:

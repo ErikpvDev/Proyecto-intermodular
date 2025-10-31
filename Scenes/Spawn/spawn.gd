@@ -3,6 +3,9 @@ extends Node2D
 @onready var current_wave=1
 var base_elite_chance = 0.02
 var elite_prob_percent
+@export var exp_growth=1.15
+@export var hp_growth=1.10
+@export var base_hp=10
 
 @onready var enemy_dict = {
 	1: [6, 1.1],
@@ -51,6 +54,7 @@ func enemy_death():
 		current_wave+=1
 		update_wave()
 	
+	
 func get_valid_spawnpoint(cam):
 	# The viewport of the camera
 	var vp = Rect2(
@@ -70,7 +74,7 @@ func get_valid_spawnpoint(cam):
 func spawn_enemies():
 	#Spawn the enemies in the valid spawnpoints
 	for i in range(enemy_dict[current_wave][0]):
-		if randi_range(0,100)<100:
+		if randi_range(0,100)<base_elite_chance:
 			var e=enemy.instantiate()
 			e.scale = e.scale*1.3
 			e.position=get_valid_spawnpoint(camera)
@@ -79,7 +83,12 @@ func spawn_enemies():
 			await get_tree().create_timer(1).timeout
 		else:
 			var e=enemy.instantiate()
+			
 			e.position=get_valid_spawnpoint(camera)
+			e.exp_value=int(e.exp_value*pow(exp_growth,current_wave-1))
+			e.get_children()[0].health=base_hp
+			e.get_children()[0].health=int(e.get_children()[0].health*pow(hp_growth,current_wave-1))
+			print(e.get_children()[0].health)
 			$"../Enemies".add_child(e)
 			#Delay entre spawn de enemigos
 			await get_tree().create_timer(1).timeout

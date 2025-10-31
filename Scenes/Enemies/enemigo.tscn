@@ -130,8 +130,7 @@ sprite_frames = SubResource("SpriteFrames_rh0mr")
 animation = &"elite_walking"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
-position = Vector2(0, 3.5)
+position = Vector2(0, 16)
 shape = SubResource("RectangleShape2D_ovplc")
 
 [node name="Area2D" type="Area2D" parent="."]
