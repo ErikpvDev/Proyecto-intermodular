@@ -7,7 +7,7 @@ var experience: float = 0
 var lvl: int = 1
 
 func _ready() -> void:
-	exp_lvl_text.text="lvl: "+str(lvl)
+	exp_lvl_text.text="LVL "+str(lvl)
 	exp_bar.max_value=exp_needed_lvl
 
 func add_exp(amount: int) -> void:

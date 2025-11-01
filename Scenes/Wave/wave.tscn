@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://cewa4t80pl5nn"]
+
+[node name="Wave" type="CanvasLayer"]
+
+[node name="Label" type="Label" parent="."]
+offset_left = 533.0
+offset_top = 54.0
+offset_right = 576.0
+offset_bottom = 79.0
+text = "WAVE"

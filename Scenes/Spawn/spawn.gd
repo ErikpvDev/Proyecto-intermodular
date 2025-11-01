@@ -8,6 +8,7 @@ var elite_prob_percent
 @export var hp_elite_growth=5
 @export var base_hp=10
 @onready var between_waves=5
+@onready var wave_text = $"../UI/Wave/Label"
 
 @onready var enemy_dict = {
 	1: [6, 1.1],
@@ -47,7 +48,6 @@ var elite_multiplier = {}
 func _ready():
 	update_wave()
 
-
 func enemy_death():
 	dead_enemies+=1
 	if dead_enemies==enemy_dict[current_wave][0]:
@@ -55,7 +55,6 @@ func enemy_death():
 		await get_tree().create_timer(time_between_waves).timeout
 		current_wave+=1
 		update_wave()
-	
 	
 func get_valid_spawnpoint(cam):
 	# The viewport of the camera
@@ -99,6 +98,7 @@ func spawn_enemies():
 
 
 func update_wave():
+	wave_text.text = "WAVE "+str(current_wave)
 	var prob
 	for rondas in enemy_dict:
 		prob = base_elite_chance * enemy_dict[rondas][1]
