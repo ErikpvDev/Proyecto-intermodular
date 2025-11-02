@@ -9,17 +9,13 @@ var speed = 80
 var exp_value=25
 var elite
 
-
-
 func _ready() -> void:
 	if elite:
 		$AnimatedSprite2D.play("elite_walking")
 	else:
 		$AnimatedSprite2D.play("walking")
-		
 	health.max_health = 10
 	health.health=health.max_health
-
 
 func animation():
 		

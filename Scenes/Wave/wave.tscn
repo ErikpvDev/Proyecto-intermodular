@@ -1,9 +1,16 @@
-[gd_scene load_steps=4 format=3 uid="uid://cewa4t80pl5nn"]
+[gd_scene load_steps=5 format=3 uid="uid://cewa4t80pl5nn"]
 
 [ext_resource type="FontFile" uid="uid://dvxv26iy0kmh0" path="res://assets/fonts/VCR_OSD_MONO_1.001.ttf" id="1_lk52v"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_wdxql"]
 font = ExtResource("1_lk52v")
+
+[sub_resource type="FontFile" id="FontFile_lk52v"]
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
 
 [sub_resource type="LabelSettings" id="LabelSettings_0tvgk"]
 font = ExtResource("1_lk52v")
@@ -11,18 +18,20 @@ font = ExtResource("1_lk52v")
 [node name="Wave" type="CanvasLayer"]
 
 [node name="Label" type="Label" parent="."]
-offset_left = 533.0
-offset_top = 54.0
-offset_right = 576.0
-offset_bottom = 79.0
-text = "WAVE"
+offset_left = 916.0
+offset_top = 64.0
+offset_right = 973.0
+offset_bottom = 89.0
+text = "WAVE 0"
 label_settings = SubResource("LabelSettings_wdxql")
 
 [node name="Wave_timer" type="Label" parent="."]
 offset_left = 874.0
-offset_top = 102.0
-offset_right = 930.0
-offset_bottom = 125.0
+offset_top = 94.0
+offset_right = 959.0
+offset_bottom = 117.0
 size_flags_horizontal = 4
-text = "Prueba"
+theme_override_fonts/font = SubResource("FontFile_lk52v")
+theme_override_font_sizes/font_size = 200
+text = "NEXT WAVE"
 label_settings = SubResource("LabelSettings_0tvgk")

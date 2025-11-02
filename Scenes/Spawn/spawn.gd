@@ -57,7 +57,7 @@ func _process(delta: float) -> void:
 	if between_waves_screen_timer:
 		if time > 0:
 			time -= delta
-			wave_timer.text = "Tiempo: %.1f" % time
+			wave_timer.text = "NEXT WAVE: %.1f" % time
 			wave_timer.visible=true
 		else:
 			time=between_waves
