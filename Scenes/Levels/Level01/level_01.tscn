@@ -10,6 +10,7 @@
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_ixfmw"]
 
 [node name="Level01" instance=ExtResource("1_ixfmw")]
+process_mode = 1
 y_sort_enabled = true
 
 [node name="UI" parent="." index="0" instance=ExtResource("2_0vwiw")]

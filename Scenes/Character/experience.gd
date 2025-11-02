@@ -6,6 +6,8 @@ extends Node
 var experience: float = 0
 var lvl: int = 1
 
+signal level_up
+
 func _ready() -> void:
 	exp_lvl_text.text="LVL "+str(lvl)
 	exp_bar.max_value=exp_needed_lvl
@@ -19,6 +21,7 @@ func add_exp(amount: int) -> void:
 		exp_lvl_text.text="lvl: "+str(lvl)
 		exp_needed_lvl*=2
 		exp_bar.max_value=exp_needed_lvl
+		emit_signal("level_up")
 	else:
 		experience=expected_exp
 		exp_bar.value=experience

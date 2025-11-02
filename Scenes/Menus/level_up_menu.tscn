@@ -1,0 +1,178 @@
+[gd_scene load_steps=6 format=3 uid="uid://rahtjweordfx"]
+
+[ext_resource type="Script" uid="uid://20nf6qvtbtar" path="res://Scenes/Menus/level_up_menu.gd" id="1_0rmfn"]
+[ext_resource type="Texture2D" uid="uid://c1tp7pqe622b5" path="res://icon.svg" id="1_mkk26"]
+
+[sub_resource type="Animation" id="Animation_0rmfn"]
+resource_name = "pop_in"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0.84, 0.84)]
+}
+
+[sub_resource type="Animation" id="Animation_412y8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.84, 0.84)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7s48k"]
+_data = {
+&"RESET": SubResource("Animation_412y8"),
+&"pop_in": SubResource("Animation_0rmfn")
+}
+
+[node name="LevelUpMenu" type="Control"]
+process_mode = 2
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.84, 0.84)
+script = ExtResource("1_0rmfn")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -846.77936
+offset_top = -567.8571
+offset_right = 846.77936
+offset_bottom = 567.8571
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -37.30249
+offset_right = 37.30249
+offset_bottom = 23.000002
+grow_horizontal = 2
+scale = Vector2(5, 5)
+pivot_offset = Vector2(37.303, 0)
+text = "LEVEL UP"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -473.99997
+offset_top = -273.00003
+offset_right = 473.99997
+offset_bottom = 273.00003
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.7, 1.7)
+pivot_offset = Vector2(474, 273)
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+alignment = 1
+
+[node name="Name" type="Label" parent="Panel/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Object01 Name"
+horizontal_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Panel/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("1_mkk26")
+stretch_mode = 3
+
+[node name="Object01" type="Button" parent="Panel/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Object 01"
+
+[node name="Description" type="Label" parent="Panel/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Object Description"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Panel/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+alignment = 1
+
+[node name="Name" type="Label" parent="Panel/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+text = "Object02 Name"
+horizontal_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Panel/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+texture = ExtResource("1_mkk26")
+stretch_mode = 3
+
+[node name="Object02" type="Button" parent="Panel/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+text = "Object 02"
+
+[node name="Description" type="Label" parent="Panel/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+text = "Object Description"
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="Panel/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+alignment = 1
+
+[node name="Name" type="Label" parent="Panel/HBoxContainer/VBoxContainer3"]
+layout_mode = 2
+text = "Object03 Name"
+horizontal_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Panel/HBoxContainer/VBoxContainer3"]
+layout_mode = 2
+texture = ExtResource("1_mkk26")
+stretch_mode = 3
+
+[node name="Object03" type="Button" parent="Panel/HBoxContainer/VBoxContainer3"]
+layout_mode = 2
+text = "Object 03"
+
+[node name="Description" type="Label" parent="Panel/HBoxContainer/VBoxContainer3"]
+layout_mode = 2
+text = "Object Description"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_7s48k")
+}
+
+[connection signal="pressed" from="Panel/HBoxContainer/VBoxContainer/Object01" to="." method="_on_object_01_pressed"]
+[connection signal="pressed" from="Panel/HBoxContainer/VBoxContainer2/Object02" to="." method="_on_object_02_pressed"]
+[connection signal="pressed" from="Panel/HBoxContainer/VBoxContainer3/Object03" to="." method="_on_object_03_pressed"]

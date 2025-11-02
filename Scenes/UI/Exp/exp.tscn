@@ -9,7 +9,7 @@
 [node name="TextureProgressBar" type="TextureProgressBar" parent="."]
 anchors_preset = 10
 anchor_right = 1.0
-offset_bottom = 25.0
+offset_bottom = 46.0
 grow_horizontal = 2
 size_flags_horizontal = 3
 nine_patch_stretch = true
@@ -23,9 +23,10 @@ texture_progress = ExtResource("3_tbmtc")
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -61.484985
-offset_top = 93.715
-offset_right = -6.0
-offset_bottom = 116.71511
+offset_left = -86.0
+offset_top = 159.0
+offset_right = -43.943604
+offset_bottom = 182.0
 grow_horizontal = 0
+scale = Vector2(2, 2)
 text = "LVL"
