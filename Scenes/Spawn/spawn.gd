@@ -8,11 +8,7 @@ var elite_prob_percent
 @export var hp_elite_growth=5
 @export var base_hp=10
 @onready var between_waves=5
-@onready var wave_text = $"../UI/Wave/Label"
-@onready var wave_timer = $"../UI/Wave/Wave_timer"
-
-var between_waves_screen_timer=false
-var time
+@onready var wave_text = $"../UI/Wave/Wave/Label"
 
 @onready var enemy_dict = {
 	1: [6, 1.1],
@@ -49,20 +45,10 @@ var time
 var elite_multiplier = {}
 @export var time_between_waves: float = 1
 
+signal between_waves_screen_timer
+
 func _ready():
 	update_wave()
-	time=between_waves
-
-func _process(delta: float) -> void:
-	if between_waves_screen_timer:
-		if time > 0:
-			time -= delta
-			wave_timer.text = "NEXT WAVE: %.1f" % time
-			wave_timer.visible=true
-		else:
-			time=between_waves
-			between_waves_screen_timer=false
-			wave_timer.visible=false
 
 func enemy_death():
 	dead_enemies+=1
@@ -118,7 +104,7 @@ func update_wave():
 	for rondas in enemy_dict:
 		prob = base_elite_chance * enemy_dict[rondas][1]
 		elite_prob_percent = snapped(prob * 100, 2)
-	between_waves_screen_timer=true
+	emit_signal("between_waves_screen_timer")
 	await get_tree().create_timer(between_waves).timeout
 	wave_text.text = "WAVE "+str(current_wave)
 	spawn_enemies()
