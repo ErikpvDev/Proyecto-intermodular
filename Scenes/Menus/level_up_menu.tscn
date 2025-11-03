@@ -1,7 +1,27 @@
-[gd_scene load_steps=6 format=3 uid="uid://rahtjweordfx"]
+[gd_scene load_steps=8 format=3 uid="uid://rahtjweordfx"]
 
 [ext_resource type="Script" uid="uid://20nf6qvtbtar" path="res://Scenes/Menus/level_up_menu.gd" id="1_0rmfn"]
 [ext_resource type="Texture2D" uid="uid://c1tp7pqe622b5" path="res://icon.svg" id="1_mkk26"]
+[ext_resource type="FontFile" uid="uid://dvxv26iy0kmh0" path="res://assets/fonts/VCR_OSD_MONO_1.001.ttf" id="2_412y8"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_7s48k"]
+font = ExtResource("2_412y8")
+font_size = 256
+
+[sub_resource type="Animation" id="Animation_412y8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.84, 0.84)]
+}
 
 [sub_resource type="Animation" id="Animation_0rmfn"]
 resource_name = "pop_in"
@@ -17,21 +37,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(0, 0), Vector2(0.84, 0.84)]
-}
-
-[sub_resource type="Animation" id="Animation_412y8"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0.84, 0.84)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_7s48k"]
@@ -55,30 +60,29 @@ script = ExtResource("1_0rmfn")
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 1
-anchors_preset = 8
+anchors_preset = 5
 anchor_left = 0.5
-anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -846.77936
-offset_top = -567.8571
-offset_right = 846.77936
-offset_bottom = 567.8571
+offset_left = -734.053
+offset_top = -403.995
+offset_right = 734.0531
+offset_bottom = 580.5288
 grow_horizontal = 2
-grow_vertical = 2
 
 [node name="Label" type="Label" parent="Panel"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -37.30249
-offset_right = 37.30249
-offset_bottom = 23.000002
+offset_left = -609.1272
+offset_right = 609.1272
+offset_bottom = 225.0
 grow_horizontal = 2
-scale = Vector2(5, 5)
-pivot_offset = Vector2(37.303, 0)
+scale = Vector2(0.5, 0.5)
+pivot_offset = Vector2(609.127, 0)
 text = "LEVEL UP"
+label_settings = SubResource("LabelSettings_7s48k")
+clip_text = true
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Panel"]
 layout_mode = 1
@@ -87,10 +91,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -473.99997
-offset_top = -273.00003
-offset_right = 473.99997
-offset_bottom = 273.00003
+offset_left = -380.95236
+offset_top = -269.04767
+offset_right = 458.68353
+offset_bottom = 281.37262
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1.7, 1.7)

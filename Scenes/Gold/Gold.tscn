@@ -26,3 +26,4 @@ expand_mode = 2
 layout_mode = 2
 theme_type_variation = &"HeaderSmall"
 theme_override_fonts/font = ExtResource("2_00ggv")
+theme_override_font_sizes/font_size = 40

@@ -434,7 +434,7 @@ animation = &"Dash"
 autoplay = "Idle"
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(3, 3)
+zoom = Vector2(4, 4)
 position_smoothing_enabled = true
 
 [node name="Physical Collision" type="CollisionShape2D" parent="."]

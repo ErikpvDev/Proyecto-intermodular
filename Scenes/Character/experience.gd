@@ -18,7 +18,7 @@ func add_exp(amount: int) -> void:
 		experience=expected_exp-exp_needed_lvl
 		exp_bar.value=experience
 		lvl+=1
-		exp_lvl_text.text="lvl: "+str(lvl)
+		exp_lvl_text.text="LVL "+str(lvl)
 		exp_needed_lvl*=2
 		exp_bar.max_value=exp_needed_lvl
 		emit_signal("level_up")

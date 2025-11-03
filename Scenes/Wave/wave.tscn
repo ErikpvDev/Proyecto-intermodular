@@ -4,8 +4,12 @@
 
 [sub_resource type="LabelSettings" id="LabelSettings_wdxql"]
 font = ExtResource("1_lk52v")
+font_size = 40
 
 [sub_resource type="FontFile" id="FontFile_lk52v"]
+subpixel_positioning = 0
+msdf_pixel_range = 14
+msdf_size = 128
 cache/0/16/0/ascent = 0.0
 cache/0/16/0/descent = 0.0
 cache/0/16/0/underline_position = 0.0
@@ -14,22 +18,31 @@ cache/0/16/0/scale = 1.0
 
 [sub_resource type="LabelSettings" id="LabelSettings_0tvgk"]
 font = ExtResource("1_lk52v")
+font_size = 40
 
 [node name="Wave" type="CanvasLayer"]
 
 [node name="Label" type="Label" parent="."]
-offset_left = 916.0
-offset_top = 64.0
-offset_right = 973.0
-offset_bottom = 89.0
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -70.5
+offset_top = 62.47
+offset_right = 70.5
+offset_bottom = 98.47
+grow_horizontal = 2
 text = "WAVE 0"
 label_settings = SubResource("LabelSettings_wdxql")
 
 [node name="Wave_timer" type="Label" parent="."]
-offset_left = 874.0
-offset_top = 94.0
-offset_right = 959.0
-offset_bottom = 117.0
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -105.5
+offset_top = 98.32
+offset_right = 105.500244
+offset_bottom = 134.32004
+grow_horizontal = 2
 size_flags_horizontal = 4
 theme_override_fonts/font = SubResource("FontFile_lk52v")
 theme_override_font_sizes/font_size = 200
