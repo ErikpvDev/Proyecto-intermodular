@@ -4,11 +4,14 @@ extends Node2D
 var base_elite_chance = 0.02
 var elite_prob_percent
 @export var exp_growth=1.15
+@export var exp_elite_growth=3
 @export var hp_growth=1.10
 @export var hp_elite_growth=5
 @export var base_hp=10
 @onready var between_waves=5
 @onready var wave_text = $"../UI/Wave/Wave/Label"
+
+var spawn_time = 1
 
 @onready var enemy_dict = {
 	1: [6, 1.1],
@@ -77,26 +80,26 @@ func get_valid_spawnpoint(cam):
 func spawn_enemies():
 	#Spawn the enemies in the valid spawnpoints
 	for i in range(enemy_dict[current_wave][0]):
-		if randi_range(0,100)<100:
+		if randi_range(0,100)<elite_prob_percent:
 			var e=enemy.instantiate()
 			e.scale = e.scale*1.3
 			e.position=get_valid_spawnpoint(camera)
 			e.elite=true
-			e.exp_value=60
+			e.exp_value=int(e.exp_value*pow(exp_elite_growth,current_wave-1))
 			e.get_children()[0].health=int(base_hp*pow(hp_elite_growth,current_wave-1))
 			$"../Enemies".add_child(e)
-			await get_tree().create_timer(1).timeout
+			await get_tree().create_timer(spawn_time).timeout
 		else:
 			var e=enemy.instantiate()
 			
 			e.position=get_valid_spawnpoint(camera)
 			e.exp_value=int(e.exp_value*pow(exp_growth,current_wave-1))
 			e.get_children()[0].health=base_hp
-			e.get_children()[0].health=int(e.get_children()[0].health*pow(hp_growth,current_wave-1))
+			e.get_children()[0].health=40
 			print(e.get_children()[0].health)
 			$"../Enemies".add_child(e)
 			#Delay entre spawn de enemigos
-			await get_tree().create_timer(1).timeout
+			await get_tree().create_timer(spawn_time).timeout
 
 
 func update_wave():
@@ -105,6 +108,7 @@ func update_wave():
 		prob = base_elite_chance * enemy_dict[rondas][1]
 		elite_prob_percent = snapped(prob * 100, 2)
 	emit_signal("between_waves_screen_timer")
+	spawn_time*=0.8
 	await get_tree().create_timer(between_waves).timeout
 	wave_text.text = "WAVE "+str(current_wave)
 	spawn_enemies()

@@ -1,9 +1,8 @@
-[gd_scene load_steps=8 format=4 uid="uid://dafx2m02alpy5"]
+[gd_scene load_steps=7 format=4 uid="uid://dafx2m02alpy5"]
 
 [ext_resource type="PackedScene" uid="uid://0gr62tvei2rq" path="res://Scenes/Levels/Level01/Level01.tscn" id="1_ixfmw"]
 [ext_resource type="PackedScene" uid="uid://bam0ik66tfskr" path="res://Scenes/UI/ui.tscn" id="2_0vwiw"]
 [ext_resource type="PackedScene" uid="uid://p0hbqo51nej1" path="res://Scenes/Character/personaje.tscn" id="2_uhf17"]
-[ext_resource type="PackedScene" uid="uid://qffsk1wiwj24" path="res://Scenes/Enemies/enemigo.tscn" id="3_fg2k8"]
 [ext_resource type="PackedScene" uid="uid://bgjw2csmveeoi" path="res://Scenes/Enemies/enemies.tscn" id="4_rgqva"]
 [ext_resource type="PackedScene" uid="uid://15c6vdtnhdsc" path="res://Scenes/Spawn/spawn.tscn" id="5_lrq68"]
 
@@ -25,9 +24,6 @@ z_index = 1
 position = Vector2(215, 131)
 
 [node name="Enemies" parent="." index="3" instance=ExtResource("4_rgqva")]
-
-[node name="Enemy" parent="Enemies" index="0" instance=ExtResource("3_fg2k8")]
-position = Vector2(-33, 104)
 
 [node name="Spawn" parent="." index="4" instance=ExtResource("5_lrq68")]
 

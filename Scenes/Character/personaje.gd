@@ -108,8 +108,8 @@ func update_animation():
 			else:
 				$AnimatedSprite2D.play("Idle")
 
-func _on_area_2d_body_entered(_body: Node2D) -> void:
-	take_damage(1)
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	take_damage(body.damage)
 
 func attack():
 	distance_to_closest_enemy = INF
@@ -123,14 +123,13 @@ func attack():
 		$AttackArea/AnimatedSprite2D.position = Vector2(32,32)*closest_enemy_direction
 		$AttackArea/CollisionShape2D.position = Vector2(32,32)*closest_enemy_direction
 	
-		var angle = closest_enemy_direction.angle()
-		$AttackArea/AnimatedSprite2D.rotation = angle
+		$AttackArea/AnimatedSprite2D.rotation = closest_enemy_direction.angle()
 	
 		$AttackArea/AnimatedSprite2D.play("attacking")
-	$AttackArea/AnimatedSprite2D.visible=true
-	$AttackArea/CollisionShape2D.disabled=false
+		$AttackArea/AnimatedSprite2D.visible=true
+		$AttackArea/CollisionShape2D.disabled=false
 	
-	$AttackArea/AttackTimer.start()
+		$AttackArea/AttackTimer.start()
 	
 func _on_attack_timer_timeout() -> void:
 	$AttackArea/AnimatedSprite2D.visible=false

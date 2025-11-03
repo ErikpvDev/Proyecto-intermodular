@@ -1,7 +1,8 @@
 extends CharacterBody2D
 class_name Enemy
 
-var speed = 80
+@export var speed = 80
+@export var damage = 1
 @onready var target = $"../../Character"
 @onready var health: Node = $Health
 @onready var spawn = $"../../Spawn"
@@ -14,8 +15,6 @@ func _ready() -> void:
 		$AnimatedSprite2D.play("elite_walking")
 	else:
 		$AnimatedSprite2D.play("walking")
-	health.max_health = 10
-	health.health=health.max_health
 
 func animation():
 		
@@ -39,7 +38,8 @@ func take_damage(amount:int):
 	health.take_damage(amount)
 	if health.health<=0:
 		die()
-	$AnimationPlayer.play("Hit")
+	else:
+		$AnimationPlayer.play("Hit")
 
 func _process(_delta):
 	var direction = (target.position-position).normalized()
