@@ -168,10 +168,10 @@ func spawn_enemies():
 			var e=enemy.instantiate()
 			
 			e.position=get_valid_spawnpoint(camera,$"../TileMapLayer")
+			e.elite=false
 			e.exp_value=int(e.exp_value*pow(exp_growth,current_wave-1))
 			e.get_children()[0].health=base_hp
 			e.get_children()[0].health=40
-			print(e.get_children()[0].health)
 			$"../Enemies".add_child(e)
 			#Delay entre spawn de enemigos
 			await get_tree().create_timer(spawn_time).timeout

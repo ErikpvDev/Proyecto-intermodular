@@ -31,6 +31,8 @@ var closest_enemy
 #VARIABLES------------------------------------------------------------------------------------------------
 
 func _ready() -> void:
+	health.max_health = 5
+	
 	# Gets the health bar initial hearts,appends them to the array and shows them on screen
 	for i in range(health.max_health):
 		var heart_temp = heart_object.instantiate()
@@ -45,6 +47,7 @@ func _ready() -> void:
 	$AttackArea/CollisionShape2D.disabled=true
 	$AttackArea/AnimatedSprite2D.visible=false
 	$AttackArea/attack_cooldown.start()
+	
 
 func _process(delta):
 	update_animation()

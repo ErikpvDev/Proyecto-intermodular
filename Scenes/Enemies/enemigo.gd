@@ -10,7 +10,16 @@ class_name Enemy
 var exp_value=25
 var elite
 
+@onready var exp_drops: Node2D = $"../../Exp_drops"
+
+@onready var enemy_dict = spawn.enemy_dict
+var p_drop
+var round
+
 func _ready() -> void:
+	health.max_health = 1
+	health.health = health.max_health
+	
 	if elite:
 		$AnimatedSprite2D.play("elite_walking")
 	else:
@@ -27,11 +36,12 @@ func drop_exp():
 	var exp_drop = exp_drop_scene.instantiate()
 	exp_drop.position = position
 	exp_drop.exp_amount=exp_value
-	get_parent().call_deferred("add_child",exp_drop)
+	exp_drops.call_deferred("add_child",exp_drop)
 	
 func die():
 	spawn.enemy_death()
 	drop_exp()
+	drop_chest()
 	queue_free()
 
 func take_damage(amount:int):
@@ -49,3 +59,9 @@ func _process(_delta):
 
 func _on_health_health_changed(new_health: Variant) -> void:
 	health.health=new_health
+	
+func drop_chest():
+	round = spawn.current_wave
+	p_drop = clamp((0.005 + 0.000045 * pow(enemy_dict[round][0], 1.12)) * (3.0 if elite else 1.0), 0.0, 0.25)
+	if (randf_range(0,100)<p_drop*100):
+		print("cofre")
