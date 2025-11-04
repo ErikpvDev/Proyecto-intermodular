@@ -74,31 +74,88 @@ func enemy_death():
 		current_wave+=1
 		update_wave()
 	
-func get_valid_spawnpoint(cam,tilemap):
-	var tilemap_rect = tilemap.get_used_rect()
-	var tile_size = tilemap.tile_set.tile_size
-	# Convertir a coordenadas de píxeles globales
-	var map_rect = Rect2(tilemap_rect.position * tile_size, tilemap_rect.size * tile_size)
-
-	# Rectángulo que representa lo que la cámara ve actualmente
-	var viewport_size = get_viewport().get_visible_rect().size / cam.zoom
-	var cam_center = cam.global_position
-	var cam_rect = Rect2(cam_center - viewport_size / 2, viewport_size)
-
+func get_valid_spawnpoint(cam: Camera2D, tilemap_layer: TileMapLayer, margin: float = 16.0):
 	
-	var point
-	var margin=0
-	#Check if its a valid spawnpoint(is not in cam)
-	while true:
-		point = Vector2(randi_range(map_rect.position.x,map_rect.end.x),randi_range(map_rect.position.y,map_rect.end.y))
-		if not cam_rect.grow(margin).has_point(point):
-			return point
-			
+	# 1. OBTENER LÍMITES DEL TILEMAP (en Coordenadas del Mundo)
+	var used_rect_i: Rect2i = tilemap_layer.get_used_rect()
+	var local_pos = tilemap_layer.map_to_local(used_rect_i.position)
+	var local_size = used_rect_i.size * tilemap_layer.tile_set.tile_size
+	var local_spawn_rect = Rect2(local_pos, local_size)
+	var world_spawn_rect: Rect2 = tilemap_layer.get_global_transform() * local_spawn_rect
+	
+	
+	# --- NUEVA LÍNEA ---
+	# Encogemos el rectángulo de spawn por el margen que nos pasaron.
+	# Si el margen es 16, se encoge 16 píxeles por la izq, der, arriba y abajo.
+	world_spawn_rect = world_spawn_rect.grow(-margin)
+	# --------------------
+	
+	
+	# 2. OBTENER LÍMITES DE LA CÁMARA (en Coordenadas del Mundo)
+	var camera_rect: Rect2 = cam.get_viewport().get_visible_rect()
+	
+	
+	# 3. DEFINIR ZONAS DE SPAWN VÁLIDAS
+	# (Esta lógica no cambia, pero ahora usa el 'world_spawn_rect' encogido)
+	
+	# Zona de Arriba
+	var top_zone = Rect2(
+		world_spawn_rect.position.x,
+		world_spawn_rect.position.y,
+		world_spawn_rect.size.x,
+		camera_rect.position.y - world_spawn_rect.position.y
+	)
+	
+	# Zona de Abajo
+	var bottom_zone = Rect2(
+		world_spawn_rect.position.x,
+		camera_rect.end.y,
+		world_spawn_rect.size.x,
+		world_spawn_rect.end.y - camera_rect.end.y
+	)
+	
+	# Zona Izquierda
+	var left_zone = Rect2(
+		world_spawn_rect.position.x,
+		camera_rect.position.y,
+		camera_rect.position.x - world_spawn_rect.position.x,
+		camera_rect.size.y
+	)
+	
+	# Zona Derecha
+	var right_zone = Rect2(
+		camera_rect.end.x,
+		camera_rect.position.y,
+		world_spawn_rect.end.x - camera_rect.end.x,
+		camera_rect.size.y
+	)
+
+	# 4. CREAR LISTA DE ZONAS VÁLIDAS
+	var valid_zones = []
+	if top_zone.has_area():
+		valid_zones.append(top_zone)
+	if bottom_zone.has_area():
+		valid_zones.append(bottom_zone)
+	if left_zone.has_area():
+		valid_zones.append(left_zone)
+	if right_zone.has_area():
+		valid_zones.append(right_zone)
+		
+	# 6. ELEGIR ZONA Y PUNTO
+	var chosen_zone: Rect2 = valid_zones.pick_random()
+	
+	var point = Vector2(
+		randf_range(chosen_zone.position.x, chosen_zone.end.x),
+		randf_range(chosen_zone.position.y, chosen_zone.end.y)
+	)
+	
+	return point
+
 
 func spawn_enemies():
 	#Spawn the enemies in the valid spawnpoints
 	for i in range(enemy_dict[current_wave][0]):
-		if randi_range(0,100)<elite_prob_percent:
+		if randf_range(0,100)<elite_prob_percent:
 			var e=enemy.instantiate()
 			e.scale = e.scale*1.3
 			e.position=get_valid_spawnpoint(camera,$"../TileMapLayer")

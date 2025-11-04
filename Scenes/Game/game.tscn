@@ -9,12 +9,7 @@ process_mode = 3
 script = ExtResource("1_qikps")
 
 [node name="Level01" parent="." instance=ExtResource("1_mv0hc")]
-position = Vector2(688, 405)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="LevelUpMenu" parent="CanvasLayer" instance=ExtResource("2_qxfds")]
-offset_left = -4.999939
-offset_top = -32.0
-offset_right = -4.999939
-offset_bottom = -32.0
