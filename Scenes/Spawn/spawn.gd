@@ -8,8 +8,21 @@ var elite_prob_percent
 @export var hp_growth=1.10
 @export var hp_elite_growth=5
 @export var base_hp=10
-@onready var between_waves=5
+@onready var between_waves=1
 @onready var wave_text = $"../UI/Wave/Wave/Label"
+
+var vase_count
+var vase_growth
+var rare_vase_prob
+
+var base_gold_vase=10
+var base_exp_vase=8
+
+var gold_vase_growth = 1.05
+var exp_vase_growth = 1.04
+
+@onready var vase = preload("res://Scenes/Objects/vase.tscn")
+@onready var interactable_scene= $"../Interactables"
 
 var spawn_time = 1
 
@@ -61,19 +74,24 @@ func enemy_death():
 		current_wave+=1
 		update_wave()
 	
-func get_valid_spawnpoint(cam):
-	# The viewport of the camera
-	var vp = Rect2(
-		cam.get_screen_center_position() - get_viewport_rect().size / 2 / cam.zoom,
-		get_viewport_rect().size / cam.zoom
-	)
+func get_valid_spawnpoint(cam,tilemap):
+	var tilemap_rect = tilemap.get_used_rect()
+	var tile_size = tilemap.tile_set.tile_size
+	# Convertir a coordenadas de píxeles globales
+	var map_rect = Rect2(tilemap_rect.position * tile_size, tilemap_rect.size * tile_size)
+
+	# Rectángulo que representa lo que la cámara ve actualmente
+	var viewport_size = get_viewport().get_visible_rect().size / cam.zoom
+	var cam_center = cam.global_position
+	var cam_rect = Rect2(cam_center - viewport_size / 2, viewport_size)
+
 	
 	var point
-	
+	var margin=0
 	#Check if its a valid spawnpoint(is not in cam)
 	while true:
-		point = Vector2(randi_range(-480,951),randi_range(-360,615))
-		if not vp.has_point(point):
+		point = Vector2(randi_range(map_rect.position.x,map_rect.end.x),randi_range(map_rect.position.y,map_rect.end.y))
+		if not cam_rect.grow(margin).has_point(point):
 			return point
 			
 
@@ -83,7 +101,7 @@ func spawn_enemies():
 		if randi_range(0,100)<elite_prob_percent:
 			var e=enemy.instantiate()
 			e.scale = e.scale*1.3
-			e.position=get_valid_spawnpoint(camera)
+			e.position=get_valid_spawnpoint(camera,$"../TileMapLayer")
 			e.elite=true
 			e.exp_value=int(e.exp_value*pow(exp_elite_growth,current_wave-1))
 			e.get_children()[0].health=int(base_hp*pow(hp_elite_growth,current_wave-1))
@@ -92,7 +110,7 @@ func spawn_enemies():
 		else:
 			var e=enemy.instantiate()
 			
-			e.position=get_valid_spawnpoint(camera)
+			e.position=get_valid_spawnpoint(camera,$"../TileMapLayer")
 			e.exp_value=int(e.exp_value*pow(exp_growth,current_wave-1))
 			e.get_children()[0].health=base_hp
 			e.get_children()[0].health=40
@@ -101,6 +119,17 @@ func spawn_enemies():
 			#Delay entre spawn de enemigos
 			await get_tree().create_timer(spawn_time).timeout
 
+func spawn_vase():
+	for i in range(10):
+		if randi_range(0,100)<rare_vase_prob:
+			var v = vase.instantiate()
+			v.position=get_valid_spawnpoint(camera,$"../TileMapLayer")
+			interactable_scene.add_child(v)
+		else:
+			var v = vase.instantiate()
+			v.position=get_valid_spawnpoint(camera,$"../TileMapLayer")
+			interactable_scene.add_child(v)
+			
 
 func update_wave():
 	var prob
@@ -108,7 +137,15 @@ func update_wave():
 		prob = base_elite_chance * enemy_dict[rondas][1]
 		elite_prob_percent = snapped(prob * 100, 2)
 	emit_signal("between_waves_screen_timer")
+	
+	#Vase calculation
 	spawn_time*=0.8
+	vase_count=1+floor((current_wave-1)/5)
+	vase_count= min(vase_count,6)
+	rare_vase_prob= clamp(5+(current_wave-1)*0.5,5,25)
+	
+	
 	await get_tree().create_timer(between_waves).timeout
 	wave_text.text = "WAVE "+str(current_wave)
 	spawn_enemies()
+	spawn_vase()

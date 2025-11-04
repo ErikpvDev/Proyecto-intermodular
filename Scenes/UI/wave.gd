@@ -12,7 +12,7 @@ var between_waves_screen_timer=false
 var time
 
 func _ready():
-	time=between_waves
+	time=time_between_waves
 	spawn.connect("between_waves_screen_timer",Callable(self,"_on_between_waves_screen_timer"))
 	
 func _process(delta: float) -> void:
@@ -22,7 +22,7 @@ func _process(delta: float) -> void:
 			wave_timer.text = "NEXT WAVE: %.1f" % time
 			wave_timer.visible=true
 		else:
-			time=between_waves
+			time=time_between_waves
 			between_waves_screen_timer=false
 			wave_timer.visible=false
 			
