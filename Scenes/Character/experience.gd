@@ -16,7 +16,8 @@ func add_exp(amount: int) -> void:
 	var expected_exp=int(amount+experience)
 	if expected_exp>=exp_needed_lvl:
 		experience=expected_exp-exp_needed_lvl
-		exp_bar.value=experience
+		exp_bar.max_value = exp_needed_lvl
+		exp_bar.value = experience
 		lvl+=1
 		exp_lvl_text.text="LVL "+str(lvl)
 		exp_needed_lvl*=2
