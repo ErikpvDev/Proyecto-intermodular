@@ -1,0 +1,51 @@
+[gd_scene load_steps=7 format=3 uid="uid://dq2m5rkd0jrpe"]
+
+[ext_resource type="Texture2D" uid="uid://devqhjxbq1w0s" path="res://assets/sprites/tilemaps/0x72_DungeonTilesetII_v1.7.png" id="1_vb5st"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e2yg2"]
+atlas = ExtResource("1_vb5st")
+region = Rect2(304, 397, 16, 19)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vb5st"]
+atlas = ExtResource("1_vb5st")
+region = Rect2(303, 399, 17, 19)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aqyya"]
+atlas = ExtResource("1_vb5st")
+region = Rect2(320, 397, 16, 19)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_matv7"]
+atlas = ExtResource("1_vb5st")
+region = Rect2(336, 397, 16, 19)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_matv7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e2yg2")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vb5st")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aqyya")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_matv7")
+}],
+"loop": true,
+"name": &"open",
+"speed": 5.0
+}]
+
+[node name="Chest" type="Node2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_matv7")
+animation = &"idle"
+autoplay = "idle"
