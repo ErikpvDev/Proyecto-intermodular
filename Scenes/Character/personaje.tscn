@@ -1,4 +1,4 @@
-[gd_scene load_steps=61 format=3 uid="uid://p0hbqo51nej1"]
+[gd_scene load_steps=62 format=3 uid="uid://p0hbqo51nej1"]
 
 [ext_resource type="Script" uid="uid://dlb0vba8x21kc" path="res://Scenes/Character/personaje.gd" id="1_hlutc"]
 [ext_resource type="PackedScene" uid="uid://dpqhg6grx7xv1" path="res://Scenes/Character/Experience.tscn" id="2_aexvp"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://dysmu2ylvmkhx" path="res://Scenes/Character/Health.tscn" id="2_l3rkt"]
 [ext_resource type="Texture2D" uid="uid://bchlus3sg8ox7" path="res://assets/sprites/Characters/CharAni-Sheet4.png" id="6_h7pwf"]
 [ext_resource type="Texture2D" uid="uid://d0ak6v0nxbtct" path="res://assets/sprites/Weapons/Sword/pixel_art_sword_slash_sprites.png" id="7_ykwvv"]
+[ext_resource type="PackedScene" uid="uid://c8vj58wrgfrfq" path="res://Scenes/Objects/interacting_component.tscn" id="8_vc3aq"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_t2t2f"]
 atlas = ExtResource("6_h7pwf")
@@ -416,6 +417,7 @@ _data = {
 
 [node name="Character" type="CharacterBody2D" groups=["character"]]
 y_sort_enabled = true
+collision_mask = 5
 script = ExtResource("1_hlutc")
 
 [node name="Gold" parent="." instance=ExtResource("2_h7pwf")]
@@ -441,10 +443,11 @@ position_smoothing_enabled = true
 position = Vector2(0, 2.09375)
 shape = SubResource("RectangleShape2D_cs5dr")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="prueba" type="Area2D" parent="."]
+collision_layer = 2
 collision_mask = 2
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="prueba"]
 position = Vector2(0, 2)
 shape = SubResource("RectangleShape2D_cs5dr")
 
@@ -472,9 +475,11 @@ libraries = {
 &"": SubResource("AnimationLibrary_52hlq")
 }
 
+[node name="InteractingComponent" parent="." instance=ExtResource("8_vc3aq")]
+
 [connection signal="health_changed" from="Health" to="." method="_on_health_health_changed"]
 [connection signal="max_health_changed" from="Health" to="." method="_on_health_max_health_changed"]
-[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="prueba" to="." method="_on_area_2d_body_entered"]
 [connection signal="area_entered" from="AttackArea" to="." method="_on_attack_area_area_entered"]
 [connection signal="timeout" from="AttackArea/AttackTimer" to="." method="_on_attack_timer_timeout"]
 [connection signal="timeout" from="AttackArea/attack_cooldown" to="." method="_on_attack_cooldown_timeout"]

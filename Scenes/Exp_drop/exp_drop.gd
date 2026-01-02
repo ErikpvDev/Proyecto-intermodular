@@ -20,5 +20,6 @@ func _process(delta: float) -> void:
 		position+=direction * attraction_speed * delta
 
 func _on_body_entered(body: Node2D) -> void:
-	body.add_exp(exp_amount)
-	queue_free()
+	if body.is_in_group("character"):
+		body.add_exp(exp_amount)
+		queue_free()
