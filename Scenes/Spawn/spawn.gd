@@ -92,7 +92,7 @@ func get_valid_spawnpoint(cam: Camera2D, tilemap_layer: TileMapLayer, margin: fl
 	
 	
 	# 2. OBTENER LÍMITES DE LA CÁMARA (en Coordenadas del Mundo)
-	var camera_rect: Rect2 = cam.get_viewport().get_visible_rect()
+	var camera_rect: Rect2 = cam.get_viewport().get_visible_rect().grow(margin)
 	
 	
 	# 3. DEFINIR ZONAS DE SPAWN VÁLIDAS
@@ -141,7 +141,7 @@ func get_valid_spawnpoint(cam: Camera2D, tilemap_layer: TileMapLayer, margin: fl
 	if right_zone.has_area():
 		valid_zones.append(right_zone)
 		
-	# 6. ELEGIR ZONA Y PUNTO
+	# 5. ELEGIR ZONA Y PUNTO
 	var chosen_zone: Rect2 = valid_zones.pick_random()
 	
 	var point = Vector2(
