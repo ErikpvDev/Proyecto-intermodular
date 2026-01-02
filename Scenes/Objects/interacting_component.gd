@@ -31,7 +31,7 @@ func _sort_nearest(area1,area2):
 	return area1_dist<area2_dist
 
 func _on_interact_range_area_entered(area: Area2D) -> void:
-	if area.has_variable("is_interactable"):
+	if area.get_property_list().has("is_interactable"):
 		current_interactions.push_back(area)
 
 
