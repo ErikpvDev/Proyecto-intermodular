@@ -13,6 +13,7 @@ func _input(event: InputEvent) -> void:
 			await current_interactions[0].interact.call()
 			
 			can_interact=true
+			
 
 
 func _process(_delta: float) -> void:
@@ -31,8 +32,10 @@ func _sort_nearest(area1,area2):
 	return area1_dist<area2_dist
 
 func _on_interact_range_area_entered(area: Area2D) -> void:
-	if area.get_property_list().has("is_interactable"):
-		current_interactions.push_back(area)
+	if area.is_in_group("interactable"):
+		if not current_interactions.has(area):
+			current_interactions.push_back(area)
+			
 
 
 func _on_interact_range_area_exited(area: Area2D) -> void:

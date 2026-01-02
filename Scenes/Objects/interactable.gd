@@ -5,3 +5,6 @@ extends Area2D
 
 var interact: Callable = func():
 	pass
+
+func _ready():
+	add_to_group("interactable")

@@ -12,3 +12,6 @@ func _on_interact():
 		animated_sprite_2d.play("Open")
 		interactable.is_interactable = false
 		print("Cofre abierto")
+		
+		
+		

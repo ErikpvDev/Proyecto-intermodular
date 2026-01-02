@@ -68,4 +68,6 @@ func drop_chest():
 	if (randf_range(0,100)<100):
 		var c = chest.instantiate()
 		c.position = position
-		$"../../Interactables".add_child(c)
+		var interactables = $"../../Interactables"
+		interactables.call_deferred("add_child",c)
+		

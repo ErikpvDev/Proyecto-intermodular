@@ -41,6 +41,7 @@ func _ready() -> void:
 		
 	health.health=health.max_health
 	update_heart_display()
+	
 	# Sets Gold to its initial value
 	gold_coins_number.text=str(gold_coins)
 	
