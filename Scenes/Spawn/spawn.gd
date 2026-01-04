@@ -6,8 +6,9 @@ var elite_prob_percent
 @export var exp_growth=1.15
 @export var exp_elite_growth=3
 @export var hp_growth=1.10
-@export var hp_elite_growth=5
+@export var hp_elite_growth=1.13
 @export var base_hp=10
+@export var base_elite_hp=50
 @onready var between_waves=1
 @onready var wave_text = $"../UI/Wave/Wave/Label"
 
@@ -74,74 +75,169 @@ func enemy_death():
 		current_wave+=1
 		update_wave()
 	
+#func get_valid_spawnpoint(cam: Camera2D, tilemap_layer: TileMapLayer, margin: float = 16.0):
+	#
+	## 1. OBTENER LÍMITES DEL TILEMAP (en Coordenadas del Mundo)
+	#var used_rect_i: Rect2i = tilemap_layer.get_used_rect()
+	#var local_pos = tilemap_layer.map_to_local(used_rect_i.position)
+	#var local_size = used_rect_i.size * tilemap_layer.tile_set.tile_size
+	#var local_spawn_rect = Rect2(local_pos, local_size)
+	#var world_spawn_rect: Rect2 = tilemap_layer.get_global_transform() * local_spawn_rect
+	#
+	#
+	## --- NUEVA LÍNEA ---
+	## Encogemos el rectángulo de spawn por el margen que nos pasaron.
+	## Si el margen es 16, se encoge 16 píxeles por la izq, der, arriba y abajo.
+	#world_spawn_rect = world_spawn_rect.grow(-margin)
+	## --------------------
+	#
+	#
+	## 2. OBTENER LÍMITES DE LA CÁMARA (en Coordenadas del Mundo)
+	#var camera_rect: Rect2 = cam.get_viewport().get_visible_rect().grow(margin)
+	#
+	#
+	## 3. DEFINIR ZONAS DE SPAWN VÁLIDAS
+	## (Esta lógica no cambia, pero ahora usa el 'world_spawn_rect' encogido)
+	#
+	## Zona de Arriba
+	#var top_zone = Rect2(
+		#world_spawn_rect.position.x,
+		#world_spawn_rect.position.y,
+		#world_spawn_rect.size.x,
+		#camera_rect.position.y - world_spawn_rect.position.y
+	#)
+	#
+	## Zona de Abajo
+	#var bottom_zone = Rect2(
+		#world_spawn_rect.position.x,
+		#camera_rect.end.y,
+		#world_spawn_rect.size.x,
+		#world_spawn_rect.end.y - camera_rect.end.y
+	#)
+	#
+	## Zona Izquierda
+	#var left_zone = Rect2(
+		#world_spawn_rect.position.x,
+		#camera_rect.position.y,
+		#camera_rect.position.x - world_spawn_rect.position.x,
+		#camera_rect.size.y
+	#)
+	#
+	## Zona Derecha
+	#var right_zone = Rect2(
+		#camera_rect.end.x,
+		#camera_rect.position.y,
+		#world_spawn_rect.end.x - camera_rect.end.x,
+		#camera_rect.size.y
+	#)
+#
+	## 4. CREAR LISTA DE ZONAS VÁLIDAS
+	#var valid_zones = []
+	#if top_zone.has_area():
+		#valid_zones.append(top_zone)
+	#if bottom_zone.has_area():
+		#valid_zones.append(bottom_zone)
+	#if left_zone.has_area():
+		#valid_zones.append(left_zone)
+	#if right_zone.has_area():
+		#valid_zones.append(right_zone)
+		#
+	## 5. ELEGIR ZONA Y PUNTO
+	#var chosen_zone: Rect2 = valid_zones.pick_random()
+	#
+	#var point = Vector2(
+		#randf_range(chosen_zone.position.x, chosen_zone.end.x),
+		#randf_range(chosen_zone.position.y, chosen_zone.end.y)
+	#)
+	#
+	#return point
+	
 func get_valid_spawnpoint(cam: Camera2D, tilemap_layer: TileMapLayer, margin: float = 16.0):
 	
-	# 1. OBTENER LÍMITES DEL TILEMAP (en Coordenadas del Mundo)
+	# 1. OBTENER LÍMITES DEL TILEMAP (Mundo)
 	var used_rect_i: Rect2i = tilemap_layer.get_used_rect()
 	var local_pos = tilemap_layer.map_to_local(used_rect_i.position)
-	var local_size = used_rect_i.size * tilemap_layer.tile_set.tile_size
-	var local_spawn_rect = Rect2(local_pos, local_size)
+	# Nota: map_to_local devuelve el centro del tile, a veces es mejor usar position * tile_size directamente si no hay transforms raros.
+	# Pero asumiendo tu lógica original funciona para el mapa, la dejamos así ajustando un poco:
+	var tile_size = tilemap_layer.tile_set.tile_size
+	var local_spawn_rect = Rect2(
+		Vector2(used_rect_i.position) * Vector2(tile_size), 
+		Vector2(used_rect_i.size) * Vector2(tile_size)
+	)
+	
 	var world_spawn_rect: Rect2 = tilemap_layer.get_global_transform() * local_spawn_rect
-	
-	
-	# --- NUEVA LÍNEA ---
-	# Encogemos el rectángulo de spawn por el margen que nos pasaron.
-	# Si el margen es 16, se encoge 16 píxeles por la izq, der, arriba y abajo.
 	world_spawn_rect = world_spawn_rect.grow(-margin)
-	# --------------------
+	
+	# --- CORRECCIÓN PRINCIPAL AQUÍ ---
+	# 2. OBTENER LÍMITES DE LA CÁMARA (Mundo Real)
+	
+	# Obtenemos el centro real en el mundo
+	var cam_center = cam.get_screen_center_position()
+	# Calculamos el tamaño ajustado al zoom (si zoom es 2, vemos la mitad de cosas)
+	var cam_size = cam.get_viewport_rect().size / cam.zoom
+	# Calculamos la esquina superior izquierda
+	var cam_top_left = cam_center - (cam_size / 2)
+	
+	# Creamos el Rect2 global y le aplicamos el margen (para que no spawneen JUSTO en el borde)
+	var camera_rect = Rect2(cam_top_left, cam_size).grow(margin)
+	# ---------------------------------
 	
 	
-	# 2. OBTENER LÍMITES DE LA CÁMARA (en Coordenadas del Mundo)
-	var camera_rect: Rect2 = cam.get_viewport().get_visible_rect().grow(margin)
+	# 3. DEFINIR ZONAS (Lógica de exclusión)
+	# Usamos intersection para asegurarnos de que las zonas no se salgan del mapa
 	
-	
-	# 3. DEFINIR ZONAS DE SPAWN VÁLIDAS
-	# (Esta lógica no cambia, pero ahora usa el 'world_spawn_rect' encogido)
-	
-	# Zona de Arriba
-	var top_zone = Rect2(
+	# Zona Arriba: Todo lo que está arriba de la cámara, dentro del mapa
+	var top_rect = Rect2(
 		world_spawn_rect.position.x,
 		world_spawn_rect.position.y,
 		world_spawn_rect.size.x,
 		camera_rect.position.y - world_spawn_rect.position.y
 	)
 	
-	# Zona de Abajo
-	var bottom_zone = Rect2(
+	# Zona Abajo: Todo lo que está abajo de la cámara, dentro del mapa
+	var bottom_rect = Rect2(
 		world_spawn_rect.position.x,
 		camera_rect.end.y,
 		world_spawn_rect.size.x,
 		world_spawn_rect.end.y - camera_rect.end.y
 	)
 	
-	# Zona Izquierda
-	var left_zone = Rect2(
+	# Zona Izquierda: Izquierda de la cámara, acotada a la altura de la cámara
+	var left_rect = Rect2(
 		world_spawn_rect.position.x,
 		camera_rect.position.y,
 		camera_rect.position.x - world_spawn_rect.position.x,
 		camera_rect.size.y
 	)
 	
-	# Zona Derecha
-	var right_zone = Rect2(
+	# Zona Derecha: Derecha de la cámara, acotada a la altura de la cámara
+	var right_rect = Rect2(
 		camera_rect.end.x,
 		camera_rect.position.y,
 		world_spawn_rect.end.x - camera_rect.end.x,
 		camera_rect.size.y
 	)
 
-	# 4. CREAR LISTA DE ZONAS VÁLIDAS
+	# 4. FILTRAR ZONAS VÁLIDAS
 	var valid_zones = []
-	if top_zone.has_area():
-		valid_zones.append(top_zone)
-	if bottom_zone.has_area():
-		valid_zones.append(bottom_zone)
-	if left_zone.has_area():
-		valid_zones.append(left_zone)
-	if right_zone.has_area():
-		valid_zones.append(right_zone)
+	
+	# Solo agregamos si tienen área positiva (anchura y altura > 0)
+	if top_rect.size.x > 0 and top_rect.size.y > 0:
+		valid_zones.append(top_rect)
+	if bottom_rect.size.x > 0 and bottom_rect.size.y > 0:
+		valid_zones.append(bottom_rect)
+	if left_rect.size.x > 0 and left_rect.size.y > 0:
+		valid_zones.append(left_rect)
+	if right_rect.size.x > 0 and right_rect.size.y > 0:
+		valid_zones.append(right_rect)
 		
-	# 5. ELEGIR ZONA Y PUNTO
+	# 5. RETORNO SEGURO
+	if valid_zones.is_empty():
+		# Fallback: Si el jugador ve TODO el mapa, no hay sitio donde esconderse.
+		# Retornamos el centro o null según prefieras.
+		print("Advertencia: No hay zona válida fuera de cámara")
+		return Vector2.ZERO 
+	
 	var chosen_zone: Rect2 = valid_zones.pick_random()
 	
 	var point = Vector2(
@@ -161,7 +257,7 @@ func spawn_enemies():
 			e.position=get_valid_spawnpoint(camera,$"../TileMapLayer")
 			e.elite=true
 			e.exp_value=int(e.exp_value*pow(exp_elite_growth,current_wave-1))
-			e.get_children()[0].health=int(base_hp*pow(hp_elite_growth,current_wave-1))
+			e.get_children()[0].health=int(base_elite_hp*pow(hp_elite_growth,current_wave-1))
 			$"../Enemies".add_child(e)
 			await get_tree().create_timer(spawn_time).timeout
 		else:
@@ -170,8 +266,7 @@ func spawn_enemies():
 			e.position=get_valid_spawnpoint(camera,$"../TileMapLayer")
 			e.elite=false
 			e.exp_value=int(e.exp_value*pow(exp_growth,current_wave-1))
-			e.get_children()[0].health=base_hp
-			e.get_children()[0].health=40
+			e.get_children()[0].health=int(base_hp*pow(hp_growth,current_wave-1))
 			$"../Enemies".add_child(e)
 			#Delay entre spawn de enemigos
 			await get_tree().create_timer(spawn_time).timeout

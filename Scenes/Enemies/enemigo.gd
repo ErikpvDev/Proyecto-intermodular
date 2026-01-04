@@ -19,9 +19,6 @@ var round
 @onready var chest = preload("res://Scenes/Objects/chest.tscn")
 
 func _ready() -> void:
-	health.max_health = 1
-	health.health = health.max_health
-	
 	if elite:
 		$AnimatedSprite2D.play("elite_walking")
 	else:
