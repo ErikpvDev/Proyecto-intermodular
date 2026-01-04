@@ -1,6 +1,6 @@
 [gd_scene load_steps=62 format=3 uid="uid://p0hbqo51nej1"]
 
-[ext_resource type="Script" uid="uid://dlb0vba8x21kc" path="res://Scenes/Character/personaje.gd" id="1_hlutc"]
+[ext_resource type="Script" uid="uid://csbvt3wkmwvqd" path="res://Scenes/Character/personaje.gd" id="1_hlutc"]
 [ext_resource type="PackedScene" uid="uid://dpqhg6grx7xv1" path="res://Scenes/Character/Experience.tscn" id="2_aexvp"]
 [ext_resource type="PackedScene" uid="uid://cy5sa4fsqcy0u" path="res://Scenes/Character/Movement.tscn" id="2_b4m7e"]
 [ext_resource type="PackedScene" uid="uid://ceqqc8ti7diqk" path="res://Scenes/Character/Gold.tscn" id="2_h7pwf"]

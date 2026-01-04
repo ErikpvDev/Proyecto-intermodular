@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://dd6ftiglxwjlf"]
+
+[ext_resource type="Texture2D" uid="uid://b8njatsutg630" path="res://assets/sprites/Objetcs/Shields/Shilds.png" id="1_85sl2"]
+
+[node name="Shield" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(8, 8)
+texture = ExtResource("1_85sl2")

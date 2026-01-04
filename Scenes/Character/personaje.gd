@@ -17,6 +17,9 @@ extends CharacterBody2D
 @onready var heart_object = preload("res://Scenes/Hearts/heart.tscn")
 @onready var health: Node = $Health
 
+#SHIELD
+@onready var shield : int = 0
+
 #MOVEMENT
 @onready var movement: Node = $Movement
 

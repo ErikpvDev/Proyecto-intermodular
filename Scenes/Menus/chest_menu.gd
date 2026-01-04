@@ -1,9 +1,15 @@
 extends Control
 
-signal close_menu
+var chest_queue_free
 
 func _ready() -> void:
+	GlobalSignals.open_chest.connect(open_chest)
 	hide()
+
+
+func open_chest(chest):
+	chest_queue_free=chest
+	show_menu()
 
 func show_menu():
 	get_tree().paused = true
@@ -12,5 +18,6 @@ func show_menu():
 
 
 func _on_button_pressed() -> void:
-	emit_signal("close_menu")
 	hide()
+	get_tree().paused = false
+	chest_queue_free.queue_free()
