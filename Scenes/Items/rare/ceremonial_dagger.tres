@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=2 format=3 uid="uid://dpuwr3o8axqjg"]
+
+[ext_resource type="Script" uid="uid://c81ijt53a2acl" path="res://Scenes/Upgrades/item_data.gd" id="1_4dn5c"]
+
+[resource]
+script = ExtResource("1_4dn5c")
+name = "Ceremonial Dagger"
+description = "Used in ancient rituals. It guides your hand towards the enemy's heart."
+rarity = 1
+damage_bonus = 2.0
+crit_chance_bonus = 0.1
+metadata/_custom_type_script = "uid://c81ijt53a2acl"

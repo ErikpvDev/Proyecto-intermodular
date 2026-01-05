@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=2 format=3 uid="uid://deyupuuch1ls6"]
+
+[ext_resource type="Script" uid="uid://c81ijt53a2acl" path="res://Scenes/Upgrades/item_data.gd" id="1_jrvjf"]
+
+[resource]
+script = ExtResource("1_jrvjf")
+name = "Broken Hourglass"
+description = "Time flows strangely around you. You can attack while the world seems to stand still."
+rarity = 2
+attack_speed_bonus = 0.4
+metadata/_custom_type_script = "uid://c81ijt53a2acl"

@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=2 format=3 uid="uid://b3xm705buod3o"]
+
+[ext_resource type="Script" uid="uid://c81ijt53a2acl" path="res://Scenes/Upgrades/item_data.gd" id="1_3alpm"]
+
+[resource]
+script = ExtResource("1_3alpm")
+name = "Swift Rune Bracelet"
+description = "Vibrates with kinetic energy. Your hands move before you even think about it."
+rarity = 1
+attack_speed_bonus = 0.15
+dodge_chance_bonus = 0.03
+metadata/_custom_type_script = "uid://c81ijt53a2acl"

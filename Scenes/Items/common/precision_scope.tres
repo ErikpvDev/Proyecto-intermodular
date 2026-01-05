@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=2 format=3 uid="uid://sstlmo0cscow"]
+
+[ext_resource type="Script" uid="uid://c81ijt53a2acl" path="res://Scenes/Upgrades/item_data.gd" id="1_w6auh"]
+
+[resource]
+script = ExtResource("1_w6auh")
+name = "Precision Scope"
+description = "Helps locate weak points in the spectral armor."
+crit_chance_bonus = 0.05
+metadata/_custom_type_script = "uid://c81ijt53a2acl"

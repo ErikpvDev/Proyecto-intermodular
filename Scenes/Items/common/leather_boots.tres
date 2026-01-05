@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=2 format=3 uid="uid://b50ncm6vtwb5e"]
+
+[ext_resource type="Script" uid="uid://c81ijt53a2acl" path="res://Scenes/Upgrades/item_data.gd" id="1_72wns"]
+
+[resource]
+script = ExtResource("1_72wns")
+name = "Leather Boots"
+description = "Lightweight and silent. Perfect for not stepping on twigs in the haunted forest."
+move_speed_bonus = 0.04
+metadata/_custom_type_script = "uid://c81ijt53a2acl"

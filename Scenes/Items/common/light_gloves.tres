@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=2 format=3 uid="uid://mcupi1evt400"]
+
+[ext_resource type="Script" uid="uid://c81ijt53a2acl" path="res://Scenes/Upgrades/item_data.gd" id="1_ixoof"]
+
+[resource]
+script = ExtResource("1_ixoof")
+name = "Light Gloves"
+description = "They reduce friction when drawing a bow or swinging a sword."
+attack_speed_bonus = 0.07
+metadata/_custom_type_script = "uid://c81ijt53a2acl"

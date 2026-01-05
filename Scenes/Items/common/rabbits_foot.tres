@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=2 format=3 uid="uid://hrnj71affcx8"]
+
+[ext_resource type="Script" uid="uid://c81ijt53a2acl" path="res://Scenes/Upgrades/item_data.gd" id="1_mcv62"]
+
+[resource]
+script = ExtResource("1_mcv62")
+name = "Rabbit's Foot"
+description = "A classic. It brings good luck, or so the bards say."
+dodge_chance_bonus = 0.03
+metadata/_custom_type_script = "uid://c81ijt53a2acl"
