@@ -2,14 +2,20 @@
 
 [ext_resource type="Texture2D" uid="uid://b8njatsutg630" path="res://assets/sprites/Objetcs/Shields/Shilds.png" id="1_85sl2"]
 
-[node name="Shield" type="Control"]
-layout_mode = 3
+[node name="Shield" type="TextureRect"]
+custom_minimum_size = Vector2(34, 0)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 3.0
+offset_top = 1.0
+offset_right = 3.0
+offset_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(8, 8)
+z_index = 10
+position = Vector2(19, 52.000004)
+scale = Vector2(1.5, 1.5)
 texture = ExtResource("1_85sl2")

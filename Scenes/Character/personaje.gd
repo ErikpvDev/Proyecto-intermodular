@@ -18,7 +18,9 @@ extends CharacterBody2D
 @onready var health: Node = $Health
 
 #SHIELD
-@onready var shield : int = 0
+@onready var shield : int = 3
+@onready var max_shield: int = 3
+@onready var shield_bar: CanvasLayer = $"../UI/ShieldDisplay"
 
 #MOVEMENT
 @onready var movement: Node = $Movement
@@ -34,6 +36,7 @@ var closest_enemy
 #VARIABLES------------------------------------------------------------------------------------------------
 
 func _ready() -> void:
+	GlobalSignals.emit_signal("update_shield",shield)
 	health.max_health = 5
 	
 	# Gets the health bar initial hearts,appends them to the array and shows them on screen
@@ -44,9 +47,9 @@ func _ready() -> void:
 		
 	health.health=health.max_health
 	update_heart_display()
-	
 	# Sets Gold to its initial value
 	gold_coins_number.text=str(gold_coins)
+	
 	
 	$AttackArea/CollisionShape2D.disabled=true
 	$AttackArea/AnimatedSprite2D.visible=false
@@ -61,16 +64,18 @@ func _process(delta):
 func update_heart_display():
 	# Check the number of hearts to show based on the current health of the player as "idle"
 	# and the rest "damaged"
-	for i in range(health_bar.get_child(0).get_children().size()):
+	var hearts = health_bar.get_child(0).get_children()
+	
+	for i in range(hearts.size()):
 		if i < health.health:
-			health_bar.get_child(0).get_children()[i].get_child(0).play("idle")
+			hearts[i].get_child(0).play("idle")
 		else:
-			health_bar.get_child(0).get_children()[i].get_child(0).play("damaged")
+			hearts[i].get_child(0).play("damaged")
 	# Check if it's the last heart and if so play the "beating" animation if not play the "idle" animation  
 	if health.health > 1:
-		health_bar.get_child(0).get_children()[0].get_child(0).play("idle")
+		hearts[0].get_child(0).play("idle")
 	else:
-		health_bar.get_child(0).get_children()[0].get_child(0).play("beating")
+		hearts[0].get_child(0).play("beating")
 
 func add_health(amount: int) -> void:
 	health.add_health(amount)
@@ -90,9 +95,13 @@ func _on_health_max_health_changed(new_health: Variant, prev_max_health: Variant
 
 func take_damage(amount: int) -> void: 
 	if !movement.dashing:
-		health.take_damage(amount)
-		update_heart_display()
-		$AnimationPlayer.play("hit")
+		if shield >= 1:
+			shield=shield-1
+			GlobalSignals.emit_signal("update_shield",shield)
+		else:	
+			health.take_damage(amount)
+			update_heart_display()
+			$AnimationPlayer.play("hit")
 
 func add_exp(amount: int) -> void:
 	experience.add_exp(amount)

@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://bam0ik66tfskr"]
+[gd_scene load_steps=8 format=3 uid="uid://bam0ik66tfskr"]
 
 [ext_resource type="Script" uid="uid://c8nkt2yjlif3d" path="res://Scenes/UI/ui.gd" id="1_alcrr"]
 [ext_resource type="PackedScene" uid="uid://bk01ah10djpvn" path="res://Scenes/Gold/Gold.tscn" id="1_i5q6i"]
+[ext_resource type="PackedScene" uid="uid://bcdvrvvqdkmtn" path="res://Scenes/Shields/ShieldDisplay.tscn" id="2_duuxe"]
 [ext_resource type="PackedScene" uid="uid://bqy0xbspvp3gc" path="res://Scenes/Hearts/health_bar.tscn" id="2_hwbc8"]
 [ext_resource type="PackedScene" uid="uid://dv7lc10i5l7rj" path="res://Scenes/UI/Exp/exp.tscn" id="3_hwbc8"]
 [ext_resource type="PackedScene" uid="uid://cewa4t80pl5nn" path="res://Scenes/Wave/wave.tscn" id="4_fo61o"]
@@ -9,6 +10,9 @@
 
 [node name="UI" type="CanvasGroup"]
 script = ExtResource("1_alcrr")
+
+[node name="ShieldDisplay" parent="." instance=ExtResource("2_duuxe")]
+layer = 2
 
 [node name="Gold" parent="." instance=ExtResource("1_i5q6i")]
 

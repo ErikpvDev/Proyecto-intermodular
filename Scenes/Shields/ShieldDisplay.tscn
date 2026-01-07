@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://bcdvrvvqdkmtn"]
+
+[ext_resource type="Script" uid="uid://b5eh66ae0ohd8" path="res://Scenes/Shields/Shield_Display.gd" id="1_hle1u"]
+[ext_resource type="PackedScene" uid="uid://dd6ftiglxwjlf" path="res://Scenes/Shields/Shield.tscn" id="2_oae1u"]
+
+[node name="ShieldDisplay" type="CanvasLayer"]
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+offset_right = 144.0
+offset_bottom = 48.0
+scale = Vector2(1.5, 1.5)
+size_flags_stretch_ratio = 4.3
+script = ExtResource("1_hle1u")
+
+[node name="Shield" parent="HBoxContainer" instance=ExtResource("2_oae1u")]
+layout_mode = 2
+
+[node name="Shield2" parent="HBoxContainer" instance=ExtResource("2_oae1u")]
+layout_mode = 2
+
+[node name="Shield3" parent="HBoxContainer" instance=ExtResource("2_oae1u")]
+layout_mode = 2
