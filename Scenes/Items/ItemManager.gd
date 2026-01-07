@@ -11,9 +11,9 @@ const CHANCE_LEGENDARY = 0.05   # 5%
 @export var legendary_items: Array[ItemData] = []
 
 func _ready():
-	load_from_folder("res://Scenes/Items/Common/", common_items)
-	load_from_folder("res://Scenes/Items/Rare/", rare_items)
-	load_from_folder("res://Scenes/Items/Legendary/", legendary_items)
+	load_from_folder("res://Scenes/Items/common/", common_items)
+	load_from_folder("res://Scenes/Items/rare/", rare_items)
+	load_from_folder("res://Scenes/Items/legendary/", legendary_items)
 	
 	print("Items cargados: %d Comunes, %d Raros, %d Legendarios" % [common_items.size(), rare_items.size(), legendary_items.size()])
 
@@ -26,6 +26,15 @@ func get_item():
 		return rare_items.pick_random()
 	else:
 		return legendary_items.pick_random()
+		
+func get_different_items(amount: int):
+	var item_array = []
+	var item_try
+	while (item_array.size() < amount):
+		item_try = get_item()
+		if (item_try not in item_array):
+			item_array.append(item_try)
+	return item_array
 
 # Función para leer de carpetas
 func load_from_folder(path: String, target_array: Array[ItemData]):
