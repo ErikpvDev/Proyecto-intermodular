@@ -1,11 +1,11 @@
 [gd_resource type="Resource" script_class="ItemData" load_steps=2 format=3 uid="uid://dk43sm2ugk75o"]
 
-[ext_resource type="Script" uid="uid://c81ijt53a2acl" path="res://Scenes/Items/item_data.gd" id="1_u0okj"]
+[ext_resource type="Script" uid="uid://ddw38bw356lig" path="res://Scenes/Items/item_data.gd" id="1_u0okj"]
 
 [resource]
 script = ExtResource("1_u0okj")
 name = "Traveler's Cloak"
 description = "Enchanted with wind magic. It flutters even when you are standing still."
 rarity = 1
-move_speed_bonus = 0.1
-metadata/_custom_type_script = "uid://c81ijt53a2acl"
+crit_chance_bonus = 0.03
+move_speed_bonus = 0.07

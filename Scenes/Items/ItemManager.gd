@@ -15,7 +15,7 @@ func _ready():
 	load_from_folder("res://Scenes/Items/rare/", rare_items)
 	load_from_folder("res://Scenes/Items/legendary/", legendary_items)
 	
-	print("Items cargados: %d Comunes, %d Raros, %d Legendarios" % [common_items.size(), rare_items.size(), legendary_items.size()])
+	#print("Items cargados: %d Comunes, %d Raros, %d Legendarios" % [common_items.size(), rare_items.size(), legendary_items.size()])
 
 func get_item():
 	var roll = randf()

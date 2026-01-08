@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="ItemData" load_steps=2 format=3 uid="uid://bsgrha3nrwjfs"]
 
-[ext_resource type="Script" uid="uid://c81ijt53a2acl" path="res://Scenes/Items/item_data.gd" id="1_al1x4"]
+[ext_resource type="Script" uid="uid://ddw38bw356lig" path="res://Scenes/Items/item_data.gd" id="1_al1x4"]
 
 [resource]
 script = ExtResource("1_al1x4")
@@ -8,4 +8,3 @@ name = "Chalice of Vitality"
 description = "Contains a sip of dragon's blood. It makes you feel more alive than ever."
 rarity = 1
 max_hp_bonus = 1.0
-metadata/_custom_type_script = "uid://c81ijt53a2acl"

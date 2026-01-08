@@ -1,11 +1,10 @@
 [gd_resource type="Resource" script_class="ItemData" load_steps=2 format=3 uid="uid://b427ee3pvo508"]
 
-[ext_resource type="Script" uid="uid://c81ijt53a2acl" path="res://Scenes/Items/item_data.gd" id="1_slyyn"]
+[ext_resource type="Script" uid="uid://ddw38bw356lig" path="res://Scenes/Items/item_data.gd" id="1_slyyn"]
 
 [resource]
 script = ExtResource("1_slyyn")
 name = "Shard of Pure Light"
 description = "A piece of a fallen star. Its radiance is so intense it disintegrates shadows upon contact."
 rarity = 2
-damage_multiplier = 2.0
-metadata/_custom_type_script = "uid://c81ijt53a2acl"
+damage_multiplier = 1.5

@@ -7,6 +7,9 @@ extends Node
 var dashing = false
 var dash_available = true
 
+func _ready() -> void:
+	GlobalSignals.update_move_speed.connect(update_move_speed)
+
 func dash() -> void:
 	dashing=true
 	dash_available=false
@@ -41,3 +44,6 @@ func _on_dash_timer_timeout() -> void:
 
 func _on_dash_cooldown_timer_timeout() -> void:
 	dash_available=true
+	
+func update_move_speed(amount: float):
+	move_speed = move_speed * (1 + amount)

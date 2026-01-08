@@ -2,15 +2,16 @@ extends CharacterBody2D
 
 #ATTACK
 @export var damage: int = 5
+@onready var damage_multiplier: int = 1
 
-#EXP/LVL
-@onready var exp_bar: TextureProgressBar = $"../UI/Exp/TextureProgressBar"
-@onready var exp_lvl_text: Label = $"../UI/Exp/Label"
-@onready var experience: Node = $Experience
+#MOVEMENT
+@onready var movement: Node = $Movement
 
-#GOLD
-@export var gold_coins : int = 0
-@onready var gold_coins_number=$"../UI/Gold/HBoxContainer/Label"
+#DODGE CHANCE
+@onready var dodge_chance: float = 0
+
+#CRIT CHANCE
+@onready var crit_chance: int = 0
 
 #HEARTS/HEALTH
 @onready var health_bar: CanvasLayer = $"../UI/health_bar"
@@ -22,8 +23,14 @@ extends CharacterBody2D
 @onready var max_shield: int = 3
 @onready var shield_bar: CanvasLayer = $"../UI/ShieldDisplay"
 
-#MOVEMENT
-@onready var movement: Node = $Movement
+#EXP/LVL
+@onready var exp_bar: TextureProgressBar = $"../UI/Exp/TextureProgressBar"
+@onready var exp_lvl_text: Label = $"../UI/Exp/Label"
+@onready var experience: Node = $Experience
+
+#GOLD
+@export var gold_coins : int = 0
+@onready var gold_coins_number=$"../UI/Gold/HBoxContainer/Label"
 
 #ENEMIES
 var enemies_hit_this_attack=[]
@@ -95,13 +102,14 @@ func _on_health_max_health_changed(new_health: Variant, prev_max_health: Variant
 
 func take_damage(amount: int) -> void: 
 	if !movement.dashing:
-		if shield >= 1:
-			shield=shield-1
-			GlobalSignals.emit_signal("update_shield",shield)
-		else:	
-			health.take_damage(amount)
-			update_heart_display()
-			$AnimationPlayer.play("hit")
+		if (!randf()<dodge_chance):
+			if shield >= 1:
+				shield=shield-1
+				GlobalSignals.emit_signal("update_shield",shield)
+			else:	
+				health.take_damage(amount)
+				update_heart_display()
+				$AnimationPlayer.play("hit")
 
 func add_exp(amount: int) -> void:
 	experience.add_exp(amount)
@@ -163,4 +171,7 @@ func _on_attack_area_area_entered(area: Area2D) -> void:
 	var parent = area.get_parent()
 	
 	if parent.has_method("take_damage") && parent!=self:
-		parent.take_damage(damage)
+		if (randf()>crit_chance):
+			parent.take_damage(damage*damage_multiplier)
+		else:
+			parent.take_damage(damage*damage_multiplier*2)

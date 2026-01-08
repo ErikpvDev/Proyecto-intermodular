@@ -461,8 +461,7 @@ wait_time = 0.3
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="AttackArea"]
 z_index = 4096
-position = Vector2(44.767967, 1.5625005)
-scale = Vector2(0.914624, 0.91223407)
+scale = Vector2(0.915, 0.912)
 sprite_frames = SubResource("SpriteFrames_malha")
 animation = &"attacking"
 
