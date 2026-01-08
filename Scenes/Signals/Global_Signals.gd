@@ -8,3 +8,6 @@ signal update_shield(cant)
 
 #Señal para modificar la velocidad
 signal update_move_speed(amount)
+
+#Señal para notificar el cambio de ronda
+signal miniboss_spawn()

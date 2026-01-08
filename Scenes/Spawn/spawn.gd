@@ -1,6 +1,6 @@
 extends Node2D
 
-@onready var current_wave=1
+@onready var current_wave=4
 var base_elite_chance = 0.02
 var elite_prob_percent
 @export var exp_growth=1.15
@@ -288,6 +288,7 @@ func update_wave():
 	for rondas in enemy_dict:
 		prob = base_elite_chance * enemy_dict[rondas][1]
 		elite_prob_percent = snapped(prob * 100, 2)
+	
 	emit_signal("between_waves_screen_timer")
 	
 	#Vase calculation
@@ -299,5 +300,8 @@ func update_wave():
 	
 	await get_tree().create_timer(between_waves).timeout
 	wave_text.text = "WAVE "+str(current_wave)
-	spawn_enemies()
+	if current_wave % 5 != 0:
+		spawn_enemies()
+	else:
+		emit_signal("miniboss_spawn")
 	spawn_vase()
