@@ -1,11 +1,10 @@
 [gd_resource type="Resource" script_class="ItemData" load_steps=2 format=3 uid="uid://bvmueo3ywnoe1"]
 
-[ext_resource type="Script" uid="uid://c81ijt53a2acl" path="res://Scenes/Items/item_data.gd" id="1_n42q2"]
+[ext_resource type="Script" uid="uid://ddw38bw356lig" path="res://Scenes/Items/item_data.gd" id="1_n42q2"]
 
 [resource]
 script = ExtResource("1_n42q2")
 name = "Spiritist's Lens"
 description = "Amplifies your soul's projection. Your arrows, swords, and spells become gigantic."
 rarity = 2
-projectile_size_multiplier = 2.0
-metadata/_custom_type_script = "uid://c81ijt53a2acl"
+projectile_size_multiplier = 1.5

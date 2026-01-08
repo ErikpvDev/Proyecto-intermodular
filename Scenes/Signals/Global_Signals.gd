@@ -8,3 +8,9 @@ signal update_shield(cant)
 
 #Señal para modificar la velocidad
 signal update_move_speed(amount)
+
+#Señal para modificar la velocidad de ataque
+signal update_attack_speed(amount)
+
+#Señal para modificar la velocidad de ataque
+signal update_attack_size(amount)

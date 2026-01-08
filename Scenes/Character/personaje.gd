@@ -13,6 +13,12 @@ extends CharacterBody2D
 #CRIT CHANCE
 @onready var crit_chance: int = 0
 
+#ATTACK SPEED
+@onready var attack_speed: float = 0
+
+#ATTACK SIZE
+@onready var attack_size: float = 1
+
 #HEARTS/HEALTH
 @onready var health_bar: CanvasLayer = $"../UI/health_bar"
 @onready var heart_object = preload("res://Scenes/Hearts/heart.tscn")
