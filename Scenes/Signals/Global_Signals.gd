@@ -16,3 +16,6 @@ signal update_attack_speed(amount)
 
 #Señal para modificar la velocidad de ataque
 signal update_attack_size(amount)
+
+#Señal para recoger un item
+signal get_item(item)

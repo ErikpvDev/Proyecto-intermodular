@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 #ATTACK
 @export var damage: int = 5
-@onready var damage_multiplier: int = 1
+@onready var damage_multiplier: float = 1
 
 #MOVEMENT
 @onready var movement: Node = $Movement
@@ -11,7 +11,7 @@ extends CharacterBody2D
 @onready var dodge_chance: float = 0
 
 #CRIT CHANCE
-@onready var crit_chance: int = 0
+@onready var crit_chance: float = 0
 
 #ATTACK SPEED
 @onready var attack_speed: float = 0
@@ -25,7 +25,7 @@ extends CharacterBody2D
 @onready var health: Node = $Health
 
 #SHIELD
-@onready var shield : int = 3
+@onready var shield : int = 0
 @onready var max_shield: int = 3
 @onready var shield_bar: CanvasLayer = $"../UI/ShieldDisplay"
 
@@ -48,7 +48,9 @@ var closest_enemy
 
 #VARIABLES------------------------------------------------------------------------------------------------
 
-func _ready() -> void:
+func _ready() -> void:	
+	GlobalSignals.get_item.connect(get_item)
+	
 	GlobalSignals.emit_signal("update_shield",shield)
 	health.max_health = 5
 	
@@ -181,3 +183,27 @@ func _on_attack_area_area_entered(area: Area2D) -> void:
 			parent.take_damage(damage*damage_multiplier)
 		else:
 			parent.take_damage(damage*damage_multiplier*2)
+
+func get_item(item: ItemData):
+	damage += item.damage_bonus
+	damage_multiplier *= item.damage_multiplier
+	GlobalSignals.emit_signal("update_move_speed", item.move_speed_bonus)
+	dodge_chance += item.dodge_chance_bonus
+	crit_chance += item.crit_chance_bonus
+	attack_speed += item.attack_speed_bonus
+	attack_size *= item.projectile_size_multiplier
+	if (shield<=3):
+		shield += item.shield_bonus
+		GlobalSignals.emit_signal("update_shield", shield)
+	add_max_health(item.max_hp_bonus)
+	add_health(item.max_hp_bonus)
+	update_heart_display()
+	#print(damage)
+	#print(damage_multiplier)
+	#print(movement.move_speed)
+	#print(dodge_chance)
+	#print(crit_chance)
+	#print(attack_speed)
+	#print(attack_size)
+	#print(shield)
+	#print(health.health)

@@ -14,4 +14,3 @@ func update_shield(cant):
 	for i in range(cant):
 		var s = shield.instantiate()
 		add_child(s)
-		print("escudo añadido")

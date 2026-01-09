@@ -33,9 +33,12 @@ func get_items():
 
 func _on_object_01_pressed() -> void:
 	emit_signal("item_selected")
+	GlobalSignals.emit_signal("get_item", item1)
 
 func _on_object_02_pressed() -> void:
 	emit_signal("item_selected")
-
+	GlobalSignals.emit_signal("get_item", item2)
+	
 func _on_object_03_pressed() -> void:
 	emit_signal("item_selected")
+	GlobalSignals.emit_signal("get_item", item3)
