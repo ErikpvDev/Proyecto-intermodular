@@ -14,7 +14,7 @@ var elite
 
 @onready var enemy_dict = spawn.enemy_dict
 var p_drop
-var round
+var round_number
 
 @onready var chest = preload("res://Scenes/Objects/chest.tscn")
 
@@ -60,8 +60,8 @@ func _on_health_health_changed(new_health: Variant) -> void:
 	health.health=new_health
 	
 func drop_chest():
-	round = spawn.current_wave
-	p_drop = clamp((0.005 + 0.000045 * pow(enemy_dict[round][0], 1.12)) * (3.0 if elite else 1.0), 0.0, 0.25)
+	round_number = spawn.current_wave
+	p_drop = clamp((0.005 + 0.000045 * pow(enemy_dict[round_number][0], 1.12)) * (3.0 if elite else 1.0), 0.0, 0.25)
 	if (randf_range(0,100)<100):
 		var c = chest.instantiate()
 		c.position = position

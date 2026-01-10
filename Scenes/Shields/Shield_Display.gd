@@ -7,8 +7,8 @@ func _ready() -> void:
 
 func update_shield(cant):
 #	Clean all the shields
-	for shield in get_children():
-		shield.queue_free()
+	for shield_object in get_children():
+		shield_object.queue_free()
 		
 #	Print all the shields
 	for i in range(cant):

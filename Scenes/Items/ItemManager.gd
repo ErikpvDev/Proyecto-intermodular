@@ -26,7 +26,7 @@ func get_item():
 		return rare_items.pick_random()
 	else:
 		return legendary_items.pick_random()
-		
+	
 func get_different_items(amount: int):
 	var item_array = []
 	var item_try

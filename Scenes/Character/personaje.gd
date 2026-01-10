@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 #ATTACK
-@export var damage: int = 5
+@export var damage: float = 5
 @onready var damage_multiplier: float = 1
 
 #MOVEMENT
@@ -191,7 +191,9 @@ func get_item(item: ItemData):
 	dodge_chance += item.dodge_chance_bonus
 	crit_chance += item.crit_chance_bonus
 	attack_speed += item.attack_speed_bonus
-	attack_size *= item.projectile_size_multiplier
+	if (attack_size < 2.25):
+		attack_size = attack_size * item.projectile_size_multiplier
+		GlobalSignals.update_attack_size.emit(attack_size)
 	if (shield<=3):
 		shield += item.shield_bonus
 		GlobalSignals.emit_signal("update_shield", shield)
