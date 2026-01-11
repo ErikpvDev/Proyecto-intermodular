@@ -157,7 +157,7 @@ func get_valid_spawnpoint(cam: Camera2D, tilemap_layer: TileMapLayer, margin: fl
 	
 	# 1. OBTENER LÍMITES DEL TILEMAP (Mundo)
 	var used_rect_i: Rect2i = tilemap_layer.get_used_rect()
-	var local_pos = tilemap_layer.map_to_local(used_rect_i.position)
+	#var local_pos = tilemap_layer.map_to_local(used_rect_i.position)
 	# Nota: map_to_local devuelve el centro del tile, a veces es mejor usar position * tile_size directamente si no hay transforms raros.
 	# Pero asumiendo tu lógica original funciona para el mapa, la dejamos así ajustando un poco:
 	var tile_size = tilemap_layer.tile_set.tile_size

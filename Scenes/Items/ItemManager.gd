@@ -1,8 +1,8 @@
 extends Node
 
 # Probabilidades para cada rareza de objeto
-const CHANCE_COMMON = 0.70      # 70%
-const CHANCE_RARE = 0.25        # 25%
+const CHANCE_COMMON = 0.75      # 75%
+const CHANCE_RARE = 0.20        # 20%
 const CHANCE_LEGENDARY = 0.05   # 5%
 
 # Arrays para los objetos segun su calidad
@@ -26,7 +26,7 @@ func get_item():
 		return rare_items.pick_random()
 	else:
 		return legendary_items.pick_random()
-		
+	
 func get_different_items(amount: int):
 	var item_array = []
 	var item_try
