@@ -1,0 +1,127 @@
+[gd_scene load_steps=12 format=3 uid="uid://jmmyxp4ar3lm"]
+
+[ext_resource type="Texture2D" uid="uid://ch4sdb4mkb2s2" path="res://assets/sprites/Enemies/Bosses/Golem/arm_projectile_glowing.png" id="2_yxnks"]
+
+[sub_resource type="GDScript" id="GDScript_1vmux"]
+script/source = "extends Area2D
+
+@onready var animated_sprite = $AnimatedSprite2D
+@onready var player = get_parent().find_child(\"Character\")
+
+@export var speed := 180
+@export var turn_speed := 4
+@export var seek_time := 3
+@export var life_time := 20
+
+var velocity: Vector2
+var seeking := true
+
+func _ready():
+	velocity = transform.x * speed
+	
+	# Dejar de buscar al jugador
+	get_tree().create_timer(seek_time).timeout.connect(stop_seeking)
+	
+	# Autodestrucción
+	get_tree().create_timer(life_time).timeout.connect(queue_free)
+
+
+func stop_seeking():
+	seeking = false
+
+func _physics_process(delta: float) -> void:
+	if seeking:
+		var desired_dir = (player.global_position - global_position).normalized()
+		var desired_velocity = desired_dir * speed
+		velocity = velocity.lerp(desired_velocity, turn_speed * delta)
+	
+	rotation = velocity.angle()
+	global_position += velocity * delta
+
+func _on_body_entered(body: Node2D) -> void:
+	if body.is_in_group(\"character\"):
+		print(\"misil borrado\")
+		queue_free()
+
+
+func _on_stop_distance_body_entered(body: Node2D) -> void:
+	if body.is_in_group(\"character\"):
+		print(\"Dejar de seguir\")
+		stop_seeking()
+"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2xcxf"]
+atlas = ExtResource("2_yxnks")
+region = Rect2(0, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ek64i"]
+atlas = ExtResource("2_yxnks")
+region = Rect2(100, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_03uv7"]
+atlas = ExtResource("2_yxnks")
+region = Rect2(200, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ogufs"]
+atlas = ExtResource("2_yxnks")
+region = Rect2(0, 100, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4cuho"]
+atlas = ExtResource("2_yxnks")
+region = Rect2(100, 100, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fgpu8"]
+atlas = ExtResource("2_yxnks")
+region = Rect2(200, 100, 100, 100)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3jd8s"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2xcxf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ek64i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_03uv7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ogufs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4cuho")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fgpu8")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h7m0a"]
+size = Vector2(37, 14)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1vmux"]
+radius = 28.01785
+
+[node name="bullet" type="Area2D"]
+script = SubResource("GDScript_1vmux")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_3jd8s")
+autoplay = "default"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(28, -13)
+shape = SubResource("RectangleShape2D_h7m0a")
+
+[node name="Stop_distance" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Stop_distance"]
+position = Vector2(28, -13)
+shape = SubResource("CircleShape2D_1vmux")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_entered" from="Stop_distance" to="." method="_on_stop_distance_body_entered"]

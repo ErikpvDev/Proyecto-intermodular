@@ -1,6 +1,6 @@
 extends Node2D
 
-@onready var current_wave=4
+@onready var current_wave=5
 var base_elite_chance = 0.02
 var elite_prob_percent
 @export var exp_growth=1.15
@@ -66,6 +66,7 @@ signal between_waves_screen_timer
 
 func _ready():
 	update_wave()
+	
 
 func enemy_death():
 	dead_enemies+=1
@@ -303,5 +304,5 @@ func update_wave():
 	if current_wave % 5 != 0:
 		spawn_enemies()
 	else:
-		emit_signal("miniboss_spawn")
+		GlobalSignals.emit_signal("miniboss_spawn")
 	spawn_vase()

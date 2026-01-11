@@ -11,6 +11,7 @@ signal update_move_speed(amount)
 
 #Señal para notificar el cambio de ronda
 signal miniboss_spawn()
+
 #Señal para modificar la velocidad de ataque
 signal update_attack_speed(amount)
 
