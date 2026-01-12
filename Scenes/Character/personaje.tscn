@@ -478,6 +478,9 @@ libraries = {
 
 [node name="InteractingComponent" parent="." instance=ExtResource("8_vc3aq")]
 
+[node name="Center" type="Marker2D" parent="."]
+position = Vector2(0, 2)
+
 [connection signal="health_changed" from="Health" to="." method="_on_health_health_changed"]
 [connection signal="max_health_changed" from="Health" to="." method="_on_health_max_health_changed"]
 [connection signal="body_entered" from="prueba" to="." method="_on_area_2d_body_entered"]

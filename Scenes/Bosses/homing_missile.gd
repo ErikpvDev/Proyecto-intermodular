@@ -2,6 +2,7 @@ extends State
 
 @export var bullet_node: PackedScene
 var can_transition: bool = false
+@onready var sprite = $"../../Sprite2D"
 
 func enter():
 	super.enter()
@@ -12,7 +13,8 @@ func enter():
 
 func shoot():
 	var bullet = bullet_node.instantiate()
-	bullet.position = owner.position
+	bullet.global_position = owner.global_position
+	
 	get_tree().current_scene.add_child(bullet)
 
 func transition():

@@ -13,8 +13,7 @@ extends Control
 signal item_selected
 
 func _ready() -> void:
-	
-	hide()	
+	hide()
 	
 func show_menu():
 	get_items()
@@ -27,9 +26,12 @@ func get_items():
 	item1 = item_array[0]
 	item2 = item_array[1]
 	item3 = item_array[2]
-	contenedor1.get_child(2).text = item1.name
-	contenedor2.get_child(2).text = item2.name
-	contenedor3.get_child(2).text = item3.name
+	contenedor1.get_child(0).text = item1.name
+	contenedor2.get_child(0).text = item2.name
+	contenedor3.get_child(0).text = item3.name
+	contenedor1.get_child(2).text = item1.description
+	contenedor2.get_child(2).text = item2.description
+	contenedor3.get_child(2).text = item3.description
 
 func _on_object_01_pressed() -> void:
 	emit_signal("item_selected")

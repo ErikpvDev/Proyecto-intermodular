@@ -103,8 +103,9 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h7m0a"]
 size = Vector2(37, 14)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_1vmux"]
-radius = 28.01785
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1vmux"]
+radius = 10.999999
+height = 62.0
 
 [node name="bullet" type="Area2D"]
 script = SubResource("GDScript_1vmux")
@@ -121,7 +122,8 @@ shape = SubResource("RectangleShape2D_h7m0a")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Stop_distance"]
 position = Vector2(28, -13)
-shape = SubResource("CircleShape2D_1vmux")
+rotation = -1.5707964
+shape = SubResource("CapsuleShape2D_1vmux")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_entered" from="Stop_distance" to="." method="_on_stop_distance_body_entered"]

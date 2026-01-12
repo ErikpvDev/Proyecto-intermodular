@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://rahtjweordfx"]
+[gd_scene load_steps=9 format=3 uid="uid://rahtjweordfx"]
 
 [ext_resource type="Script" uid="uid://20nf6qvtbtar" path="res://Scenes/Menus/level_up_menu.gd" id="1_0rmfn"]
 [ext_resource type="Texture2D" uid="uid://c1tp7pqe622b5" path="res://icon.svg" id="1_mkk26"]
@@ -7,6 +7,8 @@
 [sub_resource type="LabelSettings" id="LabelSettings_7s48k"]
 font = ExtResource("2_412y8")
 font_size = 256
+
+[sub_resource type="LabelSettings" id="LabelSettings_412y8"]
 
 [sub_resource type="Animation" id="Animation_412y8"]
 length = 0.001
@@ -60,14 +62,17 @@ script = ExtResource("1_0rmfn")
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 1
-anchors_preset = 5
+anchors_preset = 8
 anchor_left = 0.5
+anchor_top = 0.5
 anchor_right = 0.5
-offset_left = -734.053
-offset_top = -403.995
-offset_right = 734.0531
-offset_bottom = 580.5288
+anchor_bottom = 0.5
+offset_left = -734.05304
+offset_top = -492.2619
+offset_right = 734.05304
+offset_bottom = 492.2619
 grow_horizontal = 2
+grow_vertical = 2
 
 [node name="Label" type="Label" parent="Panel"]
 layout_mode = 1
@@ -86,91 +91,82 @@ clip_text = true
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Panel"]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -380.95236
-offset_top = -269.04767
-offset_right = 458.68353
-offset_bottom = 281.37262
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 381.67206
+offset_top = 454.16663
+offset_right = -270.80933
+offset_bottom = 831.2843
 grow_horizontal = 2
-grow_vertical = 2
 scale = Vector2(1.7, 1.7)
 pivot_offset = Vector2(474, 273)
-alignment = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel/HBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 4
-alignment = 1
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.79
 
 [node name="Name" type="Label" parent="Panel/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 text = "Object01 Name"
 horizontal_alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="Panel/HBoxContainer/VBoxContainer"]
+[node name="Object01" type="TextureButton" parent="Panel/HBoxContainer/VBoxContainer"]
 layout_mode = 2
-texture = ExtResource("1_mkk26")
-stretch_mode = 3
-
-[node name="Object01" type="Button" parent="Panel/HBoxContainer/VBoxContainer"]
-layout_mode = 2
-text = "Object 01"
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("1_mkk26")
 
 [node name="Description" type="Label" parent="Panel/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(20.03, 0)
 layout_mode = 2
-text = "Object Description"
+label_settings = SubResource("LabelSettings_412y8")
+horizontal_alignment = 1
+autowrap_mode = 2
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="Panel/HBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 4
-alignment = 1
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.79
 
 [node name="Name" type="Label" parent="Panel/HBoxContainer/VBoxContainer2"]
 layout_mode = 2
 text = "Object02 Name"
 horizontal_alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="Panel/HBoxContainer/VBoxContainer2"]
+[node name="Object02" type="TextureButton" parent="Panel/HBoxContainer/VBoxContainer2"]
 layout_mode = 2
-texture = ExtResource("1_mkk26")
-stretch_mode = 3
-
-[node name="Object02" type="Button" parent="Panel/HBoxContainer/VBoxContainer2"]
-layout_mode = 2
-text = "Object 02"
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("1_mkk26")
 
 [node name="Description" type="Label" parent="Panel/HBoxContainer/VBoxContainer2"]
 layout_mode = 2
-text = "Object Description"
+label_settings = SubResource("LabelSettings_412y8")
+horizontal_alignment = 1
+autowrap_mode = 2
 
 [node name="VBoxContainer3" type="VBoxContainer" parent="Panel/HBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 8
-alignment = 1
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.79
 
 [node name="Name" type="Label" parent="Panel/HBoxContainer/VBoxContainer3"]
 layout_mode = 2
 text = "Object03 Name"
 horizontal_alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="Panel/HBoxContainer/VBoxContainer3"]
+[node name="Object03" type="TextureButton" parent="Panel/HBoxContainer/VBoxContainer3"]
 layout_mode = 2
-texture = ExtResource("1_mkk26")
-stretch_mode = 3
-
-[node name="Object03" type="Button" parent="Panel/HBoxContainer/VBoxContainer3"]
-layout_mode = 2
-text = "Object 03"
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("1_mkk26")
 
 [node name="Description" type="Label" parent="Panel/HBoxContainer/VBoxContainer3"]
 layout_mode = 2
-text = "Object Description"
+label_settings = SubResource("LabelSettings_412y8")
+horizontal_alignment = 1
+autowrap_mode = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
