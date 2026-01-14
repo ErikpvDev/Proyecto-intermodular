@@ -11,9 +11,14 @@ var speed := 150
 var turn_speed := 6.0
 
 func _physics_process(delta: float) -> void:
-	var direction = (player_center.position - position).normalized()
-	velocity = direction * 150
+	
+	acceleration = (player.position - position).normalized() * 700
+	
+	velocity += acceleration * delta
 	rotation = velocity.angle()
+	
+	velocity = velocity.limit_length(150)
+	
 	position += velocity * delta
 
 

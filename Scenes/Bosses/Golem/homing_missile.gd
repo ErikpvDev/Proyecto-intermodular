@@ -13,10 +13,9 @@ func enter():
 
 func shoot():
 	var bullet = bullet_node.instantiate()
-	bullet.global_position = owner.global_position
-	
+	bullet.position = owner.position
 	get_tree().current_scene.add_child(bullet)
-
+	
 func transition():
 	if can_transition:
 		can_transition = false

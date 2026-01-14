@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://3vcjcs60fu3o"]
+
+[ext_resource type="Script" uid="uid://bfkbnbkwtlgb" path="res://Scenes/Bosses/Bullet_Hell/attack_indicator.gd" id="1_fpg8o"]
+[ext_resource type="Texture2D" uid="uid://5r3t65xl52hf" path="res://assets/sprites/Enemies/Bosses/AttackIndicator.png" id="2_htspa"]
+
+[node name="AttackIndicator" type="Node2D"]
+script = ExtResource("1_fpg8o")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_htspa")

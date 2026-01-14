@@ -3,6 +3,7 @@ extends CharacterBody2D
 @onready var player = $"../../Character"
 @onready var sprite = $Sprite2D
 
+var in_dash: bool = false
 var direction : Vector2
 
 func _ready() -> void:

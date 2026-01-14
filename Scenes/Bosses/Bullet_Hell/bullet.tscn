@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://bltsh3akbyydi"]
+
+[ext_resource type="Script" uid="uid://dmkpkkkrlyi7f" path="res://Scenes/Bosses/Bullet_Hell/bullet.gd" id="1_kawbf"]
+[ext_resource type="Texture2D" uid="uid://c1tp7pqe622b5" path="res://icon.svg" id="2_8k1s1"]
+
+[node name="Bullet" type="Area2D"]
+script = ExtResource("1_kawbf")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-9.536743e-07, 0)
+scale = Vector2(0.06640625, 0.06640625)
+texture = ExtResource("2_8k1s1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

@@ -1,19 +1,20 @@
-[gd_scene load_steps=27 format=3 uid="uid://c1pwj5dcpcrcv"]
+[gd_scene load_steps=28 format=3 uid="uid://c1pwj5dcpcrcv"]
 
-[ext_resource type="Texture2D" uid="uid://du45bmr8jisuy" path="res://assets/sprites/Enemies/Bosses/Golem/Character_sheet.png" id="1_4q6se"]
-[ext_resource type="Script" uid="uid://cr25ckdkrvbof" path="res://Scenes/Bosses/golem.gd" id="1_m44y3"]
-[ext_resource type="Texture2D" uid="uid://bbfswghk06n3y" path="res://assets/sprites/Enemies/Bosses/Golem/Laser_sheet.png" id="2_fmrxo"]
-[ext_resource type="Texture2D" uid="uid://bjc4fejijgsl2" path="res://assets/sprites/Objetcs/Exp/Under.png" id="3_2yq5j"]
-[ext_resource type="Texture2D" uid="uid://xwm27srbs3p6" path="res://assets/sprites/Objetcs/Exp/Over.png" id="4_po4jp"]
-[ext_resource type="Texture2D" uid="uid://baaqhre1lhrcl" path="res://assets/sprites/Objetcs/Exp/Progress.png" id="5_8wxll"]
-[ext_resource type="Script" uid="uid://bv1skx0iyne61" path="res://Scenes/Bosses/finite_state_machine.gd" id="6_2yq5j"]
-[ext_resource type="Script" uid="uid://355awjcfxuui" path="res://Scenes/Bosses/idle.gd" id="7_8wxll"]
-[ext_resource type="Script" uid="uid://drd3tajjduj85" path="res://state.gd" id="7_po4jp"]
-[ext_resource type="Script" uid="uid://cxvare1ji1kwn" path="res://Scenes/Bosses/follow.gd" id="8_8wxll"]
-[ext_resource type="Script" uid="uid://cybw0u8guljpg" path="res://Scenes/Bosses/melee_attack.gd" id="10_s4ltw"]
-[ext_resource type="Script" uid="uid://brnrwpx2lmnat" path="res://Scenes/Bosses/homing_missile.gd" id="12_k0thn"]
-[ext_resource type="Script" uid="uid://cmlkl5yk74y4k" path="res://Scenes/Bosses/dash.gd" id="12_murx5"]
-[ext_resource type="PackedScene" uid="uid://jmmyxp4ar3lm" path="res://Scenes/Bosses/bullet.tscn" id="13_ekh0k"]
+[ext_resource type="Script" uid="uid://cr25ckdkrvbof" path="res://Scenes/Bosses/Golem/golem.gd" id="1_w1krt"]
+[ext_resource type="Texture2D" uid="uid://du45bmr8jisuy" path="res://assets/sprites/Enemies/Bosses/Golem/Character_sheet.png" id="2_oixdk"]
+[ext_resource type="Texture2D" uid="uid://bbfswghk06n3y" path="res://assets/sprites/Enemies/Bosses/Golem/Laser_sheet.png" id="3_n427e"]
+[ext_resource type="Texture2D" uid="uid://bjc4fejijgsl2" path="res://assets/sprites/Objetcs/Exp/Under.png" id="4_r7dfm"]
+[ext_resource type="Texture2D" uid="uid://xwm27srbs3p6" path="res://assets/sprites/Objetcs/Exp/Over.png" id="5_igni4"]
+[ext_resource type="Texture2D" uid="uid://baaqhre1lhrcl" path="res://assets/sprites/Objetcs/Exp/Progress.png" id="6_7473p"]
+[ext_resource type="Script" uid="uid://bv1skx0iyne61" path="res://Scenes/Bosses/Golem/finite_state_machine.gd" id="7_bhtft"]
+[ext_resource type="Script" uid="uid://355awjcfxuui" path="res://Scenes/Bosses/Golem/idle.gd" id="8_xtq4a"]
+[ext_resource type="Script" uid="uid://cxvare1ji1kwn" path="res://Scenes/Bosses/Golem/follow.gd" id="9_22vjx"]
+[ext_resource type="Script" uid="uid://cybw0u8guljpg" path="res://Scenes/Bosses/Golem/melee_attack.gd" id="10_k1vwy"]
+[ext_resource type="Script" uid="uid://dl01hem8abieq" path="res://Scenes/Bosses/Golem/laser_beam.gd" id="11_fdc0a"]
+[ext_resource type="Script" uid="uid://drd3tajjduj85" path="res://state.gd" id="12_x4irm"]
+[ext_resource type="Script" uid="uid://cmlkl5yk74y4k" path="res://Scenes/Bosses/Golem/dash.gd" id="13_1xb53"]
+[ext_resource type="Script" uid="uid://brnrwpx2lmnat" path="res://Scenes/Bosses/Golem/homing_missile.gd" id="14_jxe47"]
+[ext_resource type="PackedScene" uid="uid://jmmyxp4ar3lm" path="res://Scenes/Bosses/Golem/bullet.tscn" id="15_2sx0t"]
 
 [sub_resource type="Animation" id="Animation_s4ltw"]
 length = 0.001
@@ -202,6 +203,20 @@ tracks/0/keys = {
 "update": 1,
 "values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 0]
 }
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FiniteStateMachine/LaserBeam")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.875),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"set_target"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_oa8cr"]
 resource_name = "laser_cast"
@@ -309,10 +324,10 @@ radius = 16.0
 height = 38.0
 
 [node name="Golem" type="CharacterBody2D"]
-script = ExtResource("1_m44y3")
+script = ExtResource("1_w1krt")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_4q6se")
+texture = ExtResource("2_oixdk")
 hframes = 10
 vframes = 10
 
@@ -320,7 +335,7 @@ vframes = 10
 
 [node name="Sprite2D" type="Sprite2D" parent="Pivot"]
 position = Vector2(100, 0)
-texture = ExtResource("2_fmrxo")
+texture = ExtResource("3_n427e")
 vframes = 15
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -350,9 +365,9 @@ value = 100.0
 nine_patch_stretch = true
 stretch_margin_left = 16
 stretch_margin_right = 16
-texture_under = ExtResource("3_2yq5j")
-texture_over = ExtResource("4_po4jp")
-texture_progress = ExtResource("5_8wxll")
+texture_under = ExtResource("4_r7dfm")
+texture_over = ExtResource("5_igni4")
+texture_progress = ExtResource("6_7473p")
 
 [node name="Label" type="Label" parent="UI/TextureProgressBar"]
 layout_mode = 1
@@ -382,29 +397,29 @@ position = Vector2(0, -1)
 shape = SubResource("CapsuleShape2D_4q6se")
 
 [node name="FiniteStateMachine" type="Node2D" parent="."]
-script = ExtResource("6_2yq5j")
+script = ExtResource("7_bhtft")
 
 [node name="Idle" type="Node2D" parent="FiniteStateMachine"]
-script = ExtResource("7_8wxll")
+script = ExtResource("8_xtq4a")
 
 [node name="Follow" type="Node2D" parent="FiniteStateMachine"]
-script = ExtResource("8_8wxll")
+script = ExtResource("9_22vjx")
 
 [node name="MeleeAttack" type="Node2D" parent="FiniteStateMachine"]
-script = ExtResource("10_s4ltw")
+script = ExtResource("10_k1vwy")
 
 [node name="LaserBeam" type="Node2D" parent="FiniteStateMachine"]
-script = ExtResource("7_po4jp")
+script = ExtResource("11_fdc0a")
 
 [node name="ArmorBuff" type="Node2D" parent="FiniteStateMachine"]
-script = ExtResource("7_po4jp")
+script = ExtResource("12_x4irm")
 
 [node name="Dash" type="Node2D" parent="FiniteStateMachine"]
-script = ExtResource("12_murx5")
+script = ExtResource("13_1xb53")
 
 [node name="Death" type="Node2D" parent="FiniteStateMachine"]
-script = ExtResource("7_po4jp")
+script = ExtResource("12_x4irm")
 
 [node name="HomingMissile" type="Node2D" parent="FiniteStateMachine"]
-script = ExtResource("12_k0thn")
-bullet_node = ExtResource("13_ekh0k")
+script = ExtResource("14_jxe47")
+bullet_node = ExtResource("15_2sx0t")

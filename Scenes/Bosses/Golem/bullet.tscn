@@ -109,6 +109,7 @@ height = 62.0
 
 [node name="bullet" type="Area2D"]
 script = SubResource("GDScript_1vmux")
+turn_speed = 10
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_3jd8s")

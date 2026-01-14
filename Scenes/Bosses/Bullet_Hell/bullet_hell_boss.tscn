@@ -1,0 +1,73 @@
+[gd_scene load_steps=12 format=3 uid="uid://ixnuchluuxwf"]
+
+[ext_resource type="Texture2D" uid="uid://c1tp7pqe622b5" path="res://icon.svg" id="1_nsayj"]
+[ext_resource type="Script" uid="uid://0kvnsgnodh8a" path="res://Scenes/Bosses/Bullet_Hell/bullet_hell.gd" id="1_xrhg8"]
+[ext_resource type="PackedScene" uid="uid://bltsh3akbyydi" path="res://Scenes/Bosses/Bullet_Hell/bullet.tscn" id="2_kx0s6"]
+[ext_resource type="Script" uid="uid://cv7ypnvtvpr0r" path="res://Scenes/Bosses/Bullet_Hell/state_machine.gd" id="2_ooxwf"]
+[ext_resource type="Script" uid="uid://bxxewu12y45qr" path="res://Scenes/Bosses/Bullet_Hell/follow.gd" id="3_ea566"]
+[ext_resource type="Script" uid="uid://dfya47wrct840" path="res://Scenes/Bosses/Bullet_Hell/dash.gd" id="6_hlpun"]
+[ext_resource type="Script" uid="uid://wrfx4onqic4q" path="res://Scenes/Bosses/Bullet_Hell/floor_attack.gd" id="7_5gfr7"]
+[ext_resource type="PackedScene" uid="uid://3vcjcs60fu3o" path="res://Scenes/Bosses/Bullet_Hell/AttackIndicator.tscn" id="8_30d6k"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ooxwf"]
+atlas = ExtResource("1_nsayj")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ea566"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ooxwf")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ea566"]
+size = Vector2(21, 22)
+
+[node name="Bullet Hell boss" type="CharacterBody2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.16796878, 0.16796878)
+sprite_frames = SubResource("SpriteFrames_ea566")
+autoplay = "default"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_ea566")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="StateMachine" type="Node2D" parent="."]
+script = ExtResource("2_ooxwf")
+
+[node name="Follow" type="Node2D" parent="StateMachine"]
+script = ExtResource("3_ea566")
+
+[node name="BulletHell" type="Node2D" parent="StateMachine"]
+script = ExtResource("1_xrhg8")
+bullet_scene = ExtResource("2_kx0s6")
+
+[node name="SpiralTimer" type="Timer" parent="StateMachine/BulletHell"]
+wait_time = 0.05
+
+[node name="Dash" type="Node2D" parent="StateMachine"]
+script = ExtResource("6_hlpun")
+
+[node name="Death" type="Node2D" parent="StateMachine"]
+
+[node name="FloorAttack" type="Node2D" parent="StateMachine"]
+script = ExtResource("7_5gfr7")
+indicator_scene = ExtResource("8_30d6k")
+
+[node name="ShootPoint" type="Marker2D" parent="."]
+
+[node name="Debug" type="Label" parent="."]
+offset_left = -23.0
+offset_top = -34.0
+offset_right = 23.0
+offset_bottom = -11.0
+horizontal_alignment = 1
+
+[connection signal="timeout" from="StateMachine/BulletHell/SpiralTimer" to="StateMachine/BulletHell" method="_on_spiral_timer_timeout"]
