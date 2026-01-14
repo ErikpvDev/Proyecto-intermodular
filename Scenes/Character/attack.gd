@@ -9,7 +9,9 @@ func _ready() -> void:
 	GlobalSignals.update_attack_size.connect(update_attack_size)
 	
 func update_attack_speed(amount: float):
-	attack_cooldown.wait_time /= 1 + amount
+	attack_cooldown.wait_time = 1 / (1 + amount)
+	if (attack_cooldown.wait_time < 0.33):
+		attack_cooldown.wait_time = 0.33
 
 func update_attack_size(amount: float):
 	attack_area_collision.scale *= amount

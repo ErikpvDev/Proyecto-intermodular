@@ -189,13 +189,19 @@ func get_item(item: ItemData):
 	damage_multiplier *= item.damage_multiplier
 	GlobalSignals.emit_signal("update_move_speed", item.move_speed_bonus)
 	dodge_chance += item.dodge_chance_bonus
+	if (dodge_chance > 0.7):
+		dodge_chance = 0.7
 	crit_chance += item.crit_chance_bonus
-	attack_speed += item.attack_speed_bonus
-	if (attack_size < 2.25):
-		attack_size = attack_size * item.projectile_size_multiplier
-		GlobalSignals.update_attack_size.emit(attack_size)
-	if (shield<=3):
+	if (item.attack_speed_bonus > 0):
+		attack_speed += item.attack_speed_bonus
+		GlobalSignals.emit_signal("update_attack_speed", attack_speed)
+	if (attack_size < 2.25 && item.projectile_size_multiplier>1):
+		attack_size *= item.projectile_size_multiplier
+		GlobalSignals.update_attack_size.emit(item.projectile_size_multiplier)
+	if (shield<3):
 		shield += item.shield_bonus
+		if (shield>3):
+			shield = 3
 		GlobalSignals.emit_signal("update_shield", shield)
 	add_max_health(item.max_hp_bonus)
 	add_health(item.max_hp_bonus)

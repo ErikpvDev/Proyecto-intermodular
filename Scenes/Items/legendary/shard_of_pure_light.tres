@@ -1,10 +1,16 @@
-[gd_resource type="Resource" script_class="ItemData" load_steps=2 format=3 uid="uid://b427ee3pvo508"]
+[gd_resource type="Resource" script_class="ItemData" load_steps=4 format=3 uid="uid://b427ee3pvo508"]
 
+[ext_resource type="Texture2D" uid="uid://cxpt2pkob831x" path="res://Scenes/Items/itemTIelmap.png" id="1_cfalx"]
 [ext_resource type="Script" uid="uid://ddw38bw356lig" path="res://Scenes/Items/item_data.gd" id="1_slyyn"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c3ygb"]
+atlas = ExtResource("1_cfalx")
+region = Rect2(853.3, 372.66, 170.66, 186.33)
 
 [resource]
 script = ExtResource("1_slyyn")
 name = "Shard of Pure Light"
 description = "A piece of a fallen star. Its radiance is so intense it disintegrates shadows upon contact."
+icon = SubResource("AtlasTexture_c3ygb")
 rarity = 2
 damage_multiplier = 1.5

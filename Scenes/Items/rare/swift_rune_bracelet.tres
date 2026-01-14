@@ -1,11 +1,17 @@
-[gd_resource type="Resource" script_class="ItemData" load_steps=2 format=3 uid="uid://b3xm705buod3o"]
+[gd_resource type="Resource" script_class="ItemData" load_steps=4 format=3 uid="uid://b3xm705buod3o"]
 
 [ext_resource type="Script" uid="uid://ddw38bw356lig" path="res://Scenes/Items/item_data.gd" id="1_3alpm"]
+[ext_resource type="Texture2D" uid="uid://cxpt2pkob831x" path="res://Scenes/Items/itemTIelmap.png" id="1_fvcku"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e3hom"]
+atlas = ExtResource("1_fvcku")
+region = Rect2(511.98, 186.33, 170.66, 186.33)
 
 [resource]
 script = ExtResource("1_3alpm")
 name = "Swift Rune Bracelet"
 description = "Vibrates with kinetic energy. Your hands move before you even think about it."
+icon = SubResource("AtlasTexture_e3hom")
 rarity = 1
 attack_speed_bonus = 0.15
 dodge_chance_bonus = 0.03

@@ -1,10 +1,15 @@
-[gd_resource type="Resource" script_class="ItemData" load_steps=2 format=3 uid="uid://hrnj71affcx8"]
+[gd_resource type="Resource" script_class="ItemData" load_steps=4 format=3 uid="uid://hrnj71affcx8"]
 
-[ext_resource type="Script" uid="uid://c81ijt53a2acl" path="res://Scenes/Items/item_data.gd" id="1_mcv62"]
+[ext_resource type="Script" uid="uid://ddw38bw356lig" path="res://Scenes/Items/item_data.gd" id="1_mcv62"]
+[ext_resource type="Texture2D" uid="uid://cxpt2pkob831x" path="res://Scenes/Items/itemTIelmap.png" id="1_rgi8j"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_22j1u"]
+atlas = ExtResource("1_rgi8j")
+region = Rect2(853.3, 0, 170.66, 186.33)
 
 [resource]
 script = ExtResource("1_mcv62")
 name = "Rabbit's Foot"
 description = "A classic. It brings good luck, or so the bards say."
+icon = SubResource("AtlasTexture_22j1u")
 dodge_chance_bonus = 0.03
-metadata/_custom_type_script = "uid://c81ijt53a2acl"

@@ -46,4 +46,6 @@ func _on_dash_cooldown_timer_timeout() -> void:
 	dash_available=true
 	
 func update_move_speed(amount: float):
-	move_speed = move_speed * (1 + amount)
+	move_speed = move_speed + (amount * 100)
+	if (move_speed > 150):
+		move_speed = 150

@@ -50,3 +50,37 @@ func load_from_folder(path: String, target_array: Array[ItemData]):
 				if item is ItemData:
 					target_array.append(item)
 			file_name = dir.get_next()
+
+func get_stats(item: ItemData):
+	var stats = ""
+	if (item.damage_bonus>0):
+		stats += "+%d damage " % item.damage_bonus
+	if (item.attack_speed_bonus>0):
+		stats += "+%d%% attack speed " % (item.attack_speed_bonus*100)
+	if (item.crit_chance_bonus>0):
+		stats += "+%d%% crit chance " % (item.crit_chance_bonus*100)
+	if (item.move_speed_bonus>0):
+		stats += "+%d%% movement speed " % (item.move_speed_bonus*100)
+	if (item.dodge_chance_bonus>0):
+		stats += "+%d%% dodge chance " % (item.dodge_chance_bonus*100)
+	if (item.max_hp_bonus>0):
+		stats += "+%d max health " % item.max_hp_bonus
+	if (item.shield_bonus>0):
+		stats += "+%d shield " % item.shield_bonus
+	if (item.damage_multiplier>1):
+		stats += "%.1fx damage " % item.damage_multiplier
+	if (item.projectile_size_multiplier>1):
+		stats += "%.1fx projectile size " % item.projectile_size_multiplier
+	return stats
+
+func get_rarity(item: ItemData):
+	var rarity
+	
+	match item.rarity:
+		0:
+			rarity = "[color=#b0b0b0]Common[/color]\n"
+		1:
+			rarity = "[color=#4488ff]Rare[/color]\n"
+		2:
+			rarity = "[color=#ffaa00]Legendary[/color]\n"
+	return rarity

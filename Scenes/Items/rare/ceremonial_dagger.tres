@@ -1,11 +1,17 @@
-[gd_resource type="Resource" script_class="ItemData" load_steps=2 format=3 uid="uid://dpuwr3o8axqjg"]
+[gd_resource type="Resource" script_class="ItemData" load_steps=4 format=3 uid="uid://dpuwr3o8axqjg"]
 
 [ext_resource type="Script" uid="uid://ddw38bw356lig" path="res://Scenes/Items/item_data.gd" id="1_4dn5c"]
+[ext_resource type="Texture2D" uid="uid://cxpt2pkob831x" path="res://Scenes/Items/itemTIelmap.png" id="1_wejib"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f0wuk"]
+atlas = ExtResource("1_wejib")
+region = Rect2(682.64, 186.33, 170.66, 186.33)
 
 [resource]
 script = ExtResource("1_4dn5c")
 name = "Ceremonial Dagger"
 description = "Used in ancient rituals. It guides your hand towards the enemy's heart."
+icon = SubResource("AtlasTexture_f0wuk")
 rarity = 1
 damage_bonus = 2.0
 crit_chance_bonus = 0.1

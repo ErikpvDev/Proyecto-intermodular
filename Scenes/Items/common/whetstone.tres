@@ -1,10 +1,15 @@
-[gd_resource type="Resource" script_class="ItemData" load_steps=2 format=3 uid="uid://cuie3xwrec08v"]
+[gd_resource type="Resource" script_class="ItemData" load_steps=4 format=3 uid="uid://cuie3xwrec08v"]
 
-[ext_resource type="Script" uid="uid://c81ijt53a2acl" path="res://Scenes/Items/item_data.gd" id="1_07fj8"]
+[ext_resource type="Script" uid="uid://ddw38bw356lig" path="res://Scenes/Items/item_data.gd" id="1_07fj8"]
+[ext_resource type="Texture2D" uid="uid://cxpt2pkob831x" path="res://Scenes/Items/itemTIelmap.png" id="1_mjhxi"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pwxqf"]
+atlas = ExtResource("1_mjhxi")
+region = Rect2(0, 0, 170.66, 186.33)
 
 [resource]
 script = ExtResource("1_07fj8")
 name = "Whetstone"
 description = "A simple stone to keep the edge keen. Even ghosts fear sharp steel."
+icon = SubResource("AtlasTexture_pwxqf")
 damage_bonus = 2.0
-metadata/_custom_type_script = "uid://c81ijt53a2acl"
