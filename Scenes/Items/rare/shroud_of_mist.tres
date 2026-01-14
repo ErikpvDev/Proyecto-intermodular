@@ -1,11 +1,17 @@
-[gd_resource type="Resource" script_class="ItemData" load_steps=2 format=3 uid="uid://dhsybmxj785jo"]
+[gd_resource type="Resource" script_class="ItemData" load_steps=4 format=3 uid="uid://dhsybmxj785jo"]
 
+[ext_resource type="Texture2D" uid="uid://cxpt2pkob831x" path="res://Scenes/Items/itemTIelmap.png" id="1_6hmwm"]
 [ext_resource type="Script" uid="uid://ddw38bw356lig" path="res://Scenes/Items/item_data.gd" id="1_ikihn"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nece7"]
+atlas = ExtResource("1_6hmwm")
+region = Rect2(853.3, 186.33, 170.66, 186.33)
 
 [resource]
 script = ExtResource("1_ikihn")
 name = "Shroud of Mist"
 description = "Turns you partially translucent, causing some attacks to pass right through you."
+icon = SubResource("AtlasTexture_nece7")
 rarity = 1
 dodge_chance_bonus = 0.07
 shield_bonus = 1.0

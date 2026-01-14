@@ -1,10 +1,16 @@
-[gd_resource type="Resource" script_class="ItemData" load_steps=2 format=3 uid="uid://bvmueo3ywnoe1"]
+[gd_resource type="Resource" script_class="ItemData" load_steps=4 format=3 uid="uid://bvmueo3ywnoe1"]
 
 [ext_resource type="Script" uid="uid://ddw38bw356lig" path="res://Scenes/Items/item_data.gd" id="1_n42q2"]
+[ext_resource type="Texture2D" uid="uid://cxpt2pkob831x" path="res://Scenes/Items/itemTIelmap.png" id="1_t3lnt"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_embs7"]
+atlas = ExtResource("1_t3lnt")
+region = Rect2(682.64, 372.66, 170.66, 186.33)
 
 [resource]
 script = ExtResource("1_n42q2")
 name = "Spiritist's Lens"
 description = "Amplifies your soul's projection. Your arrows, swords, and spells become gigantic."
+icon = SubResource("AtlasTexture_embs7")
 rarity = 2
 projectile_size_multiplier = 1.5

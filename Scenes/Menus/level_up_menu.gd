@@ -29,9 +29,18 @@ func get_items():
 	contenedor1.get_child(0).text = item1.name
 	contenedor2.get_child(0).text = item2.name
 	contenedor3.get_child(0).text = item3.name
-	contenedor1.get_child(2).text = item1.description
-	contenedor2.get_child(2).text = item2.description
-	contenedor3.get_child(2).text = item3.description
+	contenedor1.get_child(1).text = ItemManager.get_rarity(item1)
+	contenedor2.get_child(1).text = ItemManager.get_rarity(item2)
+	contenedor3.get_child(1).text = ItemManager.get_rarity(item3)
+	contenedor1.get_child(3).text = item1.description
+	contenedor2.get_child(3).text = item2.description
+	contenedor3.get_child(3).text = item3.description
+	contenedor1.get_child(2).texture_normal = item1.icon
+	contenedor2.get_child(2).texture_normal = item2.icon
+	contenedor3.get_child(2).texture_normal = item3.icon
+	contenedor1.get_child(4).text = ItemManager.get_stats(item1)
+	contenedor2.get_child(4).text = ItemManager.get_stats(item2)
+	contenedor3.get_child(4).text = ItemManager.get_stats(item3)
 
 func _on_object_01_pressed() -> void:
 	emit_signal("item_selected")

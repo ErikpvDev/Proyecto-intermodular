@@ -1,11 +1,16 @@
-[gd_resource type="Resource" script_class="ItemData" load_steps=2 format=3 uid="uid://deyupuuch1ls6"]
+[gd_resource type="Resource" script_class="ItemData" load_steps=4 format=3 uid="uid://deyupuuch1ls6"]
 
-[ext_resource type="Script" uid="uid://c81ijt53a2acl" path="res://Scenes/Items/item_data.gd" id="1_jrvjf"]
+[ext_resource type="Texture2D" uid="uid://cxpt2pkob831x" path="res://Scenes/Items/itemTIelmap.png" id="1_65ntf"]
+[ext_resource type="Script" uid="uid://ddw38bw356lig" path="res://Scenes/Items/item_data.gd" id="1_jrvjf"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v6fqm"]
+atlas = ExtResource("1_65ntf")
+region = Rect2(341.32, 372.66, 170.66, 186.33)
 
 [resource]
 script = ExtResource("1_jrvjf")
 name = "Broken Hourglass"
 description = "Time flows strangely around you. You can attack while the world seems to stand still."
+icon = SubResource("AtlasTexture_v6fqm")
 rarity = 2
 attack_speed_bonus = 0.4
-metadata/_custom_type_script = "uid://c81ijt53a2acl"
