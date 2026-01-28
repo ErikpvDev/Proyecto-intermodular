@@ -1,14 +1,16 @@
 extends Node2D
 
-@onready var current_wave=5
+@onready var current_wave=1
 var base_elite_chance = 0.02
 var elite_prob_percent
 @export var exp_growth=1.15
 @export var exp_elite_growth=3
 @export var hp_growth=1.10
 @export var hp_elite_growth=1.13
-@export var base_hp=10
-@export var base_elite_hp=50
+#@export var base_hp=10
+@export var base_hp=1
+#@export var base_elite_hp=50
+@export var base_elite_hp=1
 @onready var between_waves=1
 @onready var wave_text = $"../UI/Wave/Wave/Label"
 
@@ -71,6 +73,8 @@ func _ready():
 func enemy_death():
 	dead_enemies+=1
 	if dead_enemies==enemy_dict[current_wave][0]:
+		if ((current_wave) % 1 == 0):
+			GlobalSignals.emit_signal("show_shop")
 		dead_enemies=0
 		await get_tree().create_timer(time_between_waves).timeout
 		current_wave+=1

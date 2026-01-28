@@ -27,3 +27,11 @@ signal update_attack_size(amount)
 #Señal para recoger un item
 @warning_ignore("unused_signal")
 signal get_item(item)
+
+#Señal cuando muere un jefe
+@warning_ignore("unused_signal")
+signal show_shop()
+
+#Señal cuando salimos de la tienda
+@warning_ignore("unused_signal")
+signal leave_shop()
