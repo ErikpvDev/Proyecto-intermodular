@@ -1,4 +1,4 @@
-[gd_scene load_steps=63 format=3 uid="uid://p0hbqo51nej1"]
+[gd_scene format=3 uid="uid://p0hbqo51nej1"]
 
 [ext_resource type="Script" uid="uid://csbvt3wkmwvqd" path="res://Scenes/Character/personaje.gd" id="1_hlutc"]
 [ext_resource type="PackedScene" uid="uid://dpqhg6grx7xv1" path="res://Scenes/Character/Experience.tscn" id="2_aexvp"]
@@ -416,74 +416,72 @@ _data = {
 &"hit": SubResource("Animation_ykwvv")
 }
 
-[node name="Character" type="CharacterBody2D" groups=["character"]]
+[node name="Character" type="CharacterBody2D" unique_id=615094985 groups=["character"]]
 y_sort_enabled = true
 collision_mask = 5
 script = ExtResource("1_hlutc")
 
-[node name="Gold" parent="." instance=ExtResource("2_h7pwf")]
+[node name="Gold" parent="." unique_id=1133041884 instance=ExtResource("2_h7pwf")]
 
-[node name="Experience" parent="." instance=ExtResource("2_aexvp")]
+[node name="Experience" parent="." unique_id=732152925 instance=ExtResource("2_aexvp")]
 
-[node name="Health" parent="." instance=ExtResource("2_l3rkt")]
+[node name="Health" parent="." unique_id=1113914563 instance=ExtResource("2_l3rkt")]
 
-[node name="Movement" parent="." instance=ExtResource("2_b4m7e")]
+[node name="Movement" parent="." unique_id=844821745 instance=ExtResource("2_b4m7e")]
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2029794406]
 texture_filter = 1
 texture_repeat = 1
 sprite_frames = SubResource("SpriteFrames_aexvp")
 animation = &"Dash"
 autoplay = "Idle"
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1185855092]
 zoom = Vector2(4, 4)
 position_smoothing_enabled = true
 
-[node name="Physical Collision" type="CollisionShape2D" parent="."]
+[node name="Physical Collision" type="CollisionShape2D" parent="." unique_id=1792620395]
 position = Vector2(0, 2.09375)
 shape = SubResource("RectangleShape2D_cs5dr")
 
-[node name="prueba" type="Area2D" parent="."]
+[node name="Interact" type="Area2D" parent="." unique_id=331674307]
 collision_layer = 2
 collision_mask = 2
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="prueba"]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Interact" unique_id=344044024]
 position = Vector2(0, 2)
 shape = SubResource("RectangleShape2D_cs5dr")
 
-[node name="AttackArea" type="Area2D" parent="."]
+[node name="AttackArea" type="Area2D" parent="." unique_id=256056632]
 monitorable = false
 script = ExtResource("7_52hlq")
 
-[node name="AttackTimer" type="Timer" parent="AttackArea"]
+[node name="AttackTimer" type="Timer" parent="AttackArea" unique_id=1631159959]
 wait_time = 0.3
 
-[node name="attack_cooldown" type="Timer" parent="AttackArea"]
+[node name="attack_cooldown" type="Timer" parent="AttackArea" unique_id=387637629]
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="AttackArea"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="AttackArea" unique_id=1221231326]
 z_index = 4096
 scale = Vector2(0.915, 0.912)
 sprite_frames = SubResource("SpriteFrames_malha")
 animation = &"attacking"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea" unique_id=691412778]
 position = Vector2(44.75, 2)
 shape = SubResource("RectangleShape2D_vc3aq")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_52hlq")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1373701565]
+libraries/ = SubResource("AnimationLibrary_52hlq")
 
-[node name="InteractingComponent" parent="." instance=ExtResource("8_vc3aq")]
+[node name="InteractingComponent" parent="." unique_id=123432715 instance=ExtResource("8_vc3aq")]
 
-[node name="Center" type="Marker2D" parent="."]
+[node name="Center" type="Marker2D" parent="." unique_id=818483343]
 position = Vector2(0, 2)
 
 [connection signal="health_changed" from="Health" to="." method="_on_health_health_changed"]
 [connection signal="max_health_changed" from="Health" to="." method="_on_health_max_health_changed"]
-[connection signal="body_entered" from="prueba" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="Interact" to="." method="_on_area_2d_body_entered"]
 [connection signal="area_entered" from="AttackArea" to="." method="_on_attack_area_area_entered"]
 [connection signal="timeout" from="AttackArea/AttackTimer" to="." method="_on_attack_timer_timeout"]
 [connection signal="timeout" from="AttackArea/attack_cooldown" to="." method="_on_attack_cooldown_timeout"]

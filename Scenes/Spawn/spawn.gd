@@ -1,6 +1,6 @@
 extends Node2D
 
-@onready var current_wave=1
+@onready var current_wave=5
 var base_elite_chance = 0.02
 var elite_prob_percent
 @export var exp_growth=1.15
@@ -34,7 +34,7 @@ var spawn_time = 1
 	2: [12,1.1],
 	3: [18,1.1],
 	4: [24,1.1],
-	5: [30,1.7],   # Primer mini-jefe
+	5: [1,1.7],   # Primer mini-jefe
 	6: [36,1.54],
 	7: [42,1.65],
 	8: [50,1.77],

@@ -6,10 +6,10 @@ extends State
 
 @export_group("Spiral Settings")
 # How many bullets total in one complete spiral attack pattern
-@export var total_bullets_to_fire := 100
+@export var total_bullets_to_fire := 30
 
 # Time between individual shots. Smaller = tighter spiral arm visually.
-@export var time_between_shots := 0.2
+@export var time_between_shots := 0.1
 
 # How many degrees the aim rotates between each shot.
 # Higher = wider spiral gap. Lower = very tight spiral.
