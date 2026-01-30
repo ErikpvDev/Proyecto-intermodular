@@ -49,6 +49,8 @@ var closest_enemy
 #VARIABLES------------------------------------------------------------------------------------------------
 
 func _ready() -> void:	
+	add_gold(10)
+	GlobalSignals.update_gold.connect(update_gold)
 	GlobalSignals.get_item.connect(get_item)
 	
 	GlobalSignals.emit_signal("update_shield",shield)
@@ -108,7 +110,7 @@ func _on_health_max_health_changed(new_health: Variant, prev_max_health: Variant
 		health_bar.get_child(0).add_child(heart_temp)
 	update_heart_display()
 
-func take_damage(amount: int) -> void: 
+func take_damage(amount: int) -> void:
 	if !movement.dashing:
 		if (!randf()<dodge_chance):
 			if shield >= 1:
@@ -215,3 +217,10 @@ func get_item(item: ItemData):
 	#print(attack_size)
 	#print(shield)
 	#print(health.health)
+
+func add_gold(amount: int):
+	gold_coins += amount
+	update_gold()
+	
+func update_gold():
+	gold_coins_number.text = str(gold_coins)

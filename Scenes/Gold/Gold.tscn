@@ -1,11 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://bk01ah10djpvn"]
+[gd_scene format=3 uid="uid://bk01ah10djpvn"]
 
 [ext_resource type="Texture2D" uid="uid://d110iwm8csggt" path="res://assets/sprites/Objetcs/Gold/Gold.png" id="1_rg8kl"]
 [ext_resource type="FontFile" uid="uid://dvxv26iy0kmh0" path="res://assets/fonts/VCR_OSD_MONO_1.001.ttf" id="2_00ggv"]
 
-[node name="gold" type="CanvasLayer"]
+[node name="gold" type="CanvasLayer" unique_id=2120068142]
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=851099710]
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
@@ -17,12 +17,12 @@ grow_horizontal = 0
 scale = Vector2(1.5, 1.5)
 alignment = 2
 
-[node name="TextureRect" type="TextureRect" parent="HBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer" unique_id=370338184]
 layout_mode = 2
 texture = ExtResource("1_rg8kl")
 expand_mode = 2
 
-[node name="Label" type="Label" parent="HBoxContainer"]
+[node name="Label" type="Label" parent="HBoxContainer" unique_id=1967531294]
 layout_mode = 2
 theme_type_variation = &"HeaderSmall"
 theme_override_fonts/font = ExtResource("2_00ggv")

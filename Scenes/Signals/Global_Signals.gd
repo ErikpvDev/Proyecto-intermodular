@@ -35,3 +35,7 @@ signal show_shop()
 #Señal cuando salimos de la tienda
 @warning_ignore("unused_signal")
 signal leave_shop()
+
+#Señal para actualizar el display del oro
+@warning_ignore("unused_signal")
+signal update_gold()

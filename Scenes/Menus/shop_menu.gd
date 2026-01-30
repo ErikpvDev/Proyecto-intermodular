@@ -5,6 +5,10 @@ extends Control
 @onready var contenedor2 = contenedores[1]
 @onready var contenedor3 = contenedores[2]
 
+@onready var boton1 = contenedor1.get_child(2)
+@onready var boton2 = contenedor2.get_child(2)
+@onready var boton3 = contenedor3.get_child(2)
+
 @onready var item1
 @onready var item2
 @onready var item3
@@ -12,10 +16,17 @@ extends Control
 
 @onready var boton_salir = get_children()[0].get_children()[2]
 
+@onready var personaje = $"../../Level01/Character"
+@onready var gold_coins = personaje.gold_coins
+
 func _ready() -> void:
 	hide()
 	
 func show_menu():
+	gold_coins = personaje.gold_coins
+	boton1.disabled = false
+	boton2.disabled = false
+	boton3.disabled = false
 	get_items()
 	$AnimationPlayer.play("pop_in")
 	show()
@@ -31,24 +42,45 @@ func get_items():
 	contenedor1.get_child(1).text = ItemManager.get_rarity(item1)
 	contenedor2.get_child(1).text = ItemManager.get_rarity(item2)
 	contenedor3.get_child(1).text = ItemManager.get_rarity(item3)
-	contenedor1.get_child(3).text = item1.description
-	contenedor2.get_child(3).text = item2.description
-	contenedor3.get_child(3).text = item3.description
-	contenedor1.get_child(2).texture_normal = item1.icon
-	contenedor2.get_child(2).texture_normal = item2.icon
-	contenedor3.get_child(2).texture_normal = item3.icon
-	contenedor1.get_child(4).text = ItemManager.get_stats(item1)
-	contenedor2.get_child(4).text = ItemManager.get_stats(item2)
-	contenedor3.get_child(4).text = ItemManager.get_stats(item3)
+	contenedor1.get_child(3).text = str(ItemManager.get_price(item1))
+	contenedor2.get_child(3).text = str(ItemManager.get_price(item2))
+	contenedor3.get_child(3).text = str(ItemManager.get_price(item3))
+	contenedor1.get_child(4).text = item1.description
+	contenedor2.get_child(4).text = item2.description
+	contenedor3.get_child(4).text = item3.description
+	boton1.texture_normal = item1.icon
+	boton2.texture_normal = item2.icon
+	boton3.texture_normal = item3.icon
+	contenedor1.get_child(5).text = ItemManager.get_stats(item1)
+	contenedor2.get_child(5).text = ItemManager.get_stats(item2)
+	contenedor3.get_child(5).text = ItemManager.get_stats(item3)
 
 func _on_object_01_pressed() -> void:
-	GlobalSignals.emit_signal("get_item", item1)
+	var item_price = ItemManager.get_price(item1)
+	if (gold_coins >= item_price):
+		GlobalSignals.emit_signal("get_item", item1)
+		boton1.disabled = true
+		personaje.gold_coins -= item_price
+		gold_coins = personaje.gold_coins
+		GlobalSignals.emit_signal("update_gold")
 
 func _on_object_02_pressed() -> void:
-	GlobalSignals.emit_signal("get_item", item2)
+	var item_price = ItemManager.get_price(item2)
+	if (gold_coins >= item_price):
+		GlobalSignals.emit_signal("get_item", item2)
+		boton2.disabled = true
+		personaje.gold_coins -= item_price
+		gold_coins = personaje.gold_coins
+		GlobalSignals.emit_signal("update_gold")
 	
 func _on_object_03_pressed() -> void:
-	GlobalSignals.emit_signal("get_item", item3)
+	var item_price = ItemManager.get_price(item3)
+	if (gold_coins >= item_price):
+		GlobalSignals.emit_signal("get_item", item3)
+		boton3.disabled = true
+		personaje.gold_coins -= item_price
+		gold_coins = personaje.gold_coins
+		GlobalSignals.emit_signal("update_gold")
 
 func _on_button_pressed() -> void:
 	GlobalSignals.emit_signal("leave_shop")

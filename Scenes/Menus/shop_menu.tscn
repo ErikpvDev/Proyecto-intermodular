@@ -126,6 +126,13 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 texture_normal = ExtResource("3_2dqci")
 
+[node name="Price" type="Label" parent="Panel/HBoxContainer/VBoxContainer" unique_id=937901199]
+custom_minimum_size = Vector2(20.03, 0)
+layout_mode = 2
+label_settings = SubResource("LabelSettings_412y8")
+horizontal_alignment = 1
+autowrap_mode = 2
+
 [node name="Description" type="Label" parent="Panel/HBoxContainer/VBoxContainer" unique_id=1692175107]
 custom_minimum_size = Vector2(20.03, 0)
 layout_mode = 2
@@ -160,6 +167,13 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 texture_normal = ExtResource("3_2dqci")
 
+[node name="Price" type="Label" parent="Panel/HBoxContainer/VBoxContainer2" unique_id=146494269]
+custom_minimum_size = Vector2(20.03, 0)
+layout_mode = 2
+label_settings = SubResource("LabelSettings_412y8")
+horizontal_alignment = 1
+autowrap_mode = 2
+
 [node name="Description" type="Label" parent="Panel/HBoxContainer/VBoxContainer2" unique_id=1688990345]
 layout_mode = 2
 label_settings = SubResource("LabelSettings_412y8")
@@ -192,6 +206,13 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 texture_normal = ExtResource("3_2dqci")
+
+[node name="Price" type="Label" parent="Panel/HBoxContainer/VBoxContainer3" unique_id=378284799]
+custom_minimum_size = Vector2(20.03, 0)
+layout_mode = 2
+label_settings = SubResource("LabelSettings_412y8")
+horizontal_alignment = 1
+autowrap_mode = 2
 
 [node name="Description" type="Label" parent="Panel/HBoxContainer/VBoxContainer3" unique_id=475402097]
 layout_mode = 2

@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bam0ik66tfskr"]
+[gd_scene format=3 uid="uid://bam0ik66tfskr"]
 
 [ext_resource type="Script" uid="uid://c8nkt2yjlif3d" path="res://Scenes/UI/ui.gd" id="1_alcrr"]
 [ext_resource type="PackedScene" uid="uid://bk01ah10djpvn" path="res://Scenes/Gold/Gold.tscn" id="1_i5q6i"]
@@ -8,19 +8,19 @@
 [ext_resource type="PackedScene" uid="uid://cewa4t80pl5nn" path="res://Scenes/Wave/wave.tscn" id="4_fo61o"]
 [ext_resource type="Script" uid="uid://sqfmnct5458c" path="res://Scenes/UI/wave.gd" id="5_1c2ca"]
 
-[node name="UI" type="CanvasGroup"]
+[node name="UI" type="CanvasGroup" unique_id=1219804552]
 script = ExtResource("1_alcrr")
 
-[node name="ShieldDisplay" parent="." instance=ExtResource("2_duuxe")]
+[node name="ShieldDisplay" parent="." unique_id=1052978750 instance=ExtResource("2_duuxe")]
 layer = 2
 
-[node name="Gold" parent="." instance=ExtResource("1_i5q6i")]
+[node name="Gold" parent="." unique_id=326700344 instance=ExtResource("1_i5q6i")]
 
-[node name="health_bar" parent="." instance=ExtResource("2_hwbc8")]
+[node name="health_bar" parent="." unique_id=376717483 instance=ExtResource("2_hwbc8")]
 
-[node name="Exp" parent="." instance=ExtResource("3_hwbc8")]
+[node name="Exp" parent="." unique_id=805773710 instance=ExtResource("3_hwbc8")]
 
-[node name="Wave" type="Node2D" parent="."]
+[node name="Wave" type="Node2D" parent="." unique_id=896897519]
 script = ExtResource("5_1c2ca")
 
-[node name="Wave" parent="Wave" instance=ExtResource("4_fo61o")]
+[node name="Wave" parent="Wave" unique_id=41574187 instance=ExtResource("4_fo61o")]

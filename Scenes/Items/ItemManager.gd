@@ -84,3 +84,15 @@ func get_rarity(item: ItemData):
 		2:
 			rarity = "[color=#ffaa00]Legendary[/color]\n"
 	return rarity
+	
+func get_price(item: ItemData):
+	var price
+	
+	match item.rarity:
+		0:
+			price = 1
+		1:
+			price = 2
+		2:
+			price = 3
+	return price
