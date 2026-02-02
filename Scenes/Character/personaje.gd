@@ -37,6 +37,7 @@ extends CharacterBody2D
 #GOLD
 @export var gold_coins : int = 0
 @onready var gold_coins_number=$"../UI/Gold/HBoxContainer/Label"
+@onready var gold_scene: Node = $Gold
 
 #ENEMIES
 var enemies_hit_this_attack=[]

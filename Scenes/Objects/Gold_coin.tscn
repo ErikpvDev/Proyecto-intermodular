@@ -1,0 +1,111 @@
+[gd_scene format=3 uid="uid://bx8si65fa5tmg"]
+
+[ext_resource type="Texture2D" uid="uid://dskbj83ydxa2x" path="res://assets/sprites/Objetcs/Gold/spinning_coin/coin1.png" id="1_itwwc"]
+[ext_resource type="Script" uid="uid://bib4kyk7n1idq" path="res://Scenes/Objects/gold_coin.gd" id="1_s8g6f"]
+[ext_resource type="Texture2D" uid="uid://d2k821dlbon52" path="res://assets/sprites/Objetcs/Gold/spinning_coin/coin2.png" id="2_s8g6f"]
+[ext_resource type="Texture2D" uid="uid://by5ky45c48rvm" path="res://assets/sprites/Objetcs/Gold/spinning_coin/coin3.png" id="3_q3qaq"]
+[ext_resource type="Texture2D" uid="uid://baod3yexu0gcf" path="res://assets/sprites/Objetcs/Gold/spinning_coin/coin4.png" id="4_0ikvy"]
+[ext_resource type="Texture2D" uid="uid://baqj04rvkhnqg" path="res://assets/sprites/Objetcs/Gold/spinning_coin/coin5.png" id="5_gv2xx"]
+[ext_resource type="Texture2D" uid="uid://bj764heal2j3b" path="res://assets/sprites/Objetcs/Gold/spinning_coin/coin6.png" id="6_kswdh"]
+[ext_resource type="Texture2D" uid="uid://rd1gqg16lyey" path="res://assets/sprites/Objetcs/Gold/spinning_coin/coin7.png" id="7_2ekoe"]
+[ext_resource type="Texture2D" uid="uid://gi2ms0djqr71" path="res://assets/sprites/Objetcs/Gold/spinning_coin/coin8.png" id="8_qytom"]
+[ext_resource type="Texture2D" uid="uid://ybphywrvl6x8" path="res://assets/sprites/Objetcs/Gold/spinning_coin/coin9.png" id="9_tuvyc"]
+[ext_resource type="Texture2D" uid="uid://8fypqk3k6ftq" path="res://assets/sprites/Objetcs/Gold/spinning_coin/coin10.png" id="10_r4lm6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qkgsk"]
+atlas = ExtResource("1_itwwc")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fbjvo"]
+atlas = ExtResource("2_s8g6f")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6w7gs"]
+atlas = ExtResource("3_q3qaq")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q47x2"]
+atlas = ExtResource("4_0ikvy")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sexn2"]
+atlas = ExtResource("5_gv2xx")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_srtnu"]
+atlas = ExtResource("6_kswdh")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_thwju"]
+atlas = ExtResource("7_2ekoe")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qcbgj"]
+atlas = ExtResource("8_qytom")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2dlja"]
+atlas = ExtResource("9_tuvyc")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ruetn"]
+atlas = ExtResource("10_r4lm6")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_iih22"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qkgsk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fbjvo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6w7gs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q47x2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sexn2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_srtnu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_thwju")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qcbgj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2dlja")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ruetn")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ctmr3"]
+radius = 8.0
+
+[node name="Gold_coin" type="Area2D" unique_id=742703375]
+script = ExtResource("1_s8g6f")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=146179617]
+z_index = 4096
+position = Vector2(-9.536743e-07, -9.536743e-07)
+scale = Vector2(0.34375, 0.34375)
+sprite_frames = SubResource("SpriteFrames_iih22")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.5688331
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1406032925]
+shape = SubResource("CircleShape2D_ctmr3")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

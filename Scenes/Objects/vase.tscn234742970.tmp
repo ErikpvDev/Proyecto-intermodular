@@ -4,9 +4,6 @@
 [ext_resource type="Script" uid="uid://cpbphjabbw4ay" path="res://Scenes/Objects/vase.gd" id="1_qffg6"]
 [ext_resource type="PackedScene" uid="uid://bdwsmcibux7r4" path="res://Scenes/Objects/interactable.tscn" id="3_yumtb"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_yumtb"]
-size = Vector2(15.5, 13.5)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_qffg6"]
 atlas = ExtResource("1_37r1p")
 region = Rect2(0, 0, 16, 16)
@@ -73,11 +70,6 @@ region = Rect2(240, 0, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_0x2rq"]
 animations = [{
-"frames": [],
-"loop": true,
-"name": &"break",
-"speed": 5.0
-}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_qffg6")
@@ -135,17 +127,14 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_eixfc"]
 radius = 22.0
 
-[node name="Vase" type="StaticBody2D" unique_id=294496702]
+[node name="Vase" type="Node2D" unique_id=1605599005]
 script = ExtResource("1_qffg6")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1374824177]
-position = Vector2(0, 0.75)
-shape = SubResource("RectangleShape2D_yumtb")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=508769958]
 sprite_frames = SubResource("SpriteFrames_0x2rq")
 animation = &"idle"
 autoplay = "idle"
+frame_progress = 0.20034033
 
 [node name="Interactable" parent="." unique_id=1970678297 instance=ExtResource("3_yumtb")]
 collision_mask = 4

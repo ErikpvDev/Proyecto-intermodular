@@ -1,9 +1,14 @@
 [gd_scene format=3 uid="uid://bqy0xbspvp3gc"]
 
-[node name="health_bar" type="CanvasLayer"]
+[ext_resource type="PackedScene" uid="uid://dmnp5kr6fmqqp" path="res://Scenes/Hearts/heart.tscn" id="1_awsg0"]
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
+[node name="health_bar" type="CanvasLayer" unique_id=1100202352]
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=91869725]
 offset_right = 400.0
 offset_bottom = 48.0
 scale = Vector2(1.5, 1.5)
 size_flags_stretch_ratio = 4.3
+
+[node name="TextureRect" parent="HBoxContainer" unique_id=2142240481 instance=ExtResource("1_awsg0")]
+layout_mode = 2

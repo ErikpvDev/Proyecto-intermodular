@@ -1,6 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://ceqqc8ti7diqk"]
+[gd_scene format=3 uid="uid://ceqqc8ti7diqk"]
 
 [ext_resource type="Script" uid="uid://vrv4h7u0ypfi" path="res://Scenes/Character/gold.gd" id="1_3bvj6"]
 
-[node name="Gold" type="Node"]
+[node name="Gold" type="Node" unique_id=1327477618]
 script = ExtResource("1_3bvj6")

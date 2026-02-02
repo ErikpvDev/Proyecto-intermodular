@@ -39,22 +39,22 @@ var spawn_time = 1
 	7: [42,1.65],
 	8: [50,1.77],
 	9: [58,1.88],
-	10: [70,2.0],  # Jefe intermedio
+	10: [1,2.0],  # Jefe intermedio
 	11: [75,2.12],
 	12: [82,2.24],
 	13: [90,2.37],
 	14: [100,2.5],
-	15: [115,2.63],  # Mini-jefe
+	15: [1,2.63],  # Mini-jefe
 	16: [125,2.76],
 	17: [138,2.89],
 	18: [150,3.02],
 	19: [165,3.16],
-	20: [185,3.3],  # Jefe mayor
+	20: [1,3.3],  # Jefe mayor
 	21: [200,3.44],
 	22: [220,3.58],
 	23: [240,3.72],
 	24: [265,3.86],
-	25: [300,4.0]   # Ronda final o jefe supremo
+	25: [1,4.0]   # Ronda final o jefe supremo
 }
 
 @onready var enemy=preload("res://Scenes/Enemies/enemigo.tscn")
