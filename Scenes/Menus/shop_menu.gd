@@ -30,6 +30,7 @@ func show_menu():
 	get_items()
 	$AnimationPlayer.play("pop_in")
 	show()
+	MenuManager.abrir_menu()
 	
 func get_items():
 	item_array = ItemManager.get_different_items(3)
@@ -83,5 +84,7 @@ func _on_object3_pressed() -> void:
 		GlobalSignals.emit_signal("update_gold")
 
 func _on_button_pressed() -> void:
+	MenuManager.cerrar_menu()
 	GlobalSignals.emit_signal("leave_shop")
+	
 	

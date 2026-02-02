@@ -55,7 +55,7 @@ func _ready() -> void:
 	GlobalSignals.get_item.connect(get_item)
 	
 	GlobalSignals.emit_signal("update_shield",shield)
-	health.max_health = 5
+	health.max_health = 9
 	
 	# Gets the health bar initial hearts,appends them to the array and shows them on screen
 	for i in range(health.max_health):
@@ -85,6 +85,9 @@ func update_heart_display():
 	var hearts = health_bar.get_child(0).get_children()
 	
 	for i in range(hearts.size()):
+		hearts[i].custom_minimum_size = Vector2(34,34)
+	
+	for i in range(hearts.size()):
 		if i < health.health:
 			hearts[i].get_child(0).play("idle")
 		else:
@@ -99,8 +102,9 @@ func add_health(amount: int) -> void:
 	health.add_health(amount)
 
 func add_max_health(amount: int)->void:
-	health.add_max_health(amount)
-	update_heart_display()
+	if health.max_health < 10:
+		health.add_max_health(amount)
+		update_heart_display()
 	
 func _on_health_health_changed(new_health: Variant) -> void:
 	health.health=new_health

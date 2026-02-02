@@ -23,6 +23,7 @@ config/icon="res://icon.svg"
 
 GlobalSignals="*res://Scenes/Signals/Global_Signals.gd"
 ItemManager="*res://Scenes/Items/ItemManager.gd"
+MenuManager="*uid://tcwbxeuh13lr"
 
 [display]
 

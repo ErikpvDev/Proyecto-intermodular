@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://rahtjweordfx" path="res://Scenes/Menus/level_up_menu.tscn" id="2_qxfds"]
 [ext_resource type="PackedScene" uid="uid://bg8a2cw3ag6wq" path="res://Scenes/Menus/chest_menu.tscn" id="4_i1e5p"]
 [ext_resource type="PackedScene" uid="uid://cl46wfmum4upq" path="res://Scenes/Menus/shop_menu.tscn" id="5_ciybh"]
+[ext_resource type="PackedScene" uid="uid://bvvlriipepaqr" path="res://Scenes/UI/pause_menu.tscn" id="6_flgk0"]
 
 [node name="Game" type="Node" unique_id=1006189634]
 process_mode = 3
@@ -19,3 +20,5 @@ script = ExtResource("1_qikps")
 [node name="ChestMenu" parent="CanvasLayer" unique_id=262295669 instance=ExtResource("4_i1e5p")]
 
 [node name="ShopMenu" parent="CanvasLayer" unique_id=1138673724 instance=ExtResource("5_ciybh")]
+
+[node name="Pause_menu" parent="CanvasLayer" unique_id=1538623743 instance=ExtResource("6_flgk0")]

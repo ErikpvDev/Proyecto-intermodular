@@ -1,0 +1,67 @@
+[gd_scene format=3 uid="uid://bvvlriipepaqr"]
+
+[ext_resource type="Script" uid="uid://b6brdawaqu3qf" path="res://Scenes/UI/pause_menu.gd" id="1_rrvs5"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_b1dhq"]
+font_size = 100
+
+[node name="Pause_menu" type="Control" unique_id=1538623743]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_rrvs5")
+
+[node name="Panel" type="Panel" parent="." unique_id=1647549656]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -623.8656
+offset_top = -412.75
+offset_right = 623.8656
+offset_bottom = 412.75
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Panel" unique_id=1649907594]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -156.5
+offset_right = 156.5
+offset_bottom = 137.0
+grow_horizontal = 2
+text = "PAUSE"
+label_settings = SubResource("LabelSettings_b1dhq")
+
+[node name="SeguirJugando" type="Button" parent="Panel" unique_id=1196669962]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.24273305
+anchor_top = 0.8246517
+anchor_right = 0.49479055
+anchor_bottom = 0.9927317
+grow_horizontal = 2
+grow_vertical = 0
+text = "SEGUIR JUGANDO"
+metadata/_edit_use_anchors_ = true
+
+[node name="VolverMenu" type="Button" parent="Panel" unique_id=1519568891]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5040073
+anchor_top = 0.8258631
+anchor_right = 0.7560648
+anchor_bottom = 0.99394304
+grow_horizontal = 2
+grow_vertical = 0
+text = "VOLVER AL MENÚ"
+metadata/_edit_use_anchors_ = true
+
+[connection signal="pressed" from="Panel/SeguirJugando" to="." method="_on_button_pressed"]

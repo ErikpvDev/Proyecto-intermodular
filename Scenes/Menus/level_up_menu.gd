@@ -16,6 +16,7 @@ func _ready() -> void:
 	hide()
 	
 func show_menu():
+	MenuManager.abrir_menu()
 	get_items()
 	$AnimationPlayer.play("pop_in")
 	show()
@@ -43,13 +44,16 @@ func get_items():
 	contenedor3.get_child(4).text = ItemManager.get_stats(item3)
 
 func _on_object1_pressed() -> void:
+	MenuManager.cerrar_menu()
 	emit_signal("item_selected")
 	GlobalSignals.emit_signal("get_item", item1)
 
 func _on_object2_pressed() -> void:
+	MenuManager.cerrar_menu()
 	emit_signal("item_selected")
 	GlobalSignals.emit_signal("get_item", item2)
 
 func _on_object3_pressed() -> void:
+	MenuManager.cerrar_menu()
 	emit_signal("item_selected")
 	GlobalSignals.emit_signal("get_item", item3)

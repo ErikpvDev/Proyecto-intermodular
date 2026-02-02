@@ -10,6 +10,7 @@ func _ready() -> void:
 
 
 func open_chest(chest):
+	MenuManager.abrir_menu()
 	chest_queue_free=chest
 	
 	var item = ItemManager.get_item()
@@ -29,6 +30,7 @@ func show_menu():
 
 
 func _on_button_pressed() -> void:
+	MenuManager.cerrar_menu()
 	hide()
 	get_tree().paused = false
 	chest_queue_free.queue_free()
