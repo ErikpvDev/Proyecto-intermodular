@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dn6elax2br12n" path="res://Scenes/Menus/shop_menu.gd" id="1_ctghf"]
 [ext_resource type="FontFile" uid="uid://dvxv26iy0kmh0" path="res://assets/fonts/VCR_OSD_MONO_1.001.ttf" id="2_u1qxn"]
-[ext_resource type="Texture2D" uid="uid://c1tp7pqe622b5" path="res://icon.svg" id="3_2dqci"]
+[ext_resource type="Texture2D" uid="uid://d110iwm8csggt" path="res://assets/sprites/Objetcs/Gold/Gold.png" id="4_u1qxn"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_7s48k"]
 font = ExtResource("2_u1qxn")
@@ -81,9 +81,10 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -609.1272
-offset_right = 609.1272
-offset_bottom = 225.0
+offset_left = -609.127
+offset_top = 0.595
+offset_right = 609.1274
+offset_bottom = 225.595
 grow_horizontal = 2
 scale = Vector2(0.5, 0.5)
 pivot_offset = Vector2(609.127, 0)
@@ -96,10 +97,10 @@ clip_text = true
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
-offset_left = 381.67206
-offset_top = 454.16663
-offset_right = -270.80933
-offset_bottom = 831.2843
+offset_left = 351.377
+offset_top = 342.886
+offset_right = -276.39404
+offset_bottom = 701.42896
 grow_horizontal = 2
 scale = Vector2(1.7, 1.7)
 pivot_offset = Vector2(474, 273)
@@ -120,18 +121,40 @@ bbcode_enabled = true
 fit_content = true
 horizontal_alignment = 1
 
-[node name="Object01" type="TextureButton" parent="Panel/HBoxContainer/VBoxContainer" unique_id=602181462]
+[node name="Button" type="Button" parent="Panel/HBoxContainer/VBoxContainer" unique_id=1145202887]
+custom_minimum_size = Vector2(0, 186.33)
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-texture_normal = ExtResource("3_2dqci")
 
-[node name="Price" type="Label" parent="Panel/HBoxContainer/VBoxContainer" unique_id=937901199]
+[node name="TextureRect" type="TextureRect" parent="Panel/HBoxContainer/VBoxContainer/Button" unique_id=1590958689]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+stretch_mode = 5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/HBoxContainer/VBoxContainer" unique_id=517606924]
+layout_mode = 2
+alignment = 1
+
+[node name="Price" type="Label" parent="Panel/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=937901199]
 custom_minimum_size = Vector2(20.03, 0)
 layout_mode = 2
-label_settings = SubResource("LabelSettings_412y8")
+theme_override_font_sizes/font_size = 23
 horizontal_alignment = 1
 autowrap_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Panel/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=1713752209]
+layout_mode = 2
+texture = ExtResource("4_u1qxn")
 
 [node name="Description" type="Label" parent="Panel/HBoxContainer/VBoxContainer" unique_id=1692175107]
 custom_minimum_size = Vector2(20.03, 0)
@@ -161,20 +184,43 @@ bbcode_enabled = true
 fit_content = true
 horizontal_alignment = 1
 
-[node name="Object02" type="TextureButton" parent="Panel/HBoxContainer/VBoxContainer2" unique_id=1146283679]
+[node name="Button" type="Button" parent="Panel/HBoxContainer/VBoxContainer2" unique_id=294279782]
+custom_minimum_size = Vector2(0, 186.33)
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-texture_normal = ExtResource("3_2dqci")
 
-[node name="Price" type="Label" parent="Panel/HBoxContainer/VBoxContainer2" unique_id=146494269]
+[node name="TextureRect" type="TextureRect" parent="Panel/HBoxContainer/VBoxContainer2/Button" unique_id=399151101]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+stretch_mode = 5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/HBoxContainer/VBoxContainer2" unique_id=842990723]
+layout_mode = 2
+alignment = 1
+
+[node name="Price" type="Label" parent="Panel/HBoxContainer/VBoxContainer2/HBoxContainer" unique_id=167435269]
 custom_minimum_size = Vector2(20.03, 0)
 layout_mode = 2
-label_settings = SubResource("LabelSettings_412y8")
+theme_override_font_sizes/font_size = 23
 horizontal_alignment = 1
 autowrap_mode = 2
 
+[node name="TextureRect" type="TextureRect" parent="Panel/HBoxContainer/VBoxContainer2/HBoxContainer" unique_id=1654033119]
+layout_mode = 2
+texture = ExtResource("4_u1qxn")
+
 [node name="Description" type="Label" parent="Panel/HBoxContainer/VBoxContainer2" unique_id=1688990345]
+custom_minimum_size = Vector2(20.03, 0)
 layout_mode = 2
 label_settings = SubResource("LabelSettings_412y8")
 horizontal_alignment = 1
@@ -201,11 +247,40 @@ bbcode_enabled = true
 fit_content = true
 horizontal_alignment = 1
 
-[node name="Object03" type="TextureButton" parent="Panel/HBoxContainer/VBoxContainer3" unique_id=2080484115]
+[node name="Button" type="Button" parent="Panel/HBoxContainer/VBoxContainer3" unique_id=1136627179]
+custom_minimum_size = Vector2(0, 186.33)
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-texture_normal = ExtResource("3_2dqci")
+
+[node name="TextureRect" type="TextureRect" parent="Panel/HBoxContainer/VBoxContainer3/Button" unique_id=1002022351]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+stretch_mode = 5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/HBoxContainer/VBoxContainer3" unique_id=929922632]
+layout_mode = 2
+alignment = 1
+
+[node name="Price" type="Label" parent="Panel/HBoxContainer/VBoxContainer3/HBoxContainer" unique_id=1765979657]
+custom_minimum_size = Vector2(20.03, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 23
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Panel/HBoxContainer/VBoxContainer3/HBoxContainer" unique_id=2094359659]
+layout_mode = 2
+texture = ExtResource("4_u1qxn")
 
 [node name="Price" type="Label" parent="Panel/HBoxContainer/VBoxContainer3" unique_id=378284799]
 custom_minimum_size = Vector2(20.03, 0)
@@ -215,6 +290,7 @@ horizontal_alignment = 1
 autowrap_mode = 2
 
 [node name="Description" type="Label" parent="Panel/HBoxContainer/VBoxContainer3" unique_id=475402097]
+custom_minimum_size = Vector2(20.03, 0)
 layout_mode = 2
 label_settings = SubResource("LabelSettings_412y8")
 horizontal_alignment = 1
@@ -233,18 +309,20 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -150.0
-offset_top = -188.09534
-offset_right = 150.0
-offset_bottom = -38.095337
+offset_left = -120.00006
+offset_top = -167.26178
+offset_right = 179.99994
+offset_bottom = -17.26178
 grow_horizontal = 2
 grow_vertical = 0
-text = "Leave"
+scale = Vector2(0.8, 0.8)
+theme_override_font_sizes/font_size = 45
+text = "LEAVE"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1760631433]
 libraries/ = SubResource("AnimationLibrary_7s48k")
 
-[connection signal="pressed" from="Panel/HBoxContainer/VBoxContainer/Object01" to="." method="_on_object_01_pressed"]
-[connection signal="pressed" from="Panel/HBoxContainer/VBoxContainer2/Object02" to="." method="_on_object_02_pressed"]
-[connection signal="pressed" from="Panel/HBoxContainer/VBoxContainer3/Object03" to="." method="_on_object_03_pressed"]
+[connection signal="pressed" from="Panel/HBoxContainer/VBoxContainer/Button" to="." method="_on_object1_pressed"]
+[connection signal="pressed" from="Panel/HBoxContainer/VBoxContainer2/Button" to="." method="_on_object2_pressed"]
+[connection signal="pressed" from="Panel/HBoxContainer/VBoxContainer3/Button" to="." method="_on_object3_pressed"]
 [connection signal="pressed" from="Panel/Button" to="." method="_on_button_pressed"]

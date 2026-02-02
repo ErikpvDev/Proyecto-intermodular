@@ -35,21 +35,21 @@ func get_items():
 	contenedor1.get_child(3).text = item1.description
 	contenedor2.get_child(3).text = item2.description
 	contenedor3.get_child(3).text = item3.description
-	contenedor1.get_child(2).texture_normal = item1.icon
-	contenedor2.get_child(2).texture_normal = item2.icon
-	contenedor3.get_child(2).texture_normal = item3.icon
+	contenedor1.get_child(2).get_child(0).texture = item1.icon
+	contenedor2.get_child(2).get_child(0).texture = item2.icon
+	contenedor3.get_child(2).get_child(0).texture = item3.icon
 	contenedor1.get_child(4).text = ItemManager.get_stats(item1)
 	contenedor2.get_child(4).text = ItemManager.get_stats(item2)
 	contenedor3.get_child(4).text = ItemManager.get_stats(item3)
 
-func _on_object_01_pressed() -> void:
+func _on_object1_pressed() -> void:
 	emit_signal("item_selected")
 	GlobalSignals.emit_signal("get_item", item1)
 
-func _on_object_02_pressed() -> void:
+func _on_object2_pressed() -> void:
 	emit_signal("item_selected")
 	GlobalSignals.emit_signal("get_item", item2)
-	
-func _on_object_03_pressed() -> void:
+
+func _on_object3_pressed() -> void:
 	emit_signal("item_selected")
 	GlobalSignals.emit_signal("get_item", item3)

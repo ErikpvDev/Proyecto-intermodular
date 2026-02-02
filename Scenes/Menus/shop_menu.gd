@@ -42,20 +42,20 @@ func get_items():
 	contenedor1.get_child(1).text = ItemManager.get_rarity(item1)
 	contenedor2.get_child(1).text = ItemManager.get_rarity(item2)
 	contenedor3.get_child(1).text = ItemManager.get_rarity(item3)
-	contenedor1.get_child(3).text = str(ItemManager.get_price(item1))
-	contenedor2.get_child(3).text = str(ItemManager.get_price(item2))
-	contenedor3.get_child(3).text = str(ItemManager.get_price(item3))
+	contenedor1.get_child(3).get_child(0).text = str(ItemManager.get_price(item1))
+	contenedor2.get_child(3).get_child(0).text = str(ItemManager.get_price(item2))
+	contenedor3.get_child(3).get_child(0).text = str(ItemManager.get_price(item3))
 	contenedor1.get_child(4).text = item1.description
 	contenedor2.get_child(4).text = item2.description
 	contenedor3.get_child(4).text = item3.description
-	boton1.texture_normal = item1.icon
-	boton2.texture_normal = item2.icon
-	boton3.texture_normal = item3.icon
+	boton1.get_child(0).texture = item1.icon
+	boton2.get_child(0).texture = item2.icon
+	boton3.get_child(0).texture = item3.icon
 	contenedor1.get_child(5).text = ItemManager.get_stats(item1)
 	contenedor2.get_child(5).text = ItemManager.get_stats(item2)
 	contenedor3.get_child(5).text = ItemManager.get_stats(item3)
 
-func _on_object_01_pressed() -> void:
+func _on_object1_pressed() -> void:
 	var item_price = ItemManager.get_price(item1)
 	if (gold_coins >= item_price):
 		GlobalSignals.emit_signal("get_item", item1)
@@ -64,7 +64,7 @@ func _on_object_01_pressed() -> void:
 		gold_coins = personaje.gold_coins
 		GlobalSignals.emit_signal("update_gold")
 
-func _on_object_02_pressed() -> void:
+func _on_object2_pressed() -> void:
 	var item_price = ItemManager.get_price(item2)
 	if (gold_coins >= item_price):
 		GlobalSignals.emit_signal("get_item", item2)
@@ -72,8 +72,8 @@ func _on_object_02_pressed() -> void:
 		personaje.gold_coins -= item_price
 		gold_coins = personaje.gold_coins
 		GlobalSignals.emit_signal("update_gold")
-	
-func _on_object_03_pressed() -> void:
+
+func _on_object3_pressed() -> void:
 	var item_price = ItemManager.get_price(item3)
 	if (gold_coins >= item_price):
 		GlobalSignals.emit_signal("get_item", item3)
@@ -84,3 +84,4 @@ func _on_object_03_pressed() -> void:
 
 func _on_button_pressed() -> void:
 	GlobalSignals.emit_signal("leave_shop")
+	
