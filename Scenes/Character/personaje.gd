@@ -73,6 +73,7 @@ func _ready() -> void:
 	$AttackArea/AnimatedSprite2D.visible=false
 	$AttackArea/attack_cooldown.start()
 	
+	#GlobalSignals.emit_signal("update_stats")
 
 func _process(delta):
 	update_animation()
@@ -213,6 +214,7 @@ func get_item(item: ItemData):
 	add_max_health(item.max_hp_bonus)
 	add_health(item.max_hp_bonus)
 	update_heart_display()
+	GlobalSignals.emit_signal("update_stats")
 	#print(damage)
 	#print(damage_multiplier)
 	#print(movement.move_speed)

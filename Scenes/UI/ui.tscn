@@ -7,6 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://dv7lc10i5l7rj" path="res://Scenes/UI/Exp/exp.tscn" id="3_hwbc8"]
 [ext_resource type="PackedScene" uid="uid://cewa4t80pl5nn" path="res://Scenes/Wave/wave.tscn" id="4_fo61o"]
 [ext_resource type="Script" uid="uid://sqfmnct5458c" path="res://Scenes/UI/wave.gd" id="5_1c2ca"]
+[ext_resource type="PackedScene" uid="uid://cb0byk3wntac1" path="res://Scenes/Stats/stats.tscn" id="6_jfwrg"]
+[ext_resource type="Script" uid="uid://cbghlpj4ldvfr" path="res://Scenes/Stats/stats.gd" id="7_mbl0m"]
 
 [node name="UI" type="CanvasGroup" unique_id=1219804552]
 script = ExtResource("1_alcrr")
@@ -19,6 +21,9 @@ layer = 2
 [node name="health_bar" parent="." unique_id=376717483 instance=ExtResource("2_hwbc8")]
 
 [node name="Exp" parent="." unique_id=805773710 instance=ExtResource("3_hwbc8")]
+
+[node name="Stats" parent="." unique_id=776331292 instance=ExtResource("6_jfwrg")]
+script = ExtResource("7_mbl0m")
 
 [node name="Wave" type="Node2D" parent="." unique_id=896897519]
 script = ExtResource("5_1c2ca")
