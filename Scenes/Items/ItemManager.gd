@@ -90,9 +90,9 @@ func get_price(item: ItemData):
 	
 	match item.rarity:
 		0:
-			price = 1
+			price = 15
 		1:
-			price = 2
+			price = 40
 		2:
-			price = 3
+			price = 80
 	return price

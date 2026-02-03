@@ -3,14 +3,14 @@ extends Node2D
 @onready var current_wave=1
 var base_elite_chance = 0.02
 var elite_prob_percent
-@export var exp_growth=1.15
+@export var exp_growth=1.12
 @export var exp_elite_growth=3
 @export var hp_growth=1.10
 @export var hp_elite_growth=1.13
-#@export var base_hp=10
-@export var base_hp=1
-#@export var base_elite_hp=50
-@export var base_elite_hp=1
+@export var base_hp=10
+#@export var base_hp=1
+@export var base_elite_hp=50
+#@export var base_elite_hp=1
 @onready var between_waves=1
 @onready var wave_text = $"../UI/Wave/Wave/Label"
 
@@ -73,7 +73,8 @@ func _ready():
 func enemy_death():
 	dead_enemies+=1
 	if dead_enemies==enemy_dict[current_wave][0]:
-		if ((current_wave) % 1 == 0):
+		if ((current_wave) % 5 == 0):
+			GlobalSignals.emit_signal("add_gold", 25)
 			GlobalSignals.emit_signal("show_shop")
 		dead_enemies=0
 		await get_tree().create_timer(time_between_waves).timeout
@@ -261,7 +262,7 @@ func spawn_enemies():
 			e.scale = e.scale*1.3
 			e.position=get_valid_spawnpoint(camera,$"../TileMapLayer")
 			e.elite=true
-			e.exp_value=int(e.exp_value*pow(exp_elite_growth,current_wave-1))
+			e.exp_value=int(e.exp_value*pow(exp_growth,current_wave-1))*8
 			e.get_children()[0].health=int(base_elite_hp*pow(hp_elite_growth,current_wave-1))
 			$"../Enemies".add_child(e)
 			await get_tree().create_timer(spawn_time).timeout
@@ -277,7 +278,7 @@ func spawn_enemies():
 			await get_tree().create_timer(spawn_time).timeout
 
 func spawn_vase():
-	for i in range(10):
+	for i in range(8):
 		if randi_range(0,100)<rare_vase_prob:
 			var v = vase.instantiate()
 			v.position=get_valid_spawnpoint(camera,$"../TileMapLayer")
