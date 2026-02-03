@@ -6,10 +6,13 @@
 [ext_resource type="PackedScene" uid="uid://bg8a2cw3ag6wq" path="res://Scenes/Menus/chest_menu.tscn" id="4_i1e5p"]
 [ext_resource type="PackedScene" uid="uid://cl46wfmum4upq" path="res://Scenes/Menus/shop_menu.tscn" id="5_ciybh"]
 [ext_resource type="PackedScene" uid="uid://bvvlriipepaqr" path="res://Scenes/UI/pause_menu.tscn" id="6_flgk0"]
+[ext_resource type="PackedScene" uid="uid://c7p2d74atq8qj" path="res://Scenes/UI/Transition.tscn" id="7_vifcx"]
 
 [node name="Game" type="Node" unique_id=1006189634]
 process_mode = 3
 script = ExtResource("1_qikps")
+
+[node name="Transition" parent="." unique_id=1909195515 instance=ExtResource("7_vifcx")]
 
 [node name="Level01" parent="." unique_id=394910534 instance=ExtResource("1_mv0hc")]
 
