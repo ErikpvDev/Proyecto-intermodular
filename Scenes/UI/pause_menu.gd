@@ -21,3 +21,7 @@ func toggle_pause():
 func _on_button_pressed() -> void:
 	toggle_pause()
 	MenuManager.cerrar_menu()
+
+
+func _on_volver_menu_pressed() -> void:
+	get_tree().change_scene_to_file("res://Scenes/UI/MainMenu.tscn")

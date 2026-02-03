@@ -65,3 +65,4 @@ text = "VOLVER AL MENÚ"
 metadata/_edit_use_anchors_ = true
 
 [connection signal="pressed" from="Panel/SeguirJugando" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Panel/VolverMenu" to="." method="_on_volver_menu_pressed"]

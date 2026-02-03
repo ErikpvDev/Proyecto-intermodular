@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://mogyoh0swyp1"]
+
+[ext_resource type="Script" uid="uid://ccvpjkq8yfoj6" path="res://Scenes/Music/music_manager.gd" id="1_hk5mo"]
+[ext_resource type="AudioStream" uid="uid://b17o3ugouk0tw" path="res://assets/Songs/MainMenuSong.mp3" id="2_f2gtp"]
+
+[node name="MusicManager" type="Node" unique_id=175249028]
+script = ExtResource("1_hk5mo")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1468288760]
+stream = ExtResource("2_f2gtp")
+autoplay = true

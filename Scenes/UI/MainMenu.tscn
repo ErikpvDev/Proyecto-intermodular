@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://ccey71ni404b0" path="res://Scenes/UI/main_menu.gd" id="1_g18y6"]
 [ext_resource type="PackedScene" uid="uid://c7p2d74atq8qj" path="res://Scenes/UI/Transition.tscn" id="2_mjmdf"]
+[ext_resource type="AudioStream" uid="uid://b17o3ugouk0tw" path="res://assets/Songs/MainMenuSong.mp3" id="3_72sra"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_mjmdf"]
 font_size = 64
@@ -72,9 +73,15 @@ text = "Quit"
 
 [node name="Transition" parent="." unique_id=1909195515 instance=ExtResource("2_mjmdf")]
 visible = false
+z_index = 10
 layout_mode = 1
 
 [node name="Fade_timer" type="Timer" parent="Transition" unique_id=1621469]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=211402290]
+stream = ExtResource("3_72sra")
+volume_db = -10.495
+autoplay = true
 
 [connection signal="pressed" from="VBoxContainer/Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="VBoxContainer/Options" to="." method="_on_options_pressed"]

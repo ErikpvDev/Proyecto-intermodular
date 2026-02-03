@@ -12,11 +12,13 @@
 process_mode = 3
 script = ExtResource("1_qikps")
 
-[node name="Transition" parent="." unique_id=1909195515 instance=ExtResource("7_vifcx")]
-
 [node name="Level01" parent="." unique_id=394910534 instance=ExtResource("1_mv0hc")]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1536495670]
+
+[node name="Transition" parent="CanvasLayer" unique_id=1909195515 instance=ExtResource("7_vifcx")]
+z_index = 4096
+offset_top = 6.1035156e-05
 
 [node name="LevelUpMenu" parent="CanvasLayer" unique_id=532959136 instance=ExtResource("2_qxfds")]
 
