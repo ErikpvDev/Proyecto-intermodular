@@ -12,14 +12,13 @@ extends CanvasLayer
 
 func _ready() -> void:
 	GlobalSignals.update_stats.connect(update_stats)
-	update_stats()
 
 func update_stats():
 	var player = get_tree().get_first_node_in_group("character")
 	dmg.text = str(player.damage)
 	dmgMult.text = str(player.damage_multiplier)
-	ms.text = str(movement.move_speed)
-	dc.text = str(player.dodge_chance)
-	cc.text = str(player.crit_chance)
-	aspeed.text = str(player.attack_speed)
+	ms.text = str(movement.move_speed) + "%"
+	dc.text = str(100 + player.dodge_chance * 100) + "%"
+	cc.text = str(100 + player.crit_chance * 100) + "%"
+	aspeed.text = str(100 + player.attack_speed * 100) + "%"
 	asize.text = str(player.attack_size)

@@ -24,8 +24,8 @@ func open_chest(chest):
 	GlobalSignals.emit_signal("get_item", item)
 
 func show_menu():
-	get_tree().paused = true
 	$AnimationPlayer.play("pop_in")
+	get_tree().paused = true
 	show()
 
 

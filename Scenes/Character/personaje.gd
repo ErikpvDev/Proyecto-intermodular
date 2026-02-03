@@ -55,6 +55,7 @@ func _ready() -> void:
 	GlobalSignals.get_item.connect(get_item)
 	
 	GlobalSignals.emit_signal("update_shield",shield)
+	GlobalSignals.emit_signal("update_stats")
 	health.max_health = 9
 	
 	# Gets the health bar initial hearts,appends them to the array and shows them on screen

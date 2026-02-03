@@ -54,6 +54,8 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_right = 365.71436
+offset_bottom = 205.71423
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.84, 0.84)
@@ -76,25 +78,28 @@ grow_vertical = 2
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel" unique_id=1059091569]
 layout_mode = 0
 offset_left = 181.02383
-offset_top = 140.30952
-offset_right = 481.02383
-offset_bottom = 521.2619
+offset_top = 120.785736
+offset_right = 486.26193
+offset_bottom = 281.5
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.79
 
 [node name="Name" type="Label" parent="Panel/VBoxContainer" unique_id=1423529810]
 layout_mode = 2
+theme_override_font_sizes/font_size = 22
 text = "Object01 Name"
 horizontal_alignment = 1
 
 [node name="Rarity" type="RichTextLabel" parent="Panel/VBoxContainer" unique_id=1531125313]
 layout_mode = 2
+theme_override_font_sizes/normal_font_size = 22
 bbcode_enabled = true
 fit_content = true
 horizontal_alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="Panel/VBoxContainer" unique_id=40304193]
 layout_mode = 2
+expand_mode = 4
 
 [node name="Description" type="Label" parent="Panel/VBoxContainer" unique_id=1900421351]
 custom_minimum_size = Vector2(20.03, 0)
@@ -132,9 +137,9 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -43.25
-offset_top = -123.0
+offset_top = -89.666504
 offset_right = 43.25
-offset_bottom = -54.5
+offset_bottom = -21.166504
 grow_horizontal = 2
 grow_vertical = 0
 text = "X"
