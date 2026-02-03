@@ -1,6 +1,6 @@
 extends Area2D
 
-@export var exp_amount: int = 60
+@export var exp_amount: int = 15
 @export var attraction_radius: float = 50
 @export var attraction_speed: float = 200
 var attracted = false

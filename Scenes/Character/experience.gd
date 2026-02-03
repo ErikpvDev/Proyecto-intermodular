@@ -1,6 +1,6 @@
 extends Node
 
-@export var exp_needed_lvl: int = 200
+@export var exp_needed_lvl: int = 150
 #@export var exp_needed_lvl: int = 2
 @onready var exp_bar: TextureProgressBar = $"../../UI/Exp/TextureProgressBar"
 @onready var exp_lvl_text: Label = $"../../UI/Exp/Label"
@@ -21,7 +21,7 @@ func add_exp(amount: int) -> void:
 		exp_bar.value = experience
 		lvl+=1
 		exp_lvl_text.text="LVL "+str(lvl)
-		exp_needed_lvl*=2
+		exp_needed_lvl += (lvl * 250)
 		exp_bar.max_value=exp_needed_lvl
 		emit_signal("level_up")
 	else:

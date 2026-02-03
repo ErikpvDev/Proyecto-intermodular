@@ -10,8 +10,11 @@ func _ready() -> void:
 
 func drop_coins():
 	var gold_coin = gold_coin_scene.instantiate()
-	gold_coin.global_position = global_position 
-	gold_coin.gold_amount = 1
+	gold_coin.global_position = global_position
+	if (randf_range(0,100)<90):
+		gold_coin.gold_amount = 1
+	else:
+		gold_coin.gold_amount = 2
 	
 	gold_drops.call_deferred("add_child", gold_coin)
 
@@ -20,5 +23,11 @@ func _on_interact():
 		interactable.is_interactable = false
 		#animated_sprite_2d.play("break")
 		#await animated_sprite_2d.animation_finished
-		drop_coins()
+		if (randf_range(0,100)<90):
+			drop_coins()
+		#else:
+			#if(randf_range(0,100)<50):
+				#drop_heart()
+			#else
+				#drop_shield()
 		queue_free()

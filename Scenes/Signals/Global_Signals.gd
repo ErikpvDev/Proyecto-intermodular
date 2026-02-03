@@ -40,6 +40,10 @@ signal leave_shop()
 @warning_ignore("unused_signal")
 signal update_gold()
 
+#Señal para añadir oro
+@warning_ignore("unused_signal")
+signal add_gold()
+
 #Señal para actualizar el display de las stats
 @warning_ignore("unused_signal")
 signal update_stats()

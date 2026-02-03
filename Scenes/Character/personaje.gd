@@ -50,13 +50,14 @@ var closest_enemy
 #VARIABLES------------------------------------------------------------------------------------------------
 
 func _ready() -> void:	
-	add_gold(10)
 	GlobalSignals.update_gold.connect(update_gold)
+	GlobalSignals.update_gold.connect(add_gold)
 	GlobalSignals.get_item.connect(get_item)
 	
 	GlobalSignals.emit_signal("update_shield",shield)
 	GlobalSignals.emit_signal("update_stats")
-	health.max_health = 9
+	
+	health.max_health = 5 
 	
 	# Gets the health bar initial hearts,appends them to the array and shows them on screen
 	for i in range(health.max_health):
