@@ -1,10 +1,12 @@
 [gd_scene format=3 uid="uid://ixnuchluuxwf"]
 
 [ext_resource type="Script" uid="uid://ue57ipyuupyo" path="res://Scenes/Bosses/Bullet_Hell/bullet_hell_boss.gd" id="1_c2tip"]
-[ext_resource type="Texture2D" uid="uid://c1tp7pqe622b5" path="res://icon.svg" id="1_nsayj"]
 [ext_resource type="Script" uid="uid://0kvnsgnodh8a" path="res://Scenes/Bosses/Bullet_Hell/bullet_hell.gd" id="1_xrhg8"]
+[ext_resource type="Texture2D" uid="uid://ctp6silk7b57g" path="res://assets/sprites/Enemies/Bosses/BulletHell/with_outline/DEATH.png" id="2_cpyfl"]
+[ext_resource type="Texture2D" uid="uid://c2b1lonbj4nvf" path="res://assets/sprites/Enemies/Bosses/BulletHell/with_outline/HURT.png" id="2_eljc4"]
 [ext_resource type="PackedScene" uid="uid://bltsh3akbyydi" path="res://Scenes/Bosses/Bullet_Hell/bullet.tscn" id="2_kx0s6"]
 [ext_resource type="Script" uid="uid://cv7ypnvtvpr0r" path="res://Scenes/Bosses/Bullet_Hell/state_machine.gd" id="2_ooxwf"]
+[ext_resource type="Texture2D" uid="uid://dsruuf1j3rfyg" path="res://assets/sprites/Enemies/Bosses/BulletHell/with_outline/IDLE.png" id="2_t2n1x"]
 [ext_resource type="Script" uid="uid://bxxewu12y45qr" path="res://Scenes/Bosses/Bullet_Hell/follow.gd" id="3_ea566"]
 [ext_resource type="Script" uid="uid://dfya47wrct840" path="res://Scenes/Bosses/Bullet_Hell/dash.gd" id="6_hlpun"]
 [ext_resource type="Script" uid="uid://wrfx4onqic4q" path="res://Scenes/Bosses/Bullet_Hell/floor_attack.gd" id="7_5gfr7"]
@@ -12,54 +14,199 @@
 [ext_resource type="PackedScene" uid="uid://3vcjcs60fu3o" path="res://Scenes/Bosses/Bullet_Hell/AttackIndicator.tscn" id="8_30d6k"]
 [ext_resource type="Texture2D" uid="uid://bjc4fejijgsl2" path="res://assets/sprites/Objetcs/Exp/Under.png" id="11_t2n1x"]
 [ext_resource type="Texture2D" uid="uid://xwm27srbs3p6" path="res://assets/sprites/Objetcs/Exp/Over.png" id="12_eljc4"]
-[ext_resource type="Texture2D" uid="uid://baaqhre1lhrcl" path="res://assets/sprites/Objetcs/Exp/Progress.png" id="13_cpyfl"]
+[ext_resource type="Texture2D" uid="uid://b15b6vk4soi7e" path="res://assets/sprites/Enemies/Bosses/Health_bar_UI.png" id="13_t2n1x"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ooxwf"]
-atlas = ExtResource("1_nsayj")
-region = Rect2(0, 0, 128, 128)
+[sub_resource type="AtlasTexture" id="AtlasTexture_l6wuc"]
+atlas = ExtResource("2_cpyfl")
+region = Rect2(0, 0, 81, 71)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p6a7k"]
+atlas = ExtResource("2_cpyfl")
+region = Rect2(81, 0, 81, 71)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jxwu2"]
+atlas = ExtResource("2_cpyfl")
+region = Rect2(162, 0, 81, 71)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f6mf7"]
+atlas = ExtResource("2_cpyfl")
+region = Rect2(243, 0, 81, 71)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f3ea0"]
+atlas = ExtResource("2_cpyfl")
+region = Rect2(324, 0, 81, 71)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0ahm6"]
+atlas = ExtResource("2_cpyfl")
+region = Rect2(405, 0, 81, 71)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kv6fp"]
+atlas = ExtResource("2_cpyfl")
+region = Rect2(486, 0, 81, 71)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cnclf"]
+atlas = ExtResource("2_eljc4")
+region = Rect2(0, 0, 81, 71)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0utoj"]
+atlas = ExtResource("2_eljc4")
+region = Rect2(81, 0, 81, 71)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_441ho"]
+atlas = ExtResource("2_eljc4")
+region = Rect2(162, 0, 81, 71)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ndk0p"]
+atlas = ExtResource("2_eljc4")
+region = Rect2(243, 0, 81, 71)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eljc4"]
+atlas = ExtResource("2_t2n1x")
+region = Rect2(0, 0, 81, 71)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cpyfl"]
+atlas = ExtResource("2_t2n1x")
+region = Rect2(81, 0, 81, 71)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nt647"]
+atlas = ExtResource("2_t2n1x")
+region = Rect2(162, 0, 81, 71)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a2g5b"]
+atlas = ExtResource("2_t2n1x")
+region = Rect2(243, 0, 81, 71)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ea566"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ooxwf")
+"texture": SubResource("AtlasTexture_l6wuc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p6a7k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jxwu2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f6mf7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f3ea0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0ahm6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kv6fp")
+}],
+"loop": false,
+"name": &"death",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cnclf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0utoj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_441ho")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ndk0p")
+}],
+"loop": false,
+"name": &"hurt",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eljc4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cpyfl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nt647")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a2g5b")
 }],
 "loop": true,
-"name": &"default",
+"name": &"idle",
 "speed": 5.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ea566"]
-size = Vector2(21, 22)
+size = Vector2(49.890625, 42.1875)
 
-[sub_resource type="Animation" id="Animation_8cfnc"]
+[sub_resource type="Animation" id="Animation_sb7m0"]
+resource_name = "Hit"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(18.892157, 18.892157, 18.892157, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_ql1il"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_eljc4"]
 resource_name = "death"
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_d8i6o"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_eljc4"]
 _data = {
-&"death": SubResource("Animation_8cfnc")
+&"Hit": SubResource("Animation_sb7m0"),
+&"RESET": SubResource("Animation_ql1il"),
+&"death": SubResource("Animation_eljc4")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t2n1x"]
-size = Vector2(28, 28)
+size = Vector2(56.3125, 48.1875)
 
 [node name="Bullet Hell boss" type="CharacterBody2D" unique_id=789167342]
 script = ExtResource("1_c2tip")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1294006751]
-scale = Vector2(0.16796878, 0.16796878)
+position = Vector2(5.9999995, -6.9999995)
+scale = Vector2(0.6405837, 0.64058375)
 sprite_frames = SubResource("SpriteFrames_ea566")
-autoplay = "default"
+animation = &"death"
+autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1172405474]
+position = Vector2(6, -7)
 shape = SubResource("RectangleShape2D_ea566")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1843503395]
-libraries/ = SubResource("AnimationLibrary_d8i6o")
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=975868628]
+libraries/ = SubResource("AnimationLibrary_eljc4")
 
 [node name="Hurtbox" type="Area2D" parent="." unique_id=250763227]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=364466174]
+position = Vector2(6, -7)
 shape = SubResource("RectangleShape2D_t2n1x")
 
 [node name="StateMachine" type="Node2D" parent="." unique_id=1855195465]
@@ -117,7 +264,7 @@ stretch_margin_left = 16
 stretch_margin_right = 16
 texture_under = ExtResource("11_t2n1x")
 texture_over = ExtResource("12_eljc4")
-texture_progress = ExtResource("13_cpyfl")
+texture_progress = ExtResource("13_t2n1x")
 
 [node name="Label" type="Label" parent="UI/TextureProgressBar" unique_id=1358660656]
 layout_mode = 1
@@ -132,8 +279,9 @@ offset_right = 49.5
 offset_bottom = -12.5744705
 grow_horizontal = 2
 grow_vertical = 0
-text = "Bullet Hell "
+text = "Vhyk-Thorr Vher’Dhu"
 horizontal_alignment = 1
 
+[connection signal="animation_finished" from="AnimatedSprite2D" to="StateMachine/Death" method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="animation_finished" from="AnimationPlayer" to="StateMachine/Death" method="_on_animation_player_animation_finished"]
 [connection signal="timeout" from="StateMachine/BulletHell/SpiralTimer" to="StateMachine/BulletHell" method="_on_spiral_timer_timeout"]

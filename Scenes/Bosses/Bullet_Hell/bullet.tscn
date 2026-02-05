@@ -1,19 +1,26 @@
-[gd_scene load_steps=3 format=3 uid="uid://bltsh3akbyydi"]
+[gd_scene format=3 uid="uid://bltsh3akbyydi"]
 
 [ext_resource type="Script" uid="uid://dmkpkkkrlyi7f" path="res://Scenes/Bosses/Bullet_Hell/bullet.gd" id="1_kawbf"]
-[ext_resource type="Texture2D" uid="uid://c1tp7pqe622b5" path="res://icon.svg" id="2_8k1s1"]
+[ext_resource type="Texture2D" uid="uid://urg56ddqect3" path="res://assets/sprites/Enemies/Bosses/BulletHell/projectile.png" id="2_8k1s1"]
 
-[node name="Bullet" type="Area2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_blray"]
+size = Vector2(12.1875, 7)
+
+[node name="Bullet" type="Area2D" unique_id=985311174]
 script = ExtResource("1_kawbf")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(-9.536743e-07, 0)
-scale = Vector2(0.06640625, 0.06640625)
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1123458653]
+position = Vector2(4.7683716e-07, 4.7683716e-07)
+scale = Vector2(0.40673822, 0.40673825)
 texture = ExtResource("2_8k1s1")
+flip_h = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1828158221]
+position = Vector2(2, 0.7)
+shape = SubResource("RectangleShape2D_blray")
 
-[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=94421937]
+rect = Rect2(-10, -10, 24, 24)
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

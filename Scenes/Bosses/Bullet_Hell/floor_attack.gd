@@ -1,33 +1,57 @@
 extends State
 
 @export var indicator_scene: PackedScene
-@export var attack_delay := 1       # tiempo hasta que hace daño
-@export var spawn_attack_delay := 1
-@export var attack_radius := 80.0     # tamaño del área de daño
+@export var attack_delay := 1.0       # Tiempo desde que sale el aviso hasta el golpe
+@export var spawn_attack_delay := 1.5 # Tiempo entre la creación de cada ataque
+@export var attack_radius := 40
 @export var damage := 2
 @export var total_attacks := 3
+@export var time_after_dash := 2
 
 func enter():
 	super.enter()
 	
+	await get_tree().create_timer(time_after_dash).timeout
+	
 	for i in range(total_attacks):
+		# 1. Esperar antes de lanzar el siguiente ataque de la serie
 		await get_tree().create_timer(spawn_attack_delay).timeout
+		
+		# 2. Instanciar el indicador (el aviso visual)
 		var indicator = indicator_scene.instantiate()
-		indicator.global_position = player.global_position   # marcar al jugador
-		indicator.scale = Vector2.ONE * attack_radius / 64.0 # ajustar tamaño si tu sprite es 64x64
+		var spawn_pos = player.global_position # Guardamos la posición exacta del jugador en ese instante
+		
+		indicator.global_position = spawn_pos
+		# Ajuste de escala basado en un sprite base de 64x64
+		indicator.scale = Vector2.ONE * (attack_radius / 32.0) 
 		get_tree().current_scene.add_child(indicator)
+		
+		# 3. Lanzar la animación visual del Boss (opcional por cada ataque)
+		if animation_player.has_animation("attack_charge"):
+			animation_player.play("attack_charge")
+		
+		# 4. Procesar el daño de forma independiente para este ataque
+		check_damage_after_delay(spawn_pos, attack_delay, indicator)
+
+	# 5. Esperar un poco después del último ataque antes de cambiar de estado
+	await get_tree().create_timer(attack_delay + 0.2).timeout
+	get_parent().change_state("Dash")
+
+# Nueva función para manejar cada explosión por separado
+func check_damage_after_delay(pos: Vector2, delay: float, indicator_node: Node2D):
+	await get_tree().create_timer(delay).timeout
 	
-		animation_player.play("attack_charge") # animación del boss
+	# Verificamos distancia real entre el centro del ataque y el jugador
+	# Sumamos un pequeño margen (ej. 20px) para que la colisión sea justa con el cuerpo del player
+	var distance = pos.distance_to(player.global_position)
+	var player_margin = 20.0 
 	
-		# 2️⃣ Esperar el tiempo de telegráfico
-		await get_tree().create_timer(attack_delay).timeout
-	
-		# 3️⃣ Hacer daño si el jugador sigue en el área
-		if player.global_position.distance_to(indicator.global_position) <= attack_radius:
+	if distance <= (attack_radius + player_margin):
+		if player.has_method("take_damage"):
 			player.take_damage(damage)
 	
-		# 4️⃣ Limpiar indicador
-		indicator.queue_free()
-		
-	# 5️⃣ Volver al siguiente estado
-	get_parent().change_state("Dash")
+	# Efecto visual opcional aquí (una explosión, partículas, etc.)
+	
+	# Limpiar el indicador
+	if is_instance_valid(indicator_node):
+		indicator_node.queue_free()

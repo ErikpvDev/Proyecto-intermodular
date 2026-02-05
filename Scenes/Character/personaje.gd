@@ -6,6 +6,7 @@ extends CharacterBody2D
 
 #MOVEMENT
 @onready var movement: Node = $Movement
+@onready var is_dodging
 
 #DODGE CHANCE
 @onready var dodge_chance: float = 0

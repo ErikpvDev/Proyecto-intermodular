@@ -1,6 +1,6 @@
 extends Node2D
 
-@onready var current_wave=1
+@onready var current_wave=5
 var base_elite_chance = 0.02
 var elite_prob_percent
 @export var exp_growth=1.12
@@ -28,6 +28,7 @@ var exp_vase_growth = 1.04
 @onready var interactable_scene= $"../Interactables"
 
 var spawn_time = 1
+
 
 @onready var enemy_dict = {
 	1: [6, 1.1],
@@ -237,21 +238,37 @@ func get_valid_spawnpoint(cam: Camera2D, tilemap_layer: TileMapLayer, margin: fl
 	if right_rect.size.x > 0 and right_rect.size.y > 0:
 		valid_zones.append(right_rect)
 		
-	# 5. RETORNO SEGURO
+	# 5. RETORNO SEGURO CON VERIFICACIÓN (El cambio clave)
 	if valid_zones.is_empty():
-		# Fallback: Si el jugador ve TODO el mapa, no hay sitio donde esconderse.
-		# Retornamos el centro o null según prefieras.
 		print("Advertencia: No hay zona válida fuera de cámara")
 		return Vector2.ZERO 
-	
-	var chosen_zone: Rect2 = valid_zones.pick_random()
-	
-	var point = Vector2(
-		randf_range(chosen_zone.position.x, chosen_zone.end.x),
-		randf_range(chosen_zone.position.y, chosen_zone.end.y)
-	)
-	
-	return point
+
+	# Intentamos encontrar un punto válido hasta 10 veces
+	# Esto evita bucles infinitos si el mapa es muy pequeño
+	for i in range(20):
+		var chosen_zone: Rect2 = valid_zones.pick_random()
+		
+		var random_point = Vector2(
+			randf_range(chosen_zone.position.x, chosen_zone.end.x),
+			randf_range(chosen_zone.position.y, chosen_zone.end.y)
+		)
+		
+		# --- VERIFICACIÓN DE SUELO ---
+		# Convertimos la posición global del punto a coordenadas del TileMap
+		var local_pos = tilemap_layer.to_local(random_point)
+		var map_coords = tilemap_layer.local_to_map(local_pos)
+		
+		# Preguntamos al TileMap: ¿Hay un tile en esta coordenada?
+		var tile_data = tilemap_layer.get_cell_tile_data(map_coords)
+		
+		if tile_data != null:
+			# Opcional: Si usas colisiones o capas físicas, verifica que sea suelo
+			# if tile_data.get_collision_polygons_count(0) > 0:
+			
+			return random_point # ¡ÉXITO! Encontramos suelo real.
+			
+	print("No se encontró suelo válido tras varios intentos")
+	return Vector2.ZERO
 
 
 func spawn_enemies():
@@ -309,5 +326,5 @@ func update_wave():
 	if current_wave % 5 != 0:
 		spawn_enemies()
 	else:
-		GlobalSignals.emit_signal("miniboss_spawn")
+		GlobalSignals.emit_signal("miniboss_spawn",current_wave)
 	spawn_vase()

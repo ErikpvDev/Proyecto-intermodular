@@ -2,7 +2,7 @@ extends Node2D
 
 var current_state: State
 var previous_state: State
-@export var start_time := 3
+@export var start_time := 1
 
 func _ready() -> void:
 	current_state = get_child(0) as State

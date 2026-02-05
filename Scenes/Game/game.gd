@@ -5,6 +5,7 @@ extends Node
 @onready var shop_menu = $CanvasLayer/ShopMenu
 
 func _ready() -> void:
+	get_tree().paused=false
 	$CanvasLayer/Transition/AnimationPlayer.play("fade_out")
 	experience.connect("level_up",Callable(self,"_on_level_up"))
 	level_up_menu.connect("item_selected",Callable(self,"_on_level_up_item_selected"))

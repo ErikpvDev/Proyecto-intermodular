@@ -9,7 +9,7 @@ extends State
 @export var total_bullets_to_fire := 30
 
 # Time between individual shots. Smaller = tighter spiral arm visually.
-@export var time_between_shots := 0.1
+@export var time_between_shots := 0.2
 
 # How many degrees the aim rotates between each shot.
 # Higher = wider spiral gap. Lower = very tight spiral.
@@ -22,8 +22,13 @@ extends State
 var bullets_fired_count := 0
 var current_aim_angle: float = 0.0
 
+@export var time_after_dash := 2
+
 func enter():
 	super.enter()
+	
+	await get_tree().create_timer(time_after_dash).timeout
+	
 	owner.velocity = Vector2.ZERO
 	
 	# Reset tracking variables

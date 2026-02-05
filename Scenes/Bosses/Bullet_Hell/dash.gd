@@ -1,8 +1,8 @@
 extends State
 
-@export var dash_speed := 900.0         # Velocidad del dash
-@export var dash_duration := 0.25       # Tiempo máximo del dash
-@export var safe_distance := 50      # Distancia mínima al jugador
+@export var dash_speed := 1300.0         # Velocidad del dash
+@export var dash_duration := 0.15       # Tiempo máximo del dash
+@export var safe_distance := 100     # Distancia mínima al jugador
 
 var dash_direction := Vector2.ZERO
 var dash_timer := 0.0
@@ -14,7 +14,6 @@ func enter():
 	
 	start_position = owner.global_position
 	
-	# Dirección hacia el jugador
 	var direction_to_player = (player.global_position - start_position).normalized()
 	
 	# Posición objetivo: a safe_distance del jugador

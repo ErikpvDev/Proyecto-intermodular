@@ -1,10 +1,19 @@
-[gd_scene load_steps=3 format=3 uid="uid://3vcjcs60fu3o"]
+[gd_scene format=3 uid="uid://3vcjcs60fu3o"]
 
 [ext_resource type="Script" uid="uid://bfkbnbkwtlgb" path="res://Scenes/Bosses/Bullet_Hell/attack_indicator.gd" id="1_fpg8o"]
 [ext_resource type="Texture2D" uid="uid://5r3t65xl52hf" path="res://assets/sprites/Enemies/Bosses/AttackIndicator.png" id="2_htspa"]
 
-[node name="AttackIndicator" type="Node2D"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_htspa"]
+radius = 8.0
+
+[node name="AttackIndicator" type="Node2D" unique_id=1763068479]
 script = ExtResource("1_fpg8o")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=905490307]
+scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_htspa")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=256302415]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=602055481]
+shape = SubResource("CircleShape2D_htspa")

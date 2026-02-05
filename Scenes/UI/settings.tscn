@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://c7p2d74atq8qj" path="res://Scenes/UI/Transition.tscn" id="2_ma1v7"]
 
 [node name="Settings" type="Control" unique_id=272083645]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

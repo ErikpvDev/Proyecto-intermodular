@@ -1,11 +1,12 @@
 extends State
 
 @onready var Spawn = $"../../../../Spawn"
+@onready var attacksScene = $"../../../../Enemies" 
 
 func enter():
 	super.enter()
 	
-	animation_player.play("death") 
+	$"../../AnimatedSprite2D".play("death") 
 	
 	# 2. Desactivar colisiones para evitar que el jefe reciba daño o golpee al jugador
 	# Ajusta el nombre "CollisionShape2D" al que uses en tu Boss
@@ -22,9 +23,11 @@ func transition():
 func _physics_process(_delta):
 	pass
 
-# Conecta la señal animation_finished de tu AnimationPlayer a esta función
-func _on_animation_player_animation_finished(anim_name: StringName) -> void:
-	if anim_name == "death":
+func _on_animated_sprite_2d_animation_finished() -> void:
 		Engine.time_scale = 1.0 
+		var ataques = attacksScene.get_children()
+		if !ataques.is_empty():
+			for ataque in ataques:
+				ataque.queue_free()
 		owner.queue_free() 
 		Spawn.enemy_death()

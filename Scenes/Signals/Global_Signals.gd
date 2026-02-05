@@ -14,7 +14,7 @@ signal update_move_speed(amount)
 
 #Señal para notificar el cambio de ronda
 @warning_ignore("unused_signal")
-signal miniboss_spawn()
+signal miniboss_spawn(current_wave)
 
 #Señal para modificar la velocidad de ataque
 @warning_ignore("unused_signal")
