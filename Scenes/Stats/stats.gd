@@ -18,7 +18,7 @@ func update_stats():
 	dmg.text = str(player.damage)
 	dmgMult.text = str(player.damage_multiplier)
 	ms.text = str(movement.move_speed) + "%"
-	dc.text = str(100 + player.dodge_chance * 100) + "%"
-	cc.text = str(100 + player.crit_chance * 100) + "%"
+	dc.text = str(player.dodge_chance * 100) + "%"
+	cc.text = str(player.crit_chance * 100) + "%"
 	aspeed.text = str(100 + player.attack_speed * 100) + "%"
 	asize.text = str(player.attack_size)

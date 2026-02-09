@@ -1,6 +1,12 @@
 [gd_scene format=3 uid="uid://cb0byk3wntac1"]
 
-[ext_resource type="Texture2D" uid="uid://d110iwm8csggt" path="res://assets/sprites/Objetcs/Gold/Gold.png" id="1_dfo7w"]
+[ext_resource type="Texture2D" uid="uid://cob0bvnnt7l2d" path="res://assets/sprites/Items/Damage.png" id="1_4nk7o"]
+[ext_resource type="Texture2D" uid="uid://c0v3bvvt7k0fr" path="res://assets/sprites/Items/AttackSpeed.png" id="2_e5x45"]
+[ext_resource type="Texture2D" uid="uid://ci8vd0jq0paym" path="res://assets/sprites/Items/DamageMultiplier.png" id="2_tt7eh"]
+[ext_resource type="Texture2D" uid="uid://b178bqgpf16u8" path="res://assets/sprites/Items/CritChance.png" id="3_7t88o"]
+[ext_resource type="Texture2D" uid="uid://dixw712o60orw" path="res://assets/sprites/Items/MovementSpeed.png" id="3_shhmj"]
+[ext_resource type="Texture2D" uid="uid://dch2w6c1lmwb6" path="res://assets/sprites/Items/DodgeChance.png" id="4_o5mpo"]
+[ext_resource type="Texture2D" uid="uid://dbgr6obxh4rlv" path="res://assets/sprites/Items/AttackSize.png" id="7_o5mpo"]
 
 [node name="Stats" type="CanvasLayer" unique_id=776331292]
 
@@ -15,7 +21,7 @@ layout_mode = 2
 
 [node name="TextureRect" type="TextureRect" parent="VBoxContainer/Dmg" unique_id=1333891342]
 layout_mode = 2
-texture = ExtResource("1_dfo7w")
+texture = ExtResource("1_4nk7o")
 
 [node name="Label" type="Label" parent="VBoxContainer/Dmg" unique_id=329486645]
 layout_mode = 2
@@ -27,7 +33,7 @@ layout_mode = 2
 
 [node name="TextureRect" type="TextureRect" parent="VBoxContainer/DmgMultiplier" unique_id=689263121]
 layout_mode = 2
-texture = ExtResource("1_dfo7w")
+texture = ExtResource("2_tt7eh")
 
 [node name="Label" type="Label" parent="VBoxContainer/DmgMultiplier" unique_id=576825259]
 layout_mode = 2
@@ -39,7 +45,7 @@ layout_mode = 2
 
 [node name="TextureRect" type="TextureRect" parent="VBoxContainer/MovementSpeed" unique_id=1022145923]
 layout_mode = 2
-texture = ExtResource("1_dfo7w")
+texture = ExtResource("3_shhmj")
 
 [node name="Label" type="Label" parent="VBoxContainer/MovementSpeed" unique_id=2082801445]
 layout_mode = 2
@@ -51,7 +57,7 @@ layout_mode = 2
 
 [node name="TextureRect" type="TextureRect" parent="VBoxContainer/DodgeChance" unique_id=1359723401]
 layout_mode = 2
-texture = ExtResource("1_dfo7w")
+texture = ExtResource("4_o5mpo")
 
 [node name="Label" type="Label" parent="VBoxContainer/DodgeChance" unique_id=615327109]
 layout_mode = 2
@@ -63,7 +69,7 @@ layout_mode = 2
 
 [node name="TextureRect" type="TextureRect" parent="VBoxContainer/CritChance" unique_id=353937700]
 layout_mode = 2
-texture = ExtResource("1_dfo7w")
+texture = ExtResource("3_7t88o")
 
 [node name="Label" type="Label" parent="VBoxContainer/CritChance" unique_id=1165875462]
 layout_mode = 2
@@ -75,7 +81,7 @@ layout_mode = 2
 
 [node name="TextureRect" type="TextureRect" parent="VBoxContainer/AttackSpeed" unique_id=2028603259]
 layout_mode = 2
-texture = ExtResource("1_dfo7w")
+texture = ExtResource("2_e5x45")
 
 [node name="Label" type="Label" parent="VBoxContainer/AttackSpeed" unique_id=782490250]
 layout_mode = 2
@@ -87,7 +93,7 @@ layout_mode = 2
 
 [node name="TextureRect" type="TextureRect" parent="VBoxContainer/AttackSize" unique_id=1518938485]
 layout_mode = 2
-texture = ExtResource("1_dfo7w")
+texture = ExtResource("7_o5mpo")
 
 [node name="Label" type="Label" parent="VBoxContainer/AttackSize" unique_id=1733026226]
 layout_mode = 2
