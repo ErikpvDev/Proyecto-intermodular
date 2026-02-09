@@ -18,6 +18,7 @@ func _ready():
 	#print("Items cargados: %d Comunes, %d Raros, %d Legendarios" % [common_items.size(), rare_items.size(), legendary_items.size()])
 
 func get_item():
+	#return legendary_items.pick_random()
 	var roll = randf()
 	
 	if roll > 1-CHANCE_COMMON :
@@ -96,3 +97,25 @@ func get_price(item: ItemData):
 		2:
 			price = 80
 	return price
+
+func get_style(item: ItemData, is_hover: bool = false):
+	var style = StyleBoxFlat.new()
+	var color
+	
+	match item.rarity:
+		0:
+			color = Color("#b0b0b0")
+		1:
+			color = Color("#4488ff")
+		2:
+			color = Color("b48f00ff")
+			
+	if is_hover:
+		color = color.lightened(0.2)
+	
+	style.bg_color = color
+	style.set_border_width_all(3)
+	style.set_corner_radius_all(4)
+	style.border_color = color.darkened(0.5)
+	
+	return style

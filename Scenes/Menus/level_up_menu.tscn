@@ -3,6 +3,18 @@
 [ext_resource type="Script" uid="uid://20nf6qvtbtar" path="res://Scenes/Menus/level_up_menu.gd" id="1_0rmfn"]
 [ext_resource type="FontFile" uid="uid://dvxv26iy0kmh0" path="res://assets/fonts/VCR_OSD_MONO_1.001.ttf" id="2_412y8"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0rmfn"]
+bg_color = Color(0.1882353, 0.1882353, 0.1882353, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
 [sub_resource type="LabelSettings" id="LabelSettings_7s48k"]
 font = ExtResource("2_412y8")
 font_size = 256
@@ -74,6 +86,7 @@ offset_right = 734.05304
 offset_bottom = 492.2619
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_0rmfn")
 
 [node name="Label" type="Label" parent="Panel" unique_id=129097894]
 layout_mode = 1
@@ -149,6 +162,7 @@ autowrap_mode = 2
 layout_mode = 2
 label_settings = SubResource("LabelSettings_28bcw")
 horizontal_alignment = 1
+autowrap_mode = 3
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="Panel/HBoxContainer" unique_id=1138906300]
 layout_mode = 2
@@ -196,6 +210,7 @@ autowrap_mode = 2
 layout_mode = 2
 label_settings = SubResource("LabelSettings_28bcw")
 horizontal_alignment = 1
+autowrap_mode = 3
 
 [node name="VBoxContainer3" type="VBoxContainer" parent="Panel/HBoxContainer" unique_id=1634762167]
 layout_mode = 2
@@ -243,6 +258,7 @@ autowrap_mode = 2
 layout_mode = 2
 label_settings = SubResource("LabelSettings_28bcw")
 horizontal_alignment = 1
+autowrap_mode = 3
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1581550001]
 libraries/ = SubResource("AnimationLibrary_7s48k")

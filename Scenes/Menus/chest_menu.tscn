@@ -3,6 +3,18 @@
 [ext_resource type="Script" uid="uid://crhmpfo38vpg8" path="res://Scenes/Menus/chest_menu.gd" id="1_1frvj"]
 [ext_resource type="FontFile" uid="uid://dvxv26iy0kmh0" path="res://assets/fonts/VCR_OSD_MONO_1.001.ttf" id="1_8jem4"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1frvj"]
+bg_color = Color(0.1882353, 0.1882353, 0.1882353, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
 [sub_resource type="LabelSettings" id="LabelSettings_henp4"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_eskpn"]
@@ -69,18 +81,19 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -331.5
-offset_top = -331.5
+offset_top = -374.35715
 offset_right = 331.5
-offset_bottom = 331.5
+offset_bottom = 344.04755
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_1frvj")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel" unique_id=1059091569]
 layout_mode = 0
-offset_left = 181.02383
-offset_top = 120.785736
-offset_right = 486.26193
-offset_bottom = 281.5
+offset_left = 179.0
+offset_top = 120.786
+offset_right = 484.2381
+offset_bottom = 281.50027
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.79
 
@@ -112,6 +125,7 @@ autowrap_mode = 2
 layout_mode = 2
 label_settings = SubResource("LabelSettings_eskpn")
 horizontal_alignment = 1
+autowrap_mode = 3
 
 [node name="Label" type="Label" parent="Panel" unique_id=1240014672]
 layout_mode = 1

@@ -5,6 +5,10 @@ extends Control
 @onready var contenedor2 = contenedores[1]
 @onready var contenedor3 = contenedores[2]
 
+@onready var boton1 = contenedor1.get_child(2)
+@onready var boton2 = contenedor2.get_child(2)
+@onready var boton3 = contenedor3.get_child(2)
+
 @onready var item1
 @onready var item2
 @onready var item3
@@ -36,9 +40,18 @@ func get_items():
 	contenedor1.get_child(3).text = item1.description
 	contenedor2.get_child(3).text = item2.description
 	contenedor3.get_child(3).text = item3.description
-	contenedor1.get_child(2).get_child(0).texture = item1.icon
-	contenedor2.get_child(2).get_child(0).texture = item2.icon
-	contenedor3.get_child(2).get_child(0).texture = item3.icon
+	boton1.get_child(0).texture = item1.icon
+	boton2.get_child(0).texture = item2.icon
+	boton3.get_child(0).texture = item3.icon
+	boton1.add_theme_stylebox_override("normal", ItemManager.get_style(item1))
+	boton1.add_theme_stylebox_override("hover", ItemManager.get_style(item1, true))
+	boton1.add_theme_stylebox_override("pressed", ItemManager.get_style(item1))
+	boton2.add_theme_stylebox_override("normal", ItemManager.get_style(item2))
+	boton2.add_theme_stylebox_override("hover", ItemManager.get_style(item2, true))
+	boton3.add_theme_stylebox_override("pressed", ItemManager.get_style(item3))
+	boton3.add_theme_stylebox_override("normal", ItemManager.get_style(item3))
+	boton3.add_theme_stylebox_override("hover", ItemManager.get_style(item3, true))
+	boton3.add_theme_stylebox_override("pressed", ItemManager.get_style(item3))
 	contenedor1.get_child(4).text = ItemManager.get_stats(item1)
 	contenedor2.get_child(4).text = ItemManager.get_stats(item2)
 	contenedor3.get_child(4).text = ItemManager.get_stats(item3)

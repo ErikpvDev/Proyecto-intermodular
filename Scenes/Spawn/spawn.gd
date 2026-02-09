@@ -1,6 +1,6 @@
 extends Node2D
 
-@onready var current_wave=5
+@onready var current_wave=1
 var base_elite_chance = 0.02
 var elite_prob_percent
 @export var exp_growth=1.12

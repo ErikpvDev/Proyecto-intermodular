@@ -52,6 +52,15 @@ func get_items():
 	boton1.get_child(0).texture = item1.icon
 	boton2.get_child(0).texture = item2.icon
 	boton3.get_child(0).texture = item3.icon
+	boton1.add_theme_stylebox_override("normal", ItemManager.get_style(item1))
+	boton1.add_theme_stylebox_override("hover", ItemManager.get_style(item1, true))
+	boton1.add_theme_stylebox_override("pressed", ItemManager.get_style(item1))
+	boton2.add_theme_stylebox_override("normal", ItemManager.get_style(item2))
+	boton2.add_theme_stylebox_override("hover", ItemManager.get_style(item2, true))
+	boton3.add_theme_stylebox_override("pressed", ItemManager.get_style(item3))
+	boton3.add_theme_stylebox_override("normal", ItemManager.get_style(item3))
+	boton3.add_theme_stylebox_override("hover", ItemManager.get_style(item3, true))
+	boton3.add_theme_stylebox_override("pressed", ItemManager.get_style(item3))
 	contenedor1.get_child(5).text = ItemManager.get_stats(item1)
 	contenedor2.get_child(5).text = ItemManager.get_stats(item2)
 	contenedor3.get_child(5).text = ItemManager.get_stats(item3)

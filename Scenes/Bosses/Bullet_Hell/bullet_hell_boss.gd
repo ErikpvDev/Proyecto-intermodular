@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 var health: int = 100
+#var health: int = 1
 @onready var state_machine = $StateMachine 
 @onready var health_bar = $UI/TextureProgressBar
 

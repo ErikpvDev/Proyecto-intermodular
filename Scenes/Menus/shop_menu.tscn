@@ -4,6 +4,18 @@
 [ext_resource type="FontFile" uid="uid://dvxv26iy0kmh0" path="res://assets/fonts/VCR_OSD_MONO_1.001.ttf" id="2_u1qxn"]
 [ext_resource type="Texture2D" uid="uid://d110iwm8csggt" path="res://assets/sprites/Objetcs/Gold/Gold.png" id="4_u1qxn"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ctghf"]
+bg_color = Color(0.18717611, 0.18717614, 0.18717608, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
 [sub_resource type="LabelSettings" id="LabelSettings_7s48k"]
 font = ExtResource("2_u1qxn")
 font_size = 256
@@ -70,11 +82,12 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -734.05304
-offset_top = -492.2619
+offset_top = -497.61905
 offset_right = 734.05304
-offset_bottom = 492.2619
+offset_bottom = 579.7617
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ctghf")
 
 [node name="Label" type="Label" parent="Panel" unique_id=1982989750]
 layout_mode = 1
@@ -167,6 +180,7 @@ autowrap_mode = 2
 layout_mode = 2
 label_settings = SubResource("LabelSettings_28bcw")
 horizontal_alignment = 1
+autowrap_mode = 3
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="Panel/HBoxContainer" unique_id=887010643]
 layout_mode = 2
@@ -230,6 +244,7 @@ autowrap_mode = 2
 layout_mode = 2
 label_settings = SubResource("LabelSettings_28bcw")
 horizontal_alignment = 1
+autowrap_mode = 3
 
 [node name="VBoxContainer3" type="VBoxContainer" parent="Panel/HBoxContainer" unique_id=717513758]
 layout_mode = 2
@@ -294,7 +309,7 @@ custom_minimum_size = Vector2(20.03, 0)
 layout_mode = 2
 label_settings = SubResource("LabelSettings_412y8")
 horizontal_alignment = 1
-autowrap_mode = 2
+autowrap_mode = 3
 
 [node name="Stats" type="Label" parent="Panel/HBoxContainer/VBoxContainer3" unique_id=208622263]
 layout_mode = 2

@@ -52,7 +52,7 @@ var closest_enemy
 
 func _ready() -> void:	
 	GlobalSignals.update_gold.connect(update_gold)
-	GlobalSignals.update_gold.connect(add_gold)
+	GlobalSignals.add_gold.connect(add_gold)
 	GlobalSignals.get_item.connect(get_item)
 	
 	GlobalSignals.emit_signal("update_shield",shield)
