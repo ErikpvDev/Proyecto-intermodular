@@ -1,11 +1,13 @@
 [gd_scene format=3 uid="uid://bmyfdpo4dogpt"]
 
 [ext_resource type="Script" uid="uid://ccey71ni404b0" path="res://Scenes/UI/main_menu.gd" id="1_g18y6"]
+[ext_resource type="Texture2D" uid="uid://duqqlohx6dqiq" path="res://assets/sprites/UI/FondoMain.png" id="2_k8um8"]
 [ext_resource type="PackedScene" uid="uid://c7p2d74atq8qj" path="res://Scenes/UI/Transition.tscn" id="2_mjmdf"]
 [ext_resource type="AudioStream" uid="uid://b17o3ugouk0tw" path="res://assets/Songs/MainMenuSong.mp3" id="3_72sra"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_mjmdf"]
-font_size = 64
+[ext_resource type="Texture2D" uid="uid://d13ikpf75qqt7" path="res://assets/sprites/UI/CrownlessLogo.png" id="3_jex3y"]
+[ext_resource type="Texture2D" uid="uid://dqo5utw54hbwl" path="res://assets/sprites/UI/PlayButton.png" id="4_kl3t2"]
+[ext_resource type="Texture2D" uid="uid://bkgvmtef81g35" path="res://assets/sprites/UI/SettingsButton.png" id="5_ynupv"]
+[ext_resource type="Texture2D" uid="uid://dopgpuftqch8p" path="res://assets/sprites/UI/QuitButton.png" id="6_m48tj"]
 
 [node name="MainMenu" type="Control" unique_id=2123140553]
 process_mode = 3
@@ -18,27 +20,28 @@ grow_vertical = 2
 script = ExtResource("1_g18y6")
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=1921103238]
-layout_mode = 0
-offset_left = 4.0
-offset_top = -3.0
-offset_right = 654.0
-offset_bottom = 649.0
-expand_mode = 1
-stretch_mode = 4
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_k8um8")
+expand_mode = 3
+stretch_mode = 6
 
-[node name="Title" type="Label" parent="." unique_id=491076755]
+[node name="Title" type="TextureRect" parent="." unique_id=1626761937]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -115.0
-offset_top = 133.0
-offset_right = 118.0
-offset_bottom = 221.0
+offset_left = -266.0
+offset_top = -34.0
+offset_right = 262.0
+offset_bottom = 494.0
 grow_horizontal = 2
-text = "Panchit"
-label_settings = SubResource("LabelSettings_mjmdf")
-horizontal_alignment = 1
+texture = ExtResource("3_jex3y")
+expand_mode = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=239051496]
 layout_mode = 1
@@ -47,30 +50,35 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -159.0
-offset_top = -39.0
-offset_right = 158.0
-offset_bottom = 245.0
+offset_left = -363.0
+offset_top = -451.0
+offset_right = 661.0
+offset_bottom = 917.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(0.5, 0.5)
 theme_override_constants/separation = 22
 alignment = 1
 
-[node name="Play" type="Button" parent="VBoxContainer" unique_id=247075443]
-custom_minimum_size = Vector2(0, 80)
+[node name="Play" type="TextureButton" parent="VBoxContainer" unique_id=612655502]
+custom_minimum_size = Vector2(0, 150)
 layout_mode = 2
-text = "Play"
-
-[node name="Options" type="Button" parent="VBoxContainer" unique_id=418394492]
-custom_minimum_size = Vector2(0, 80)
-layout_mode = 2
-text = "Settings"
-
-[node name="Quit" type="Button" parent="VBoxContainer" unique_id=605257709]
-custom_minimum_size = Vector2(0, 80)
-layout_mode = 2
+size_flags_horizontal = 4
 size_flags_vertical = 4
-text = "Quit"
+texture_normal = ExtResource("4_kl3t2")
+
+[node name="Options" type="TextureButton" parent="VBoxContainer" unique_id=132022242]
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 2
+texture_normal = ExtResource("5_ynupv")
+stretch_mode = 3
+
+[node name="Quit" type="TextureButton" parent="VBoxContainer" unique_id=2030368907]
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 2
+size_flags_vertical = 8
+texture_normal = ExtResource("6_m48tj")
+stretch_mode = 5
 
 [node name="Transition" parent="." unique_id=1909195515 instance=ExtResource("2_mjmdf")]
 visible = false

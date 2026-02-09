@@ -6,6 +6,7 @@ var health: int = 100
 @onready var health_bar = $UI/TextureProgressBar
 
 func take_damage(amount: int):
+	$AnimationPlayer.play("Hit")
 	health -= amount
 	health_bar.value-= amount
 	if health <= 0:
