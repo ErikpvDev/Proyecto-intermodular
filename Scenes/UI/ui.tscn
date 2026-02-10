@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bam0ik66tfskr"]
 
-[ext_resource type="Script" uid="uid://c8nkt2yjlif3d" path="res://Scenes/UI/ui.gd" id="1_alcrr"]
 [ext_resource type="PackedScene" uid="uid://bk01ah10djpvn" path="res://Scenes/Gold/Gold.tscn" id="1_i5q6i"]
+[ext_resource type="Script" uid="uid://c24ky3oo8ucao" path="res://Scenes/UI/damage_indicator.gd" id="1_s3gqk"]
 [ext_resource type="PackedScene" uid="uid://bcdvrvvqdkmtn" path="res://Scenes/Shields/ShieldDisplay.tscn" id="2_duuxe"]
 [ext_resource type="PackedScene" uid="uid://bqy0xbspvp3gc" path="res://Scenes/Hearts/health_bar.tscn" id="2_hwbc8"]
 [ext_resource type="PackedScene" uid="uid://dv7lc10i5l7rj" path="res://Scenes/UI/Exp/exp.tscn" id="3_hwbc8"]
@@ -9,9 +9,10 @@
 [ext_resource type="Script" uid="uid://sqfmnct5458c" path="res://Scenes/UI/wave.gd" id="5_1c2ca"]
 [ext_resource type="PackedScene" uid="uid://cb0byk3wntac1" path="res://Scenes/Stats/stats.tscn" id="6_jfwrg"]
 [ext_resource type="Script" uid="uid://cbghlpj4ldvfr" path="res://Scenes/Stats/stats.gd" id="7_mbl0m"]
+[ext_resource type="PackedScene" uid="uid://basesgq0n5ls3" path="res://Scenes/UI/DamageIndicator.tscn" id="8_pmm6b"]
 
 [node name="UI" type="CanvasGroup" unique_id=1219804552]
-script = ExtResource("1_alcrr")
+script = ExtResource("1_s3gqk")
 
 [node name="ShieldDisplay" parent="." unique_id=1052978750 instance=ExtResource("2_duuxe")]
 layer = 2
@@ -24,6 +25,8 @@ layer = 2
 
 [node name="Stats" parent="." unique_id=776331292 instance=ExtResource("6_jfwrg")]
 script = ExtResource("7_mbl0m")
+
+[node name="DamageIndicator" parent="." unique_id=947262686 instance=ExtResource("8_pmm6b")]
 
 [node name="Wave" type="Node2D" parent="." unique_id=896897519]
 script = ExtResource("5_1c2ca")

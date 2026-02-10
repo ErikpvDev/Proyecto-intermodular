@@ -191,9 +191,9 @@ func _on_attack_area_area_entered(area: Area2D) -> void:
 	
 	if parent.has_method("take_damage") && parent!=self:
 		if (randf()>crit_chance):
-			parent.take_damage(damage*damage_multiplier)
+			parent.take_damage(damage*damage_multiplier, false)
 		else:
-			parent.take_damage(damage*damage_multiplier*2)
+			parent.take_damage(damage*damage_multiplier*2, true)
 
 func get_item(item: ItemData):
 	damage += item.damage_bonus

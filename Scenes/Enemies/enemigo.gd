@@ -18,6 +18,8 @@ var round_number
 
 @onready var chest = preload("res://Scenes/Objects/chest.tscn")
 
+@export var damage_indicator_scene: PackedScene = preload("res://Scenes/UI/DamageIndicator.tscn")
+
 func _ready() -> void:
 	if elite:
 		$AnimatedSprite2D.play("elite_walking")
@@ -43,12 +45,13 @@ func die():
 	drop_chest()
 	queue_free()
 
-func take_damage(amount:int):
+func take_damage(amount:int, is_critical):
 	health.take_damage(amount)
 	if health.health<=0:
 		die()
 	else:
 		$AnimationPlayer.play("Hit")
+	spawn_damage_indicator(amount, is_critical)
 
 func _process(_delta):
 	var direction = (target.position-position).normalized()
@@ -68,3 +71,11 @@ func drop_chest():
 		var interactables = $"../../Interactables"
 		interactables.call_deferred("add_child",c)
 		
+
+func spawn_damage_indicator(amount: int, is_critical):
+	var indicator = damage_indicator_scene.instantiate()
+	indicator.global_position = global_position
+	
+	get_tree().current_scene.add_child(indicator)
+	
+	indicator.display_damage(amount, is_critical)
