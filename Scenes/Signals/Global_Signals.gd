@@ -47,3 +47,19 @@ signal add_gold()
 #Señal para actualizar el display de las stats
 @warning_ignore("unused_signal")
 signal update_stats()
+
+#Señal para añadir un corazón
+@warning_ignore("unused_signal")
+signal add_health()
+
+#Señal para añadir vida máxima
+@warning_ignore("unused_signal")
+signal add_max_health()
+
+#Señal para actualizar el display de los corazones
+@warning_ignore("unused_signal")
+signal update_heart_display()
+
+#Señal para añadir escudo
+@warning_ignore("unused_signal")
+signal add_shield()

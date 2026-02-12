@@ -71,7 +71,6 @@ func drop_chest():
 		var interactables = $"../../Interactables"
 		interactables.call_deferred("add_child",c)
 		
-
 func spawn_damage_indicator(amount: int, is_critical):
 	var indicator = damage_indicator_scene.instantiate()
 	indicator.global_position = global_position

@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://c677jdjsqnvs5"]
+
+[ext_resource type="Script" uid="uid://b02smar1b4ysu" path="res://Scenes/Objects/attractable.gd" id="1_ls04n"]
+[ext_resource type="Texture2D" uid="uid://b8njatsutg630" path="res://assets/sprites/Objetcs/Shields/Shilds.png" id="1_u0htm"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ls04n"]
+atlas = ExtResource("1_u0htm")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nbkai"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ls04n")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7cl1p"]
+radius = 8.0
+
+[node name="Shield" type="Area2D" unique_id=2018596870]
+script = ExtResource("1_ls04n")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1760542691]
+z_index = 4096
+position = Vector2(-9.536743e-07, -9.536743e-07)
+scale = Vector2(0.34375, 0.34375)
+sprite_frames = SubResource("SpriteFrames_nbkai")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1086384189]
+shape = SubResource("CircleShape2D_7cl1p")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -74,7 +74,7 @@ region = Rect2(240, 0, 16, 16)
 [sub_resource type="SpriteFrames" id="SpriteFrames_0x2rq"]
 animations = [{
 "frames": [],
-"loop": true,
+"loop": false,
 "name": &"break",
 "speed": 5.0
 }, {
@@ -144,7 +144,7 @@ shape = SubResource("RectangleShape2D_yumtb")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=508769958]
 sprite_frames = SubResource("SpriteFrames_0x2rq")
-animation = &"idle"
+animation = &"break"
 autoplay = "idle"
 
 [node name="Interactable" parent="." unique_id=1970678297 instance=ExtResource("3_yumtb")]

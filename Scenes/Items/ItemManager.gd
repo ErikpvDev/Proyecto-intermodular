@@ -18,7 +18,6 @@ func _ready():
 	#print("Items cargados: %d Comunes, %d Raros, %d Legendarios" % [common_items.size(), rare_items.size(), legendary_items.size()])
 
 func get_item():
-	#return legendary_items.pick_random()
 	var roll = randf()
 	
 	if roll > 1-CHANCE_COMMON :

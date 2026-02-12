@@ -54,6 +54,8 @@ func _ready() -> void:
 	GlobalSignals.update_gold.connect(update_gold)
 	GlobalSignals.add_gold.connect(add_gold)
 	GlobalSignals.get_item.connect(get_item)
+	GlobalSignals.update_heart_display.connect(update_heart_display)
+	GlobalSignals.add_shield.connect(add_shield)
 	
 	GlobalSignals.emit_signal("update_shield",shield)
 	GlobalSignals.emit_signal("update_stats")
@@ -101,9 +103,6 @@ func update_heart_display():
 		hearts[0].get_child(0).play("idle")
 	else:
 		hearts[0].get_child(0).play("beating")
-
-func add_health(amount: int) -> void:
-	health.add_health(amount)
 
 func add_max_health(amount: int)->void:
 	if health.max_health < 10:
@@ -209,14 +208,9 @@ func get_item(item: ItemData):
 	if (attack_size < 2.25 && item.projectile_size_multiplier>1):
 		attack_size *= item.projectile_size_multiplier
 		GlobalSignals.update_attack_size.emit(item.projectile_size_multiplier)
-	if (shield<3):
-		shield += item.shield_bonus
-		if (shield>3):
-			shield = 3
-		GlobalSignals.emit_signal("update_shield", shield)
-	add_max_health(item.max_hp_bonus)
-	add_health(item.max_hp_bonus)
-	update_heart_display()
+	add_shield(item.shield_bonus)
+	GlobalSignals.emit_signal("add_max_health", item.max_hp_bonus)
+	GlobalSignals.emit_signal("add_health", item.max_hp_bonus)
 	GlobalSignals.emit_signal("update_stats")
 	#print(damage)
 	#print(damage_multiplier)
@@ -234,3 +228,10 @@ func add_gold(amount: int):
 	
 func update_gold():
 	gold_coins_number.text = str(gold_coins)
+	
+func add_shield(amount: int):
+	if (shield<3):
+		shield += amount
+		if (shield>3):
+			shield = 3
+		GlobalSignals.emit_signal("update_shield", shield)
