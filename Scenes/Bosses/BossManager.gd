@@ -2,10 +2,12 @@ extends Node
 
 @export var miniboss_paths := {
 	"early": [
-		"res://Scenes/Bosses/Golem.tscn"
+		"res://Scenes/Bosses/Golem.tscn",
+		50
 	],
 	"mid":[
-		"res://Scenes/Bosses/Bullet_Hell/bullet_hell_boss.tscn"
+		"res://Scenes/Bosses/Bullet_Hell/bullet_hell_boss.tscn",
+		100
 	]
 }
 
@@ -32,4 +34,5 @@ func miniboss_spawn(wave):
 	
 	var miniboss = load(miniboss_paths[boss][0]).instantiate()
 	miniboss.global_position = Vector2(1000,400)
+	miniboss.get_children()[0].health=int(miniboss_paths[boss][1])
 	$"../Enemies".add_child(miniboss)

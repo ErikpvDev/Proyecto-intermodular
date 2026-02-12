@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bmyfdpo4dogpt"]
 
 [ext_resource type="Script" uid="uid://ccey71ni404b0" path="res://Scenes/UI/main_menu.gd" id="1_g18y6"]
-[ext_resource type="Texture2D" uid="uid://duqqlohx6dqiq" path="res://assets/sprites/UI/FondoMain.png" id="2_k8um8"]
+[ext_resource type="Texture2D" uid="uid://ci5dlvxwgrqmj" path="res://assets/sprites/UI/EntradaDungeon (1).png" id="2_kl3t2"]
 [ext_resource type="PackedScene" uid="uid://c7p2d74atq8qj" path="res://Scenes/UI/Transition.tscn" id="2_mjmdf"]
 [ext_resource type="AudioStream" uid="uid://b17o3ugouk0tw" path="res://assets/Songs/MainMenuSong.mp3" id="3_72sra"]
 [ext_resource type="Texture2D" uid="uid://d13ikpf75qqt7" path="res://assets/sprites/UI/CrownlessLogo.png" id="3_jex3y"]
@@ -26,7 +26,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_k8um8")
+texture = ExtResource("2_kl3t2")
 expand_mode = 3
 stretch_mode = 6
 
@@ -35,50 +35,39 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -266.0
-offset_top = -34.0
-offset_right = 262.0
-offset_bottom = 494.0
+offset_left = -265.0
+offset_top = -32.0
+offset_right = 263.0
+offset_bottom = 496.0
 grow_horizontal = 2
 texture = ExtResource("3_jex3y")
 expand_mode = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=239051496]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -363.0
-offset_top = -451.0
-offset_right = 661.0
-offset_bottom = 917.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="VBoxContainer" type="HBoxContainer" parent="." unique_id=438761762]
+layout_mode = 0
+offset_left = 197.0
+offset_top = 758.0
+offset_right = 3277.0
+offset_bottom = 1375.0
 scale = Vector2(0.5, 0.5)
-theme_override_constants/separation = 22
 alignment = 1
 
 [node name="Play" type="TextureButton" parent="VBoxContainer" unique_id=612655502]
-custom_minimum_size = Vector2(0, 150)
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
 texture_normal = ExtResource("4_kl3t2")
 
 [node name="Options" type="TextureButton" parent="VBoxContainer" unique_id=132022242]
-custom_minimum_size = Vector2(0, 150)
+custom_minimum_size = Vector2(1024, 617)
 layout_mode = 2
 texture_normal = ExtResource("5_ynupv")
-stretch_mode = 3
+stretch_mode = 0
 
 [node name="Quit" type="TextureButton" parent="VBoxContainer" unique_id=2030368907]
-custom_minimum_size = Vector2(0, 150)
+custom_minimum_size = Vector2(1024, 617)
 layout_mode = 2
 size_flags_vertical = 8
 texture_normal = ExtResource("6_m48tj")
-stretch_mode = 5
+stretch_mode = 0
 
 [node name="Transition" parent="." unique_id=1909195515 instance=ExtResource("2_mjmdf")]
 visible = false
