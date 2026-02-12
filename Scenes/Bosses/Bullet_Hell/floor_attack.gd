@@ -40,6 +40,7 @@ func enter():
 # Nueva función para manejar cada explosión por separado
 func check_damage_after_delay(pos: Vector2, delay: float, indicator_node: Node2D):
 	await get_tree().create_timer(delay).timeout
+	indicator_node.sprite.play("attack")
 	
 	# Verificamos distancia real entre el centro del ataque y el jugador
 	# Sumamos un pequeño margen (ej. 20px) para que la colisión sea justa con el cuerpo del player
@@ -50,7 +51,7 @@ func check_damage_after_delay(pos: Vector2, delay: float, indicator_node: Node2D
 		if player.has_method("take_damage"):
 			player.take_damage(damage)
 	
-	# Efecto visual opcional aquí (una explosión, partículas, etc.)
+	await get_tree().create_timer(delay).timeout
 	
 	# Limpiar el indicador
 	if is_instance_valid(indicator_node):

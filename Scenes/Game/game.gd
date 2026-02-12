@@ -3,6 +3,7 @@ extends Node
 @onready var experience = $Level01/Character/Experience
 @onready var level_up_menu = $CanvasLayer/LevelUpMenu
 @onready var shop_menu = $CanvasLayer/ShopMenu
+@onready var spawn = $Level01/Spawn
 
 func _ready() -> void:
 	get_tree().paused=false
@@ -26,5 +27,6 @@ func show_shop() -> void:
 	
 func _on_leave_shop() -> void:
 	get_tree().paused = false
+	spawn.enemy_death()
 	shop_menu.hide()
 	

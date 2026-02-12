@@ -1,6 +1,6 @@
 [gd_scene format=4 uid="uid://dafx2m02alpy5"]
 
-[ext_resource type="PackedScene" uid="uid://0gr62tvei2rq" path="res://Scenes/Levels/Level01/Level01.tscn" id="1_ixfmw"]
+[ext_resource type="PackedScene" path="res://Scenes/Levels/Level01/Level01.tscn" id="1_ixfmw"]
 [ext_resource type="PackedScene" uid="uid://bam0ik66tfskr" path="res://Scenes/UI/ui.tscn" id="2_0vwiw"]
 [ext_resource type="PackedScene" uid="uid://p0hbqo51nej1" path="res://Scenes/Character/personaje.tscn" id="2_uhf17"]
 [ext_resource type="PackedScene" uid="uid://bgjw2csmveeoi" path="res://Scenes/Enemies/enemies.tscn" id="4_rgqva"]

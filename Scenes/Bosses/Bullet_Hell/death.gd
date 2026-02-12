@@ -29,5 +29,5 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 		if !ataques.is_empty():
 			for ataque in ataques:
 				ataque.queue_free()
+		GlobalSignals.emit_signal("show_shop")
 		owner.queue_free() 
-		Spawn.enemy_death()

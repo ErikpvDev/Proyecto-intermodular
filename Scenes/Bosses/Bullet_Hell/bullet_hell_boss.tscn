@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://ctp6silk7b57g" path="res://assets/sprites/Enemies/Bosses/BulletHell/with_outline/DEATH.png" id="2_cpyfl"]
 [ext_resource type="Texture2D" uid="uid://c2b1lonbj4nvf" path="res://assets/sprites/Enemies/Bosses/BulletHell/with_outline/HURT.png" id="2_eljc4"]
 [ext_resource type="PackedScene" uid="uid://bltsh3akbyydi" path="res://Scenes/Bosses/Bullet_Hell/bullet.tscn" id="2_kx0s6"]
+[ext_resource type="PackedScene" uid="uid://dysmu2ylvmkhx" path="res://Scenes/Character/Health.tscn" id="2_nt647"]
 [ext_resource type="Script" uid="uid://cv7ypnvtvpr0r" path="res://Scenes/Bosses/Bullet_Hell/state_machine.gd" id="2_ooxwf"]
 [ext_resource type="Texture2D" uid="uid://dsruuf1j3rfyg" path="res://assets/sprites/Enemies/Bosses/BulletHell/with_outline/IDLE.png" id="2_t2n1x"]
 [ext_resource type="Script" uid="uid://bxxewu12y45qr" path="res://Scenes/Bosses/Bullet_Hell/follow.gd" id="3_ea566"]
@@ -188,6 +189,8 @@ size = Vector2(56.3125, 48.1875)
 
 [node name="Bullet Hell boss" type="CharacterBody2D" unique_id=789167342]
 script = ExtResource("1_c2tip")
+
+[node name="Health" parent="." unique_id=1042868023 instance=ExtResource("2_nt647")]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1294006751]
 position = Vector2(5.9999995, -6.9999995)

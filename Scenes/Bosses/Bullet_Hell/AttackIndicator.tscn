@@ -2,6 +2,55 @@
 
 [ext_resource type="Script" uid="uid://bfkbnbkwtlgb" path="res://Scenes/Bosses/Bullet_Hell/attack_indicator.gd" id="1_fpg8o"]
 [ext_resource type="Texture2D" uid="uid://5r3t65xl52hf" path="res://assets/sprites/Enemies/Bosses/AttackIndicator.png" id="2_htspa"]
+[ext_resource type="Texture2D" uid="uid://cx8gvt84icmod" path="res://assets/sprites/Enemies/Bosses/BulletHell/Red Effect Bullet Impact Explosion 32x32.png" id="2_jwgdb"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jwgdb"]
+atlas = ExtResource("2_jwgdb")
+region = Rect2(512, 256, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vrevs"]
+atlas = ExtResource("2_jwgdb")
+region = Rect2(544, 256, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dl0kf"]
+atlas = ExtResource("2_jwgdb")
+region = Rect2(576, 256, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pbq0f"]
+atlas = ExtResource("2_jwgdb")
+region = Rect2(608, 256, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_htspa"]
+atlas = ExtResource("2_htspa")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jwgdb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jwgdb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vrevs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dl0kf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pbq0f")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_htspa")
+}],
+"loop": false,
+"name": &"indicator",
+"speed": 5.0
+}]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_htspa"]
 radius = 8.0
@@ -9,9 +58,11 @@ radius = 8.0
 [node name="AttackIndicator" type="Node2D" unique_id=1763068479]
 script = ExtResource("1_fpg8o")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=905490307]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1623365257]
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("2_htspa")
+sprite_frames = SubResource("SpriteFrames_jwgdb")
+animation = &"attack"
+autoplay = "indicator"
 
 [node name="Area2D" type="Area2D" parent="." unique_id=256302415]
 

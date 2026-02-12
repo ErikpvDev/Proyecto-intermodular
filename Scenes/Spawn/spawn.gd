@@ -1,6 +1,6 @@
 extends Node2D
 
-@onready var current_wave=1
+@onready var current_wave=5
 var base_elite_chance = 0.02
 var elite_prob_percent
 @export var exp_growth=1.12
@@ -76,7 +76,6 @@ func enemy_death():
 	if dead_enemies==enemy_dict[current_wave][0]:
 		if ((current_wave) % 5 == 0):
 			GlobalSignals.emit_signal("add_gold", 25)
-			GlobalSignals.emit_signal("show_shop")
 		dead_enemies=0
 		await get_tree().create_timer(time_between_waves).timeout
 		current_wave+=1
