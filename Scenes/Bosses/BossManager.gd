@@ -5,8 +5,12 @@ extends Node
 		"res://Scenes/Bosses/Golem.tscn",
 		50
 	],
-	"mid":[
+	"mid01":[
 		"res://Scenes/Bosses/Bullet_Hell/bullet_hell_boss.tscn",
+		100
+	],
+	"mid02":[
+		"res://Scenes/Bosses/Necromancer/Necromancer.tscn",
 		100
 	]
 }
@@ -22,11 +26,11 @@ func miniboss_spawn(wave):
 	current_wave = wave
 	match current_wave:
 		5:
-			boss="mid"
+			boss="mid02"
 		10:
-			boss="mid"
+			boss="mid02"
 		15:
-			boss="mid"
+			boss="mid02"
 		20:
 			boss="late"
 		25: 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bcilchgm5udvb"
-path="res://.godot/imported/QuitButton.png-7f530c64a965b8b8a91ee914a07e543d.ctex"
+uid="uid://borbimvvd247o"
+path="res://.godot/imported/idle2.png-234f1c21a5954183e62ba07046c9e835.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/UI/QuitButton.png"
-dest_files=["res://.godot/imported/QuitButton.png-7f530c64a965b8b8a91ee914a07e543d.ctex"]
+source_file="res://assets/sprites/Enemies/Bosses/Necromancer/png/idle2.png"
+dest_files=["res://.godot/imported/idle2.png-234f1c21a5954183e62ba07046c9e835.ctex"]
 
 [params]
 

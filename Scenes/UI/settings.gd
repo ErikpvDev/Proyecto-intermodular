@@ -45,21 +45,34 @@ func _on_fade_timer_timeout() -> void:
 
 
 func _on_windowed_item_selected(index: int) -> void:
+	# Primero limpiamos estados anteriores para evitar conflictos
+	DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_BORDERLESS, false)
+	
 	match index:
 		0: # Ventana Normal
 			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
-			DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_BORDERLESS, false)
+			# Definir un tamaño por defecto si quieres que no sea minúscula
+			DisplayServer.window_set_size(Vector2i(1280, 720)) 
 		1: # Pantalla Completa Real
-			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
+			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_EXCLUSIVE_FULLSCREEN)
 		2: # Ventana sin Bordes (Borderless)
-			# Es mejor usar WINDOWED + BORDERLESS que MAXIMIZED
-			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+			# En Godot 4, el modo "FULLSCREEN" (a secas) suele actuar como Borderless Window
+			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
 			DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_BORDERLESS, true)
-			# Opcional: Hacer que ocupe toda la pantalla
-			DisplayServer.window_set_size(DisplayServer.screen_get_size())
 
-	# El truco para evitar el error: esperar a que el OS procese el cambio
-	call_deferred("center_window")
+	# Forzamos a Godot a re-calcular el área de click
+	call_deferred("fix_mouse_sync")
+
+func fix_mouse_sync():
+	# Centramos si es modo ventana, si es borderless aseguramos posición 0,0
+	var mode = DisplayServer.window_get_mode()
+	if mode == DisplayServer.WINDOW_MODE_WINDOWED:
+		center_window()
+	else:
+		DisplayServer.window_set_position(Vector2i(0, 0))
+	
+	# Este comando "despierta" al input del ratón
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 func center_window():
 	# Verificamos que existan pantallas detectadas
@@ -69,5 +82,5 @@ func center_window():
 		var window_size = DisplayServer.window_get_size()
 		
 		# Calculamos el centro
-		var center_pos = screen_rect.position + (screen_rect.size / 2) - (window_size / 2)
+		var center_pos = screen_rect.position + (screen_rect.size / 2.0) - (window_size / 2.0)
 		DisplayServer.window_set_position(center_pos)

@@ -4,10 +4,10 @@
 [ext_resource type="Texture2D" uid="uid://ci5dlvxwgrqmj" path="res://assets/sprites/UI/EntradaDungeon (1).png" id="2_kl3t2"]
 [ext_resource type="PackedScene" uid="uid://c7p2d74atq8qj" path="res://Scenes/UI/Transition.tscn" id="2_mjmdf"]
 [ext_resource type="AudioStream" uid="uid://b17o3ugouk0tw" path="res://assets/Songs/MainMenuSong.mp3" id="3_72sra"]
-[ext_resource type="Texture2D" uid="uid://d13ikpf75qqt7" path="res://assets/sprites/UI/CrownlessLogo.png" id="3_jex3y"]
+[ext_resource type="Texture2D" uid="uid://b0uuxpbs63eky" path="res://assets/sprites/UI/CrownlessLogo.png" id="3_jex3y"]
 [ext_resource type="Texture2D" uid="uid://dqo5utw54hbwl" path="res://assets/sprites/UI/PlayButton.png" id="4_kl3t2"]
 [ext_resource type="Texture2D" uid="uid://bkgvmtef81g35" path="res://assets/sprites/UI/SettingsButton.png" id="5_ynupv"]
-[ext_resource type="Texture2D" uid="uid://dopgpuftqch8p" path="res://assets/sprites/UI/QuitButton.png" id="6_m48tj"]
+[ext_resource type="Texture2D" uid="uid://bcilchgm5udvb" path="res://assets/sprites/UI/QuitButton.png" id="6_m48tj"]
 
 [node name="MainMenu" type="Control" unique_id=2123140553]
 process_mode = 3
@@ -36,36 +36,41 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -265.0
-offset_top = -32.0
+offset_top = -58.0
 offset_right = 263.0
-offset_bottom = 496.0
+offset_bottom = 470.0
 grow_horizontal = 2
 texture = ExtResource("3_jex3y")
 expand_mode = 1
 
 [node name="VBoxContainer" type="HBoxContainer" parent="." unique_id=438761762]
 layout_mode = 0
-offset_left = 197.0
-offset_top = 758.0
-offset_right = 3277.0
-offset_bottom = 1375.0
+offset_left = 114.0
+offset_top = 769.0
+offset_right = 3534.0
+offset_bottom = 1386.0
 scale = Vector2(0.5, 0.5)
+theme_override_constants/separation = 174
 alignment = 1
-
-[node name="Play" type="TextureButton" parent="VBoxContainer" unique_id=612655502]
-layout_mode = 2
-texture_normal = ExtResource("4_kl3t2")
 
 [node name="Options" type="TextureButton" parent="VBoxContainer" unique_id=132022242]
 custom_minimum_size = Vector2(1024, 617)
 layout_mode = 2
+mouse_default_cursor_shape = 2
 texture_normal = ExtResource("5_ynupv")
+stretch_mode = 0
+
+[node name="Play" type="TextureButton" parent="VBoxContainer" unique_id=612655502]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("4_kl3t2")
 stretch_mode = 0
 
 [node name="Quit" type="TextureButton" parent="VBoxContainer" unique_id=2030368907]
 custom_minimum_size = Vector2(1024, 617)
 layout_mode = 2
 size_flags_vertical = 8
+mouse_default_cursor_shape = 2
 texture_normal = ExtResource("6_m48tj")
 stretch_mode = 0
 
@@ -81,7 +86,7 @@ stream = ExtResource("3_72sra")
 volume_db = -10.495
 autoplay = true
 
-[connection signal="pressed" from="VBoxContainer/Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="VBoxContainer/Options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="VBoxContainer/Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="VBoxContainer/Quit" to="." method="_on_quit_pressed"]
 [connection signal="timeout" from="Transition/Fade_timer" to="." method="_on_fade_timer_timeout"]

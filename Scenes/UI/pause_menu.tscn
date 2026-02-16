@@ -49,7 +49,7 @@ anchor_right = 0.49479055
 anchor_bottom = 0.9927317
 grow_horizontal = 2
 grow_vertical = 0
-text = "SEGUIR JUGANDO"
+text = "KEEP PLAYING"
 metadata/_edit_use_anchors_ = true
 
 [node name="VolverMenu" type="Button" parent="Panel" unique_id=1519568891]
@@ -61,7 +61,7 @@ anchor_right = 0.7560648
 anchor_bottom = 0.99394304
 grow_horizontal = 2
 grow_vertical = 0
-text = "VOLVER AL MENÚ"
+text = "GO BACK TO MENU"
 metadata/_edit_use_anchors_ = true
 
 [connection signal="pressed" from="Panel/SeguirJugando" to="." method="_on_button_pressed"]

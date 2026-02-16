@@ -4,7 +4,6 @@
 [ext_resource type="Script" uid="uid://0kvnsgnodh8a" path="res://Scenes/Bosses/Bullet_Hell/bullet_hell.gd" id="1_xrhg8"]
 [ext_resource type="Texture2D" uid="uid://ctp6silk7b57g" path="res://assets/sprites/Enemies/Bosses/BulletHell/with_outline/DEATH.png" id="2_cpyfl"]
 [ext_resource type="Texture2D" uid="uid://c2b1lonbj4nvf" path="res://assets/sprites/Enemies/Bosses/BulletHell/with_outline/HURT.png" id="2_eljc4"]
-[ext_resource type="PackedScene" uid="uid://bltsh3akbyydi" path="res://Scenes/Bosses/Bullet_Hell/bullet.tscn" id="2_kx0s6"]
 [ext_resource type="PackedScene" uid="uid://dysmu2ylvmkhx" path="res://Scenes/Character/Health.tscn" id="2_nt647"]
 [ext_resource type="Script" uid="uid://cv7ypnvtvpr0r" path="res://Scenes/Bosses/Bullet_Hell/state_machine.gd" id="2_ooxwf"]
 [ext_resource type="Texture2D" uid="uid://dsruuf1j3rfyg" path="res://assets/sprites/Enemies/Bosses/BulletHell/with_outline/IDLE.png" id="2_t2n1x"]
@@ -220,7 +219,6 @@ script = ExtResource("3_ea566")
 
 [node name="BulletHell" type="Node2D" parent="StateMachine" unique_id=995051740]
 script = ExtResource("1_xrhg8")
-bullet_scene = ExtResource("2_kx0s6")
 
 [node name="SpiralTimer" type="Timer" parent="StateMachine/BulletHell" unique_id=1193702226]
 wait_time = 0.05
