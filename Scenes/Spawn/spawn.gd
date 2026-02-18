@@ -74,8 +74,6 @@ func _ready():
 func enemy_death():
 	dead_enemies+=1
 	if dead_enemies==enemy_dict[current_wave][0]:
-		if ((current_wave) % 5 == 0):
-			GlobalSignals.emit_signal("add_gold", 25)
 		dead_enemies=0
 		await get_tree().create_timer(time_between_waves).timeout
 		current_wave+=1

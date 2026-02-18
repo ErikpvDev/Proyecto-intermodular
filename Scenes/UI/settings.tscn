@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bibk0ds1fe3ho" path="res://Scenes/UI/settings.gd" id="1_owiy1"]
 [ext_resource type="PackedScene" uid="uid://c7p2d74atq8qj" path="res://Scenes/UI/Transition.tscn" id="2_ma1v7"]
+[ext_resource type="Texture2D" uid="uid://dyhbhw2xe35wp" path="res://assets/sprites/Menu/Settings.jpg" id="2_p46qs"]
 
 [node name="Settings" type="Control" unique_id=272083645]
 process_mode = 3
@@ -13,6 +14,12 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_owiy1")
 
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1736686106]
+layout_mode = 0
+offset_right = 1920.6666
+offset_bottom = 1080.0
+texture = ExtResource("2_p46qs")
+
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1315455623]
 layout_mode = 1
 anchors_preset = 8
@@ -20,10 +27,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -400.18268
-offset_top = -299.75
-offset_right = 400.18268
-offset_bottom = 299.75
+offset_left = -512.817
+offset_top = -421.5
+offset_right = 511.18298
+offset_bottom = 421.5
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
@@ -32,6 +39,7 @@ alignment = 1
 
 [node name="Volume_label" type="Label" parent="VBoxContainer" unique_id=1794984523]
 layout_mode = 2
+theme_override_font_sizes/font_size = 64
 text = "Volume"
 horizontal_alignment = 1
 vertical_alignment = 1
