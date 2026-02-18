@@ -65,7 +65,7 @@ func _on_health_health_changed(new_health: Variant) -> void:
 func drop_chest():
 	round_number = spawn.current_wave
 	p_drop = clamp((0.005 + 0.000045 * pow(enemy_dict[round_number][0], 1.12)) * (3.0 if elite else 1.0), 0.0, 0.25)
-	if (randf_range(0,1)<p_drop):
+	if (randf_range(0,1)<100):
 		var c = chest.instantiate()
 		c.position = position
 		var interactables = $"../../Interactables"

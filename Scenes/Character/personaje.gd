@@ -48,6 +48,10 @@ var enemies_hit_this_attack=[]
 var closest_enemy_direction
 var closest_enemy
 
+#ITEMS
+
+var inventory: Dictionary = {}
+
 #VARIABLES------------------------------------------------------------------------------------------------
 
 func _ready() -> void:	
@@ -212,6 +216,10 @@ func get_item(item: ItemData):
 	GlobalSignals.emit_signal("add_max_health", item.max_hp_bonus)
 	GlobalSignals.emit_signal("add_health", item.max_hp_bonus)
 	GlobalSignals.emit_signal("update_stats")
+	if inventory.has(item):
+		inventory[item] += 1
+	else:
+		inventory[item] = 1
 	#print(damage)
 	#print(damage_multiplier)
 	#print(movement.move_speed)

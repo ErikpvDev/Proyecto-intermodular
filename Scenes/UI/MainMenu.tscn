@@ -53,17 +53,17 @@ scale = Vector2(0.5, 0.5)
 theme_override_constants/separation = 174
 alignment = 1
 
+[node name="Play" type="TextureButton" parent="VBoxContainer" unique_id=612655502]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("4_kl3t2")
+stretch_mode = 0
+
 [node name="Options" type="TextureButton" parent="VBoxContainer" unique_id=132022242]
 custom_minimum_size = Vector2(1024, 617)
 layout_mode = 2
 mouse_default_cursor_shape = 2
 texture_normal = ExtResource("5_ynupv")
-stretch_mode = 0
-
-[node name="Play" type="TextureButton" parent="VBoxContainer" unique_id=612655502]
-layout_mode = 2
-mouse_default_cursor_shape = 2
-texture_normal = ExtResource("4_kl3t2")
 stretch_mode = 0
 
 [node name="Quit" type="TextureButton" parent="VBoxContainer" unique_id=2030368907]
@@ -86,7 +86,7 @@ stream = ExtResource("3_72sra")
 volume_db = -10.495
 autoplay = true
 
-[connection signal="pressed" from="VBoxContainer/Options" to="." method="_on_options_pressed"]
 [connection signal="pressed" from="VBoxContainer/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="VBoxContainer/Options" to="." method="_on_options_pressed"]
 [connection signal="pressed" from="VBoxContainer/Quit" to="." method="_on_quit_pressed"]
 [connection signal="timeout" from="Transition/Fade_timer" to="." method="_on_fade_timer_timeout"]

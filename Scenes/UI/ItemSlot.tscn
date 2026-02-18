@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://cnk6lpb2knfhe"]
+
+[ext_resource type="Script" uid="uid://dc3yyq2ii63l" path="res://Scenes/UI/item_slot.gd" id="2_l83rb"]
+[ext_resource type="FontFile" uid="uid://dvxv26iy0kmh0" path="res://assets/fonts/VCR_OSD_MONO_1.001.ttf" id="2_lbkn4"]
+
+[node name="ItemSlot" type="TextureRect" unique_id=109747033]
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("2_l83rb")
+
+[node name="Cantidad" type="Label" parent="." unique_id=455200902]
+layout_mode = 0
+offset_left = 130.66
+offset_right = 170.66
+offset_bottom = 23.0
+theme_override_fonts/font = ExtResource("2_lbkn4")
+theme_override_font_sizes/font_size = 30
