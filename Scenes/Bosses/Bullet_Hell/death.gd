@@ -8,13 +8,13 @@ func enter():
 	
 	$"../../AnimatedSprite2D".play("death") 
 	
-	# 2. Desactivar colisiones para evitar que el jefe reciba daño o golpee al jugador
-	# Ajusta el nombre "CollisionShape2D" al que uses en tu Boss
+	#Desactivar colisiones para evitar que el jefe reciba daño o golpee al jugador
+	#Ajusta el nombre "CollisionShape2D" al que uses en tu Boss
 	var collision = owner.find_child("CollisionShape2D")
 	if collision:
 		collision.set_deferred("disabled", true)
 
-	# 3. Efecto visual opcional: Cámara lenta al morir
+	#Efecto visual opcional: Cámara lenta al morir
 	Engine.time_scale = 0.5
 
 func transition():

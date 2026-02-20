@@ -63,3 +63,7 @@ signal update_heart_display()
 #Señal para añadir escudo
 @warning_ignore("unused_signal")
 signal add_shield()
+
+#Señal para cuando muere el personaje
+@warning_ignore("unused_signal")
+signal die()

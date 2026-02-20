@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://cl46wfmum4upq" path="res://Scenes/Menus/shop_menu.tscn" id="5_ciybh"]
 [ext_resource type="PackedScene" uid="uid://bvvlriipepaqr" path="res://Scenes/UI/pause_menu.tscn" id="6_flgk0"]
 [ext_resource type="PackedScene" uid="uid://c7p2d74atq8qj" path="res://Scenes/UI/Transition.tscn" id="7_vifcx"]
+[ext_resource type="PackedScene" uid="uid://hy6ckjxmy107" path="res://Scenes/UI/death_menu.tscn" id="8_xfil1"]
 
 [node name="Game" type="Node" unique_id=1006189634]
 process_mode = 3
@@ -27,3 +28,5 @@ offset_top = 6.1035156e-05
 [node name="ShopMenu" parent="CanvasLayer" unique_id=1138673724 instance=ExtResource("5_ciybh")]
 
 [node name="Pause_menu" parent="CanvasLayer" unique_id=1538623743 instance=ExtResource("6_flgk0")]
+
+[node name="death_menu" parent="CanvasLayer" unique_id=1368213342 instance=ExtResource("8_xfil1")]

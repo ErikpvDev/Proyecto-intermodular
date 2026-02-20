@@ -64,7 +64,7 @@ func _ready() -> void:
 	GlobalSignals.emit_signal("update_shield",shield)
 	GlobalSignals.emit_signal("update_stats")
 	
-	health.max_health = 5 
+	health.max_health = 5
 	
 	# Gets the health bar initial hearts,appends them to the array and shows them on screen
 	for i in range(health.max_health):
@@ -132,6 +132,8 @@ func take_damage(amount: int) -> void:
 				health.take_damage(amount)
 				update_heart_display()
 				$AnimationPlayer.play("hit")
+				if health.health<=0:
+					GlobalSignals.emit_signal("die")
 
 func add_exp(amount: int) -> void:
 	experience.add_exp(amount)

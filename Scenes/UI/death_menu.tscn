@@ -1,0 +1,122 @@
+[gd_scene format=3 uid="uid://hy6ckjxmy107"]
+
+[ext_resource type="Script" uid="uid://dbo0vhm5ixofu" path="res://Scenes/UI/death_menu.gd" id="1_3v8cq"]
+[ext_resource type="FontFile" uid="uid://dvxv26iy0kmh0" path="res://assets/fonts/VCR_OSD_MONO_1.001.ttf" id="2_8iasg"]
+[ext_resource type="Texture2D" uid="uid://dfd1hauf516lv" path="res://assets/sprites/UI/DeathSkull.png" id="3_7fo7i"]
+[ext_resource type="PackedScene" uid="uid://c7p2d74atq8qj" path="res://Scenes/UI/Transition.tscn" id="4_e22nx"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7fo7i"]
+bg_color = Color(0.1882353, 0.1882353, 0.1882353, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="LabelSettings" id="LabelSettings_e22nx"]
+font_size = 100
+
+[node name="death_menu" type="Control" unique_id=1368213342]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_3v8cq")
+
+[node name="Panel" type="Panel" parent="." unique_id=84910043]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -623.8656
+offset_top = -412.75
+offset_right = 623.8656
+offset_bottom = 412.75
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_7fo7i")
+
+[node name="Label" type="Label" parent="Panel" unique_id=120888785]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -234.5
+offset_top = 34.0
+offset_right = 234.5
+offset_bottom = 132.75
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("2_8iasg")
+text = "YOU DIED"
+label_settings = SubResource("LabelSettings_e22nx")
+
+[node name="Label2" type="Label" parent="Panel" unique_id=1320467116]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -293.0
+offset_top = 158.0
+offset_right = 293.0
+offset_bottom = 198.75
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("2_8iasg")
+theme_override_font_sizes/font_size = 40
+text = "GET BETTER"
+horizontal_alignment = 1
+
+[node name="VolverAJugar" type="Button" parent="Panel" unique_id=109634173]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.24273305
+anchor_top = 0.8101151
+anchor_right = 0.49479055
+anchor_bottom = 0.978195
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("2_8iasg")
+theme_override_font_sizes/font_size = 28
+text = "PLAY AGAIN"
+metadata/_edit_use_anchors_ = true
+
+[node name="VolverMenu" type="Button" parent="Panel" unique_id=2066040444]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5040073
+anchor_top = 0.8101151
+anchor_right = 0.7560648
+anchor_bottom = 0.978195
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("2_8iasg")
+theme_override_font_sizes/font_size = 28
+text = "MENU"
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureRect" type="TextureRect" parent="Panel" unique_id=1980173241]
+layout_mode = 0
+offset_left = 490.866
+offset_top = 256.75
+offset_right = 756.86597
+offset_bottom = 588.427
+texture = ExtResource("3_7fo7i")
+expand_mode = 1
+
+[node name="Transition" parent="." unique_id=1909195515 instance=ExtResource("4_e22nx")]
+visible = false
+z_index = 10
+layout_mode = 1
+
+[node name="Fade_timer" type="Timer" parent="Transition" unique_id=177442467]
+
+[connection signal="pressed" from="Panel/VolverAJugar" to="." method="_on_volver_a_jugar_pressed"]
+[connection signal="pressed" from="Panel/VolverMenu" to="." method="_on_volver_menu_pressed"]
+[connection signal="timeout" from="Transition/Fade_timer" to="." method="_on_fade_timer_timeout"]
