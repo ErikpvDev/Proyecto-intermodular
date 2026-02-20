@@ -25,6 +25,7 @@ GlobalSignals="*res://Scenes/Signals/Global_Signals.gd"
 ItemManager="*res://Scenes/Items/ItemManager.gd"
 MenuManager="*uid://tcwbxeuh13lr"
 MusicManager="*uid://mogyoh0swyp1"
+VfxManager="*uid://dafin6iaflkhl"
 
 [display]
 

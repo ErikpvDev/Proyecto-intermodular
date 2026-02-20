@@ -3,10 +3,10 @@ extends Control
 var button_type = null
 
 func _ready() -> void:
-	GlobalSignals.die.connect(die)
+	GlobalSignals.death_menu.connect(death_menu)
 	hide()
 	
-func die():
+func death_menu():
 	toggle_pause()
 
 func _on_volver_menu_pressed() -> void:
@@ -29,5 +29,4 @@ func _on_fade_timer_timeout() -> void:
 
 func toggle_pause():
 	get_tree().paused = !get_tree().paused
-	
 	visible = get_tree().paused

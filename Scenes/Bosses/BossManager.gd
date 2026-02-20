@@ -26,7 +26,7 @@ func miniboss_spawn(wave):
 	current_wave = wave
 	match current_wave:
 		5:
-			boss="mid02"
+			boss="mid01"
 		10:
 			boss="mid02"
 		15:

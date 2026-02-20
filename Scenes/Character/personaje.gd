@@ -24,6 +24,7 @@ extends CharacterBody2D
 @onready var health_bar: CanvasLayer = $"../UI/health_bar"
 @onready var heart_object = preload("res://Scenes/Hearts/heart.tscn")
 @onready var health: Node = $Health
+var dead = false
 
 #SHIELD
 @onready var shield : int = 0
@@ -55,6 +56,7 @@ var inventory: Dictionary = {}
 #VARIABLES------------------------------------------------------------------------------------------------
 
 func _ready() -> void:	
+	GlobalSignals.die.connect(die)
 	GlobalSignals.update_gold.connect(update_gold)
 	GlobalSignals.add_gold.connect(add_gold)
 	GlobalSignals.get_item.connect(get_item)
@@ -64,7 +66,7 @@ func _ready() -> void:
 	GlobalSignals.emit_signal("update_shield",shield)
 	GlobalSignals.emit_signal("update_stats")
 	
-	health.max_health = 5
+	health.max_health = 1
 	
 	# Gets the health bar initial hearts,appends them to the array and shows them on screen
 	for i in range(health.max_health):
@@ -88,6 +90,10 @@ func _process(delta):
 	update_animation()
 	movement.movement(delta)
 	enemies = $"../Enemies".get_children()
+	
+func die():
+	VfxManager.play_sound("player_death")
+	dead = true
 
 func update_heart_display():
 	# Check the number of hearts to show based on the current health of the player as "idle"
@@ -102,11 +108,14 @@ func update_heart_display():
 			hearts[i].get_child(0).play("idle")
 		else:
 			hearts[i].get_child(0).play("damaged")
-	# Check if it's the last heart and if so play the "beating" animation if not play the "idle" animation  
-	if health.health > 1:
-		hearts[0].get_child(0).play("idle")
+	if health.health != 0:
+		# Check if it's the last heart and if so play the "beating" animation if not play the "idle" animation  
+		if health.health > 1:
+			hearts[0].get_child(0).play("idle")
+		else:
+			hearts[0].get_child(0).play("beating")
 	else:
-		hearts[0].get_child(0).play("beating")
+		hearts[0].get_child(0).play("damaged")
 
 func add_max_health(amount: int)->void:
 	if health.max_health < 10:
@@ -123,41 +132,49 @@ func _on_health_max_health_changed(new_health: Variant, prev_max_health: Variant
 	update_heart_display()
 
 func take_damage(amount: int) -> void:
-	if !movement.dashing:
-		if (!randf()<dodge_chance):
-			if shield >= 1:
-				shield=shield-1
-				GlobalSignals.emit_signal("update_shield",shield)
-			else:	
-				health.take_damage(amount)
-				update_heart_display()
-				$AnimationPlayer.play("hit")
-				if health.health<=0:
-					GlobalSignals.emit_signal("die")
+	if not dead:
+		if !movement.dashing:
+			if (!randf()<dodge_chance):
+				if shield >= 1:
+					shield=shield-1
+					GlobalSignals.emit_signal("update_shield",shield)
+				else:
+					VfxManager.play_sound("player_hitted")
+					health.take_damage(amount)
+					update_heart_display()
+					$AnimationPlayer.play("hit")
+					if health.health<=0:
+						GlobalSignals.emit_signal("die")
 
 func add_exp(amount: int) -> void:
 	experience.add_exp(amount)
 
 func update_animation():
-	if movement.dashing:
-		$AnimatedSprite2D.play("Dash")
-	else:
-		if velocity.x != 0:
-			if velocity.x > 0:
-				$AnimatedSprite2D.play("Walk_right")
-			else:
-				$AnimatedSprite2D.play("Walk_left")
+	if not dead:
+		if movement.dashing:
+			$AnimatedSprite2D.play("Dash")
 		else:
-			if velocity.y != 0:
-				if velocity.y > 0:
-					$AnimatedSprite2D.play("Walk_down")
+			if velocity.x != 0:
+				if velocity.x > 0:
+					$AnimatedSprite2D.play("Walk_right")
 				else:
-					$AnimatedSprite2D.play("Walk_up")
+					$AnimatedSprite2D.play("Walk_left")
 			else:
-				$AnimatedSprite2D.play("Idle")
+				if velocity.y != 0:
+					if velocity.y > 0:
+						$AnimatedSprite2D.play("Walk_down")
+					else:
+						$AnimatedSprite2D.play("Walk_up")
+				else:
+					$AnimatedSprite2D.play("Idle")
+	else:
+		$AnimatedSprite2D.play("Death")
+		await $AnimatedSprite2D.animation_finished
+		GlobalSignals.emit_signal("death_menu")
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	take_damage(body.damage)
+	
 
 func attack():
 	distance_to_closest_enemy = INF
@@ -178,6 +195,8 @@ func attack():
 		$AttackArea/CollisionShape2D.disabled=false
 	
 		$AttackArea/AttackTimer.start()
+		if $AttackArea/AnimatedSprite2D.visible:
+			VfxManager.play_sound("slash")
 	
 func _on_attack_timer_timeout() -> void:
 	$AttackArea/AnimatedSprite2D.visible=false
@@ -233,6 +252,7 @@ func get_item(item: ItemData):
 	#print(health.health)
 
 func add_gold(amount: int):
+	VfxManager.play_sound("pick_up_coin")
 	gold_coins += amount
 	update_gold()
 	

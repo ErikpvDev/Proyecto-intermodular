@@ -9,4 +9,5 @@ script = ExtResource("1_hk5mo")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1468288760]
 stream = ExtResource("2_f2gtp")
-autoplay = true
+bus = &"Music"
+parameters/looping = true

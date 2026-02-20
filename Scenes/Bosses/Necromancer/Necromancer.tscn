@@ -311,7 +311,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qa8cv"]
-size = Vector2(26.75, 32.13086)
+size = Vector2(41.875, 49.032715)
 
 [sub_resource type="Animation" id="Animation_sb7m0"]
 resource_name = "Hit"
@@ -355,25 +355,24 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_krs46"]
-size = Vector2(31, 34.69336)
+size = Vector2(46, 52.67334)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_enjvq"]
-radius = 46.010868
+radius = 75.00667
 
 [node name="CharacterBody2D" type="CharacterBody2D" unique_id=903980021]
 
 [node name="Health" parent="." unique_id=2114213035 instance=ExtResource("1_imcwi")]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=645406794]
-position = Vector2(6, -7.000002)
-scale = Vector2(0.53255206, 0.53255206)
+position = Vector2(7.000003, -6.000002)
+scale = Vector2(0.85627604, 0.85627604)
 sprite_frames = SubResource("SpriteFrames_33ls1")
 animation = &"skill"
 autoplay = "idle"
-frame_progress = 0.5610524
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1699611925]
-position = Vector2(7.625, -6)
+position = Vector2(9, -6)
 shape = SubResource("RectangleShape2D_qa8cv")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1205244490]
@@ -382,7 +381,7 @@ libraries/ = SubResource("AnimationLibrary_e5n1g")
 [node name="Hurtbox" type="Area2D" parent="." unique_id=1245629640]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=596165913]
-position = Vector2(6.5, -6)
+position = Vector2(9, -5.33667)
 shape = SubResource("RectangleShape2D_krs46")
 
 [node name="StateMachine" type="Node2D" parent="." unique_id=1607606740]
@@ -452,5 +451,5 @@ horizontal_alignment = 1
 [node name="AttackArea" type="Area2D" parent="." unique_id=1977589443]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea" unique_id=134166319]
-position = Vector2(7, -6)
+position = Vector2(9, -5)
 shape = SubResource("CircleShape2D_enjvq")

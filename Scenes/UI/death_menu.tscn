@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://hy6ckjxmy107"]
+[gd_scene format=3 uid="uid://dkff3xc5mx8ko"]
 
 [ext_resource type="Script" uid="uid://dbo0vhm5ixofu" path="res://Scenes/UI/death_menu.gd" id="1_3v8cq"]
 [ext_resource type="FontFile" uid="uid://dvxv26iy0kmh0" path="res://assets/fonts/VCR_OSD_MONO_1.001.ttf" id="2_8iasg"]

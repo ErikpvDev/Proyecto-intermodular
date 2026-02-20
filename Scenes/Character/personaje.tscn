@@ -14,6 +14,66 @@
 atlas = ExtResource("6_h7pwf")
 region = Rect2(0, 352, 32, 32)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_malha"]
+atlas = ExtResource("6_h7pwf")
+region = Rect2(32, 352, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qfphq"]
+atlas = ExtResource("6_h7pwf")
+region = Rect2(64, 352, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1oamj"]
+atlas = ExtResource("6_h7pwf")
+region = Rect2(96, 352, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vjlfk"]
+atlas = ExtResource("6_h7pwf")
+region = Rect2(128, 352, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_43anc"]
+atlas = ExtResource("6_h7pwf")
+region = Rect2(160, 352, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kxrsu"]
+atlas = ExtResource("6_h7pwf")
+region = Rect2(192, 352, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6qc86"]
+atlas = ExtResource("6_h7pwf")
+region = Rect2(224, 352, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f7erm"]
+atlas = ExtResource("6_h7pwf")
+region = Rect2(0, 480, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bqhbd"]
+atlas = ExtResource("6_h7pwf")
+region = Rect2(32, 480, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3sb6r"]
+atlas = ExtResource("6_h7pwf")
+region = Rect2(64, 480, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m0rqg"]
+atlas = ExtResource("6_h7pwf")
+region = Rect2(96, 480, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hmdsu"]
+atlas = ExtResource("6_h7pwf")
+region = Rect2(128, 480, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nm1gj"]
+atlas = ExtResource("6_h7pwf")
+region = Rect2(160, 480, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wahgq"]
+atlas = ExtResource("6_h7pwf")
+region = Rect2(192, 480, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q7do0"]
+atlas = ExtResource("6_h7pwf")
+region = Rect2(224, 480, 32, 32)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_ykwvv"]
 atlas = ExtResource("6_h7pwf")
 region = Rect2(0, 0, 32, 32)
@@ -163,10 +223,60 @@ animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_t2t2f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_malha")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qfphq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1oamj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vjlfk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_43anc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kxrsu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6qc86")
 }],
-"loop": true,
+"loop": false,
 "name": &"Dash",
-"speed": 1.0
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f7erm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bqhbd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3sb6r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m0rqg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hmdsu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nm1gj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wahgq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q7do0")
+}],
+"loop": false,
+"name": &"Death",
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -371,7 +481,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_q2q1h")
 }],
-"loop": true,
+"loop": false,
 "name": &"attacking",
 "speed": 14.0
 }]
@@ -433,8 +543,10 @@ script = ExtResource("1_hlutc")
 texture_filter = 1
 texture_repeat = 1
 sprite_frames = SubResource("SpriteFrames_aexvp")
-animation = &"Dash"
+animation = &"Death"
 autoplay = "Idle"
+frame = 7
+frame_progress = 1.0
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1185855092]
 zoom = Vector2(4, 4)
@@ -466,6 +578,8 @@ z_index = 4096
 scale = Vector2(0.915, 0.912)
 sprite_frames = SubResource("SpriteFrames_malha")
 animation = &"attacking"
+frame = 8
+frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea" unique_id=691412778]
 position = Vector2(44.75, 2)

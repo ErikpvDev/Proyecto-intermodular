@@ -67,3 +67,7 @@ signal add_shield()
 #Señal para cuando muere el personaje
 @warning_ignore("unused_signal")
 signal die()
+
+#Señal para cuando tiene que abrirse el menu de muerte
+@warning_ignore("unused_signal")
+signal death_menu()

@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://ccey71ni404b0" path="res://Scenes/UI/main_menu.gd" id="1_g18y6"]
 [ext_resource type="Texture2D" uid="uid://ci5dlvxwgrqmj" path="res://assets/sprites/UI/EntradaDungeon (1).png" id="2_kl3t2"]
 [ext_resource type="PackedScene" uid="uid://c7p2d74atq8qj" path="res://Scenes/UI/Transition.tscn" id="2_mjmdf"]
-[ext_resource type="AudioStream" uid="uid://b17o3ugouk0tw" path="res://assets/Songs/MainMenuSong.mp3" id="3_72sra"]
 [ext_resource type="Texture2D" uid="uid://b0uuxpbs63eky" path="res://assets/sprites/UI/CrownlessLogo.png" id="3_jex3y"]
 [ext_resource type="Texture2D" uid="uid://dqo5utw54hbwl" path="res://assets/sprites/UI/PlayButton.png" id="4_kl3t2"]
 [ext_resource type="Texture2D" uid="uid://bkgvmtef81g35" path="res://assets/sprites/UI/SettingsButton.png" id="5_ynupv"]
@@ -80,11 +79,6 @@ z_index = 10
 layout_mode = 1
 
 [node name="Fade_timer" type="Timer" parent="Transition" unique_id=1621469]
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=211402290]
-stream = ExtResource("3_72sra")
-volume_db = -10.495
-autoplay = true
 
 [connection signal="pressed" from="VBoxContainer/Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="VBoxContainer/Options" to="." method="_on_options_pressed"]

@@ -9,6 +9,7 @@ func _ready() -> void:
 	
 func _on_interact():
 	if animated_sprite_2d.animation == "default":
+		VfxManager.play_sound("open_chest")
 		animated_sprite_2d.play("Open")
 		interactable.is_interactable = false
 		await animated_sprite_2d.animation_finished

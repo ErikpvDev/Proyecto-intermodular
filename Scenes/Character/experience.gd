@@ -23,7 +23,9 @@ func add_exp(amount: int) -> void:
 		exp_lvl_text.text="LVL "+str(lvl)
 		exp_needed_lvl += (lvl * 250)
 		exp_bar.max_value=exp_needed_lvl
+		VfxManager.play_sound("level_up")
 		emit_signal("level_up")
 	else:
+		VfxManager.play_sfx_varied("pick_up_XP")
 		experience=expected_exp
 		exp_bar.value=experience

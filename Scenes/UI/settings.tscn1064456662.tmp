@@ -1,0 +1,91 @@
+[gd_scene format=3 uid="uid://clvrcpn4ahcjn"]
+
+[ext_resource type="Script" uid="uid://bibk0ds1fe3ho" path="res://Scenes/UI/settings.gd" id="1_owiy1"]
+[ext_resource type="PackedScene" uid="uid://c7p2d74atq8qj" path="res://Scenes/UI/Transition.tscn" id="2_ma1v7"]
+[ext_resource type="Texture2D" uid="uid://dyhbhw2xe35wp" path="res://assets/sprites/Menu/Settings.jpg" id="2_p46qs"]
+
+[node name="Settings" type="Control" unique_id=272083645]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_owiy1")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1736686106]
+layout_mode = 0
+offset_right = 1920.6666
+offset_bottom = 1080.0
+texture = ExtResource("2_p46qs")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1315455623]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -512.0
+offset_top = -421.5
+offset_right = 512.0
+offset_bottom = 421.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 313
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer" unique_id=359652586]
+layout_mode = 2
+
+[node name="Volume_label" type="Label" parent="VBoxContainer/VBoxContainer" unique_id=1794984523]
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "Volume"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Volume" type="HSlider" parent="VBoxContainer/VBoxContainer" unique_id=552164671]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+min_value = 0.001
+max_value = 1.0
+step = 0.05
+value = 1.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=1366165918]
+layout_mode = 2
+alignment = 1
+
+[node name="WindowOption" type="OptionButton" parent="VBoxContainer/HBoxContainer" unique_id=1377639134]
+custom_minimum_size = Vector2(132.17, 91.78)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+selected = 0
+item_count = 3
+popup/item_0/text = "Windowed"
+popup/item_0/id = 0
+popup/item_1/text = "FullScreen"
+popup/item_1/id = 1
+popup/item_2/text = "Borderless"
+popup/item_2/id = 2
+
+[node name="Button" type="Button" parent="VBoxContainer" unique_id=1834833503]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+text = "EXIT"
+
+[node name="Transition" parent="." unique_id=1909195515 instance=ExtResource("2_ma1v7")]
+visible = false
+layout_mode = 1
+
+[node name="Fade_timer" type="Timer" parent="Transition" unique_id=1434698311]
+
+[connection signal="value_changed" from="VBoxContainer/VBoxContainer/Volume" to="." method="_on_volume_value_changed"]
+[connection signal="item_selected" from="VBoxContainer/HBoxContainer/WindowOption" to="." method="_on_windowed_item_selected"]
+[connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="timeout" from="Transition/Fade_timer" to="." method="_on_fade_timer_timeout"]

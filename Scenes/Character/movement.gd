@@ -6,9 +6,11 @@ extends Node
 @onready var entity = get_parent()
 var dashing = false
 var dash_available = true
+var dead = false
 
 func _ready() -> void:
 	GlobalSignals.update_move_speed.connect(update_move_speed)
+	GlobalSignals.die.connect(die)
 
 func dash() -> void:
 	dashing=true
@@ -18,24 +20,25 @@ func dash() -> void:
 
 
 func movement(_delta):
-	var input_direction = Vector2(
-		Input.get_action_strength("right") - Input.get_action_strength("left"),
-		Input.get_action_strength("down") - Input.get_action_strength("up"),
-	)
+	if not dead:
+		var input_direction = Vector2(
+			Input.get_action_strength("right") - Input.get_action_strength("left"),
+			Input.get_action_strength("down") - Input.get_action_strength("up"),
+		)
 	
-	if Input.is_action_just_pressed("dash") && dash_available:
-		dash()
-		
-	var speed=move_speed
-	if dashing:
-		speed=dash_speed
+		if Input.is_action_just_pressed("dash") && dash_available:
+			dash()
+			
+		var speed=move_speed
+		if dashing:
+			speed=dash_speed
 	
-	if input_direction.x!=0 && input_direction.y!=0:
-		entity.velocity = input_direction.normalized() * speed
-	else:
-		entity.velocity = input_direction * speed
+		if input_direction.x!=0 && input_direction.y!=0:
+			entity.velocity = input_direction.normalized() * speed
+		else:
+			entity.velocity = input_direction * speed
 	
-	entity.move_and_slide()
+		entity.move_and_slide()
 		
 
 func _on_dash_timer_timeout() -> void:
@@ -49,3 +52,6 @@ func update_move_speed(amount: float):
 	move_speed = move_speed + (amount * 100)
 	if (move_speed > 150):
 		move_speed = 150
+		
+func die():
+	dead=true

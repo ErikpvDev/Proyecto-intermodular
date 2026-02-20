@@ -68,6 +68,7 @@ func get_items():
 func _on_object1_pressed() -> void:
 	var item_price = ItemManager.get_price(item1)
 	if (gold_coins >= item_price):
+		VfxManager.play_sound("buy_item")
 		GlobalSignals.emit_signal("get_item", item1)
 		boton1.disabled = true
 		personaje.gold_coins -= item_price
@@ -77,6 +78,7 @@ func _on_object1_pressed() -> void:
 func _on_object2_pressed() -> void:
 	var item_price = ItemManager.get_price(item2)
 	if (gold_coins >= item_price):
+		VfxManager.play_sound("buy_item")
 		GlobalSignals.emit_signal("get_item", item2)
 		boton2.disabled = true
 		personaje.gold_coins -= item_price
@@ -86,6 +88,7 @@ func _on_object2_pressed() -> void:
 func _on_object3_pressed() -> void:
 	var item_price = ItemManager.get_price(item3)
 	if (gold_coins >= item_price):
+		VfxManager.play_sound("buy_item")
 		GlobalSignals.emit_signal("get_item", item3)
 		boton3.disabled = true
 		personaje.gold_coins -= item_price

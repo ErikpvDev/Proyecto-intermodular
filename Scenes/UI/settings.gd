@@ -1,13 +1,23 @@
 extends Control
 
-@onready var volume_slider = $VBoxContainer/Volume
+@onready var music_slider = $VBoxContainer/VBoxContainer/Music
+@onready var vfx_slider = $VBoxContainer/VBoxContainer/VFX
 @onready var window_option = $VBoxContainer/WindowOption
 
 func _ready() -> void:
 	$Transition/AnimationPlayer.play("fade_out")
 	
-	var db_volume = AudioServer.get_bus_volume_db(0)
-	volume_slider.value = db_to_linear(db_volume)
+	var bus_index_music = AudioServer.get_bus_index("Music")
+	
+	var db_volume_music = AudioServer.get_bus_volume_db(bus_index_music)
+	
+	music_slider.value = db_to_linear(db_volume_music)
+	
+	var bus_index_VFX = AudioServer.get_bus_index("VFX")
+	
+	var db_volume_VFX = AudioServer.get_bus_volume_db(bus_index_VFX)
+	
+	vfx_slider.value = db_to_linear(db_volume_VFX)
 	
 	_update_window_option_button()
 
@@ -23,14 +33,17 @@ func _update_window_option_button() -> void:
 		window_option.selected = 0
 
 func _on_volume_value_changed(value: float) -> void:
-	# Convertimos el valor de 0.0-1.0 a decibelios (-80dB a 0dB)
+	# Obtenemos el índice del bus llamado "Music"
+	var bus_index = AudioServer.get_bus_index("Music")
+	
+	# Convertimos el valor lineal (0-1) a decibelios
 	var db_value = linear_to_db(value)
 	
-	# Aplicamos el volumen al bus 0 (Master)
-	AudioServer.set_bus_volume_db(0, db_value)
+	# Aplicamos el volumen solo a ese bus
+	AudioServer.set_bus_volume_db(bus_index, db_value)
 	
-	# Opcional: Si el valor es el mínimo, silenciamos por completo (Mute)
-	AudioServer.set_bus_mute(0, value < 0.01)
+	# Silenciamos solo la música si el slider está al mínimo
+	AudioServer.set_bus_mute(bus_index, value < 0.01)
 
 
 
@@ -82,5 +95,15 @@ func center_window():
 		var window_size = DisplayServer.window_get_size()
 		
 		# Calculamos el centro
-		var center_pos = screen_rect.position + (screen_rect.size / 2.0) - (window_size / 2.0)
+		var center_pos = screen_rect.position + (screen_rect.size / 2) - (window_size / 2)
 		DisplayServer.window_set_position(center_pos)
+
+
+func _on_vfx_value_changed(value: float) -> void:
+	var bus_index = AudioServer.get_bus_index("VFX")
+	
+	var db_value = linear_to_db(value)
+	
+	AudioServer.set_bus_volume_db(bus_index, db_value)
+
+	AudioServer.set_bus_mute(bus_index, value < 0.01)

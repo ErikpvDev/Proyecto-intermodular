@@ -2,6 +2,9 @@ extends Control
 
 var button_type = null
 
+func _ready() -> void:
+	MusicManager.play()
+
 func _on_play_pressed() -> void:
 	button_type="play"
 	$Transition.show()
