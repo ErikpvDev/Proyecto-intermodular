@@ -20,6 +20,7 @@ position = Vector2(2, 0.7)
 shape = SubResource("RectangleShape2D_blray")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=94421937]
+process_mode = 1
 rect = Rect2(-10, -10, 24, 24)
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

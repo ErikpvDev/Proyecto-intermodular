@@ -14,10 +14,11 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 
 [application]
 
-config/name="Nuevo Proyecto de Juego"
+config/name="CrownLess"
 run/main_scene="uid://bmyfdpo4dogpt"
 config/features=PackedStringArray("4.6", "Forward Plus")
-config/icon="res://icon.svg"
+boot_splash/image="uid://b0uuxpbs63eky"
+config/icon="uid://b0uuxpbs63eky"
 
 [autoload]
 

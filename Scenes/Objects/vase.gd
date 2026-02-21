@@ -28,8 +28,6 @@ func drop_shield():
 func _on_interact():
 	if interactable.is_interactable:
 		interactable.is_interactable = false
-		#animated_sprite_2d.play("break")
-		#await animated_sprite_2d.animation_finished
 		if (randf_range(0,100)<90):
 			drop_coins()
 		else:

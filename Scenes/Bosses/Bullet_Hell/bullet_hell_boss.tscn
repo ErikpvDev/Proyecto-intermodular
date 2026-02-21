@@ -16,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://bjc4fejijgsl2" path="res://assets/sprites/Objetcs/Exp/Under.png" id="11_t2n1x"]
 [ext_resource type="Texture2D" uid="uid://xwm27srbs3p6" path="res://assets/sprites/Objetcs/Exp/Over.png" id="12_eljc4"]
 [ext_resource type="Texture2D" uid="uid://b15b6vk4soi7e" path="res://assets/sprites/Enemies/Bosses/Health_bar_UI.png" id="13_t2n1x"]
+[ext_resource type="FontFile" uid="uid://dvxv26iy0kmh0" path="res://assets/fonts/VCR_OSD_MONO_1.001.ttf" id="17_a2g5b"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_l6wuc"]
 atlas = ExtResource("2_cpyfl")
@@ -187,7 +188,12 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t2n1x"]
 size = Vector2(56.3125, 48.1875)
 
+[sub_resource type="LabelSettings" id="LabelSettings_cnclf"]
+font = ExtResource("17_a2g5b")
+font_size = 24
+
 [node name="Bullet Hell boss" type="CharacterBody2D" unique_id=789167342]
+process_mode = 1
 script = ExtResource("1_c2tip")
 
 [node name="Health" parent="." unique_id=1042868023 instance=ExtResource("2_nt647")]
@@ -219,6 +225,7 @@ script = ExtResource("2_ooxwf")
 script = ExtResource("3_ea566")
 
 [node name="BulletHell" type="Node2D" parent="StateMachine" unique_id=995051740]
+process_mode = 1
 script = ExtResource("1_xrhg8")
 bullet_scene = ExtResource("9_nt647")
 
@@ -276,13 +283,14 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -49.5
-offset_top = -35.57447
-offset_right = 49.5
-offset_bottom = -12.5744705
+offset_left = -140.4255
+offset_top = -41.24823
+offset_right = 145.47879
+offset_bottom = 3.0425568
 grow_horizontal = 2
 grow_vertical = 0
 text = "Vhyk-Thorr Vher’Dhu"
+label_settings = SubResource("LabelSettings_cnclf")
 horizontal_alignment = 1
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="StateMachine/Death" method="_on_animated_sprite_2d_animation_finished"]

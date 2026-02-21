@@ -8,7 +8,11 @@ var sounds = {
 	"level_up" : preload("res://assets/VFX/LevelUp.mp3"),
 	"open_chest" : preload("res://assets/VFX/OpenChest.mp3"),
 	"pick_up_XP" : preload("res://assets/VFX/PickUpXP.mp3"),
-	"player_death" : preload("res://assets/VFX/Death.mp3")  
+	"player_death" : preload("res://assets/VFX/Death.mp3"),
+	"lose_shield" : preload("res://assets/VFX/LoseShield.mp3"),
+	"equip_shield" : preload("res://assets/VFX/EquipShield.mp3"),
+	"pick_up_heart" : preload("res://assets/VFX/PickUpHeart.mp3"),
+	"victory" : preload("res://assets/VFX/Victory-Sound.mp3")  
 }
 	
 func play_sound(sound_name: String):
@@ -29,7 +33,6 @@ func play_sfx_varied(sound_name: String):
 		player.stream = sounds[sound_name]
 		player.bus = "VFX"
 		
-		# Variación aleatoria entre 0.9 y 1.1 (Estilo Retro/Medieval)
 		player.pitch_scale = randf_range(0.9, 1.1)
 		
 		add_child(player)

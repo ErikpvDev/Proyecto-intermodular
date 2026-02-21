@@ -1,6 +1,6 @@
 extends Node2D
 
-@onready var current_wave=5
+@onready var current_wave=1
 var base_elite_chance = 0.02
 var elite_prob_percent
 @export var exp_growth=1.12
@@ -11,7 +11,7 @@ var elite_prob_percent
 #@export var base_hp=1
 @export var base_elite_hp=50
 #@export var base_elite_hp=1
-@onready var between_waves=1
+@onready var between_waves=3
 @onready var wave_text = $"../UI/Wave/Wave/Label"
 
 var vase_count
@@ -28,6 +28,9 @@ var exp_vase_growth = 1.04
 @onready var interactable_scene= $"../Interactables"
 
 var spawn_time = 1
+
+var total_time: float = 0.0
+var timer_active : bool = true
 
 
 @onready var enemy_dict = {
@@ -55,7 +58,7 @@ var spawn_time = 1
 	22: [220,3.58],
 	23: [240,3.72],
 	24: [265,3.86],
-	25: [1,4.0]   # Ronda final o jefe supremo
+	25: [1,4.0], # Ronda final o jefe supremo
 }
 
 @onready var enemy=preload("res://Scenes/Enemies/enemigo.tscn")
@@ -63,18 +66,27 @@ var spawn_time = 1
 @onready var camera = $"../Character/Camera2D"
 
 var elite_multiplier = {}
-@export var time_between_waves: float = 1
+@export var time_between_waves: float = 3
 
 signal between_waves_screen_timer
 
 func _ready():
 	update_wave()
 	
+func _process(delta: float) -> void:
+	if timer_active:
+		total_time += delta
 
 func enemy_death():
 	dead_enemies+=1
 	if dead_enemies==enemy_dict[current_wave][0]:
 		dead_enemies=0
+		if current_wave == 25:
+			timer_active=false
+			MusicManager.stop()
+			VfxManager.play_sound("victory")
+			GlobalSignals.emit_signal("victory_menu",total_time)
+			return
 		await get_tree().create_timer(time_between_waves).timeout
 		current_wave+=1
 		update_wave()

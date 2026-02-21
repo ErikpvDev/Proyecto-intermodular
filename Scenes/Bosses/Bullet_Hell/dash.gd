@@ -26,6 +26,9 @@ func enter():
 	owner.velocity = dash_direction * dash_speed
 	#animation_player.play("dash")
 
+func update(_delta):
+	pass
+
 func _physics_process(delta):
 	if dash_timer > 0.0:
 		dash_timer -= delta

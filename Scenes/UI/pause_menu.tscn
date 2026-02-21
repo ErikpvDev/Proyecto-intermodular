@@ -18,7 +18,11 @@ corner_radius_bottom_left = 10
 [sub_resource type="LabelSettings" id="LabelSettings_b1dhq"]
 font_size = 100
 
+[sub_resource type="LabelSettings" id="LabelSettings_8rf44"]
+font_size = 38
+
 [node name="Pause_menu" type="Control" unique_id=1538623743]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -97,6 +101,15 @@ theme_override_fonts/font = ExtResource("2_8rf44")
 theme_override_font_sizes/font_size = 28
 text = "MENU"
 metadata/_edit_use_anchors_ = true
+
+[node name="TimeLabel" type="Label" parent="Panel" unique_id=1640665316]
+layout_mode = 0
+offset_left = 795.8656
+offset_top = 4.75
+offset_right = 905.8656
+offset_bottom = 57.75
+text = "TIME: "
+label_settings = SubResource("LabelSettings_8rf44")
 
 [connection signal="pressed" from="Panel/SeguirJugando" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="Panel/VolverMenu" to="." method="_on_volver_menu_pressed"]

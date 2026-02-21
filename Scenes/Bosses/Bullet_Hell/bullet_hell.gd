@@ -24,6 +24,8 @@ var current_aim_angle: float = 0.0
 
 @export var time_after_dash := 2
 
+@onready var sprite = $"../../AnimatedSprite2D"
+
 func enter():
 	super.enter()
 	
@@ -36,6 +38,8 @@ func enter():
 	# Start aiming straight right (or use owner.rotation to start where facing)
 	current_aim_angle = 0.0 
 
+	flash_warning()
+	await get_tree().create_timer(1,false).timeout
 	# Start the firing cycle
 	spiral_timer.start(time_between_shots)
 
@@ -52,14 +56,14 @@ func spawn_bullet(angle: float):
 	# Optional: Rotate sprite to face travel direction
 	bullet.rotation = angle
 
-	# Calculate direction vector from the angle
 	var direction = Vector2.RIGHT.rotated(angle)
-	
-	# Assuming your bullet script has a 'setup' function that takes direction
+
 	bullet.setup(direction)
 
 	get_tree().current_scene.add_child(bullet)
 
+func update(_delta):
+	pass
 
 func _on_spiral_timer_timeout() -> void:
 	# Check exit condition
@@ -83,3 +87,12 @@ func _on_spiral_timer_timeout() -> void:
 
 	# Rotate aim for the next shot
 	current_aim_angle += deg_to_rad(angle_increment_degrees)
+	
+func flash_warning():
+	var tween = create_tween()
+	tween.tween_property(sprite, "modulate", Color.RED, 0.1)
+	
+	tween.tween_property(sprite, "modulate", Color.WHITE, 0.1)
+	
+	tween.tween_property(sprite, "modulate", Color.RED, 0.1)
+	tween.tween_property(sprite, "modulate", Color.WHITE, 0.1)

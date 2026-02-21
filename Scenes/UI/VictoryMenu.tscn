@@ -1,0 +1,135 @@
+[gd_scene format=3 uid="uid://ckts1dx3avj"]
+
+[ext_resource type="Script" uid="uid://bomoexnqtst4u" path="res://Scenes/UI/victory_menu.gd" id="1_qvph2"]
+[ext_resource type="PackedScene" uid="uid://c7p2d74atq8qj" path="res://Scenes/UI/Transition.tscn" id="2_nmkm3"]
+[ext_resource type="FontFile" uid="uid://dvxv26iy0kmh0" path="res://assets/fonts/VCR_OSD_MONO_1.001.ttf" id="3_vs8f6"]
+[ext_resource type="Texture2D" uid="uid://b8wpekfnh2bgb" path="res://assets/sprites/UI/Victory_Crown.png" id="4_gtci8"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gtci8"]
+bg_color = Color(0.1882353, 0.1882353, 0.1882353, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="LabelSettings" id="LabelSettings_rlkbe"]
+font_size = 100
+
+[node name="Victory" type="Control" unique_id=37817358]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_qvph2")
+
+[node name="Panel" type="Panel" parent="." unique_id=1036284573]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -623.8656
+offset_top = -412.75
+offset_right = 623.8656
+offset_bottom = 412.75
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_gtci8")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel" unique_id=909379314]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -313.0
+offset_right = 313.0
+offset_bottom = 669.0
+grow_horizontal = 2
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/VBoxContainer" unique_id=1435473256]
+layout_mode = 2
+theme_override_constants/separation = 28
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer/VBoxContainer" unique_id=1615243738]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_vs8f6")
+text = "VICTORY"
+label_settings = SubResource("LabelSettings_rlkbe")
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="Panel/VBoxContainer/VBoxContainer" unique_id=879425104]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_vs8f6")
+theme_override_font_sizes/font_size = 40
+text = "YOU GOT YOUR CROWN BACK"
+horizontal_alignment = 1
+
+[node name="Time" type="Label" parent="Panel/VBoxContainer/VBoxContainer" unique_id=1293250292]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_vs8f6")
+theme_override_font_sizes/font_size = 40
+text = "TIME:"
+horizontal_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Panel/VBoxContainer" unique_id=1477680569]
+layout_mode = 2
+texture = ExtResource("4_gtci8")
+
+[node name="RestartButton" type="Button" parent="Panel" unique_id=1243410713]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.24273305
+anchor_top = 0.8101151
+anchor_right = 0.49479055
+anchor_bottom = 0.978195
+grow_horizontal = 2
+grow_vertical = 0
+mouse_default_cursor_shape = 2
+theme_override_fonts/font = ExtResource("3_vs8f6")
+theme_override_font_sizes/font_size = 28
+text = "PLAY AGAIN"
+metadata/_edit_use_anchors_ = true
+
+[node name="MenuButton" type="Button" parent="Panel" unique_id=1904560141]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5040073
+anchor_top = 0.8101151
+anchor_right = 0.7560648
+anchor_bottom = 0.978195
+grow_horizontal = 2
+grow_vertical = 0
+mouse_default_cursor_shape = 2
+theme_override_fonts/font = ExtResource("3_vs8f6")
+theme_override_font_sizes/font_size = 28
+text = "MENU"
+metadata/_edit_use_anchors_ = true
+
+[node name="Transition" parent="." unique_id=1909195515 instance=ExtResource("2_nmkm3")]
+process_mode = 3
+visible = false
+z_index = 10
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1178.0
+offset_top = -728.0
+offset_right = 1091.8828
+offset_bottom = 828.0
+
+[node name="Fade_timer" type="Timer" parent="Transition" unique_id=552207824]
+process_mode = 3
+
+[connection signal="pressed" from="Panel/RestartButton" to="." method="_on_restart_button_pressed"]
+[connection signal="pressed" from="Panel/MenuButton" to="." method="_on_menu_button_pressed"]
+[connection signal="timeout" from="Transition/Fade_timer" to="." method="_on_fade_timer_timeout"]

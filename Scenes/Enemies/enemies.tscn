@@ -1,3 +1,4 @@
 [gd_scene format=3 uid="uid://bgjw2csmveeoi"]
 
-[node name="Enemies" type="Node2D"]
+[node name="Enemies" type="Node2D" unique_id=2140254915]
+process_mode = 1

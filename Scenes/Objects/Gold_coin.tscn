@@ -1,55 +1,55 @@
 [gd_scene format=3 uid="uid://np811y72q5um"]
 
-[ext_resource type="Texture2D" uid="uid://dskbj83ydxa2x" path="res://assets/sprites/Objetcs/Gold/spinning_coin/coin1.png" id="1_itwwc"]
-[ext_resource type="Script" uid="uid://b02smar1b4ysu" path="res://Scenes/Objects/attractable.gd" id="1_s8g6f"]
-[ext_resource type="Texture2D" uid="uid://d2k821dlbon52" path="res://assets/sprites/Objetcs/Gold/spinning_coin/coin2.png" id="2_s8g6f"]
-[ext_resource type="Texture2D" uid="uid://by5ky45c48rvm" path="res://assets/sprites/Objetcs/Gold/spinning_coin/coin3.png" id="3_q3qaq"]
-[ext_resource type="Texture2D" uid="uid://baod3yexu0gcf" path="res://assets/sprites/Objetcs/Gold/spinning_coin/coin4.png" id="4_0ikvy"]
-[ext_resource type="Texture2D" uid="uid://baqj04rvkhnqg" path="res://assets/sprites/Objetcs/Gold/spinning_coin/coin5.png" id="5_gv2xx"]
-[ext_resource type="Texture2D" uid="uid://bj764heal2j3b" path="res://assets/sprites/Objetcs/Gold/spinning_coin/coin6.png" id="6_kswdh"]
-[ext_resource type="Texture2D" uid="uid://rd1gqg16lyey" path="res://assets/sprites/Objetcs/Gold/spinning_coin/coin7.png" id="7_2ekoe"]
-[ext_resource type="Texture2D" uid="uid://gi2ms0djqr71" path="res://assets/sprites/Objetcs/Gold/spinning_coin/coin8.png" id="8_qytom"]
-[ext_resource type="Texture2D" uid="uid://ybphywrvl6x8" path="res://assets/sprites/Objetcs/Gold/spinning_coin/coin9.png" id="9_tuvyc"]
-[ext_resource type="Texture2D" uid="uid://8fypqk3k6ftq" path="res://assets/sprites/Objetcs/Gold/spinning_coin/coin10.png" id="10_r4lm6"]
+[ext_resource type="Script" uid="uid://b02smar1b4ysu" path="res://Scenes/Objects/attractable.gd" id="1_0as2o"]
+[ext_resource type="Texture2D" uid="uid://dskbj83ydxa2x" path="res://assets/sprites/Objetcs/Gold/spinning_coin/coin1.png" id="2_ieg8p"]
+[ext_resource type="Texture2D" uid="uid://d2k821dlbon52" path="res://assets/sprites/Objetcs/Gold/spinning_coin/coin2.png" id="3_i8fsl"]
+[ext_resource type="Texture2D" uid="uid://by5ky45c48rvm" path="res://assets/sprites/Objetcs/Gold/spinning_coin/coin3.png" id="4_ao4xf"]
+[ext_resource type="Texture2D" uid="uid://baod3yexu0gcf" path="res://assets/sprites/Objetcs/Gold/spinning_coin/coin4.png" id="5_cpb20"]
+[ext_resource type="Texture2D" uid="uid://baqj04rvkhnqg" path="res://assets/sprites/Objetcs/Gold/spinning_coin/coin5.png" id="6_t1cml"]
+[ext_resource type="Texture2D" uid="uid://bj764heal2j3b" path="res://assets/sprites/Objetcs/Gold/spinning_coin/coin6.png" id="7_xsgpn"]
+[ext_resource type="Texture2D" uid="uid://rd1gqg16lyey" path="res://assets/sprites/Objetcs/Gold/spinning_coin/coin7.png" id="8_oaquh"]
+[ext_resource type="Texture2D" uid="uid://gi2ms0djqr71" path="res://assets/sprites/Objetcs/Gold/spinning_coin/coin8.png" id="9_eoorj"]
+[ext_resource type="Texture2D" uid="uid://ybphywrvl6x8" path="res://assets/sprites/Objetcs/Gold/spinning_coin/coin9.png" id="10_2skl2"]
+[ext_resource type="Texture2D" uid="uid://8fypqk3k6ftq" path="res://assets/sprites/Objetcs/Gold/spinning_coin/coin10.png" id="11_gutol"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qkgsk"]
-atlas = ExtResource("1_itwwc")
+atlas = ExtResource("2_ieg8p")
 region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fbjvo"]
-atlas = ExtResource("2_s8g6f")
+atlas = ExtResource("3_i8fsl")
 region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6w7gs"]
-atlas = ExtResource("3_q3qaq")
+atlas = ExtResource("4_ao4xf")
 region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_q47x2"]
-atlas = ExtResource("4_0ikvy")
+atlas = ExtResource("5_cpb20")
 region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sexn2"]
-atlas = ExtResource("5_gv2xx")
+atlas = ExtResource("6_t1cml")
 region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_srtnu"]
-atlas = ExtResource("6_kswdh")
+atlas = ExtResource("7_xsgpn")
 region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_thwju"]
-atlas = ExtResource("7_2ekoe")
+atlas = ExtResource("8_oaquh")
 region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qcbgj"]
-atlas = ExtResource("8_qytom")
+atlas = ExtResource("9_eoorj")
 region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2dlja"]
-atlas = ExtResource("9_tuvyc")
+atlas = ExtResource("10_2skl2")
 region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ruetn"]
-atlas = ExtResource("10_r4lm6")
+atlas = ExtResource("11_gutol")
 region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_iih22"]
@@ -94,7 +94,7 @@ animations = [{
 radius = 8.0
 
 [node name="Gold_coin" type="Area2D" unique_id=742703375]
-script = ExtResource("1_s8g6f")
+script = ExtResource("1_0as2o")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=146179617]
 z_index = 4096

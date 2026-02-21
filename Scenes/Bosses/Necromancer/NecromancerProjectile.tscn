@@ -1,0 +1,66 @@
+[gd_scene format=3 uid="uid://834i4hympbjw"]
+
+[ext_resource type="Texture2D" uid="uid://cv8cyi7jv1tdv" path="res://assets/sprites/Enemies/Bosses/Necromancer/Blue Effect Bullet Impact Explosion 32x32.png" id="1_8jpvh"]
+[ext_resource type="Script" uid="uid://dabsaqp2p6x50" path="res://Scenes/Bosses/Necromancer/necromancer_projectile.gd" id="1_sfbiy"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sfbiy"]
+atlas = ExtResource("1_8jpvh")
+region = Rect2(352, 160, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ajcyh"]
+atlas = ExtResource("1_8jpvh")
+region = Rect2(384, 160, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5he0v"]
+atlas = ExtResource("1_8jpvh")
+region = Rect2(416, 160, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ghxg6"]
+atlas = ExtResource("1_8jpvh")
+region = Rect2(448, 160, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jihj4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sfbiy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ajcyh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5he0v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ghxg6")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 8.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hlalh"]
+size = Vector2(31, 20)
+
+[node name="NecromancerProjectile" type="Area2D" unique_id=1532195508]
+process_mode = 1
+z_index = 10
+script = ExtResource("1_sfbiy")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2014706693]
+sprite_frames = SubResource("SpriteFrames_jihj4")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.52847725
+flip_h = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=591366962]
+position = Vector2(-1, 1)
+shape = SubResource("RectangleShape2D_hlalh")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=2080399062]
+position = Vector2(-17, 2)
+rect = Rect2(-10, -19, 52.857143, 37)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

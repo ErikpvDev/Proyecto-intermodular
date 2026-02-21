@@ -10,6 +10,10 @@ func _ready() -> void:
 	await get_tree().create_timer(start_time).timeout
 	current_state.enter()
 
+func _process(delta: float) -> void:
+	if current_state:
+		current_state.update(delta)
+
 func change_state(state):
 	current_state = find_child(state) as State
 	current_state.enter()

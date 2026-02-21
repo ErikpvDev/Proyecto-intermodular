@@ -19,4 +19,3 @@ func transition():
 	
 func _physics_process(_delta) -> void:
 	transition()
-	debug.text = name

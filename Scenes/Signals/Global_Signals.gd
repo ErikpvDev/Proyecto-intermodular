@@ -71,3 +71,7 @@ signal die()
 #Señal para cuando tiene que abrirse el menu de muerte
 @warning_ignore("unused_signal")
 signal death_menu()
+
+#Señal para mostrar el menu de victoria
+@warning_ignore("unused_signal")
+signal victory_menu(total_time)

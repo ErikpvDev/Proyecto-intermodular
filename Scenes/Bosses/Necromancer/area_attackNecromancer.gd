@@ -1,31 +1,44 @@
 extends State
 
-@export var attack_radius: float = 120.0
-@export var startup_time: float = 1.0    # Tiempo de carga
-@export var active_time: float = 0.5     # Cuánto dura el daño
-@export var cooldown_time: float = 0.8   # Post-ataque
-
-@onready var sprite = get_parent().get_node("AnimatedSprite2D")
+@export var indicator_scene: PackedScene
+@export var attack_delay := 1.2    # Tiempo de carga (el indicador se llena/parpadea)
+@export var attack_radius := 90
+@export var damage := 20
 
 func enter():
-	await get_tree().create_timer(startup_time).timeout
-	execute_attack()
-
-func execute_attack():
-	# 1. Reproducir la animación de ataque
-	owner.get_node("AnimatedSprite2D").play("aoe_attack")
+	super.enter()
 	
-	var targets = owner.get_node("AttackArea").get_overlapping_bodies()
+	# 1. Instanciar el aviso (en la posición del boss)
+	var indicator = indicator_scene.instantiate()
+	owner.add_child(indicator) # Lo anclamos al boss por si acaso, aunque no se mueva
+	indicator.position = Vector2.ZERO
+	indicator.scale = Vector2.ONE * (attack_radius / 32.0)
 	
-	for body in targets:
-		if body.has_method("take_damage"):
-			body.take_damage(10)
+	# 2. Esperar a que el Boss "cargue" el golpe
+	# Aquí podrías poner una animación de "Carga" en tu sprite
+	await get_tree().create_timer(attack_delay).timeout
+	
+	# 3. ¡EL MOMENTO DEL GOLPE!
+	execute_scythe_hit(indicator)
 
-	finish_attack()
-
-func finish_attack():
-	await get_tree().create_timer(cooldown_time).timeout
-	get_parent().change_state("Teleport")
-
-func exit():
+func execute_scythe_hit(indicator_node):
+	indicator_node.sprite.play("ScytheAttack")
+	
+	# Comprobar si el jugador está en el área en el momento exacto del giro
+	var dist = owner.global_position.distance_to(player.global_position)
+	var player_margin = 15.0
+	
+	if dist <= (attack_radius + player_margin):
+		if player.has_method("take_damage"):
+			player.take_damage(damage)
+	
+	# 4. Limpieza: Esperamos a que termine la animación visual antes de irnos
+	await get_tree().create_timer(1).timeout
+	
+	if is_instance_valid(indicator_node):
+		indicator_node.queue_free()
+	
+	get_parent().change_state("Follow")
+	
+func update(_delta):
 	pass

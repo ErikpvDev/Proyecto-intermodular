@@ -3,6 +3,23 @@
 [ext_resource type="Script" uid="uid://bfkbnbkwtlgb" path="res://Scenes/Bosses/Bullet_Hell/attack_indicator.gd" id="1_fpg8o"]
 [ext_resource type="Texture2D" uid="uid://5r3t65xl52hf" path="res://assets/sprites/Enemies/Bosses/AttackIndicator.png" id="2_htspa"]
 [ext_resource type="Texture2D" uid="uid://cx8gvt84icmod" path="res://assets/sprites/Enemies/Bosses/BulletHell/Red Effect Bullet Impact Explosion 32x32.png" id="2_jwgdb"]
+[ext_resource type="Texture2D" uid="uid://cv8cyi7jv1tdv" path="res://assets/sprites/Enemies/Bosses/Necromancer/Blue Effect Bullet Impact Explosion 32x32.png" id="2_vrevs"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2708q"]
+atlas = ExtResource("2_vrevs")
+region = Rect2(512, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w2ur6"]
+atlas = ExtResource("2_vrevs")
+region = Rect2(544, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dceu4"]
+atlas = ExtResource("2_vrevs")
+region = Rect2(576, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wdsjt"]
+atlas = ExtResource("2_vrevs")
+region = Rect2(608, 96, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jwgdb"]
 atlas = ExtResource("2_jwgdb")
@@ -26,6 +43,23 @@ region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_jwgdb"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2708q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w2ur6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dceu4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wdsjt")
+}],
+"loop": true,
+"name": &"ScytheAttack",
+"speed": 8.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_jwgdb")
@@ -56,13 +90,15 @@ animations = [{
 radius = 8.0
 
 [node name="AttackIndicator" type="Node2D" unique_id=1763068479]
+z_index = -1
 script = ExtResource("1_fpg8o")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1623365257]
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_jwgdb")
-animation = &"attack"
+animation = &"ScytheAttack"
 autoplay = "indicator"
+frame_progress = 0.6506556
 
 [node name="Area2D" type="Area2D" parent="." unique_id=256302415]
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://qffsk1wiwj24"]
+[gd_scene format=3 uid="uid://qffsk1wiwj24"]
 
 [ext_resource type="Script" uid="uid://bfxa6lm2jll3u" path="res://Scenes/Enemies/enemigo.gd" id="1_bscoh"]
 [ext_resource type="PackedScene" uid="uid://dysmu2ylvmkhx" path="res://Scenes/Character/Health.tscn" id="2_cepw7"]
@@ -117,33 +117,31 @@ _data = {
 &"RESET": SubResource("Animation_ql1il")
 }
 
-[node name="Enemy" type="CharacterBody2D"]
+[node name="Enemy" type="CharacterBody2D" unique_id=1664721171]
 z_index = 100
 collision_layer = 2
 collision_mask = 2
 script = ExtResource("1_bscoh")
 
-[node name="Health" parent="." instance=ExtResource("2_cepw7")]
+[node name="Health" parent="." unique_id=1386486711 instance=ExtResource("2_cepw7")]
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1586771038]
 position = Vector2(0, -12)
 sprite_frames = SubResource("SpriteFrames_rh0mr")
-animation = &"elite_walking"
+animation = &"walking"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=543757795]
 position = Vector2(0, 4)
 shape = SubResource("RectangleShape2D_ovplc")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Area2D" type="Area2D" parent="." unique_id=1861724861]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=340371619]
 visible = false
 position = Vector2(0, 3.5)
 shape = SubResource("RectangleShape2D_bscoh")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_c7qvx")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=787424963]
+libraries/ = SubResource("AnimationLibrary_c7qvx")
 
 [connection signal="health_changed" from="Health" to="." method="_on_health_health_changed"]

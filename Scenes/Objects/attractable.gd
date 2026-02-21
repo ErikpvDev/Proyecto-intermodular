@@ -22,7 +22,9 @@ func _on_body_entered(body: Node2D) -> void:
 			else:
 				GlobalSignals.emit_signal("add_gold", 2)
 		elif (nodo == "Heart"):
+			VfxManager.play_sound("pick_up_heart")
 			GlobalSignals.emit_signal("add_health", 1)
 		else:
+			VfxManager.play_sound("equip_shield")
 			GlobalSignals.emit_signal("add_shield", 1)
 		queue_free()

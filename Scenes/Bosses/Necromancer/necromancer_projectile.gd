@@ -1,14 +1,10 @@
 extends Area2D
-class_name Bullet
 
 @export var speed := 300
 @export var life_time := 6
 
 var direction :=Vector2.RIGHT
 var time := 0
-
-func _ready() -> void:
-	process_mode = Node.PROCESS_MODE_INHERIT
 
 func setup(dir:Vector2):
 	direction = dir.normalized()

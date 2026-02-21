@@ -2,6 +2,7 @@ extends Control
 
 @onready var character = $"../../Level01/Character"
 @onready var grid = $Panel/GridContainer
+@onready var spawn = $"../../Level01/Spawn"
 
 func _ready() -> void:
 	hide()
@@ -12,6 +13,7 @@ func _input(event: InputEvent) -> void:
 		if visible:
 			_on_button_pressed() 
 		elif not MenuManager.menu_abierto:
+			$Panel/TimeLabel.text = "TIME: "+format_time(spawn.total_time)
 			display_items()
 			toggle_pause()
 			MenuManager.abrir_menu()
@@ -41,3 +43,8 @@ func display_items() -> void:
 		grid.add_child(new)
 		
 		new.set_item(item, inventory[item])
+		
+func format_time(time_in_seconds: float) -> String:
+	var minutes : int = int(time_in_seconds / 60)
+	var seconds : int = int(time_in_seconds) % 60
+	return "%02d:%02d" % [minutes, seconds]

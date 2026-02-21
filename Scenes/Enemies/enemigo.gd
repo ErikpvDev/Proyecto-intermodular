@@ -25,6 +25,7 @@ func _ready() -> void:
 		$AnimatedSprite2D.play("elite_walking")
 	else:
 		$AnimatedSprite2D.play("walking")
+		$CollisionShape2D.position = Vector2(0,-8)
 
 func animation():
 		

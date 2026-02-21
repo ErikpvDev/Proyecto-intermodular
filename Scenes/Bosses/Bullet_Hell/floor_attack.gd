@@ -14,10 +14,10 @@ func enter():
 	await get_tree().create_timer(time_after_dash).timeout
 	
 	for i in range(total_attacks):
-		# 1. Esperar antes de lanzar el siguiente ataque de la serie
+		# Esperar antes de lanzar el siguiente ataque de la serie
 		await get_tree().create_timer(spawn_attack_delay).timeout
 		
-		# 2. Instanciar el indicador (el aviso visual)
+		# Instanciar el indicador (el aviso visual)
 		var indicator = indicator_scene.instantiate()
 		var spawn_pos = player.global_position # Guardamos la posición exacta del jugador en ese instante
 		
@@ -26,16 +26,15 @@ func enter():
 		indicator.scale = Vector2.ONE * (attack_radius / 32.0) 
 		get_tree().current_scene.add_child(indicator)
 		
-		# 3. Lanzar la animación visual del Boss (opcional por cada ataque)
-		if animation_player.has_animation("attack_charge"):
-			animation_player.play("attack_charge")
-		
 		# 4. Procesar el daño de forma independiente para este ataque
 		check_damage_after_delay(spawn_pos, attack_delay, indicator)
 
 	# 5. Esperar un poco después del último ataque antes de cambiar de estado
 	await get_tree().create_timer(attack_delay + 0.2).timeout
 	get_parent().change_state("Dash")
+
+func update(_delta):
+	pass
 
 # Nueva función para manejar cada explosión por separado
 func check_damage_after_delay(pos: Vector2, delay: float, indicator_node: Node2D):
