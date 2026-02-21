@@ -4,27 +4,25 @@ extends State
 @export var fire_rate := 3.0          # Tiempo entre ráfagas
 @export var burst_count := 3          # Proyectiles por ráfaga
 @export var delay_between_shots := 0.2 # Tiempo entre proyectiles de la misma ráfaga
-@export var bullet_rounds := 3
+@export var bullets := 9
 
 @onready var sprite = $"../../AnimatedSprite2D"
 
-var bullet_rounds_shooted := 0
+@onready var bullet_shooted := 0
 var timer := 0.0
 
 
 func enter():
 	super.enter()
 	timer = 0.0
+	bullet_shooted=0
 
 func update(delta):
 	timer += delta
 	if timer >= fire_rate:
 		shoot_burst()
-		bullet_rounds_shooted+=1
 		timer = 0.0
-	if bullet_rounds <= bullet_rounds_shooted:
-		get_parent().change_state("Teleport")
-	
+
 
 func shoot_burst():
 	flash_warning()
@@ -44,6 +42,11 @@ func shoot_burst():
 		projectile.rotation = target_dir.angle()
 		
 		get_tree().current_scene.add_child(projectile)
+		bullet_shooted+=1
+		print(bullet_shooted)
+		
+	if bullet_shooted >= bullets:
+		get_parent().change_state("Teleport")
  
 func flash_warning():
 	var tween = create_tween()

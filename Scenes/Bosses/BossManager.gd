@@ -24,13 +24,13 @@ func miniboss_spawn(wave):
 		5:
 			boss="mid02"
 		10:
-			boss="mid02"
+			boss="mid01"
 		15:
-			boss="mid01"
-		20:
 			boss="mid02"
-		25: 
+		20:
 			boss="mid01"
+		25: 
+			boss="mid02"
 	
 	var health_multiplier = pow(1.0 + (current_wave / 20.0), 1.2)
 	var miniboss = load(miniboss_paths[boss][0]).instantiate()
