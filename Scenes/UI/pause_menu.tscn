@@ -108,6 +108,7 @@ offset_left = 795.8656
 offset_top = 4.75
 offset_right = 905.8656
 offset_bottom = 57.75
+theme_override_fonts/font = ExtResource("2_8rf44")
 text = "TIME: "
 label_settings = SubResource("LabelSettings_8rf44")
 
