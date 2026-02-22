@@ -543,13 +543,13 @@ script = ExtResource("1_hlutc")
 texture_filter = 1
 texture_repeat = 1
 sprite_frames = SubResource("SpriteFrames_aexvp")
-animation = &"Dash"
+animation = &"Idle"
 autoplay = "Idle"
-frame = 7
-frame_progress = 1.0
+frame = 1
+frame_progress = 0.74582887
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1185855092]
-zoom = Vector2(4, 4)
+zoom = Vector2(3.5, 3.5)
 position_smoothing_enabled = true
 
 [node name="Physical Collision" type="CollisionShape2D" parent="." unique_id=1792620395]

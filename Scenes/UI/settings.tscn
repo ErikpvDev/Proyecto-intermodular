@@ -109,7 +109,7 @@ value = 1.0
 [node name="Volume_label" type="Label" parent="VBoxContainer/VBoxContainer" unique_id=341446112]
 layout_mode = 2
 theme_override_font_sizes/font_size = 64
-text = "VFX"
+text = "SFX"
 horizontal_alignment = 1
 vertical_alignment = 1
 

@@ -128,7 +128,7 @@ script = ExtResource("1_bscoh")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1586771038]
 position = Vector2(0, -12)
 sprite_frames = SubResource("SpriteFrames_rh0mr")
-animation = &"walking"
+animation = &"elite_walking"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=543757795]
 position = Vector2(0, 4)

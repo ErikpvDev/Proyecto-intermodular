@@ -213,7 +213,7 @@ func spawn_enemies():
 			e.exp_value=int(e.exp_value*pow(exp_growth,current_wave-1))*8
 			e.get_children()[0].health=int(base_elite_hp*pow(hp_elite_growth,current_wave-1))
 			$"../Enemies".add_child(e)
-			await get_tree().create_timer(spawn_time).timeout
+			await get_tree().create_timer(spawn_time,false).timeout
 		else:
 			var e=enemy.instantiate()
 			
@@ -223,7 +223,7 @@ func spawn_enemies():
 			e.get_children()[0].health=int(base_hp*pow(hp_growth,current_wave-1))
 			$"../Enemies".add_child(e)
 			#Delay entre spawn de enemigos
-			await get_tree().create_timer(spawn_time).timeout
+			await get_tree().create_timer(spawn_time,false).timeout
 
 func spawn_vase():
 	for i in range(8):

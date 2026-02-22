@@ -2,8 +2,9 @@
 
 [ext_resource type="Script" uid="uid://dbo0vhm5ixofu" path="res://Scenes/UI/death_menu.gd" id="1_3v8cq"]
 [ext_resource type="FontFile" uid="uid://dvxv26iy0kmh0" path="res://assets/fonts/VCR_OSD_MONO_1.001.ttf" id="2_8iasg"]
-[ext_resource type="Texture2D" uid="uid://dfd1hauf516lv" path="res://assets/sprites/UI/DeathSkull.png" id="3_7fo7i"]
+[ext_resource type="Texture2D" uid="uid://btiaa5jkojn2e" path="res://assets/sprites/UI/DeathSkull/1.png" id="3_thn04"]
 [ext_resource type="PackedScene" uid="uid://c7p2d74atq8qj" path="res://Scenes/UI/Transition.tscn" id="4_e22nx"]
+[ext_resource type="Texture2D" uid="uid://bo4fg1b4dqfd5" path="res://assets/sprites/UI/DeathSkull/2.png" id="4_ys4xj"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7fo7i"]
 bg_color = Color(0.1882353, 0.1882353, 0.1882353, 1)
@@ -19,6 +20,28 @@ corner_radius_bottom_left = 10
 
 [sub_resource type="LabelSettings" id="LabelSettings_e22nx"]
 font_size = 100
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gex0p"]
+atlas = ExtResource("3_thn04")
+region = Rect2(0, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ar2xe"]
+atlas = ExtResource("4_ys4xj")
+region = Rect2(0, 0, 512, 512)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vy43h"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gex0p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ar2xe")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="death_menu" type="Control" unique_id=1368213342]
 layout_mode = 3
@@ -103,14 +126,12 @@ theme_override_font_sizes/font_size = 28
 text = "MENU"
 metadata/_edit_use_anchors_ = true
 
-[node name="TextureRect" type="TextureRect" parent="Panel" unique_id=1980173241]
-layout_mode = 0
-offset_left = 490.866
-offset_top = 256.75
-offset_right = 756.86597
-offset_bottom = 588.427
-texture = ExtResource("3_7fo7i")
-expand_mode = 1
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Panel" unique_id=1192985393]
+position = Vector2(613.8656, 436.75)
+scale = Vector2(0.6640625, 0.71484375)
+sprite_frames = SubResource("SpriteFrames_vy43h")
+autoplay = "default"
+frame_progress = 0.16576108
 
 [node name="Transition" parent="." unique_id=1909195515 instance=ExtResource("4_e22nx")]
 visible = false
