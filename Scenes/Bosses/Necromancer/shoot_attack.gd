@@ -43,7 +43,6 @@ func shoot_burst():
 		
 		get_tree().current_scene.add_child(projectile)
 		bullet_shooted+=1
-		print(bullet_shooted)
 		
 	if bullet_shooted >= bullets:
 		get_parent().change_state("Teleport")

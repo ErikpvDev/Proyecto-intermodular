@@ -1,7 +1,7 @@
 extends State 
 
-@export var teleport_distance: float = 100.0  # Distancia detrás del jugador
-@export var fade_duration: float = 0.3       # Tiempo de desaparición
+@export var teleport_distance: float = 125  
+@export var fade_duration: float = 0.3    
 
 func enter():
 	start_teleport()

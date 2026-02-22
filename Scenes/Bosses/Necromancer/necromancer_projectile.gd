@@ -15,7 +15,6 @@ func _physics_process(delta: float) -> void:
 	
 	time += delta
 	if time >= life_time:
-		print("bala borrada")
 		queue_free()
 	
 
@@ -27,11 +26,9 @@ func _on_body_entered(body: Node2D) -> void:
 			return
 		 
 		body.take_damage(1)
-		print("bala borrada")
 		queue_free()
 	
 
 
 func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
-	print("bala borrada")
 	queue_free()

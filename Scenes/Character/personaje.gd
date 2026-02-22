@@ -145,6 +145,8 @@ func take_damage(amount: int) -> void:
 					$AnimationPlayer.play("hit")
 					if health.health<=0:
 						GlobalSignals.emit_signal("die")
+			else:
+				VfxManager.play_sfx_varied("dodge")
 
 func add_exp(amount: int) -> void:
 	experience.add_exp(amount)
@@ -152,8 +154,13 @@ func add_exp(amount: int) -> void:
 func update_animation():
 	if not dead:
 		if movement.dashing:
+			if velocity.x > 0:
+				$AnimatedSprite2D.flip_h = false
+			else:
+				$AnimatedSprite2D.flip_h = true
 			$AnimatedSprite2D.play("Dash")
 		else:
+			$AnimatedSprite2D.flip_h = false
 			if velocity.x != 0:
 				if velocity.x > 0:
 					$AnimatedSprite2D.play("Walk_right")
@@ -168,9 +175,10 @@ func update_animation():
 				else:
 					$AnimatedSprite2D.play("Idle")
 	else:
-		$AnimatedSprite2D.play("Death")
-		await $AnimatedSprite2D.animation_finished
-		GlobalSignals.emit_signal("death_menu")
+		if $AnimatedSprite2D.animation != "Death":
+			$AnimatedSprite2D.play("Death")
+			await $AnimatedSprite2D.animation_finished
+			GlobalSignals.emit_signal("death_menu")
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	take_damage(body.damage)
@@ -189,6 +197,7 @@ func attack():
 		$AttackArea/CollisionShape2D.position = Vector2(32,32)*closest_enemy_direction
 	
 		$AttackArea/AnimatedSprite2D.rotation = closest_enemy_direction.angle()
+		$AttackArea/CollisionShape2D.rotation = closest_enemy_direction.angle()
 	
 		$AttackArea/AnimatedSprite2D.play("attacking")
 		$AttackArea/AnimatedSprite2D.visible=true

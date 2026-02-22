@@ -23,9 +23,9 @@ func execute_scythe_hit(indicator_node):
 	
 	# Comprobar si el jugador está en el área en el momento exacto del giro
 	var dist = owner.global_position.distance_to(player.global_position)
-	var player_margin = 5
+	var margin = 25
 	
-	if dist <= (attack_radius + player_margin):
+	if dist <= (attack_radius+margin):
 		if player.has_method("take_damage"):
 			player.take_damage(damage)
 	
@@ -35,7 +35,7 @@ func execute_scythe_hit(indicator_node):
 	if is_instance_valid(indicator_node):
 		indicator_node.queue_free()
 	
-	get_parent().change_state("Follow")
+	get_parent().change_state("Teleport")
 	
 func update(_delta):
 	pass

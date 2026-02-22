@@ -12,7 +12,8 @@ var sounds = {
 	"lose_shield" : preload("res://assets/VFX/LoseShield.mp3"),
 	"equip_shield" : preload("res://assets/VFX/EquipShield.mp3"),
 	"pick_up_heart" : preload("res://assets/VFX/PickUpHeart.mp3"),
-	"victory" : preload("res://assets/VFX/Victory-Sound.mp3")  
+	"dodge" : preload("res://assets/VFX/Dodge.mp3"),
+	"victory" : preload("res://assets/VFX/Victory-Sound.mp3") 
 }
 	
 func play_sound(sound_name: String):

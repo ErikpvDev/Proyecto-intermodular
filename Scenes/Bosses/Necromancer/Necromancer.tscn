@@ -313,6 +313,7 @@ script = ExtResource("6_88arx")
 [node name="AreaAttack" type="Node2D" parent="StateMachine" unique_id=564035222]
 script = ExtResource("7_enjvq")
 indicator_scene = ExtResource("8_emh7m")
+attack_radius = 95
 
 [node name="Teleport" type="Node2D" parent="StateMachine" unique_id=400259226]
 script = ExtResource("7_w1fc8")
