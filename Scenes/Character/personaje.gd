@@ -136,6 +136,7 @@ func take_damage(amount: int) -> void:
 		if !movement.dashing:
 			if (!randf()<dodge_chance):
 				if shield >= 1:
+					VfxManager.play_sound("lose_shield")
 					shield=shield-1
 					GlobalSignals.emit_signal("update_shield",shield)
 				else:
@@ -205,7 +206,7 @@ func attack():
 	
 		$AttackArea/AttackTimer.start()
 		if $AttackArea/AnimatedSprite2D.visible:
-			VfxManager.play_sound("slash")
+			VfxManager.play_sfx_varied("slash")
 	
 func _on_attack_timer_timeout() -> void:
 	$AttackArea/AnimatedSprite2D.visible=false

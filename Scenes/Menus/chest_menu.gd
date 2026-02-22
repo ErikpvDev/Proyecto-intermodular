@@ -28,9 +28,13 @@ func show_menu():
 	get_tree().paused = true
 	show()
 
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("ui_cancel"):
+		_on_button_pressed()
 
 func _on_button_pressed() -> void:
-	MenuManager.cerrar_menu()
-	hide()
-	get_tree().paused = false
-	chest_queue_free.queue_free()
+	if chest_queue_free:
+		chest_queue_free.queue_free()
+		MenuManager.cerrar_menu()
+		hide()
+		get_tree().paused = false

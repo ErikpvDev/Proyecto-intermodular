@@ -87,12 +87,12 @@ func enemy_death():
 			VfxManager.play_sound("victory")
 			GlobalSignals.emit_signal("victory_menu",total_time)
 			return
-		await get_tree().create_timer(time_between_waves).timeout
+		await get_tree().create_timer(time_between_waves,false).timeout
 		current_wave+=1
 		update_wave()
 	
 
-func get_valid_spawnpoint(cam: Camera2D, tilemap_layer: TileMapLayer, margin: float = 16.0):
+func get_valid_spawnpoint(cam: Camera2D, tilemap_layer: TileMapLayer, margin: float = 32.0):
 	
 	# 1. OBTENER LÍMITES DEL TILEMAP (Mundo)
 	var used_rect_i: Rect2i = tilemap_layer.get_used_rect()
@@ -252,7 +252,7 @@ func update_wave():
 	rare_vase_prob= clamp(5+(current_wave-1)*0.5,5,25)
 	
 	
-	await get_tree().create_timer(between_waves).timeout
+	await get_tree().create_timer(between_waves,false).timeout
 	wave_text.text = "WAVE "+str(current_wave)
 	if current_wave % 5 != 0:
 		spawn_enemies()

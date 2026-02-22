@@ -7,7 +7,7 @@ func _ready() -> void:
 	# Usamos call_deferred para asegurar que el nodo esté totalmente listo
 	_update_scale.call_deferred()
 	
-	await get_tree().create_timer(3).timeout
+	await get_tree().create_timer(3,false).timeout
 	queue_free()
 
 func _update_scale():

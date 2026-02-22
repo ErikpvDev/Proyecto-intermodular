@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dq2m5rkd0jrpe"]
+[gd_scene format=3 uid="uid://dq2m5rkd0jrpe"]
 
 [ext_resource type="Script" uid="uid://dgtm8l2c0rukw" path="res://Scenes/Objects/chest.gd" id="1_matv7"]
 [ext_resource type="Texture2D" uid="uid://devqhjxbq1w0s" path="res://assets/sprites/tilemaps/0x72_DungeonTilesetII_v1.7.png" id="1_vb5st"]
@@ -51,22 +51,22 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_q4gep"]
 radius = 22.0
 
-[node name="Chest" type="StaticBody2D"]
+[node name="Chest" type="StaticBody2D" unique_id=1657527447]
 collision_mask = 5
 script = ExtResource("1_matv7")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=924672546]
 position = Vector2(0, 0.75)
 shape = SubResource("RectangleShape2D_matv7")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=317797800]
 sprite_frames = SubResource("SpriteFrames_cclpu")
 autoplay = "default"
 
-[node name="Interactable" parent="." instance=ExtResource("3_e2yg2")]
+[node name="Interactable" parent="." unique_id=161629856 instance=ExtResource("3_e2yg2")]
 collision_mask = 4
 interact_name = "E to Interact"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable" unique_id=339094763]
 position = Vector2(0, 1)
 shape = SubResource("CircleShape2D_q4gep")

@@ -1,6 +1,6 @@
 extends State
 
-@onready var Spawn = $"../../../../Spawn"
+@onready var spawn = $"../../../../Spawn"
 @onready var attacksScene = $"../../../../Enemies" 
 
 func enter():
@@ -30,6 +30,9 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 		if !ataques.is_empty():
 			for ataque in ataques:
 				ataque.queue_free()
-		GlobalSignals.emit_signal("add_gold", 25)
-		GlobalSignals.emit_signal("show_shop")
+		if spawn.current_wave != 25:
+			GlobalSignals.emit_signal("add_gold", 25)
+			GlobalSignals.emit_signal("show_shop")
+		else:
+			spawn.enemy_death()
 		owner.queue_free()

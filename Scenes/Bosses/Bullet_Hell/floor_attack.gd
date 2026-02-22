@@ -15,7 +15,7 @@ func enter():
 	
 	for i in range(total_attacks):
 		# Esperar antes de lanzar el siguiente ataque de la serie
-		await get_tree().create_timer(spawn_attack_delay).timeout
+		await get_tree().create_timer(spawn_attack_delay,false).timeout
 		
 		# Instanciar el indicador (el aviso visual)
 		var indicator = indicator_scene.instantiate()
@@ -30,7 +30,7 @@ func enter():
 		check_damage_after_delay(spawn_pos, attack_delay, indicator)
 
 	# 5. Esperar un poco después del último ataque antes de cambiar de estado
-	await get_tree().create_timer(attack_delay + 0.2).timeout
+	await get_tree().create_timer(attack_delay + 0.2, false).timeout
 	get_parent().change_state("Dash")
 
 func update(_delta):
@@ -38,7 +38,7 @@ func update(_delta):
 
 # Nueva función para manejar cada explosión por separado
 func check_damage_after_delay(pos: Vector2, delay: float, indicator_node: Node2D):
-	await get_tree().create_timer(delay).timeout
+	await get_tree().create_timer(delay,false).timeout
 	indicator_node.sprite.play("attack")
 	
 	# Verificamos distancia real entre el centro del ataque y el jugador
@@ -50,7 +50,7 @@ func check_damage_after_delay(pos: Vector2, delay: float, indicator_node: Node2D
 		if player.has_method("take_damage"):
 			player.take_damage(damage)
 	
-	await get_tree().create_timer(delay).timeout
+	await get_tree().create_timer(delay,false).timeout
 	
 	# Limpiar el indicador
 	if is_instance_valid(indicator_node):

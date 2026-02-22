@@ -56,6 +56,16 @@ func get_items():
 	contenedor2.get_child(4).text = ItemManager.get_stats(item2)
 	contenedor3.get_child(4).text = ItemManager.get_stats(item3)
 
+func _input(event: InputEvent) -> void:
+	if not visible:
+		return 
+	if event.is_action_pressed("1"):
+		_on_object1_pressed()
+	elif event.is_action_pressed("2"):
+		_on_object2_pressed()
+	elif event.is_action_pressed("3"):
+		_on_object3_pressed()
+
 func _on_object1_pressed() -> void:
 	MenuManager.cerrar_menu()
 	emit_signal("item_selected")

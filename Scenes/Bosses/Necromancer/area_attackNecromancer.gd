@@ -14,7 +14,7 @@ func enter():
 	indicator.scale = Vector2.ONE * (attack_radius / 32.0)
 	
 	
-	await get_tree().create_timer(attack_delay).timeout
+	await get_tree().create_timer(attack_delay,false).timeout
 	
 	execute_scythe_hit(indicator)
 
@@ -30,7 +30,7 @@ func execute_scythe_hit(indicator_node):
 			player.take_damage(damage)
 	
 	# 4. Limpieza: Esperamos a que termine la animación visual antes de irnos
-	await get_tree().create_timer(1).timeout
+	await get_tree().create_timer(1,false).timeout
 	
 	if is_instance_valid(indicator_node):
 		indicator_node.queue_free()
