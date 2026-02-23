@@ -58,22 +58,19 @@ func _on_fade_timer_timeout() -> void:
 
 
 func _on_windowed_item_selected(index: int) -> void:
-	# Primero limpiamos estados anteriores para evitar conflictos
 	DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_BORDERLESS, false)
 	
 	match index:
-		0: # Ventana Normal
+		0: 
 			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
-			# Definir un tamaño por defecto si quieres que no sea minúscula
+			
 			DisplayServer.window_set_size(Vector2i(1280, 720)) 
-		1: # Pantalla Completa Real
+		1: 
 			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_EXCLUSIVE_FULLSCREEN)
-		2: # Ventana sin Bordes (Borderless)
-			# En Godot 4, el modo "FULLSCREEN" (a secas) suele actuar como Borderless Window
+		2: 
 			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
 			DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_BORDERLESS, true)
 
-	# Forzamos a Godot a re-calcular el área de click
 	call_deferred("fix_mouse_sync")
 
 func fix_mouse_sync():

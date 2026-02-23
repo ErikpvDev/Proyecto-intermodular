@@ -1,8 +1,8 @@
 extends State
 
-@export var dash_speed := 1300.0         # Velocidad del dash
-@export var dash_duration := 0.15       # Tiempo máximo del dash
-@export var safe_distance := 100     # Distancia mínima al jugador
+@export var dash_speed := 1300.0       
+@export var dash_duration := 0.15    
+@export var safe_distance := 100    
 
 var dash_direction := Vector2.ZERO
 var dash_timer := 0.0
@@ -16,15 +16,12 @@ func enter():
 	
 	var direction_to_player = (player.global_position - start_position).normalized()
 	
-	# Posición objetivo: a safe_distance del jugador
 	target_position = player.global_position - direction_to_player * safe_distance
 	
-	# Calculamos la dirección real del dash
 	dash_direction = (target_position - start_position).normalized()
 	
 	dash_timer = dash_duration
 	owner.velocity = dash_direction * dash_speed
-	#animation_player.play("dash")
 
 func update(_delta):
 	pass
@@ -34,7 +31,6 @@ func _physics_process(delta):
 		dash_timer -= delta
 		owner.move_and_slide()
 		
-		# Si llegamos cerca del target, terminamos el dash
 		if owner.global_position.distance_to(target_position) <= 5.0:
 			dash_timer = 0.0
 	else:

@@ -1,7 +1,6 @@
 extends Node
 
 @export var exp_needed_lvl: int = 150
-#@export var exp_needed_lvl: int = 2
 @onready var exp_bar: TextureProgressBar = $"../../UI/Exp/TextureProgressBar"
 @onready var exp_lvl_text: Label = $"../../UI/Exp/Label"
 var experience: float = 0

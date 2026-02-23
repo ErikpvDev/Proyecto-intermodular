@@ -1,6 +1,6 @@
 extends Node2D
 
-@onready var current_wave=25
+@onready var current_wave=1
 var base_elite_chance = 0.02
 var elite_prob_percent
 @export var exp_growth=1.12
@@ -8,9 +8,7 @@ var elite_prob_percent
 @export var hp_growth=1.10
 @export var hp_elite_growth=1.13
 @export var base_hp=10
-#@export var base_hp=1
 @export var base_elite_hp=50
-#@export var base_elite_hp=1
 @onready var between_waves=3
 @onready var wave_text = $"../UI/Wave/Wave/Label"
 
@@ -38,27 +36,27 @@ var timer_active : bool = true
 	2: [12,1.1],
 	3: [18,1.1],
 	4: [24,1.1],
-	5: [1,1.7],   # Primer mini-jefe
+	5: [1,1.7],
 	6: [36,1.54],
 	7: [42,1.65],
 	8: [50,1.77],
 	9: [58,1.88],
-	10: [1,2.0],  # Jefe intermedio
+	10: [1,2.0], 
 	11: [75,2.12],
 	12: [82,2.24],
 	13: [90,2.37],
 	14: [100,2.5],
-	15: [1,2.63],  # Mini-jefe
+	15: [1,2.63], 
 	16: [125,2.76],
 	17: [138,2.89],
 	18: [150,3.02],
 	19: [165,3.16],
-	20: [1,3.3],  # Jefe mayor
+	20: [1,3.3], 
 	21: [200,3.44],
 	22: [220,3.58],
 	23: [240,3.72],
 	24: [265,3.86],
-	25: [1,4.0], # Ronda final o jefe supremo
+	25: [1,4.0],
 }
 
 @onready var enemy=preload("res://Scenes/Enemies/enemigo.tscn")
@@ -94,11 +92,7 @@ func enemy_death():
 
 func get_valid_spawnpoint(cam: Camera2D, tilemap_layer: TileMapLayer, margin: float = 32.0):
 	
-	# 1. OBTENER LÍMITES DEL TILEMAP (Mundo)
 	var used_rect_i: Rect2i = tilemap_layer.get_used_rect()
-	#var local_pos = tilemap_layer.map_to_local(used_rect_i.position)
-	# Nota: map_to_local devuelve el centro del tile, a veces es mejor usar position * tile_size directamente si no hay transforms raros.
-	# Pero asumiendo tu lógica original funciona para el mapa, la dejamos así ajustando un poco:
 	var tile_size = tilemap_layer.tile_set.tile_size
 	var local_spawn_rect = Rect2(
 		Vector2(used_rect_i.position) * Vector2(tile_size), 
@@ -108,23 +102,11 @@ func get_valid_spawnpoint(cam: Camera2D, tilemap_layer: TileMapLayer, margin: fl
 	var world_spawn_rect: Rect2 = tilemap_layer.get_global_transform() * local_spawn_rect
 	world_spawn_rect = world_spawn_rect.grow(-margin)
 	
-	# --- CORRECCIÓN PRINCIPAL AQUÍ ---
-	# 2. OBTENER LÍMITES DE LA CÁMARA (Mundo Real)
-	
-	# Obtenemos el centro real en el mundo
 	var cam_center = cam.get_screen_center_position()
-	# Calculamos el tamaño ajustado al zoom (si zoom es 2, vemos la mitad de cosas)
 	var cam_size = cam.get_viewport_rect().size / cam.zoom
-	# Calculamos la esquina superior izquierda
 	var cam_top_left = cam_center - (cam_size / 2)
 	
-	# Creamos el Rect2 global y le aplicamos el margen (para que no spawneen JUSTO en el borde)
 	var camera_rect = Rect2(cam_top_left, cam_size).grow(margin)
-	# ---------------------------------
-	
-	
-	# 3. DEFINIR ZONAS (Lógica de exclusión)
-	# Usamos intersection para asegurarnos de que las zonas no se salgan del mapa
 	
 	# Zona Arriba: Todo lo que está arriba de la cámara, dentro del mapa
 	var top_rect = Rect2(
@@ -158,10 +140,8 @@ func get_valid_spawnpoint(cam: Camera2D, tilemap_layer: TileMapLayer, margin: fl
 		camera_rect.size.y
 	)
 
-	# 4. FILTRAR ZONAS VÁLIDAS
 	var valid_zones = []
 	
-	# Solo agregamos si tienen área positiva (anchura y altura > 0)
 	if top_rect.size.x > 0 and top_rect.size.y > 0:
 		valid_zones.append(top_rect)
 	if bottom_rect.size.x > 0 and bottom_rect.size.y > 0:
@@ -171,12 +151,9 @@ func get_valid_spawnpoint(cam: Camera2D, tilemap_layer: TileMapLayer, margin: fl
 	if right_rect.size.x > 0 and right_rect.size.y > 0:
 		valid_zones.append(right_rect)
 		
-	# 5. RETORNO SEGURO CON VERIFICACIÓN (El cambio clave)
 	if valid_zones.is_empty():
 		return Vector2.ZERO 
 
-	# Intentamos encontrar un punto válido hasta 10 veces
-	# Esto evita bucles infinitos si el mapa es muy pequeño
 	for i in range(20):
 		var chosen_zone: Rect2 = valid_zones.pick_random()
 		
@@ -185,19 +162,14 @@ func get_valid_spawnpoint(cam: Camera2D, tilemap_layer: TileMapLayer, margin: fl
 			randf_range(chosen_zone.position.y, chosen_zone.end.y)
 		)
 		
-		# --- VERIFICACIÓN DE SUELO ---
-		# Convertimos la posición global del punto a coordenadas del TileMap
 		var local_pos = tilemap_layer.to_local(random_point)
 		var map_coords = tilemap_layer.local_to_map(local_pos)
 		
-		# Preguntamos al TileMap: ¿Hay un tile en esta coordenada?
 		var tile_data = tilemap_layer.get_cell_tile_data(map_coords)
 		
 		if tile_data != null:
-			# Opcional: Si usas colisiones o capas físicas, verifica que sea suelo
-			# if tile_data.get_collision_polygons_count(0) > 0:
 			
-			return random_point # ¡ÉXITO! Encontramos suelo real.
+			return random_point
 			
 	return Vector2.ZERO
 

@@ -83,8 +83,6 @@ func _ready() -> void:
 	$AttackArea/CollisionShape2D.disabled=true
 	$AttackArea/AnimatedSprite2D.visible=false
 	$AttackArea/attack_cooldown.start()
-	
-	#GlobalSignals.emit_signal("update_stats")
 
 func _process(delta):
 	update_animation()
@@ -231,7 +229,7 @@ func _on_attack_area_area_entered(area: Area2D) -> void:
 
 func get_item(item: ItemData):
 	damage += item.damage_bonus
-	damage_multiplier += item.damage_multiplier
+	damage_multiplier += item.damage_multiplier - 1
 	GlobalSignals.emit_signal("update_move_speed", item.move_speed_bonus)
 	dodge_chance += item.dodge_chance_bonus
 	if (dodge_chance > 0.7):

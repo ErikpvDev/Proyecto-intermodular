@@ -29,7 +29,6 @@ func execute_scythe_hit(indicator_node):
 		if player.has_method("take_damage"):
 			player.take_damage(damage)
 	
-	# 4. Limpieza: Esperamos a que termine la animación visual antes de irnos
 	await get_tree().create_timer(1,false).timeout
 	
 	if is_instance_valid(indicator_node):

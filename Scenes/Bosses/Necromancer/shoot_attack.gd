@@ -1,9 +1,9 @@
 extends State
 
 @export var projectile_scene: PackedScene
-@export var fire_rate := 3.0          # Tiempo entre ráfagas
-@export var burst_count := 3          # Proyectiles por ráfaga
-@export var delay_between_shots := 0.2 # Tiempo entre proyectiles de la misma ráfaga
+@export var fire_rate := 3.0          
+@export var burst_count := 3         
+@export var delay_between_shots := 0.2 
 @export var bullets := 9
 
 @onready var sprite = $"../../AnimatedSprite2D"

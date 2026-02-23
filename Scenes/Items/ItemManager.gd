@@ -1,9 +1,9 @@
 extends Node
 
 # Probabilidades para cada rareza de objeto
-const CHANCE_COMMON = 0.75      # 75%
-const CHANCE_RARE = 0.20        # 20%
-const CHANCE_LEGENDARY = 0.05   # 5%
+const CHANCE_COMMON = 0.75      
+const CHANCE_RARE = 0.20        
+const CHANCE_LEGENDARY = 0.05   
 
 # Arrays para los objetos segun su calidad
 @export var common_items: Array[ItemData] = []
@@ -14,8 +14,6 @@ func _ready():
 	load_from_folder("res://Scenes/Items/common/", common_items)
 	load_from_folder("res://Scenes/Items/rare/", rare_items)
 	load_from_folder("res://Scenes/Items/legendary/", legendary_items)
-	
-	#print("Items cargados: %d Comunes, %d Raros, %d Legendarios" % [common_items.size(), rare_items.size(), legendary_items.size()])
 
 func get_item():
 	var roll = randf()
