@@ -231,12 +231,14 @@ func _on_attack_area_area_entered(area: Area2D) -> void:
 
 func get_item(item: ItemData):
 	damage += item.damage_bonus
-	damage_multiplier *= item.damage_multiplier
+	damage_multiplier += item.damage_multiplier
 	GlobalSignals.emit_signal("update_move_speed", item.move_speed_bonus)
 	dodge_chance += item.dodge_chance_bonus
 	if (dodge_chance > 0.7):
 		dodge_chance = 0.7
 	crit_chance += item.crit_chance_bonus
+	if (crit_chance > 1):
+		crit_chance = 1
 	if (item.attack_speed_bonus > 0):
 		attack_speed += item.attack_speed_bonus
 		GlobalSignals.emit_signal("update_attack_speed", attack_speed)
@@ -251,15 +253,6 @@ func get_item(item: ItemData):
 		inventory[item] += 1
 	else:
 		inventory[item] = 1
-	#print(damage)
-	#print(damage_multiplier)
-	#print(movement.move_speed)
-	#print(dodge_chance)
-	#print(crit_chance)
-	#print(attack_speed)
-	#print(attack_size)
-	#print(shield)
-	#print(health.health)
 
 func add_gold(amount: int):
 	VfxManager.play_sound("pick_up_coin")
